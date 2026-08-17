@@ -234,7 +234,7 @@
     border-top: 1px solid var(--line);
   }
 
-  /* ===== Tile-based topic navigation (top level, one per section) ===== */
+/* ===== Tile-based topic navigation (top level, one per section) ===== */
   .topic-nav{
     position: sticky;
     top: 0;
@@ -374,6 +374,7 @@
     .topic-panel{ padding: 16px; }
     .subtopic-panel{ padding: 14px 16px; }
   }
+
 </style>
 </head>
 <body>
@@ -6522,9 +6523,13 @@ HAVING SUM(order_value) &gt; 100000;</code></pre>
       if (nav.dataset.bound === '1') return;
       nav.dataset.bound = '1';
 
-      const panel = nav.parentElement.querySelector(':scope > [data-subtopic-panel]');
-      const list = nav.parentElement.querySelector(':scope > .list[data-subtopic-source]');
-      if (!panel || !list) return;
+      // Use immediate siblings rather than parentElement.querySelector so that
+      // multiple independent nav/panel/list groups sharing the same parent
+      // (e.g. two separate tile groups under one answer) never cross-target
+      // each other's panel or list.
+      const panel = nav.nextElementSibling;
+      const list = panel ? panel.nextElementSibling : null;
+      if (!panel || !panel.hasAttribute('data-subtopic-panel') || !list || !list.classList.contains('list') || !list.hasAttribute('data-subtopic-source')) return;
 
       const keyAttr = nav.dataset.subtopicKey || 'question';
       const tiles = Array.from(nav.querySelectorAll('.subtopic-tile'));
@@ -6580,9 +6585,12 @@ HAVING SUM(order_value) &gt; 100000;</code></pre>
       if (nav.dataset.bound === '1') return;
       nav.dataset.bound = '1';
 
-      const panel = nav.parentElement.querySelector(':scope > [data-topic-panel]');
-      const list = nav.parentElement.querySelector(':scope > .list[data-topic-source]');
-      if (!panel || !list) return;
+      // Use immediate siblings rather than parentElement.querySelector so that
+      // multiple independent nav/panel/list groups sharing the same parent
+      // never cross-target each other's panel or list.
+      const panel = nav.nextElementSibling;
+      const list = panel ? panel.nextElementSibling : null;
+      if (!panel || !panel.hasAttribute('data-topic-panel') || !list || !list.classList.contains('list') || !list.hasAttribute('data-topic-source')) return;
 
       const tiles = Array.from(nav.querySelectorAll('.topic-tile'));
 
