@@ -1597,8 +1597,19 @@ Create efficient DAX measures</code></pre>
       match.tile.insertAdjacentElement('afterend', panel);
     }
 
+    function closeQuestion() {
+      entries.forEach(e => e.tile.classList.remove('is-active'));
+      panel.remove();
+    }
+
     entries.forEach(e => {
-      e.tile.addEventListener('click', () => showQuestion(e.key));
+      e.tile.addEventListener('click', () => {
+        if (e.tile.classList.contains('is-active')) {
+          closeQuestion();
+        } else {
+          showQuestion(e.key);
+        }
+      });
     });
 
     const firstQ = directQuestions[0];
@@ -1657,7 +1668,13 @@ Create efficient DAX measures</code></pre>
       }
 
       tiles.forEach(tile => {
-        tile.addEventListener('click', () => showStep(tile.dataset.subtopicTarget));
+        tile.addEventListener('click', () => {
+          if (tile.classList.contains('is-active')) {
+            resetStep();
+          } else {
+            showStep(tile.dataset.subtopicTarget);
+          }
+        });
       });
 
       resetStep();
@@ -1727,7 +1744,13 @@ Create efficient DAX measures</code></pre>
       }
 
       tiles.forEach(tile => {
-        tile.addEventListener('click', () => showTopic(tile.dataset.topicTarget));
+        tile.addEventListener('click', () => {
+          if (tile.classList.contains('is-active')) {
+            resetPanel();
+          } else {
+            showTopic(tile.dataset.topicTarget);
+          }
+        });
       });
 
       resetPanel();
