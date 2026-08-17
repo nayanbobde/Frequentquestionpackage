@@ -1,9 +1,10 @@
 <!DOCTYPE html>
+
 <html lang="en">
 <head>
 <meta charset="utf-8"/>
 <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
-<title>Power BI Hands-on — Nayan Bobde</title>
+<title>Work Experience & Resume Questions — Nayan Bobde</title>
 <style>
   :root{
     --bg: #0B1220;
@@ -232,7 +233,6 @@
   .section-body-inner .list{
     border-top: 1px solid var(--line);
   }
-
 /* ===== Tile-based topic navigation (top level, one per section) ===== */
   .topic-nav{
     background: rgb(15, 22, 38);
@@ -247,7 +247,8 @@
     padding: 12px 2px;
   }
   .topic-tile{
-    flex-shrink: 0;
+    flex: 0 1 auto;
+    max-width: 100%;
     font-family: var(--sans);
     font-size: 13px;
     font-weight: 600;
@@ -257,7 +258,8 @@
     border-radius: 8px;
     padding: 7px 13px;
     cursor: pointer;
-    white-space: nowrap;
+    white-space: normal;
+    overflow-wrap: break-word;
     transition: color .15s ease, border-color .15s ease, background .15s ease;
   }
   .topic-tile:hover{
@@ -270,11 +272,13 @@
     background: rgba(79,209,197,0.1);
   }
   .topic-panel{
+    flex: 1 1 100%;
+    width: 100%;
     background: var(--panel);
     border: 1px solid var(--line);
     border-radius: 12px;
     padding: 24px;
-    margin-bottom: 32px;
+    margin: 4px 0 4px;
   }
   .topic-panel-head{
     display: flex;
@@ -288,6 +292,7 @@
     font-weight: 650;
     color: var(--accent);
     margin: 0;
+    cursor: pointer;
   }
   .topic-panel-body{
     color: var(--text-dim);
@@ -311,7 +316,8 @@
     gap: 6px;
   }
   .subtopic-tile{
-    flex-shrink: 0;
+    flex: 0 1 auto;
+    max-width: 100%;
     font-family: var(--sans);
     font-size: 12.5px;
     font-weight: 600;
@@ -321,7 +327,8 @@
     border-radius: 7px;
     padding: 6px 11px;
     cursor: pointer;
-    white-space: nowrap;
+    white-space: normal;
+    overflow-wrap: break-word;
     transition: color .15s ease, border-color .15s ease, background .15s ease;
   }
   .subtopic-tile:hover{
@@ -334,16 +341,20 @@
     background: rgba(79,209,197,0.1);
   }
   .subtopic-panel{
+    flex: 1 1 100%;
+    width: 100%;
     background: var(--bg);
     border: 1px solid var(--line);
     border-radius: 10px;
     padding: 18px 20px;
+    margin: 2px 0 2px;
   }
   .subtopic-panel-title{
     font-size: 15px;
     font-weight: 650;
     color: var(--accent);
     margin: 0 0 10px;
+    cursor: pointer;
   }
   .subtopic-panel-body{
     color: var(--text-dim);
@@ -381,7 +392,8 @@
     gap: 8px;
   }
   .question-tile{
-    flex-shrink: 0;
+    flex: 0 1 auto;
+    max-width: 100%;
     font-family: var(--sans);
     font-size: 13px;
     font-weight: 600;
@@ -393,7 +405,15 @@
     cursor: pointer;
     text-align: left;
     line-height: 1.35;
+    white-space: normal;
+    overflow-wrap: break-word;
+    word-break: break-word;
     transition: color .15s ease, border-color .15s ease, background .15s ease;
+  }
+  .question-tile code{
+    overflow-wrap: break-word;
+    word-break: break-word;
+    white-space: normal;
   }
   .question-tile code{
     font-size: 0.92em;
@@ -421,6 +441,7 @@
     font-weight: 650;
     color: var(--accent);
     margin: 0 0 10px;
+    cursor: pointer;
   }
   .question-panel-body{
     color: var(--text-dim);
@@ -443,1001 +464,1447 @@
 </head>
 <body>
 <div class="wrap">
-
-<div class="item section-item" data-index="pbi-hands-on">
+<div class="item section-item" data-index="work-exp">
 <div aria-expanded="false" class="item-head section-head" role="button" tabindex="0">
 <div class="section-head-text">
-<div class="eyebrow">Technical Topics</div>
-<h1>Power BI Hands-on</h1>
+<div class="eyebrow">Work Experience</div>
+<h1>Work Experience &amp; Resume Questions</h1>
 </div>
 <svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
 </div>
 <div class="item-body">
 <div class="item-body-inner section-body-inner">
-<p class="sub">Click a topic to expand it and see the related practice questions.</p>
-<div class="topic-nav" data-topic-nav=""><div class="topic-nav-inner"><button class="topic-tile" data-topic-target="17" type="button">Writing DAX Measures</button><button class="topic-tile" data-topic-target="18" type="button">Building YTD, MTD, QTD, YoY, MoM</button><button class="topic-tile" data-topic-target="19" type="button">Building TOPN(), RANKX(), % Contribution &amp;</button><button class="topic-tile" data-topic-target="20" type="button">Cleaning Data, Merge/Append, Unpivot &amp; Custom</button><button class="topic-tile" data-topic-target="21" type="button">Building Static &amp; Dynamic RLS with</button><button class="topic-tile" data-topic-target="22" type="button">Using USERELATIONSHIP(), RELATED() &amp;</button><button class="topic-tile" data-topic-target="23" type="button">Fixing Slow Refresh, DAX &amp; Large</button></div></div><div class="topic-panel" data-topic-panel=""></div><div class="list" data-topic-source="" id="pbi-topics"> <div class="item topic-item" data-index="17">
-<button class="item-head">
-<span class="idx">01</span>
-<span class="item-title">Writing DAX Measures: Total Sales, VAR &amp; CALCULATE()</span>
-<span class="tag">8 Questions</span>
-<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
-</button>
-<div class="item-body">
-<div class="item-body-inner">
-<div class="item question-item" data-question="pbi-1">
-<button class="item-head">
-<span class="idx">01</span>
-<span class="item-title">Write a DAX measure to calculate Total Sales.</span>
-<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
-</button>
-<div class="item-body">
-<div class="item-body-inner">
-<p><strong>Say:</strong></p>
-<p>“I'll create a measure using <code>SUM()</code> on the Sales Amount column.”</p>
-<pre><code class="language-DAX">Total Sales =
-SUM(Sales[SalesAmount])</code></pre>
-<p>---</p>
-</div>
-</div>
-</div>
-<div class="item question-item" data-question="pbi-2">
-<button class="item-head">
-<span class="idx">02</span>
-<span class="item-title">Difference between a Measure and a Calculated Column. Show how to create each.</span>
-<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
-</button>
-<div class="item-body">
-<div class="item-body-inner">
-<p><strong>Say:</strong></p>
-<p>“A calculated column is calculated row by row and stored in the model. A measure is calculated dynamically based on filter context.”</p>
-<p><strong>Calculated Column:</strong></p>
-<pre><code class="language-DAX">Total Amount =
-Sales[Quantity] * Sales[UnitPrice]</code></pre>
-<p><strong>Measure:</strong></p>
-<pre><code class="language-DAX">Total Sales =
-SUM(Sales[SalesAmount])</code></pre>
-<p>---</p>
-</div>
-</div>
-</div>
-<div class="item question-item" data-question="pbi-3">
-<button class="item-head">
-<span class="idx">03</span>
-<span class="item-title">Difference between <code>SUM()</code> and <code>SUMX()</code>. Write an example of both.</span>
-<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
-</button>
-<div class="item-body">
-<div class="item-body-inner">
-<p><strong>Say:</strong></p>
-<p>“<code>SUM()</code> adds values from one column. <code>SUMX()</code> iterates through a table row by row and evaluates an expression.”</p>
-<pre><code class="language-DAX">Total Sales =
-SUM(Sales[SalesAmount])</code></pre>
-<pre><code class="language-DAX">Total Sales =
-SUMX(
-    Sales,
-    Sales[Quantity] * Sales[UnitPrice]
-)</code></pre>
-<p>---</p>
-</div>
-</div>
-</div>
-<div class="item question-item" data-question="pbi-4">
+<p class="sub">Click a project to expand it. Each entry covers the objective, the data, the modeling approach, and the business takeaway.</p>
+<div class="list" id="list">
+<div class="item" data-index="myintro">
+<button class="item-head"><span class="idx">01</span><span class="item-title">MY INTRO</span><span class="tag">Main</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<div class="item" data-index="4">
 <button class="item-head">
 <span class="idx">04</span>
-<span class="item-title">Explain Row Context vs Filter Context with a practical example.</span>
+<span class="item-title">Resume, Introduction &amp; Experience</span>
+<span class="tag">Intro</span>
 <svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
 </button>
 <div class="item-body">
 <div class="item-body-inner">
-<p><strong>Say:</strong></p>
-<p>“Row context means DAX is evaluating one row at a time, mainly in calculated columns and iterators. Filter context is the filters coming from visuals, slicers, relationships, or DAX.”</p>
-<p><strong>Row Context:</strong></p>
-<pre><code class="language-DAX">Total Amount =
-Sales[Quantity] * Sales[UnitPrice]</code></pre>
-<p><strong>Filter Context:</strong></p>
-<pre><code class="language-DAX">Total Sales =
-CALCULATE(
-    SUM(Sales[SalesAmount]),
-    Product[Category] = "Electronics"
-)</code></pre>
-<p>---</p>
+<p>Hi, I'm Nayan Bobde from Nagpur. I have around 2.4 years of experience as a Data Analyst, primarily working in Retail and Supply Chain Analytics at Cognizant.</p>
+<p>My core skills are SQL and Power BI, along with DAX, Power Query, Advanced Excel, Python, and Data Modeling. I mainly work on data analysis, KPI reporting, dashboard development, and business insights generation.</p>
+<p>In my previous role, I worked with a global apparel retail client on inventory optimization and allocation analytics. The project focused on monitoring inventory movement from Distribution Centers to stores and improving allocation decisions across the supply chain.</p>
+<p>I worked with over 500K records and 20,000+ SKUs using SQL Server for data extraction, transformation, validation, and analysis. On the reporting side, I developed Power BI dashboards and DAX measures to track key business KPIs.</p>
+<p>Some of the KPIs I worked on include Weeks of Cover, In-Stock %, Stockout Rate, Sell-Through %, Allocation Accuracy, Inventory Value, Revenue, Gross Margin %, and Forecast Accuracy.</p>
+<p>These dashboards were used by Buying, Planning, Merchandising, Supply Chain, and Distribution teams for decision-making.</p>
+<p>I worked closely with business stakeholders to gather requirements, validate KPI calculations, support UAT testing, and convert analytical findings into actionable business insights.</p>
+<p>My last project was a Global Direct SAR (Spend Analysis Report) Dashboard for the finance leadership team, built using SQL and Power BI to provide a single view of company-wide spending.</p>
+<p>I handled custom August fiscal-year calculations, multi-currency conversion, and dynamic RLS so users could see accurate financial data based on their role.</p>
+<p>Overall, my role involved converting raw business data into meaningful insights using SQL and Power BI, collaborating with stakeholders, and helping business teams make better inventory and supply chain decisions.</p>
 </div>
 </div>
 </div>
-<div class="item question-item" data-question="pbi-5">
-<button class="item-head">
-<span class="idx">05</span>
-<span class="item-title">What is <code>CALCULATE()</code>? Calculate sales for a specific category.</span>
-<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
-</button>
-<div class="item-body">
-<div class="item-body-inner">
-<p><strong>Say:</strong></p>
-<p>“<code>CALCULATE()</code> evaluates an expression after modifying the filter context.”</p>
-<pre><code class="language-DAX">Electronics Sales =
-CALCULATE(
-    [Total Sales],
-    Product[Category] = "Electronics"
-)</code></pre>
-<p>---</p>
-</div>
-</div>
-</div>
-<div class="item question-item" data-question="pbi-6">
-<button class="item-head">
-<span class="idx">06</span>
-<span class="item-title">What is Context Transition? Show an example using <code>CALCULATE()</code>.</span>
-<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
-</button>
-<div class="item-body">
-<div class="item-body-inner">
-<p><strong>Say:</strong></p>
-<p>“Context transition converts the current row context into filter context. <code>CALCULATE()</code> performs this transition.”</p>
-<pre><code class="language-DAX">Customer Sales =
-CALCULATE(
-    [Total Sales]
-)</code></pre>
-<p>“For example, when <code>CALCULATE()</code> is used inside an iterator or calculated column, the current row can become a filter.”</p>
-<p>---</p>
-</div>
-</div>
-</div>
-<div class="item question-item" data-question="pbi-7">
-<button class="item-head">
-<span class="idx">07</span>
-<span class="item-title">Use <code>FILTER()</code> inside <code>CALCULATE()</code> to calculate sales based on a condition.</span>
-<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
-</button>
-<div class="item-body">
-<div class="item-body-inner">
-<p><strong>Say:</strong></p>
-<p>“I'll use <code>FILTER()</code> when I need a table expression with a condition.”</p>
-<pre><code class="language-DAX">High Value Sales =
-CALCULATE(
-    [Total Sales],
-    FILTER(
-        Sales,
-        Sales[SalesAmount] &gt; 1000
-    )
-)</code></pre>
-<p>---</p>
-</div>
-</div>
-</div>
-<div class="item question-item" data-question="pbi-8">
+<div class="item">
+<button class="item-head"><span class="idx">A</span><span class="item-title">Resume-Based Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><div class="item" data-index="8">
 <button class="item-head">
 <span class="idx">08</span>
-<span class="item-title">Create a measure using <code>VAR</code>.</span>
+<span class="item-title">Current Role &amp; Responsibilities</span>
+<span class="tag">Role</span>
 <svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
 </button>
 <div class="item-body">
 <div class="item-body-inner">
-<p><strong>Say:</strong></p>
-<p>“Variables make DAX easier to read, avoid repeating calculations and can improve performance.”</p>
-<pre><code class="language-DAX">Profit Margin =
-VAR TotalSales = [Total Sales]
-VAR TotalCost = [Total Cost]
-VAR Profit = TotalSales - TotalCost
-RETURN
-DIVIDE(Profit, TotalSales)</code></pre>
+<p>In my previous role at Cognizant, I worked as a Data Analyst for a global apparel retail client, supporting retail and supply chain analytics. My primary responsibilities included extracting and analyzing data using SQL, developing Power BI dashboards and DAX measures, building data models, monitoring business KPIs, and providing actionable insights to stakeholders.</p>
+<p>On a typical day, I would work on SQL queries to extract and validate data, analyze inventory, sales, and allocation performance, update or enhance Power BI reports, troubleshoot data or KPI issues, and discuss requirements and findings with business stakeholders. I also supported UAT and production deployment of reporting solutions.</p>
+<p>In the project, my main contribution was analyzing inventory flow from distribution centers to stores and identifying allocation and inventory imbalances. I worked with 500K+ records across 20,000+ SKUs, multiple stores, and 3+ distribution centers. I developed Power BI dashboards for functions such as Buying, Planning, Merchandising, Supply Chain, and Distribution, and created KPIs such as Weeks of Cover, In-Stock %, Stockout Rate, Sell-Through %, and Allocation Accuracy.</p>
+<p>The client was a global apparel retail business, and my work was focused mainly on the retail supply chain, inventory management, demand planning, and allocation domain. My role was essentially to convert business and operational data into reliable dashboards and insights that helped teams make better inventory and allocation decisions.</p>
 </div>
 </div>
 </div>
-</div>
-</div>
-</div>
-<div class="item topic-item" data-index="18">
+</div></div></div>
+<div class="item">
+<button class="item-head"><span class="idx">B</span><span class="item-title">Certifications</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><div class="item" data-index="2">
 <button class="item-head">
 <span class="idx">02</span>
-<span class="item-title">Building YTD, MTD, QTD, YoY, MoM &amp; Rolling Measures</span>
-<span class="tag">8 Questions</span>
+<span class="item-title">PL-300 Power BI Data Analyst Certification</span>
+<span class="tag">Certification</span>
 <svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
 </button>
 <div class="item-body">
 <div class="item-body-inner">
-<div class="item question-item" data-question="pbi-9">
-<button class="item-head">
-<span class="idx">09</span>
-<span class="item-title">Calculate YTD Sales.</span>
-<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
-</button>
-<div class="item-body">
-<div class="item-body-inner">
-<p><strong>Say:</strong></p>
-<p>“I'll use <code>TOTALYTD()</code> with my Date column.”</p>
-<pre><code class="language-DAX">YTD Sales =
-TOTALYTD(
-    [Total Sales],
-    'Date'[Date]
-)</code></pre>
-<p>---</p>
+<p>"I completed the PL-300 Power BI Data Analyst certification, where I covered the complete Power BI reporting lifecycle — connecting to different data sources, transforming and cleaning data using Power Query, building data models and relationships, creating DAX measures and calculated columns, and developing interactive reports and dashboards. I also covered report optimization, visualization best practices, row-level security, workspace and dataset management, and sharing and maintaining Power BI solutions. Along with the certification, I applied these concepts practically in my retail and supply-chain project, particularly in data modeling, KPI development, DAX, Power Query, dashboard development, performance optimization and stakeholder reporting."</p>
+<p><strong>If interviewer asks: "What exactly did you learn in PL-300?"</strong><br/>Remember these 5 areas:</p>
+<p>Prepare the data → Connect, clean, transform using Power Query<br/>
+            Model the data → Relationships, Star Schema, dimensions/facts<br/>
+            Visualize &amp; analyze → Reports, dashboards, drill-through, filters, interactions<br/>
+            DAX → Measures, calculated columns, time intelligence, filter context<br/>
+            Manage &amp; secure → Workspaces, refresh, RLS, sharing and deployment</p>
+<p><strong>Strong closing line</strong><br/>For example, in a retail Power BI project, I would connect Power BI to SQL Server, extract sales, inventory and allocation data, and use Power Query to clean and transform the data. I would then build a Star Schema with fact and dimension tables, create relationships and develop DAX measures such as Revenue, Gross Margin, WOC and Stockout Rate.</p>
+<p>Next, I would build an interactive Power BI report with KPI cards, trends, drill-throughs, slicers and conditional formatting so business users can analyze store, product and DC performance. Finally, I would publish the report to a Power BI workspace, configure scheduled refresh and Row-Level Security, and monitor the solution for performance and data issues.</p>
+<div class="flow">Connect → Transform → Model → DAX → Visualize → Publish → Refresh → Secure</div>
 </div>
 </div>
 </div>
-<div class="item question-item" data-question="pbi-10">
-<button class="item-head">
-<span class="idx">10</span>
-<span class="item-title">Calculate MTD Sales.</span>
-<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
-</button>
-<div class="item-body">
-<div class="item-body-inner">
-<pre><code class="language-DAX">MTD Sales =
-TOTALMTD(
-    [Total Sales],
-    'Date'[Date]
-)</code></pre>
-<p><strong>Say:</strong></p>
-<p>“<code>TOTALMTD()</code> calculates sales from the beginning of the current month to the current date.”</p>
-<p>---</p>
-</div>
-</div>
-</div>
-<div class="item question-item" data-question="pbi-11">
-<button class="item-head">
-<span class="idx">11</span>
-<span class="item-title">Calculate QTD Sales.</span>
-<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
-</button>
-<div class="item-body">
-<div class="item-body-inner">
-<pre><code class="language-DAX">QTD Sales =
-TOTALQTD(
-    [Total Sales],
-    'Date'[Date]
-)</code></pre>
-<p>---</p>
-</div>
-</div>
-</div>
-<div class="item question-item" data-question="pbi-12">
-<button class="item-head">
-<span class="idx">12</span>
-<span class="item-title">Calculate Previous Year Sales using <code>SAMEPERIODLASTYEAR()</code>.</span>
-<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
-</button>
-<div class="item-body">
-<div class="item-body-inner">
-<p><strong>Say:</strong></p>
-<p>“I'll shift the current date context back by one year.”</p>
-<pre><code class="language-DAX">Previous Year Sales =
-CALCULATE(
-    [Total Sales],
-    SAMEPERIODLASTYEAR('Date'[Date])
-)</code></pre>
-<p>---</p>
-</div>
-</div>
-</div>
-<div class="item question-item" data-question="pbi-13">
-<button class="item-head">
-<span class="idx">13</span>
-<span class="item-title">Calculate YoY Sales Growth %.</span>
-<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
-</button>
-<div class="item-body">
-<div class="item-body-inner">
-<p><strong>Say:</strong></p>
-<p>“I'll compare current sales with previous-year sales.”</p>
-<pre><code class="language-DAX">YoY Growth % =
-VAR CurrentSales = [Total Sales]
-VAR PreviousSales = [Previous Year Sales]
-RETURN
-DIVIDE(
-    CurrentSales - PreviousSales,
-    PreviousSales
-)</code></pre>
-<p>---</p>
-</div>
-</div>
-</div>
-<div class="item question-item" data-question="pbi-14">
-<button class="item-head">
-<span class="idx">14</span>
-<span class="item-title">Calculate Month-over-Month Sales Growth %.</span>
-<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
-</button>
-<div class="item-body">
-<div class="item-body-inner">
-<p><strong>Say:</strong></p>
-<p>“I'll calculate previous-month sales and compare it with current sales.”</p>
-<pre><code class="language-DAX">Previous Month Sales =
-CALCULATE(
-    [Total Sales],
-    DATEADD('Date'[Date], -1, MONTH)
-)</code></pre>
-<pre><code class="language-DAX">MoM Growth % =
-DIVIDE(
-    [Total Sales] - [Previous Month Sales],
-    [Previous Month Sales]
-)</code></pre>
-<p>---</p>
-</div>
-</div>
-</div>
-<div class="item question-item" data-question="pbi-15">
-<button class="item-head">
-<span class="idx">15</span>
-<span class="item-title">Create a running/cumulative Sales measure.</span>
-<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
-</button>
-<div class="item-body">
-<div class="item-body-inner">
-<p><strong>Say:</strong></p>
-<p>“I'll use <code>CALCULATE()</code> with <code>FILTER()</code> to include all dates up to the current date.”</p>
-<pre><code class="language-DAX">Cumulative Sales =
-CALCULATE(
-    [Total Sales],
-    FILTER(
-        ALL('Date'[Date]),
-        'Date'[Date] &lt;= MAX('Date'[Date])
-    )
-)</code></pre>
-<p>---</p>
-</div>
-</div>
-</div>
-<div class="item question-item" data-question="pbi-16">
-<button class="item-head">
-<span class="idx">16</span>
-<span class="item-title">Create a rolling 30-day Sales measure.</span>
-<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
-</button>
-<div class="item-body">
-<div class="item-body-inner">
-<p><strong>Say:</strong></p>
-<p>“I'll create a date window covering the current date and previous 29 days.”</p>
-<pre><code class="language-DAX">Rolling 30 Days Sales =
-CALCULATE(
-    [Total Sales],
-    DATESINPERIOD(
-        'Date'[Date],
-        MAX('Date'[Date]),
-        -30,
-        DAY
-    )
-)</code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="item topic-item" data-index="19">
+<div class="item" data-index="3">
 <button class="item-head">
 <span class="idx">03</span>
-<span class="item-title">Building TOPN(), RANKX(), % Contribution &amp; SWITCH() Measures</span>
-<span class="tag">7 Questions</span>
+<span class="item-title">Microsoft Fabric — DP-600 Certification</span>
+<span class="tag">Certification</span>
 <svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
 </button>
 <div class="item-body">
 <div class="item-body-inner">
-<div class="item question-item" data-question="pbi-17">
+<p>"I completed the Microsoft Certified: Fabric Analytics Engineer Associate certification, which gave me a strong understanding of building and managing enterprise-scale analytics solutions using Microsoft Fabric. I covered data preparation and enrichment, Fabric analytics assets such as Lakehouses, Warehouses and semantic models, SQL and DAX-based analysis, KQL fundamentals, semantic model design and optimization, security, governance and maintaining analytics solutions. The certification helped me understand how different Fabric components work together to build an end-to-end analytics platform, and it strengthened my knowledge beyond traditional Power BI reporting."</p>
+<p><strong>If interviewer asks: "What exactly did you learn in DP-600?"</strong><br/>Remember these 5 areas:</p>
+<p>Prepare data → Data ingestion, transformation and enrichment<br/>
+            Fabric analytics → Lakehouse, Warehouse and analytics assets<br/>
+            Semantic models → Modeling, relationships, DAX and optimization<br/>
+            Query &amp; analyze → SQL, DAX and KQL<br/>
+            Manage &amp; secure → Security, governance, deployment and maintenance</p>
+<p>Microsoft currently describes the certification around preparing/enriching data, securing and maintaining analytics assets, and implementing/managing semantic models.</p>
+<p>Take a retail company that wants to analyze sales and inventory across stores. Data comes from ERP, POS and inventory systems and is ingested into a Fabric Lakehouse using Data Factory pipelines. The data is cleaned and transformed using Dataflow Gen2 or Spark, and curated into fact and dimension tables.</p>
+<p>I would then create a Warehouse or Lakehouse-based semantic model using a Star Schema, define DAX measures such as Revenue, Gross Margin, WOC and Stockout Rate, and build Power BI reports on top of the semantic model. I would apply security such as RLS, configure refresh and monitor the solution through Fabric.</p>
+<div class="flow">Source systems → Data Factory → Lakehouse → Transformation → Warehouse/Semantic Model → DAX → Power BI → Security &amp; Monitoring</div>
+<p><strong>One-line flow to memorize</strong><br/>ERP/POS → Fabric Data Factory → Lakehouse → Transform → Warehouse/Semantic Model → DAX → Power BI → RLS/Deployment/Monitoring</p>
+<h3>FABRIC IN PASSAGE</h3>
+<p>Microsoft Fabric is Microsoft's unified end-to-end analytics platform that brings together Data Factory, Data Engineering, Data Warehouse, Data Science, Real-Time Analytics, and Power BI into a single SaaS solution. Before Fabric, organizations typically used multiple separate services such as Azure Data Factory for ETL, Azure Synapse for warehousing and analytics, Azure Data Lake for storage, and Power BI for reporting. Managing multiple tools increased complexity, integration effort, security management, and cost.</p>
+<p>Fabric solves this by providing a single platform with OneLake as the centralized storage layer. OneLake acts like OneDrive for enterprise data, allowing all Fabric workloads to access the same data without creating multiple copies.</p>
+<p>One of the key concepts in Fabric is the Lakehouse, which combines the flexibility of a Data Lake with the performance of a Data Warehouse. It can store structured, semi-structured, and unstructured data while supporting both SQL and Spark workloads.</p>
+<p>For reporting, Fabric introduces Direct Lake mode, where Power BI reads data directly from OneLake. This provides near Import-mode performance without needing to duplicate data or rely on slower DirectQuery queries.</p>
+<p>Fabric also supports Dataflow Gen2 and Data Factory pipelines for ETL processes, Warehouses for SQL analytics, and Real-Time Analytics for streaming and log data. Since everything is integrated into one platform, organizations get better governance, simplified architecture, reduced maintenance, improved performance, and faster development cycles.</p>
+<p>Although my primary hands-on experience is with Power BI, I understand how Fabric unifies the modern data platform and enables scalable analytics through OneLake, Lakehouse, Warehouses, and Direct Lake integration.</p>
+<h3>TOP FABRIC QUESTIONS ASKED</h3>
+<pre><code>1. What is Microsoft Fabric?
+2. Why did Microsoft introduce Fabric?
+3. What are the major workloads in Microsoft Fabric?
+4. What is OneLake?
+5. What is a Lakehouse?
+6. Difference Between Lakehouse and Data Warehouse?
+7. What is Direct Lake Mode?
+8. Difference Between Import, DirectQuery and Direct Lake?
+9. What is Delta Lake?
+10. What is a Fabric Capacity?
+11. What is Data Factory in Fabric?
+12. What is a Pipeline in Fabric?
+13. What is a Dataflow Gen2?
+14. How is Fabric different from Synapse?
+15. What is Mirroring in Fabric?
+16. What is Real-Time Analytics?
+17. What is KQL Database?
+18. How does Power BI integrate with Fabric?
+19. What are the benefits of Fabric?
+20. What Fabric features have you used?</code></pre>
+</div>
+</div>
+</div>
+</div></div></div>
+<div class="item">
+<button class="item-head"><span class="idx">C</span><span class="item-title">Skills &amp; Domain Knowledge</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="item" data-index="7">
 <button class="item-head">
-<span class="idx">17</span>
-<span class="item-title">Create a Top 5 Products by Sales using <code>TOPN()</code>.</span>
+<span class="idx">01</span>
+<span class="item-title">Supply Chain / Retail Domain Knowledge —</span>
+<span class="tag">Domain</span>
 <svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
 </button>
 <div class="item-body">
 <div class="item-body-inner">
-<p><strong>Say:</strong></p>
-<p>“I'll create a table containing the five products with the highest sales.”</p>
-<pre><code class="language-DAX">Top 5 Products =
-TOPN(
-    5,
-    ALL(Product[ProductName]),
-    [Total Sales],
-    DESC
-)</code></pre>
-<p><strong>For a Top-5 sales measure:</strong></p>
-<pre><code class="language-DAX">Top 5 Sales =
-CALCULATE(
-    [Total Sales],
-    TOPN(
-        5,
-        ALL(Product[ProductName]),
-        [Total Sales],
-        DESC
-    )
-)</code></pre>
-<p>---</p>
+<p><strong>Say:</strong> “In my Cognizant project, I worked on a retail supply-chain and order allocation use case, so I developed an understanding of the flow from PO and sourcing through DC receiving, allocation, store replenishment and finally store sales. My work involved concepts such as demand planning, initial allocation, replenishment, re-allocation, Inter-Store Transfer, SOH, SOO, safety stock, WOC, stockouts, overstock, store ranking and DC allocation. I used these concepts while analyzing inventory and allocation data in SQL and building Power BI KPIs and dashboards. For example, when stores had stockouts despite inventory being available in the network, I analyzed DC and store-level allocation and identified an imbalance, which helped support inventory rebalancing. So my understanding is not only theoretical—I used these supply-chain concepts to analyze business problems and convert them into SQL analysis, KPIs and Power BI reporting.”</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="pbi-18">
+</div><div class="item" data-index="10">
 <button class="item-head">
-<span class="idx">18</span>
-<span class="item-title">Rank products using <code>RANKX()</code>.</span>
+<span class="idx">02</span>
+<span class="item-title">Business Requirements &amp; Stakeholder Management</span>
+<span class="tag">Stakeholder</span>
 <svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
 </button>
 <div class="item-body">
 <div class="item-body-inner">
-<p><strong>Say:</strong></p>
-<p>“I'll use <code>RANKX()</code> to rank products based on total sales.”</p>
-<pre><code class="language-DAX">Product Rank =
-RANKX(
-    ALL(Product[ProductName]),
-    [Total Sales],
-    ,
-    DESC,
-    DENSE
-)</code></pre>
-<p>---</p>
+<p>I usually start by understanding the business objective and the problem stakeholders are trying to solve, rather than directly starting with the report. I discuss the required KPIs, filters, business rules, data sources, expected output, and target users, and document the requirements clearly. If the requirement is ambiguous, I ask focused questions, confirm the business logic with the stakeholder, and create a clear understanding of what should be delivered.</p>
+<p>Once the requirements are clear, I translate them into SQL logic, data-model requirements, DAX measures, KPIs, and Power BI visuals. For example, for inventory reporting, I would clarify metrics such as WOC, In-Stock %, and Stockout Rate and then build the report around those business definitions. I also work iteratively with stakeholders — sharing the initial report, collecting feedback, and incorporating approved change requests.</p>
+<p>For validation and UAT, I first validate the data and KPI calculations against SQL/source data, then share the report with business users in the UAT environment. I support stakeholders during UAT, resolve any data, calculation, or visualization issues, and make sure the final numbers match the agreed business definitions before production deployment. The project documentation also describes UAT as involving sample-data testing, DAX unit testing, business-user sign-off on KPIs, and validation before production deployment.</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="pbi-19">
-<button class="item-head">
-<span class="idx">19</span>
-<span class="item-title">Rank products within each category.</span>
-<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
-</button>
-<div class="item-body">
-<div class="item-body-inner">
-<p><strong>Say:</strong></p>
-<p>“I'll remove the product filter while keeping the current category context.”</p>
-<pre><code class="language-DAX">Product Rank =
-RANKX(
-    ALL(Product[ProductName]),
-    [Total Sales],
-    ,
-    DESC,
-    DENSE
-)</code></pre>
-<p>“Because Category remains in the filter context, the ranking is evaluated within the current category.”</p>
-<p>---</p>
-</div>
-</div>
-</div>
-<div class="item question-item" data-question="pbi-20">
-<button class="item-head">
-<span class="idx">20</span>
-<span class="item-title">Calculate each product's percentage contribution to total sales.</span>
-<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
-</button>
-<div class="item-body">
-<div class="item-body-inner">
-<p><strong>Say:</strong></p>
-<p>“I'll divide the current product sales by total sales after removing the product filter.”</p>
-<pre><code class="language-DAX">Sales Contribution % =
-DIVIDE(
-    [Total Sales],
-    CALCULATE(
-        [Total Sales],
-        ALL(Product[ProductName])
-    )
-)</code></pre>
-<p>---</p>
-</div>
-</div>
-</div>
-<div class="item question-item" data-question="pbi-21">
-<button class="item-head">
-<span class="idx">21</span>
-<span class="item-title">Explain <code>ALL()</code> vs <code>ALLEXCEPT()</code> vs <code>ALLSELECTED()</code>.</span>
-<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
-</button>
-<div class="item-body">
-<div class="item-body-inner">
-<p><strong>Say:</strong></p>
-<p>“<code>ALL()</code> removes filters, <code>ALLEXCEPT()</code> removes filters except specified columns, and <code>ALLSELECTED()</code> respects filters selected by the user outside the current visual context.”</p>
-<pre><code class="language-DAX">All Sales =
-CALCULATE(
-    [Total Sales],
-    ALL(Product)
-)</code></pre>
-<pre><code class="language-DAX">Category Sales =
-CALCULATE(
-    [Total Sales],
-    ALLEXCEPT(Product, Product[Category])
-)</code></pre>
-<pre><code class="language-DAX">Selected Sales =
-CALCULATE(
-    [Total Sales],
-    ALLSELECTED(Product)
-)</code></pre>
-<p>---</p>
-</div>
-</div>
-</div>
-<div class="item question-item" data-question="pbi-22">
-<button class="item-head">
-<span class="idx">22</span>
-<span class="item-title">Use <code>REMOVEFILTERS()</code> to remove a particular filter.</span>
-<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
-</button>
-<div class="item-body">
-<div class="item-body-inner">
-<p><strong>Say:</strong></p>
-<p>“I'll remove only the Product filter while keeping other filters.”</p>
-<pre><code class="language-DAX">Sales All Products =
-CALCULATE(
-    [Total Sales],
-    REMOVEFILTERS(Product[ProductName])
-)</code></pre>
-<p>---</p>
-</div>
-</div>
-</div>
-<div class="item question-item" data-question="pbi-23">
-<button class="item-head">
-<span class="idx">23</span>
-<span class="item-title">Use <code>SWITCH()</code> for dynamic KPI/status classification.</span>
-<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
-</button>
-<div class="item-body">
-<div class="item-body-inner">
-<p><strong>Say:</strong></p>
-<p>“I'll use <code>SWITCH()</code> to classify the KPI based on its value.”</p>
-<pre><code class="language-DAX">Sales Status =
-SWITCH(
-    TRUE(),
-    [Total Sales] &gt;= 1000000, "Excellent",
-    [Total Sales] &gt;= 500000, "Good",
-    [Total Sales] &gt;= 250000, "Average",
-    "Low"
-)</code></pre>
-</div>
-</div>
-</div>
-</div>
-</div>
-</div>
-<div class="item topic-item" data-index="20">
+</div><div class="item placeholder">
+<button class="item-head"><span class="idx">03</span><span class="item-title">Data Analysis</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p>Data Analysis</p></div></div></div><div class="item" data-index="11">
 <button class="item-head">
 <span class="idx">04</span>
-<span class="item-title">Cleaning Data, Merge/Append, Unpivot &amp; Custom Columns in M</span>
-<span class="tag">7 Questions</span>
+<span class="item-title">Data Sources &amp; Connectivity</span>
+<span class="tag">Data</span>
 <svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
 </button>
 <div class="item-body">
 <div class="item-body-inner">
-<div class="item question-item" data-question="pbi-24">
+<p>In my Power BI projects, I have mainly worked with SQL Server/SSMS, JDA allocation data, ODBMS, store inventory, and sales/POS data. In the retail project, these sources provided information such as product, sales, inventory, purchase orders, and distribution-center allocation data. The production data was stored in SQL tables, while CSV files were mainly used as snapshots for analysis and validation.</p>
+<p>Yes, I have worked with multiple data sources. My approach was to bring the required data into the SQL/reporting layer, perform data cleaning, validation, joins, and business transformations using SQL, and then connect Power BI to the prepared reporting views. Power Query was mainly used for final transformations such as column selection and data types, while maintaining query folding wherever possible.</p>
+<p>For connectivity, the main dashboards used Import Mode because performance was important and the data was refreshed on a schedule. For scenarios requiring current data, DirectQuery was used for real-time DC stock monitoring. The Power BI Gateway connected the on-premise SQL Server to Power BI Service for scheduled refreshes.</p>
+<div class="flow">Multiple sources → SQL/ETL → validation &amp; transformation → Power BI/Power Query → data model → DAX → dashboard → Power BI Service</div>
+</div>
+</div>
+</div><div class="item placeholder">
+<button class="item-head"><span class="idx">05</span><span class="item-title">ETL Process</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p>ETL Process</p></div></div></div><div class="item" data-index="19">
 <button class="item-head">
-<span class="idx">24</span>
-<span class="item-title">Remove duplicate rows and null values.</span>
+<span class="idx">06</span>
+<span class="item-title">Data Quality &amp; Validation</span>
+<span class="tag">Quality</span>
 <svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
 </button>
 <div class="item-body">
 <div class="item-body-inner">
-<p><strong>Say:</strong></p>
-<p>“I'll first remove null rows and then remove duplicates based on the required columns.”</p>
-<p><strong>Power Query:</strong></p>
-<pre><code class="language-text">Remove Rows → Remove Blank Rows
-Remove Rows → Remove Duplicates</code></pre>
-<p><strong>M:</strong></p>
-<pre><code class="language-powerquery">= Table.Distinct(
-    Table.SelectRows(Source, each [CustomerID] &lt;&gt; null)
-)</code></pre>
-<p>---</p>
+<p>In my project, I treated <strong>data quality and validation as an important step before the data reached the Power BI dashboard</strong>. I first validated the source data using SQL by checking for <strong>NULL values, duplicate records, incorrect formats, unexpected values, and record-count inconsistencies</strong>. For duplicate or missing records, I identified the affected records using SQL and either removed duplicates or handled NULLs according to the business rule before using the data for reporting. The project documentation specifically includes duplicate-PO and JDA data-quality checks as part of the SQL validation process.</p>
+<p>For <strong>KPI validation</strong>, I independently calculated the KPI using SQL and then compared the result with the corresponding Power BI/DAX measure. For example, for WOC, In-Stock %, and other inventory KPIs, I checked the Power BI results against the underlying SQL data and business definitions. If there was a mismatch, I traced it through the SQL logic, relationships, filter context, and DAX calculation.</p>
+<p>For <strong>dashboard accuracy</strong>, I performed source-to-report validation by checking record counts, totals, filters, KPI values, and different business scenarios. I also validated that slicers and report filters produced the expected results.</p>
+<p>For <strong>UAT</strong>, after internal testing and DAX validation, I moved the report to the UAT environment and worked with business users to validate the KPIs and report functionality. Stakeholders reviewed the numbers against their business expectations, provided feedback, and I resolved any issues before getting their sign-off. The documented process includes sample-data testing, DAX unit testing, UAT with business-user KPI sign-off, and then production deployment.</p>
+<p>Before production, my final process was:</p>
+<div class="flow">Source validation → SQL data-quality checks → Duplicate/NULL checks → KPI validation → Power BI/DAX validation → Report testing → UAT → Stakeholder sign-off → Production deployment → Post-deployment refresh validation</div>
+<p>I also used refresh monitoring in production. For example, when a Gateway refresh failed and the dashboard continued showing old allocation numbers, I added a <strong>Last Refreshed indicator and a data-validation check</strong> to detect silent refresh failures.</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="pbi-25">
+</div><div class="item" data-index="12">
 <button class="item-head">
-<span class="idx">25</span>
-<span class="item-title">Change data types and clean text.</span>
+<span class="idx">07</span>
+<span class="item-title">Data Modeling</span>
+<span class="tag">Modeling</span>
 <svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
 </button>
 <div class="item-body">
 <div class="item-body-inner">
-<p><strong>Say:</strong></p>
-<p>“I'll explicitly set the correct data types and use text transformation functions to clean the column.”</p>
-<pre><code class="language-powerquery">= Table.TransformColumnTypes(
-    Source,
-    {
-        {"CustomerID", Int64.Type},
-        {"CustomerName", type text},
-        {"SalesAmount", type number}
-    }
-)</code></pre>
-<pre><code class="language-powerquery">= Table.TransformColumns(
-    Source,
-    {
-        {"CustomerName", Text.Trim, type text}
-    }
-)</code></pre>
-<p>---</p>
+<p>In my project, I designed a <strong>Star Schema</strong>, which is the main data model I used for the Power BI reporting solution. The model had central fact tables containing measurable business data, such as <strong>Sales and Inventory</strong>, surrounded by dimension tables such as <strong>Products, Stores, and Date</strong>. For example, the Sales fact contained fields such as <code>product_id</code>, <code>store_id</code>, <code>date_id</code>, <code>units_sold</code>, and <code>net_revenue</code>, while the Product dimension contained attributes such as category, season, section, price, material, and origin.</p>
+<p>I have primarily worked with <strong>Star Schema</strong>, and the project documentation also covers concepts such as <strong>Snowflake Schema and Slowly Changing Dimensions</strong>. I prefer Star Schema in Power BI because relationships are simpler, filter propagation is cleaner, and DAX calculations are easier to maintain.</p>
+<p>When designing the model, I first identified the <strong>business grain</strong> of each fact table, then separated measurable transactional data from descriptive attributes. I created relationships between the dimensions and fact tables using keys, generally with <strong>one-to-many relationships</strong>, and added a proper Date table for time-based analysis. I then built DAX measures such as <strong>WOC, In-Stock %, MOM Revenue, YTD Sales, and Store Sales Rank</strong> on top of the model.</p>
+<p>I also focused on performance while designing the model by removing unnecessary columns, using appropriate data types, keeping relationships simple, and avoiding unnecessary bidirectional filtering. This helped create a model that was easier to maintain and performed well for the business dashboards.</p>
+<div class="flow">Define business grain → Identify facts &amp; dimensions → Build Star Schema → Create relationships → Add Date table → Validate data → Create DAX measures → Optimize the model → Build reports</div>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="pbi-26">
+</div><div class="item" data-index="13">
 <button class="item-head">
-<span class="idx">26</span>
-<span class="item-title">Difference between Merge and Append. Demonstrate both.</span>
+<span class="idx">08</span>
+<span class="item-title">SQL — in my project</span>
+<span class="tag">SQL</span>
 <svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
 </button>
 <div class="item-body">
 <div class="item-body-inner">
-<p><strong>Say:</strong></p>
-<p>“Merge combines tables horizontally using a matching key. Append combines tables vertically by adding rows.”</p>
-<p><strong>Merge:</strong></p>
-<pre><code class="language-text">Home → Merge Queries
-CustomerID → CustomerID</code></pre>
-<p><strong>Append:</strong></p>
-<pre><code class="language-text">Home → Append Queries
-Table1 + Table2</code></pre>
-<p>---</p>
+<p>I used <strong>SQL and Power BI together as part of the complete reporting workflow</strong>. I primarily used SQL for data extraction, cleaning, validation, joins, aggregations, KPI calculations, and preparing the data before it was consumed by Power BI. I worked with tables such as <strong>sales, store inventory, products, and DC allocation</strong>, and used SQL to analyze inventory, sales, WOC, stockouts, allocation, and other retail KPIs.</p>
+<p>I created <strong>SQL views</strong> to standardize and prepare the business logic before connecting Power BI. For example, the project documentation describes views being used to combine and transform data into reporting-ready datasets, including <code>vw_kpi_master</code>, and a <code>vw_revenue_standard</code> view that aligned Finance and Operations revenue definitions so both teams could use a consistent source of truth.</p>
+<p>I preferred using <strong>Views instead of writing the complete SQL logic directly in Power BI</strong> because the business logic could be centralized, reused across reports, easier to validate, and maintained at the SQL/reporting layer. It also allowed Power BI to consume a cleaner, reporting-ready dataset instead of repeatedly processing complex joins and transformations.</p>
+<p>For SQL performance, I focused on <strong>filtering and aggregating data at the SQL layer, using appropriate joins, avoiding unnecessary columns, and preparing aggregated/reporting views</strong> before Power BI consumed the data. This reduced the amount of raw data Power BI had to process and improved overall report performance. The project documentation specifically recommends pushing aggregations into SQL rather than making Power BI process large raw tables.</p>
+<div class="flow">SQL → Extract &amp; Clean → Join &amp; Validate → Create Reporting Views → Power BI Data Model → DAX → Dashboard</div>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="pbi-27">
+</div><div class="item" data-index="14">
 <button class="item-head">
-<span class="idx">27</span>
-<span class="item-title">Unpivot months stored as columns.</span>
+<span class="idx">09</span>
+<span class="item-title">Power BI — in my project</span>
+<span class="tag">Power BI</span>
 <svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
 </button>
 <div class="item-body">
 <div class="item-body-inner">
-<p><strong>Say:</strong></p>
-<p>“I'll select the identifier columns and use Unpivot Other Columns.”</p>
-<pre><code class="language-text">Select Product / ID columns
-        ↓
-Transform
-        ↓
-Unpivot Other Columns</code></pre>
-<p>Result:</p>
-<pre><code class="language-text">Product | Month | Sales
-A       | Jan   | 100
-A       | Feb   | 150</code></pre>
-<p>---</p>
+<p>I have hands-on experience developing Power BI dashboards for a <strong>retail and supply-chain client</strong>, mainly covering sales, inventory, allocation, replenishment and store/DC performance. I worked primarily with <strong>MS SQL Server</strong> data, where the data engineering team prepared the ERP data through SSIS into fact and dimension tables, and I used SQL Views and Power Query to prepare the reporting layer. I followed a <strong>Star Schema</strong> approach and developed DAX measures for KPIs such as Revenue, WOC, Stockout Rate, In-Stock %, Sell-Through and Allocation Accuracy. For the recent project architecture, the flow was <strong>ERP → SSIS → SQL Server → SQL Views → Power BI Power Query → Semantic Model → DAX → Reports/Dashboards</strong>. One challenging area was ensuring inventory and allocation KPIs were accurate across different business scenarios, so I validated the SQL results against Power BI measures and corrected model relationships and calculation logic where required. For deployment, I understand the <strong>Dev → Test/UAT → Production</strong> approach, where reports are validated in development, business users perform UAT, and the approved version is published to Production with appropriate refresh and security configuration. My core focus has been building reliable dashboards, validating business logic, optimizing performance and supporting production reporting.</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="pbi-28">
+</div><div class="item" data-index="18">
 <button class="item-head">
-<span class="idx">28</span>
-<span class="item-title">Create a Conditional/Custom Column using <code>if...then...else</code>.</span>
+<span class="idx">10</span>
+<span class="item-title">KPIs &amp; Dashboard</span>
+<span class="tag">KPIs</span>
 <svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
 </button>
 <div class="item-body">
 <div class="item-body-inner">
-<p><strong>Say:</strong></p>
-<p>“I'll use conditional logic to create a new column.”</p>
-<pre><code class="language-powerquery">= Table.AddColumn(
-    Source,
-    "Sales Category",
-    each if [Sales] &gt;= 100000
-         then "High"
-         else if [Sales] &gt;= 50000
-         then "Medium"
-         else "Low"
-)</code></pre>
-<p>---</p>
+<p>In my project, I developed Power BI dashboards for inventory, allocation, sales, and supply-chain monitoring. The main purpose was to give Buying, Planning, Merchandising, Supply Chain, and Distribution teams a single view of inventory health and help them identify stockout, overstock, and allocation issues. I worked with KPIs such as WOC, In-Stock %, Stockout Rate, Sell-Through %, Allocation Accuracy, Forecast Accuracy, DC Utilization, Inventory Value, Revenue, and Gross Margin %.</p>
+<p>For example, WOC (Weeks of Cover) measures how many weeks the available inventory is expected to last. I calculated it using SOH + SOO divided by average weekly sales, based on the last eight weeks of sales. Stockout Rate measures the percentage of SKUs with no available stock, while Sell-Through Rate measures the percentage of purchased/bought units that were actually sold. Allocation Accuracy measures how closely the actual allocation matches the optimal allocation, and Forecast Accuracy measures how closely actual demand matches the forecast. DC Utilization indicates how effectively distribution-center capacity or stock is being utilized. Inventory Value represents the monetary value of inventory, and Gross Margin % measures profitability after COGS. The project documentation specifically defines WOC, In-Stock %, Stockout, Sell-Through, GMROI, and Inventory Turn with their formulas and business interpretation.</p>
+<p>I implemented the KPI calculations mainly through SQL and DAX measures. For example, the DAX WOC measure calculates total stock as SOH plus SOO and divides it by average weekly sales, while In-Stock % is calculated using SKUs where SOH is greater than zero.</p>
+<p>To ensure accuracy, I first validated the source data and SQL calculations, then compared the Power BI KPI results against SQL outputs and business expectations. During UAT, I worked with stakeholders to validate the KPI definitions and report numbers before production deployment. I also used data-quality checks and refresh validation to identify issues.</p>
+<p>For visualization, I selected the visual based on the business question. KPI cards were used for critical metrics such as WOC and Stockout Rate, line charts for trends, bar/column charts for category and seasonal comparisons, matrices for detailed product analysis, and gauges for DC utilization. I also used conditional formatting for WOC status and bookmarks to switch between stockout and excess-inventory views.</p>
+<p>The overall business value was that the dashboards converted complex inventory and allocation data into actionable insights. Instead of manually checking multiple sources, business teams could quickly identify where stock was too low, where inventory was excessive, and where allocation needed attention. This supported faster replenishment, better allocation decisions, and improved inventory visibility. My resume reflects the resulting impact as a 30% reduction in stockouts, 10% improvement in allocation accuracy, and 15% increase in revenue.</p>
+<div class="flow">Dashboard → KPIs → SQL/DAX calculation → Validation → Right visualization → Business action → Measurable impact</div>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="pbi-29">
+</div><div class="item" data-index="22">
 <button class="item-head">
-<span class="idx">29</span>
-<span class="item-title">Use <code>Table.TransformColumns()</code> to clean a column.</span>
+<span class="idx">11</span>
+<span class="item-title">Visuals and Visualization</span>
+<span class="tag">Visualization</span>
 <svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
 </button>
 <div class="item-body">
 <div class="item-body-inner">
-<p><strong>Say:</strong></p>
-<p>“I'll apply a transformation directly to the selected column.”</p>
-<pre><code class="language-powerquery">= Table.TransformColumns(
-    Source,
-    {
-        {"CustomerName", Text.Upper, type text}
-    }
-)</code></pre>
-<p>---</p>
+<p>In my Cognizant retail supply-chain project, I developed <strong>Power BI dashboards</strong> focused on sales, inventory, allocation, replenishment, and store/DC performance. The data originated from ERP systems and was loaded into <strong>SQL Server</strong> through <strong>SSIS pipelines</strong> by the data engineering team. I used <strong>SQL Views</strong> and <strong>Power Query</strong> for data preparation, built a <strong>Star Schema</strong> data model with fact and dimension tables, and created <strong>DAX measures</strong> for KPIs such as Revenue, Inventory Value, In-Stock %, Stockout Rate, Sell-Through %, Allocation Accuracy, and Weeks of Cover (WOC).</p>
+<p>For visualization, I used <strong>KPI Cards</strong> to display executive-level metrics, <strong>Line Charts</strong> to analyze sales and inventory trends over time, <strong>Clustered Bar Charts</strong> to compare store, region, and DC performance, <strong>Matrix visuals</strong> for detailed product-store inventory analysis, <strong>Donut Charts</strong> for category contribution, <strong>Slicers</strong> for self-service filtering, and <strong>Conditional Formatting</strong> to highlight inventory risks such as stockouts and low WOC. I also implemented <strong>drill-through</strong> functionality so users could navigate from summary-level KPIs to detailed store and product analysis.</p>
+<p>One of the key challenges was ensuring KPI consistency and dashboard performance. I standardized business logic in <strong>SQL Views</strong>, validated Power BI calculations against SQL outputs, optimized DAX measures, and followed <strong>Star Schema</strong> modeling best practices. The dashboards helped business users monitor inventory health, allocation effectiveness, stockouts, and replenishment decisions, enabling data-driven supply-chain planning and operational decision-making.</p>
+<div class="flow">ERP data → SSIS load to SQL Server → SQL Views &amp; Power Query → Star Schema model → DAX KPIs → Power BI visuals (Cards, Line, Bar, Matrix, Donut, Drill-through) → business decision-making</div>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="pbi-30">
+</div><div class="item" data-index="16">
 <button class="item-head">
-<span class="idx">30</span>
-<span class="item-title">Create and use a Power Query parameter.</span>
+<span class="idx">12</span>
+<span class="item-title">Power Query &amp; DAX</span>
+<span class="tag">DAX</span>
 <svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
 </button>
 <div class="item-body">
 <div class="item-body-inner">
-<p><strong>Say:</strong></p>
-<p>“A parameter allows me to make the query dynamic without hardcoding a value.”</p>
-<p>Example parameter:</p>
-<pre><code class="language-text">ServerName = "MyServer"</code></pre>
-<p>Use it:</p>
-<pre><code class="language-powerquery">Sql.Database(
-    ServerName,
-    "SalesDB"
-)</code></pre>
+<p>In my project, I used Power Query mainly for data preparation and transformation, while I used DAX for analytical calculations and dynamic KPIs. Power Query handled tasks such as selecting required columns, setting data types, and performing final transformations before loading the data into the Power BI model. I also tried to maintain query folding by keeping major transformations in SQL views and using Power Query mainly for the final preparation steps.</p>
+<p>For DAX, I created measures such as MOM Revenue Growth, YTD Sales, In-Stock %, WOC, and Store Sales Rank. For example, my WOC measure calculated total stock as SOH + SOO and divided it by average weekly sales based on the last eight weeks.</p>
+<p>One of the more challenging DAX problems I faced was a regional sales-percentage measure that was giving the correct overall total but incorrect regional values. I traced the issue to the use of <code>ALL()</code>, which was removing the region filter. I corrected the measure by removing only the required product-level filter so that the region filter was preserved.</p>
+<p>The main DAX functions I used were <code>CALCULATE()</code>, <code>SUM()</code>, <code>DIVIDE()</code>, <code>FILTER()</code>, <code>DATEADD()</code>, <code>DATESYTD()</code>, <code>DATESINPERIOD()</code>, <code>RANKX()</code>, <code>ALL()</code>, <code>ALLEXCEPT()</code>, and <code>VAR</code>. I used them for time intelligence, KPI calculations, ranking, filter manipulation, and percentage calculations.</p>
+<p>For DAX optimization, I used variables with <code>VAR</code> to avoid repeated calculations, preferred efficient filter-context logic with <code>CALCULATE()</code>, avoided unnecessary iterators such as <code>SUMX()</code> over large fact tables, and pushed heavy aggregation work into SQL where possible. I also used measures instead of unnecessary calculated columns because measures are evaluated dynamically based on filter context.</p>
+<div class="flow">Power Query = Prepare &amp; Transform Data → Data Model → DAX = Calculate &amp; Analyze → KPIs → Dashboard</div>
 </div>
 </div>
-</div>
-</div>
-</div>
-</div>
-<div class="item topic-item" data-index="21">
+</div><div class="item" data-index="17">
 <button class="item-head">
-<span class="idx">05</span>
-<span class="item-title">Building Static &amp; Dynamic RLS with USERPRINCIPALNAME()</span>
+<span class="idx">13</span>
+<span class="item-title">Power BI Performance Optimization</span>
+<span class="tag">Performance</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<p>When I face a slow Power BI report, I first identify the bottleneck rather than changing everything at once. I use Performance Analyzer to identify slow visuals and DAX queries, then check the data model, SQL queries, relationships, and refresh process.</p>
+<p>In my project, I optimized performance at multiple levels. At the SQL level, I pushed aggregations and transformations into SQL views so that Power BI did not have to process unnecessary raw data. At the data-model level, I removed unused columns, used appropriate data types, maintained a clean star schema, and avoided unnecessary bidirectional relationships. At the DAX level, I used measures appropriately, optimized <code>CALCULATE()</code> logic, used <code>VAR</code> to avoid repeated calculations, and avoided unnecessary iteration over large fact tables. The project documentation specifically recommends these approaches for large Power BI models.</p>
+<p>For refresh performance, I used Incremental Refresh, so instead of refreshing the complete historical dataset every time, only the required recent data was refreshed. In the documented project example, this reduced the refresh time from around 40 minutes to approximately 4 minutes.</p>
+<p>I also monitored the refresh and Gateway process because a report can appear incorrect or slow when the underlying dataset has not refreshed properly. In one production issue, the Gateway refresh failed silently, so I added a Last Refreshed indicator and a validation check comparing current and previous allocation records.</p>
+<div class="flow">Identify bottleneck → Optimize SQL → Optimize data model → Optimize DAX → Optimize visuals → Enable Incremental Refresh → Monitor Gateway/refresh → Validate performance</div>
+<p>The key principle I follow is "optimize the data before optimizing the visuals."</p>
+</div>
+</div>
+</div><div class="item" data-index="20">
+<button class="item-head">
+<span class="idx">14</span>
+<span class="item-title">Deployment, Refresh &amp; Sharing</span>
+<span class="tag">Deployment</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<p>In my project, after development and internal validation, I published the Power BI report to the appropriate <strong>Power BI Service workspace</strong> and followed the <strong>Dev → Test/UAT → Production</strong> deployment process. The dataset was deployed first, followed by the report, and production refresh schedules and security settings were configured before the final release.</p>
+<p>For data refresh, the main dashboards used <strong>Import Mode</strong>, so the data was refreshed on a scheduled basis. An <strong>Enterprise Power BI Gateway</strong> connected the on-premise SQL Server to Power BI Service, with the documented project setup using a <strong>6 AM nightly refresh</strong> before the morning business reviews.</p>
+<p>For sharing, I published the reports to Power BI Service so that the relevant <strong>Buying, Planning, Supply Chain, Finance, DC Operations, and leadership teams</strong> could access the reports.</p>
+<p>For access management, I used <strong>workspace permissions and Row-Level Security (RLS)</strong> where required. In the inventory dashboard, I implemented <strong>Dynamic RLS</strong> using a <code>UserRegion</code> table and <code>USERPRINCIPALNAME()</code>, so users automatically saw data for their assigned region. I tested the roles using <strong>View as Role</strong> before publishing.</p>
+<div class="flow">Develop → Test/UAT → Publish → Configure Gateway &amp; Refresh → Apply Security/RLS → Share with Users → Monitor Production</div>
+</div>
+</div>
+</div><div class="item" data-index="21">
+<button class="item-head">
+<span class="idx">15</span>
+<span class="item-title">Power BI Security &amp; Service</span>
+<span class="tag">Security</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<p>In my project, I used <strong>Power BI Service</strong> for publishing, sharing, security, and refresh management. For security, I implemented <strong>Dynamic Row-Level Security (RLS)</strong>. I created a <code>UserRegion</code> mapping table containing user email and region, and used <code>USERPRINCIPALNAME()</code> with <code>LOOKUPVALUE()</code> so that each user automatically saw only the data for their assigned region. I tested the role using <strong>View as Role</strong> in Power BI Desktop before publishing.</p>
+<p>For <strong>RLS vs OLS</strong>, RLS controls <strong>which rows of data a user can see</strong>, whereas OLS is used to restrict access to specific <strong>tables or columns</strong>. My documented project experience specifically covers Dynamic RLS; OLS is not documented as an implemented project feature, so I would present OLS as a Power BI security concept rather than claim that I implemented it.</p>
+<p>A <strong>Power BI workspace</strong> is the collaborative environment where reports, semantic models, dashboards, and other Power BI content are developed and managed. A <strong>Power BI App</strong> is a packaged, controlled way of distributing selected content from a workspace to business users.</p>
+<p>A <strong>report</strong> is a multi-page interactive Power BI document containing visuals, filters, drill-through, and other interactions, while a <strong>dashboard</strong> is a single-page canvas in Power BI Service made up of pinned tiles. In my project, I developed multi-page reports and provided executives with KPI dashboard views.</p>
+<p>For navigation, <strong>drill-down</strong> allows users to move to a more detailed level within the same visual — for example, Year → Quarter → Month → Day. <strong>Drill-through</strong> takes the user to a separate detail page while carrying the selected filter context. I used drill-down for time-based analysis and drill-through for detailed DC or stockout investigation.</p>
+<p>I used <strong>bookmarks</strong> when I wanted to provide different report views without creating separate pages. For example, my dashboard used a bookmark to toggle between <strong>stockout and excess-inventory views</strong> with a button.</p>
+<p>For <strong>data refresh</strong>, the main reports used Import Mode with scheduled refresh through the <strong>Enterprise Power BI Gateway</strong>, which connected the on-premise SQL Server to Power BI Service. The documented project setup used a nightly refresh at <strong>6 AM</strong>. I also monitored refresh status and added a <strong>Last Refreshed</strong> indicator and validation check to identify failed or stale refreshes.</p>
+<div class="flow">RLS → control rows | OLS → control objects/columns | Workspace → manage content | App → distribute content | Report → multi-page analysis | Dashboard → single-page KPI view | Drill-down → same visual | Drill-through → detail page | Bookmarks → alternate views | Gateway → scheduled refresh</div>
+</div>
+</div>
+</div><div class="item" data-index="6">
+<button class="item-head">
+<span class="idx">16</span>
+<span class="item-title">Microsoft Power Platform &amp; Azure Analytics Ecosystem</span>
+<span class="tag">Ecosystem</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<p>I understand the broader Microsoft analytics ecosystem around Power BI. Data can be moved using Azure Data Factory into ADLS Gen2 or OneLake, transformed in Azure Synapse or Microsoft Fabric, and visualized in Power BI. Power Apps can be embedded into reports for user actions, Dataverse can store business data, and Power Automate can automate approvals and notifications. For on-premises data sources, Power BI uses an On-Premises Data Gateway for secure refreshes. This provides an end-to-end analytics solution across Azure and the Microsoft Power Platform.</p>
+<div class="list">
+<div class="item topic-item" data-index="pa-power-automate">
+<button class="item-head">
+<span class="idx">01</span>
+<span class="item-title">Power Automate</span>
 <span class="tag">4 Questions</span>
 <svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
 </button>
 <div class="item-body">
 <div class="item-body-inner">
-<div class="item question-item" data-question="pbi-31">
+<div class="item question-item" data-question="pa-1">
 <button class="item-head">
-<span class="idx">31</span>
-<span class="item-title">Create Static Row-Level Security for a Region.</span>
+<span class="idx">01</span>
+<span class="item-title">What is Power Automate?</span>
 <svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
 </button>
 <div class="item-body">
 <div class="item-body-inner">
-<p><strong>Say:</strong></p>
-<p>“I'll create a role and filter the Region column for a specific region.”</p>
-<p><strong>Role filter:</strong></p>
-<pre><code class="language-DAX">Sales[Region] = "West"</code></pre>
-<p>Then:</p>
-<pre><code class="language-text">Modeling
-→ Manage Roles
-→ Create Role
-→ Add Region filter</code></pre>
-<p>---</p>
+<p><strong>Answer:</strong> Power Automate is a Microsoft service used to automate workflows between applications and services.</p>
+<p><strong>Simple Example:</strong> When a file is uploaded to SharePoint, automatically send an email notification.</p>
 </div>
 </div>
 </div>
-<div class="item question-item" data-question="pbi-32">
+<div class="item question-item" data-question="pa-2">
 <button class="item-head">
-<span class="idx">32</span>
-<span class="item-title">Create Dynamic RLS using <code>USERPRINCIPALNAME()</code>.</span>
+<span class="idx">02</span>
+<span class="item-title">What are the different types of flows?</span>
 <svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
 </button>
 <div class="item-body">
 <div class="item-body-inner">
-<p><strong>Say:</strong></p>
-<p>“I'll use the logged-in user's email to dynamically determine which rows they can see.”</p>
-<pre><code class="language-DAX">UserAccess[Email] =
-    USERPRINCIPALNAME()</code></pre>
-<p>Example role:</p>
-<pre><code class="language-DAX">UserAccess[Email] = USERPRINCIPALNAME()</code></pre>
-<p>With a relationship from <code>UserAccess</code> to the relevant dimension/fact table, the filter propagates automatically.</p>
-<p>---</p>
+<p><strong>Answer:</strong></p>
+<ul>
+<li>Automated Flow → Event-based</li>
+<li>Instant Flow → Manual trigger</li>
+<li>Scheduled Flow → Runs at a fixed time</li>
+<li>Desktop Flow → Automates desktop tasks</li>
+</ul>
+<p><strong>Simple Example:</strong> A scheduled flow sends a daily sales report every morning at 9 AM.</p>
 </div>
 </div>
 </div>
-<div class="item question-item" data-question="pbi-33">
+<div class="item question-item" data-question="pa-3">
 <button class="item-head">
-<span class="idx">33</span>
-<span class="item-title">Create a User Mapping table and implement Dynamic RLS.</span>
+<span class="idx">03</span>
+<span class="item-title">What is a Trigger and an Action?</span>
 <svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
 </button>
 <div class="item-body">
 <div class="item-body-inner">
-<p><strong>Say:</strong></p>
-<p>“I'll create a mapping table containing user email and permitted region, then use <code>USERPRINCIPALNAME()</code> to filter it.”</p>
-<p>Example:</p>
-<pre><code class="language-text">UserEmail             Region
-john@company.com      West
-mary@company.com      East</code></pre>
-<p>Role:</p>
-<pre><code class="language-DAX">UserMapping[UserEmail] =
-    USERPRINCIPALNAME()</code></pre>
-<p>Then create the relationship:</p>
-<pre><code class="language-text">UserMapping
-     ↓
-Region
-     ↓
-Sales</code></pre>
-<p>---</p>
+<p><strong>Answer:</strong> A Trigger starts the flow, and an Action performs the task.</p>
+<p><strong>Simple Example:</strong> Trigger: New file uploaded. Action: Send email to manager.</p>
 </div>
 </div>
 </div>
-<div class="item question-item" data-question="pbi-34">
+<div class="item question-item" data-question="pa-4">
 <button class="item-head">
-<span class="idx">34</span>
-<span class="item-title">Test RLS using "View As Roles" and explain after publishing.</span>
+<span class="idx">04</span>
+<span class="item-title">Give a real-world Power BI + Power Automate use case.</span>
 <svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
 </button>
 <div class="item-body">
 <div class="item-body-inner">
-<p><strong>Say:</strong></p>
-<p>“I'll test the role in Power BI Desktop using View As, then publish the report and assign users or groups to the role in Power BI Service.”</p>
-<pre><code class="language-text">Power BI Desktop
-→ Modeling
-→ View As
-→ Select Role
-→ Verify data</code></pre>
-<p>After publishing:</p>
-<pre><code class="language-text">Power BI Service
-→ Semantic Model
-→ Security
-→ Add users/groups to role</code></pre>
+<p><strong>Answer:</strong> Power Automate can send alerts based on Power BI data.</p>
+<p><strong>Simple Example:</strong> If inventory falls below 100 units, send an email to the supply chain team.</p>
 </div>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="item topic-item" data-index="22">
+<div class="item topic-item" data-index="pa-power-apps">
+<button class="item-head">
+<span class="idx">02</span>
+<span class="item-title">Power Apps</span>
+<span class="tag">3 Questions</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<div class="item question-item" data-question="pa-5">
+<button class="item-head">
+<span class="idx">01</span>
+<span class="item-title">What is Power Apps?</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<p><strong>Answer:</strong> Power Apps is a low-code platform used to build business applications.</p>
+<p><strong>Simple Example:</strong> Store managers use a mobile app to submit stock adjustment requests.</p>
+</div>
+</div>
+</div>
+<div class="item question-item" data-question="pa-6">
+<button class="item-head">
+<span class="idx">02</span>
+<span class="item-title">Difference between Canvas App and Model-Driven App?</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<p><strong>Answer:</strong> Canvas App focuses on custom UI, while Model-Driven App is generated from the data structure.</p>
+<p><strong>Simple Example:</strong></p>
+<ul>
+<li>Canvas → Expense claim app</li>
+<li>Model-Driven → Employee management app</li>
+</ul>
+</div>
+</div>
+</div>
+<div class="item question-item" data-question="pa-7">
+<button class="item-head">
+<span class="idx">03</span>
+<span class="item-title">How does Power BI integrate with Power Apps?</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<p><strong>Answer:</strong> Power Apps can be embedded inside Power BI reports.</p>
+<p><strong>Simple Example:</strong> A manager sees low inventory in Power BI and raises a replenishment request directly from the report.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="item topic-item" data-index="pa-dataverse">
+<button class="item-head">
+<span class="idx">03</span>
+<span class="item-title">Dataverse</span>
+<span class="tag">2 Questions</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<div class="item question-item" data-question="pa-8">
+<button class="item-head">
+<span class="idx">01</span>
+<span class="item-title">What is Dataverse?</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<p><strong>Answer:</strong> Dataverse is Microsoft's cloud database for Power Platform.</p>
+<p><strong>Simple Example:</strong> Store employee details, leave requests, and approval status in Dataverse.</p>
+</div>
+</div>
+</div>
+<div class="item question-item" data-question="pa-9">
+<button class="item-head">
+<span class="idx">02</span>
+<span class="item-title">Why use Dataverse instead of Excel or SharePoint?</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<p><strong>Answer:</strong> Dataverse provides better security, relationships, and scalability.</p>
+<p><strong>Simple Example:</strong> Managing 10,000 employee records is easier and more secure in Dataverse than in Excel.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="item topic-item" data-index="pa-azure-pbi">
+<button class="item-head">
+<span class="idx">04</span>
+<span class="item-title">Azure + Power BI</span>
+<span class="tag">2 Questions</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<div class="item question-item" data-question="pa-10">
+<button class="item-head">
+<span class="idx">01</span>
+<span class="item-title">How does Power BI connect to Azure SQL Database?</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<p><strong>Answer:</strong> Using the Azure SQL connector and cloud authentication.</p>
+<p><strong>Simple Example:</strong> Sales data stored in Azure SQL is directly connected to Power BI dashboards.</p>
+</div>
+</div>
+</div>
+<div class="item question-item" data-question="pa-11">
+<button class="item-head">
+<span class="idx">02</span>
+<span class="item-title">When is a Gateway required?</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<p><strong>Answer:</strong> A gateway is required when Power BI Service accesses on-premises data.</p>
+<p><strong>Simple Example:</strong> A company SQL Server exists inside the office network, so a gateway is required for scheduled refresh.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="item topic-item" data-index="pa-adf">
+<button class="item-head">
+<span class="idx">05</span>
+<span class="item-title">Azure Data Factory (ADF)</span>
+<span class="tag">2 Questions</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<div class="item question-item" data-question="pa-12">
+<button class="item-head">
+<span class="idx">01</span>
+<span class="item-title">What is Azure Data Factory (ADF)?</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<p><strong>Answer:</strong> ADF is a cloud ETL/ELT service for moving and transforming data.</p>
+<p><strong>Simple Example:</strong> Copy sales data from SQL Server to Azure Data Lake every night.</p>
+</div>
+</div>
+</div>
+<div class="item question-item" data-question="pa-13">
+<button class="item-head">
+<span class="idx">02</span>
+<span class="item-title">Explain an ADF Pipeline.</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<p><strong>Answer:</strong> A pipeline is a collection of activities that process data.</p>
+<p><strong>Simple Example:</strong> Read data from SQL → Clean data → Store in Data Lake.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="item topic-item" data-index="pa-adls-synapse">
 <button class="item-head">
 <span class="idx">06</span>
-<span class="item-title">Using USERELATIONSHIP(), RELATED() &amp; DISTINCT() in Practice</span>
-<span class="tag">3 Questions</span>
+<span class="item-title">ADLS Gen2 / Synapse</span>
+<span class="tag">2 Questions</span>
 <svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
 </button>
 <div class="item-body">
 <div class="item-body-inner">
-<div class="item question-item" data-question="pbi-35">
+<div class="item question-item" data-question="pa-14">
 <button class="item-head">
-<span class="idx">35</span>
-<span class="item-title">Calculate Sales based on Ship Date using <code>USERELATIONSHIP()</code>.</span>
+<span class="idx">01</span>
+<span class="item-title">What is Azure Data Lake Storage Gen2?</span>
 <svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
 </button>
 <div class="item-body">
 <div class="item-body-inner">
-<p><strong>Say:</strong></p>
-<p>“If Order Date is the active relationship and Ship Date is inactive, I'll activate the Ship Date relationship inside <code>CALCULATE()</code>.”</p>
-<pre><code class="language-DAX">Ship Date Sales =
-CALCULATE(
-    [Total Sales],
-    USERELATIONSHIP(
-        Sales[ShipDate],
-        'Date'[Date]
-    )
-)</code></pre>
-<p>---</p>
+<p><strong>Answer:</strong> Cloud storage for large amounts of structured and unstructured data.</p>
+<p><strong>Simple Example:</strong> Store sales, inventory, and customer files in one location.</p>
 </div>
 </div>
 </div>
-<div class="item question-item" data-question="pbi-36">
+<div class="item question-item" data-question="pa-15">
 <button class="item-head">
-<span class="idx">36</span>
-<span class="item-title">Use <code>RELATED()</code> or <code>LOOKUPVALUE()</code>.</span>
+<span class="idx">02</span>
+<span class="item-title">Difference between Azure Synapse and Data Lake?</span>
 <svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
 </button>
 <div class="item-body">
 <div class="item-body-inner">
-<p><strong>Say:</strong></p>
-<p>“I'll prefer <code>RELATED()</code> when a proper relationship exists. I'll use <code>LOOKUPVALUE()</code> when I need to retrieve a value based on matching columns without relying on that relationship.”</p>
-<p><strong>RELATED:</strong></p>
-<pre><code class="language-DAX">Category =
-RELATED(Product[Category])</code></pre>
-<p><strong>LOOKUPVALUE:</strong></p>
-<pre><code class="language-DAX">Category =
-LOOKUPVALUE(
-    Product[Category],
-    Product[ProductID],
-    Sales[ProductID]
-)</code></pre>
-<p>---</p>
-</div>
-</div>
-</div>
-<div class="item question-item" data-question="pbi-37">
-<button class="item-head">
-<span class="idx">37</span>
-<span class="item-title">Use <code>VALUES()</code> / <code>DISTINCT()</code> to calculate unique customers/products.</span>
-<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
-</button>
-<div class="item-body">
-<div class="item-body-inner">
-<p><strong>Say:</strong></p>
-<p>“For counting unique values, I can use <code>DISTINCTCOUNT()</code>. <code>VALUES()</code> and <code>DISTINCT()</code> return the unique values under the current filter context.”</p>
-<pre><code class="language-DAX">Unique Customers =
-DISTINCTCOUNT(
-    Sales[CustomerID]
-)</code></pre>
-<p>Or:</p>
-<pre><code class="language-DAX">Unique Customers =
-COUNTROWS(
-    VALUES(Sales[CustomerID])
-)</code></pre>
+<p><strong>Answer:</strong> Data Lake stores data; Synapse analyzes data.</p>
+<p><strong>Simple Example:</strong></p>
+<ul>
+<li>Data Lake = Warehouse storage</li>
+<li>Synapse = Team that analyzes what is stored inside</li>
+</ul>
 </div>
 </div>
 </div>
 </div>
 </div>
 </div>
-<div class="item topic-item" data-index="23">
+<div class="item topic-item" data-index="pa-fabric">
 <button class="item-head">
 <span class="idx">07</span>
-<span class="item-title">Fixing Slow Refresh, DAX &amp; Large Dataset Performance</span>
+<span class="item-title">Microsoft Fabric</span>
+<span class="tag">6 Questions</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<div class="item question-item" data-question="pa-16">
+<button class="item-head">
+<span class="idx">01</span>
+<span class="item-title">What is Microsoft Fabric?</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<p><strong>Answer:</strong> Fabric is Microsoft's unified analytics platform.</p>
+<p><strong>Simple Example:</strong> Instead of using ADF, Synapse, and Power BI separately, organizations can use Fabric in one place.</p>
+</div>
+</div>
+</div>
+<div class="item question-item" data-question="pa-17">
+<button class="item-head">
+<span class="idx">02</span>
+<span class="item-title">What is OneLake?</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<p><strong>Answer:</strong> OneLake is Fabric's centralized storage layer.</p>
+<p><strong>Simple Example:</strong> Like OneDrive, but for enterprise data.</p>
+</div>
+</div>
+</div>
+<div class="item question-item" data-question="pa-18">
+<button class="item-head">
+<span class="idx">03</span>
+<span class="item-title">What is Direct Lake?</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<p><strong>Answer:</strong> Direct Lake allows Power BI to read data directly from OneLake.</p>
+<p><strong>Simple Example:</strong> No import process is required; reports read directly from Fabric storage.</p>
+</div>
+</div>
+</div>
+<div class="item question-item" data-question="pa-19">
+<button class="item-head">
+<span class="idx">04</span>
+<span class="item-title">Difference between Import, DirectQuery, and Direct Lake?</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<table>
+<thead><tr><th>Mode</th><th>Example</th></tr></thead>
+<tbody>
+<tr><td>Import</td><td>Copy sales data into Power BI</td></tr>
+<tr><td>DirectQuery</td><td>Query SQL database live</td></tr>
+<tr><td>Direct Lake</td><td>Read directly from OneLake</td></tr>
+</tbody>
+</table>
+</div>
+</div>
+</div>
+<div class="item question-item" data-question="pa-20">
+<button class="item-head">
+<span class="idx">05</span>
+<span class="item-title">Difference between Azure SQL and SQL Server?</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<table>
+<thead><tr><th>Azure SQL</th><th>SQL Server</th></tr></thead>
+<tbody>
+<tr><td>Cloud</td><td>On-Premises</td></tr>
+<tr><td>Microsoft manages</td><td>Company manages</td></tr>
+</tbody>
+</table>
+<p><strong>Simple Example:</strong> Azure SQL = Renting a managed apartment. SQL Server = Owning and maintaining your own house.</p>
+</div>
+</div>
+</div>
+<div class="item question-item" data-question="pa-21">
+<button class="item-head">
+<span class="idx">06</span>
+<span class="item-title">What is ETL vs ELT?</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<p><strong>ETL:</strong> Extract → Transform → Load</p>
+<p><strong>ELT:</strong> Extract → Load → Transform</p>
+<p><strong>Simple Example:</strong> ETL = Clean data before loading. ELT = Load data first, then transform in the cloud.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<h3>End-to-End Cloud Data Pipeline</h3>
+<p>Data moves from source systems into Azure/Fabric storage, gets transformed, and is consumed in Power BI.</p>
+<div class="flow">Sales System → ADF → Data Lake → Synapse/Fabric → Power BI Dashboard → Power Automate Email Alert</div>
+<p>If a product's stock drops below 100 units, Power Automate automatically sends an email to the inventory team. This example covers ADF, ADLS Gen2, Synapse, Fabric, Power BI, Power Automate, and cloud analytics architecture in one end-to-end flow.</p>
+</div>
+</div>
+</div><div class="item" data-index="15">
+<button class="item-head">
+<span class="idx">17</span>
+<span class="item-title">SQL + Power BI — Top 3 Technical Challenges &amp; Achievements</span>
+<span class="tag">Challenges &amp; Achievements</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<h3>1. SQL — Allocation &amp; Inventory Analysis</h3>
+<p>One of the major challenges I faced was that some stores were experiencing <strong>stockouts even though inventory was available across the network</strong>. My responsibility was to identify whether the root cause was demand, supply or allocation. I used SQL joins, aggregations and business logic across inventory, allocation, store and DC data and compared the inventory allocated to each DC against the stores they were serving. For example, I identified that one DC was receiving around <strong>70% of the inventory while serving around 50% of the stores</strong>, indicating an allocation imbalance. My analysis supported the <strong>60/30/10 rebalancing recommendation</strong>, which was associated with approximately <strong>30% reduction in stockouts and 10% improvement in allocation accuracy</strong>.</p>
+<hr/>
+<h3>2. Power BI — KPI, DAX &amp; Data Modeling</h3>
+<p>One of the Power BI challenges was maintaining <strong>accurate and consistent KPI calculations</strong> across different business views. I was responsible for building a reliable model and ensuring KPIs such as <strong>WOC, Stockout Rate, In-Stock %, Sell-Through and Allocation Accuracy</strong> were calculated correctly. I followed a <strong>Star Schema</strong>, created the required relationships and developed reusable DAX measures, and then validated the Power BI results against SQL outputs. For example, I used <strong>WOC to identify stores with low inventory coverage and potential stockout risk versus stores with excess inventory</strong>, helping planners make better allocation and replenishment decisions. This resulted in a more reliable and consistent reporting layer for the business.</p>
+<hr/>
+<h3>3. SQL + Power BI — Performance Optimization</h3>
+<p>Another challenge was maintaining <strong>good dashboard performance</strong> while working with retail sales, inventory and allocation data. I optimized the SQL Views, data model and DAX calculations, reduced unnecessary data and primarily used <strong>Import Mode</strong> for the core dashboards because they had nightly refresh requirements. For example, instead of performing every KPI calculation inside Power BI, I standardized reusable reporting logic in SQL Views such as <strong><code>vw_kpi_master</code></strong> and then consumed the prepared data in Power BI. For the specific requirement of real-time DC stock monitoring, I used DirectQuery. This helped create a <strong>performance-focused reporting architecture while still meeting the business requirements</strong>.</p>
+<hr/>
+<h3>4. Inter-Store Transfer — Inventory Rebalancing</h3>
+<p>Another challenge was that some stores had <strong>excess inventory while other stores had shortages of the same product</strong>. I was responsible for identifying potential Inter-Store Transfer opportunities before recommending additional procurement. I used SQL to compare product-level inventory across stores and applied conditions such as <strong>SOH greater than 100 for excess stores and below 20 for needy stores</strong>, while keeping a safety-stock buffer at the source store. For example, if Store A had excess units of a product while Store B had very low stock, the analysis could identify Store A → Store B as a potential transfer. This created a structured approach to <strong>inventory rebalancing and stockout prevention</strong>.</p>
+<hr/>
+<h3>5. KPI/Data Validation — SQL vs Power BI</h3>
+<p>One challenge was ensuring that the numbers shown in Power BI were consistent with the underlying SQL data. When a KPI or total did not match, I traced the data flow from the <strong>SQL base tables and Views through Power Query, the Power BI model and DAX measures</strong>. For example, for an inventory KPI, I would compare the SQL-level aggregation with the Power BI result and check for duplicate records, incorrect relationships, filters or transformation issues. I then corrected the relevant logic and revalidated the result. This helped ensure that the dashboards provided <strong>accurate and trusted numbers to business users</strong>.</p>
+</div>
+</div>
+</div></div></div></div>
+</div></div></div>
+<div class="item" data-index="workdash">
+<button class="item-head"><span class="idx">02</span><span class="item-title">WORK EXPERIENCE &amp; DASHBOARDS CREATED BY ME</span><span class="tag">Projects</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<div class="item">
+<button class="item-head"><span class="idx">A</span><span class="item-title">Power BI Project End-to-End</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<div class="item" data-index="9">
+<button class="item-head">
+<span class="idx">09</span>
+<span class="item-title">Inventory Optimization &amp; Allocation Analytics — Cognizant Retail Project</span>
+<span class="tag">Project</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<p>My latest project was a Power BI retail inventory and supply-chain analytics project for a global apparel retail client. The main business problem was to improve inventory visibility, identify allocation imbalances, and reduce stockouts and excess inventory across stores and distribution centers.</p>
+<p>End-to-end, the data came from operational systems such as JDA allocation data, purchase orders, store inventory, and sales/POS data. The Data Engineering team used ETL processes to load the data into SQL Server. I used SQL to clean, validate, join, and transform the data, and created reporting views. From SQL, the data was brought into Power BI through Power Query, where I performed final transformations and maintained query folding. I built a star-schema model with Sales and Inventory fact data connected to Product, Store, and Date dimensions, and then created DAX measures and KPI-driven reports. The reports were published to Power BI Service, where the business teams consumed them.</p>
+<p>One of the biggest challenges was an allocation imbalance where DC1 was receiving more stock than its share of stores. I analyzed the JDA allocation output using SQL, identified the issue with the allocation thresholds, and proposed a revised allocation logic. I then monitored the corrected allocation through Power BI.</p>
+<p>One of my challenging DAX issues was a regional sales-percentage measure that showed the correct overall total but incorrect values by region because ALL() was removing the region filter. I corrected the filter context by removing only the required product filter instead of all filters.</p>
+<p>For production, one important issue was a Power BI report continuing to show old allocation numbers after the JDA rule change. I traced it to a failed Gateway refresh. I added a Last Refreshed indicator and a validation check comparing current and previous allocation records so that a failed refresh could be detected immediately.</p>
+<p>Overall, my role was to take operational retail data, validate and transform it using SQL, model it in Power BI, develop DAX-based KPIs and dashboards, troubleshoot data and reporting issues, and provide reliable insights to the business teams for inventory, allocation, and supply-chain decisions.</p>
+</div>
+</div>
+</div>
+<div class="item" data-index="5">
+<button class="item-head">
+<span class="idx">05</span>
+<span class="item-title">Proudest Achievement – Global Direct SAR (Spend Analysis Report) Dashboard</span>
+<span class="tag">Achievement</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<h3>Project Story</h3>
+<p>One of the projects I'm most proud of was the Global Direct SAR (Spend Analysis Report) Dashboard developed for the finance leadership team. The goal was to provide a single source of truth for company-wide spending across regions, departments, and cost categories.</p>
+<p>There were two major challenges. First, the company followed a custom fiscal year starting in August instead of January, so all YTD, Budget YTD, and Prior Year calculations had to align with that fiscal calendar. Second, the data came from multiple regions and currencies, requiring consistent currency conversion across the organization.</p>
+<p>To solve this, I implemented the currency conversion logic in SQL views. For completed months, the month-end exchange rate was used, and for the current month, the previous month's closing rate was applied. This ensured stable financial reporting.</p>
+<p>In Power BI, I kept Power Query transformations minimal for better refresh performance and developed DAX measures for Fiscal YTD Actuals, Budget YTD, and Prior Year comparisons based on the August fiscal calendar.</p>
+<p>I also implemented dynamic Row-Level Security using <code>USERPRINCIPALNAME()</code> and a role mapping table. Executives could see all data, SET-level users could view their functional area, and department users could only access their own data and relevant report pages.</p>
+<p>As a result, the finance team moved away from manual monthly reconciliation and started using a trusted dashboard where each user automatically saw the data relevant to their role.</p>
+<h3>Biggest Challenge – Revenue Dashboard Issue</h3>
+<p>One of the most challenging situations I faced was with an existing revenue dashboard. At a summary level, the revenue numbers appeared correct, but when users drilled down to the product group level, the figures didn't match the source system.</p>
+<p>This was a critical issue because the finance team was using those numbers for margin analysis and business decisions.</p>
+<p>I performed a detailed analysis of both the data model and DAX measures. During the investigation, I found that some table relationships were not designed correctly, and a few measures were not handling filter context properly.</p>
+<p>I redesigned the data model following star schema principles, corrected the relationships, and rewrote the affected DAX measures to ensure accurate calculations at every drill-down level.</p>
+<p>After implementing the changes, I worked closely with the finance team and validated the results against source data row by row until every number matched.</p>
+<p>After the fix, the business gained confidence in the dashboard and stopped performing manual Excel-based validation for margin analysis, which significantly improved reporting efficiency.</p>
+<h3>Flow of Project</h3>
+<div class="list">
+<div class="item topic-item" data-index="sar-flow">
+<button class="item-head">
+<span class="idx">01</span>
+<span class="item-title">Project Flow — Requirement Gathering to Business Impact</span>
+<span class="tag">21 Steps</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<div class="item question-item" data-question="sar-flow-1">
+<button class="item-head">
+<span class="idx">01</span>
+<span class="item-title">Requirement Gathering</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<p>Worked closely with Finance leadership, SET teams, and business stakeholders to understand spend reporting requirements, budget tracking needs, regional spend visibility, fiscal calendar requirements, and security access expectations.</p>
+</div>
+</div>
+</div>
+<div class="item question-item" data-question="sar-flow-2">
+<button class="item-head">
+<span class="idx">02</span>
+<span class="item-title">Business Understanding</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<p>Understood the complete financial reporting process across regions, departments, cost centers, and spend categories, including Actual vs Budget analysis, variance reporting, YTD tracking, and prior-year comparisons.</p>
+</div>
+</div>
+</div>
+<div class="item question-item" data-question="sar-flow-3">
+<button class="item-head">
+<span class="idx">03</span>
+<span class="item-title">Data Source Identification</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<p>Worked with enterprise financial data stored in MS SQL Server, including spend transactions, budget data, cost center mappings, exchange rates, organizational hierarchy, and user access mapping tables.</p>
+</div>
+</div>
+</div>
+<div class="item question-item" data-question="sar-flow-4">
+<button class="item-head">
+<span class="idx">04</span>
+<span class="item-title">Data Extraction</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<p>Used SQL Views and complex SQL queries to consolidate financial data from multiple source tables and prepare reporting-ready datasets for Power BI.</p>
+</div>
+</div>
+</div>
+<div class="item question-item" data-question="sar-flow-5">
+<button class="item-head">
+<span class="idx">05</span>
+<span class="item-title">ETL / Data Transformation</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<p>Leveraged ETL pipelines maintained by the Data Engineering team and implemented reporting-level transformations through SQL Views and Power Query where required.</p>
+</div>
+</div>
+</div>
+<div class="item question-item" data-question="sar-flow-6">
+<button class="item-head">
+<span class="idx">06</span>
+<span class="item-title">Currency Conversion Logic</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<p>Implemented multi-region currency conversion logic directly in the SQL View. Applied the last available exchange rate of completed months and used the previous month's closing exchange rate for the current month to ensure stable and consistent financial reporting.</p>
+</div>
+</div>
+</div>
+<div class="item question-item" data-question="sar-flow-7">
+<button class="item-head">
+<span class="idx">07</span>
+<span class="item-title">Fiscal Calendar Handling</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<p>Designed reporting logic around the organization's custom fiscal year beginning in August, ensuring all YTD Actual, Budget YTD, Prior Year YTD, and variance calculations aligned with the fiscal calendar.</p>
+</div>
+</div>
+</div>
+<div class="item question-item" data-question="sar-flow-8">
+<button class="item-head">
+<span class="idx">08</span>
+<span class="item-title">Data Cleaning &amp; Validation</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<p>Validated financial transactions, exchange rate mappings, budget allocations, and reporting outputs to ensure data accuracy and consistency across all reporting regions.</p>
+</div>
+</div>
+</div>
+<div class="item question-item" data-question="sar-flow-9">
+<button class="item-head">
+<span class="idx">09</span>
+<span class="item-title">Data Modeling (Star Schema)</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<p>Developed and maintained a Star Schema consisting of financial fact tables connected to dimensions such as Date, Cost Center, Department, Region, Functional Area, Currency, and Organizational Hierarchy.</p>
+</div>
+</div>
+</div>
+<div class="item question-item" data-question="sar-flow-10">
+<button class="item-head">
+<span class="idx">10</span>
+<span class="item-title">DAX Development</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<p>Developed advanced DAX measures for YTD Actual Spend, Budget YTD, Prior Year YTD, Variance Analysis, Budget vs Actual %, and Spend Trends, incorporating custom fiscal calendar logic.</p>
+</div>
+</div>
+</div>
+<div class="item question-item" data-question="sar-flow-11">
+<button class="item-head">
+<span class="idx">11</span>
+<span class="item-title">Report &amp; Dashboard Development</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<p>Built an executive-level Power BI dashboard with KPI cards, variance analysis, trend reporting, drill-through functionality, slicers, departmental views, and regional spend analysis.</p>
+</div>
+</div>
+</div>
+<div class="item question-item" data-question="sar-flow-12">
+<button class="item-head">
+<span class="idx">12</span>
+<span class="item-title">Row-Level Security (Dynamic RLS)</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<p>Implemented Dynamic RLS using <code>USERPRINCIPALNAME()</code> and a security mapping table. Configured multiple access levels including Executive users, SET-level users, and Functional Area users with page-level visibility controls.</p>
+</div>
+</div>
+</div>
+<div class="item question-item" data-question="sar-flow-13">
+<button class="item-head">
+<span class="idx">13</span>
+<span class="item-title">Testing &amp; Validation</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<p>Performed detailed validation of dashboard calculations, fiscal-year logic, currency conversion outputs, filters, and security access against source data.</p>
+</div>
+</div>
+</div>
+<div class="item question-item" data-question="sar-flow-14">
+<button class="item-head">
+<span class="idx">14</span>
+<span class="item-title">User Acceptance Testing (UAT)</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<p>Partnered with Finance stakeholders during UAT to validate spend figures, budget calculations, security requirements, and dashboard usability.</p>
+</div>
+</div>
+</div>
+<div class="item question-item" data-question="sar-flow-15">
+<button class="item-head">
+<span class="idx">15</span>
+<span class="item-title">Performance Optimization</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<p>Minimized Power Query transformations by pushing business logic into SQL Views, optimized DAX calculations, and improved overall report refresh performance.</p>
+</div>
+</div>
+</div>
+<div class="item question-item" data-question="sar-flow-16">
+<button class="item-head">
+<span class="idx">16</span>
+<span class="item-title">Deployment / Publishing</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<p>Published datasets and reports to Power BI Service workspaces and supported deployment through appropriate environments.</p>
+</div>
+</div>
+</div>
+<div class="item question-item" data-question="sar-flow-17">
+<button class="item-head">
+<span class="idx">17</span>
+<span class="item-title">Scheduling &amp; Refresh</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<p>Supported scheduled refresh processes and monitored successful data availability for monthly and executive reporting cycles.</p>
+</div>
+</div>
+</div>
+<div class="item question-item" data-question="sar-flow-18">
+<button class="item-head">
+<span class="idx">18</span>
+<span class="item-title">Documentation</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<p>Documented fiscal calendar logic, exchange-rate conversion rules, KPI definitions, RLS design, and dashboard functionality for business and support teams.</p>
+</div>
+</div>
+</div>
+<div class="item question-item" data-question="sar-flow-19">
+<button class="item-head">
+<span class="idx">19</span>
+<span class="item-title">User Training</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<p>Assisted Finance and business users in understanding dashboard navigation, security behavior, KPI interpretation, and self-service reporting capabilities.</p>
+</div>
+</div>
+</div>
+<div class="item question-item" data-question="sar-flow-20">
+<button class="item-head">
+<span class="idx">20</span>
+<span class="item-title">Production Support &amp; Maintenance</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<p>Supported post-production issues related to spend calculations, security access, refresh failures, and reporting discrepancies. Maintained reporting logic, exchange-rate mappings, fiscal calendar updates, and security configurations based on evolving business requirements.</p>
+</div>
+</div>
+</div>
+<div class="item question-item" data-question="sar-flow-21">
+<button class="item-head">
+<span class="idx">21</span>
+<span class="item-title">Business Impact</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<p>Enabled Finance teams to move from manual spend reconciliation and spreadsheet-based analysis to a centralized, trusted reporting solution with controlled data access and consistent financial metrics.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="item topic-item" data-index="sar-datamodel">
+<button class="item-head">
+<span class="idx">02</span>
+<span class="item-title">Data Model — Fact, Dimension &amp; Security Tables</span>
+<span class="tag">Schema</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<p><strong>Fact Tables</strong></p>
+<ul>
+<li><strong>FactSpend</strong> → Spend transactions (Amount, Date, Cost Center, Department, Currency, Vendor)</li>
+<li><strong>FactBudget</strong> → Budget values by month, department, cost center</li>
+<li><strong>FactExchangeRate</strong> → Currency exchange rates by date and currency</li>
+<li><strong>FactForecast</strong> (if forecasting exists) → Forecasted spend values</li>
+</ul>
+<p><strong>Dimension Tables</strong></p>
+<ul>
+<li><strong>DimDate</strong> → Fiscal Calendar (August Start), Month, Quarter, Fiscal Year</li>
+<li><strong>DimDepartment</strong> → Finance, HR, IT, Operations, etc.</li>
+<li><strong>DimCostCenter</strong> → Cost center hierarchy</li>
+<li><strong>DimFunctionalArea</strong> → Functional area mapping</li>
+<li><strong>DimRegion</strong> → APAC, EMEA, Americas</li>
+<li><strong>DimCurrency</strong> → USD, EUR, INR, etc.</li>
+<li><strong>DimVendor</strong> → Supplier/Vendor details</li>
+<li><strong>DimUserAccess</strong> → User Email, Role, Department Mapping (for RLS)</li>
+</ul>
+<p><strong>Security Table</strong></p>
+<p><strong>UserRoleMapping</strong></p>
+<ul>
+<li>UserEmail</li>
+<li>AccessLevel (Executive / SET / Functional)</li>
+<li>FunctionalArea</li>
+<li>Department</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+<h3>Follow-up Interview Questions</h3>
+<div class="list">
+<div class="item topic-item" data-index="sar-followup">
+<button class="item-head">
+<span class="idx">01</span>
+<span class="item-title">SAR Dashboard Follow-up Questions</span>
+<span class="tag">7 Questions</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<div class="item question-item" data-question="sar-1">
+<button class="item-head">
+<span class="idx">01</span>
+<span class="item-title">Why did you implement currency conversion in SQL instead of Power BI?</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<p><strong>Answer:</strong> Currency conversion was a business rule used across all reports, so implementing it in SQL ensured a single source of truth. It also reduced Power BI processing time and simplified DAX measures.</p>
+</div>
+</div>
+</div>
+<div class="item question-item" data-question="sar-2">
+<button class="item-head">
+<span class="idx">02</span>
+<span class="item-title">How did you handle the August fiscal year in Power BI?</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<p><strong>Answer:</strong> I used a dedicated Date dimension and built Fiscal YTD measures using <code>DATESYTD()</code> with July 31 as the fiscal year end date.</p>
+<pre><code class="language-DAX">YTD Sales =
+CALCULATE(
+    [Total Sales],
+    DATESYTD('Date'[Date], "07/31")
+)</code></pre>
+</div>
+</div>
+</div>
+<div class="item question-item" data-question="sar-3">
+<button class="item-head">
+<span class="idx">03</span>
+<span class="item-title">Why keep Power Query transformations minimal?</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<p><strong>Answer:</strong> Heavy transformations in Power Query can increase refresh time and reduce maintainability. Since the logic was already available in SQL views, Power BI focused mainly on modeling and visualization.</p>
+</div>
+</div>
+</div>
+<div class="item question-item" data-question="sar-4">
+<button class="item-head">
+<span class="idx">04</span>
+<span class="item-title">Explain your Dynamic RLS implementation.</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<p><strong>Answer:</strong> I maintained a role mapping table containing User Email, Department, and Access Level. <code>USERPRINCIPALNAME()</code> matched the logged-in user with this table and filtered data dynamically.</p>
+<pre><code class="language-DAX">UserAccess[Email] = USERPRINCIPALNAME()</code></pre>
+</div>
+</div>
+</div>
+<div class="item question-item" data-question="sar-5">
+<button class="item-head">
+<span class="idx">05</span>
+<span class="item-title">How did you test RLS?</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<p><strong>Answer:</strong> I used the "View As" feature in Power BI Desktop and validated access with sample user accounts before deployment.</p>
+</div>
+</div>
+</div>
+<div class="item question-item" data-question="sar-6">
+<button class="item-head">
+<span class="idx">06</span>
+<span class="item-title">What was the data model design?</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<p><strong>Answer:</strong> A Star Schema with a central fact table containing spend transactions and dimension tables such as Date, Department, Region, Cost Center, and Currency.</p>
+</div>
+</div>
+</div>
+<div class="item question-item" data-question="sar-7">
+<button class="item-head">
+<span class="idx">07</span>
+<span class="item-title">What DAX measures did you build?</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<p><strong>Answer:</strong> Actual Spend, Budget Spend, Fiscal YTD, Prior Year YTD, Variance, Variance %, and Spend Trend Analysis.</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="item topic-item" data-index="revenue-followup">
+<button class="item-head">
+<span class="idx">02</span>
+<span class="item-title">Revenue Dashboard Follow-up Questions</span>
+<span class="tag">8 Questions</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<div class="item question-item" data-question="rev-1">
+<button class="item-head">
+<span class="idx">01</span>
+<span class="item-title">How did you identify that relationships were causing issues?</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<p><strong>Answer:</strong> I compared report outputs with source data and noticed discrepancies only when product-level filters were applied. That indicated filter propagation issues, which led me to investigate the relationships.</p>
+</div>
+</div>
+</div>
+<div class="item question-item" data-question="rev-2">
+<button class="item-head">
+<span class="idx">02</span>
+<span class="item-title">What relationship issue did you find?</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<p><strong>Answer:</strong> The model had incorrect relationship design causing filter propagation problems. After redesigning it into a proper Star Schema, the drill-down calculations became accurate.</p>
+</div>
+</div>
+</div>
+<div class="item question-item" data-question="rev-3">
+<button class="item-head">
+<span class="idx">03</span>
+<span class="item-title">How did you validate the numbers?</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<p><strong>Answer:</strong> I exported source data, created reconciliation checks, and compared Power BI outputs against the source system at summary and detailed levels until the results matched.</p>
+</div>
+</div>
+</div>
+<div class="item question-item" data-question="rev-4">
+<button class="item-head">
+<span class="idx">04</span>
+<span class="item-title">What DAX issue did you find?</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<p><strong>Answer:</strong> Some measures ignored filter context, which caused incorrect results when users drilled down. I rewrote the measures to respect the current filter context.</p>
+</div>
+</div>
+</div>
+<div class="item question-item" data-question="rev-5">
+<button class="item-head">
+<span class="idx">05</span>
+<span class="item-title">What do you mean by filter context?</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<p><strong>Answer:</strong> Filter context is the set of filters applied to a calculation through slicers, rows, columns, or visual interactions. DAX evaluates measures based on the active filter context.</p>
+</div>
+</div>
+</div>
+<div class="item question-item" data-question="rev-6">
+<button class="item-head">
+<span class="idx">06</span>
+<span class="item-title">Why did totals look correct but drill-down values were wrong?</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<p><strong>Answer:</strong> At the aggregate level, the measure happened to return the expected total. However, when additional dimensions such as Product Group were introduced, incorrect relationships and filter-context handling caused inaccurate calculations.</p>
+</div>
+</div>
+</div>
+<div class="item question-item" data-question="rev-7">
+<button class="item-head">
+<span class="idx">07</span>
+<span class="item-title">What changes did you make to the data model?</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<p><strong>Answer:</strong> I redesigned the model following Star Schema principles by keeping fact and dimension tables separate and ensuring relationships supported correct filter propagation.</p>
+</div>
+</div>
+</div>
+<div class="item question-item" data-question="rev-8">
+<button class="item-head">
+<span class="idx">08</span>
+<span class="item-title">How do you approach debugging Power BI issues?</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<p><strong>Answer:</strong></p>
+<ol>
+<li>Validate source data.</li>
+<li>Check relationships.</li>
+<li>Verify filter direction.</li>
+<li>Test measures individually.</li>
+<li>Compare outputs with source data.</li>
+<li>Validate with business users.</li>
+</ol>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="item topic-item" data-index="sar-deepdive">
+<button class="item-head">
+<span class="idx">03</span>
+<span class="item-title">Strong Deep-Dive Questions (2–3 Years Experience)</span>
 <span class="tag">3 Questions</span>
 <svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
 </button>
 <div class="item-body">
 <div class="item-body-inner">
-<div class="item question-item" data-question="pbi-38">
+<div class="item question-item" data-question="deepdive-1">
 <button class="item-head">
-<span class="idx">38</span>
-<span class="item-title">Power Query refresh is very slow. Identify and fix it, including Query Folding.</span>
+<span class="idx">01</span>
+<span class="item-title">What happens when USERPRINCIPALNAME() returns blank?</span>
 <svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
 </button>
 <div class="item-body">
 <div class="item-body-inner">
-<p><strong>Say:</strong></p>
-<p>“First I'll identify the slow step, check whether Query Folding is occurring, and push transformations back to the source whenever possible.”</p>
-<pre><code class="language-text">1. Check Applied Steps
-2. Identify slow step
-3. Right-click → View Native Query
-4. Check Query Folding
-5. Filter rows early
-6. Remove unnecessary columns
-7. Avoid expensive transformations early
-8. Push transformations to SQL/source</code></pre>
-<p>“If Query Folding stops, I'll check which transformation caused it and move non-folding transformations later where possible.”</p>
-<p>---</p>
+<p><strong>Answer:</strong> RLS won't work correctly. I verify that users exist in the mapping table and test access after publishing to the Power BI Service because <code>USERPRINCIPALNAME()</code> behaves differently in Desktop and Service.</p>
 </div>
 </div>
 </div>
-<div class="item question-item" data-question="pbi-39">
+<div class="item question-item" data-question="deepdive-2">
 <button class="item-head">
-<span class="idx">39</span>
-<span class="item-title">A DAX measure is slow. Troubleshoot and optimize it.</span>
+<span class="idx">02</span>
+<span class="item-title">Why is Star Schema preferred in Power BI?</span>
 <svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
 </button>
 <div class="item-body">
 <div class="item-body-inner">
-<p><strong>Say:</strong></p>
-<p>“I'll use Performance Analyzer to identify the slow visual/query, then simplify the DAX and reduce unnecessary iterations.”</p>
-<pre><code class="language-text">1. Performance Analyzer
-2. Identify slow visual
-3. Check DAX query
-4. Reduce unnecessary FILTER/iterators
-5. Use variables
-6. Avoid unnecessary calculated columns
-7. Optimize relationships/model
-8. Test again</code></pre>
-<p>Example:</p>
-<pre><code class="language-DAX">Profit Margin =
-VAR SalesAmount = [Total Sales]
-VAR CostAmount = [Total Cost]
-RETURN
-DIVIDE(
-    SalesAmount - CostAmount,
-    SalesAmount
-)</code></pre>
-<p>---</p>
+<p><strong>Answer:</strong> It improves performance, simplifies DAX calculations, supports correct filter propagation, and makes the model easier to maintain.</p>
 </div>
 </div>
 </div>
-<div class="item question-item" data-question="pbi-40">
+<div class="item question-item" data-question="deepdive-3">
 <button class="item-head">
-<span class="idx">40</span>
-<span class="item-title">Large dataset — reduce columns/rows and optimize the model.</span>
+<span class="idx">03</span>
+<span class="item-title">How would you improve dashboard performance?</span>
 <svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
 </button>
 <div class="item-body">
 <div class="item-body-inner">
-<p><strong>Say:</strong></p>
-<p>“I'll reduce the data before it reaches the model, use a star schema, remove unnecessary columns and rows, and keep DAX calculations as measures where appropriate.”</p>
-<pre><code class="language-text">Power Query
-↓
-Remove unnecessary columns
-↓
-Filter unnecessary rows
-↓
-Correct data types
-↓
-Remove duplicates
-↓
-Enable Query Folding
-↓
-Star Schema
-↓
-Fact + Dimension tables
-↓
-Create efficient DAX measures</code></pre>
-<p><strong>Key point to say:</strong></p>
-<p>“I would not load unnecessary high-cardinality columns, unused fields or duplicate data into the model because they increase model size and can affect refresh and report performance.”</p>
+<p><strong>Answer:</strong> Reduce unnecessary columns, use Star Schema, push transformations to SQL, optimize DAX measures, enable incremental refresh where appropriate, and avoid high-cardinality columns.</p>
 </div>
 </div>
 </div>
 </div>
 </div>
-</div></div>
 </div>
 </div>
 </div>
-
 </div>
-<footer>// click a row to expand · only one project stays open at a time</footer>
+</div><div class="item" data-index="1">
+<button class="item-head">
+<span class="idx">01</span>
+<span class="item-title">E-Commerce Sales Insights Platform</span>
+<span class="tag">Power BI · DAX</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<p>One of my personal projects is an <strong>E-Commerce Sales Insights Platform</strong>, a Power BI dashboard built for a US-based e-commerce business using around 113,000 order records. The main business objective was to give management a single interactive dashboard to monitor sales, profitability, customer and product performance, regional trends, and shipping performance, and quickly identify areas that required attention.</p>
+<p>The raw transaction data contained fields such as Order Date, Ship Date, Customer, Product, Category, Region, State, Sales, Profit, Quantity, and Discount. I first cleaned and structured the data and created a star-schema-oriented model, with the Orders table as the fact table and supporting dimensions such as Calendar, Product, Customer Segment, Region, and State Coordinates. One challenge was deciding which attributes should remain in the fact table versus being separated into dimensions; for a production model, I would normalize these into dedicated dimension tables.</p>
+<p>For analysis, I created KPIs such as YTD Sales, YTD Profit, YTD Quantity, Profit Margin %, Previous Year Sales, and YoY Growth %, using DAX functions such as <strong>TOTALYTD()</strong>, <strong>SAMEPERIODLASTYEAR()</strong>, and <strong>DIVIDE()</strong>. I also used ranking logic to identify Top 5 and Bottom 5 products. Customer performance was analyzed using sales and customer-segment trends; however, the project documentation does not specify a separate repeat-customer or high-value-customer segmentation methodology, so I would not claim a specific RFM model for this project.</p>
+<p>The dashboard then presented the insights through KPI cards, monthly trends, customer-segment comparisons, state-level maps, Top/Bottom product charts, regional analysis, and shipping-mode analysis, with slicers for interactive filtering. From a business perspective, these insights could help management identify high-performing products and regions, declining segments, and areas where marketing or operational attention was needed.</p>
+<div class="flow">raw transaction data → data modeling → DAX / KPI analysis → interactive Power BI dashboard → business insights → marketing &amp; management decisions</div>
+<p>The project helped me build practical experience in data modeling, DAX time intelligence, visualization, and translating transaction-level data into actionable business insights.</p>
+</div>
+</div>
+</div>
+</div></div></div>
+</div></div></div>
+</div>
+</div>
+</div>
+</div>
+<footer>// click a row to expand · only one section stays open at a time</footer>
 </div>
 <script>
+  // ===== Base accordion engine (used only for the top-level page section) =====
   function setBodyHeight(item) {
     const body = item.querySelector(':scope > .item-body');
     if (!body || !item.classList.contains('open')) return;
@@ -1522,264 +1989,173 @@ Create efficient DAX measures</code></pre>
         }
       });
     });
-
-    document.querySelectorAll('.item-body-inner').forEach(inner => {
-      resizeObserver.observe(inner);
-    });
   }
   function observeInner(inner) {
     if (resizeObserver) resizeObserver.observe(inner);
   }
 
-  // Converts a flat run of direct-child .question-item elements inside
-  // `root` into a tile nav + reveal panel, matching the same tile-click
-  // pattern used for topics. Leaves any other content in `root` untouched.
-  function convertQuestionsToTiles(root) {
-    const directQuestions = Array.from(root.children)
-      .filter(el => el.classList && el.classList.contains('question-item'));
-    if (directQuestions.length === 0) return;
+  // ===== Generic recursive tile engine =====
+  // Every run of sibling `.item` elements, anywhere in the tree (whether or
+  // not it happens to sit inside a `.list` wrapper), becomes a row of
+  // pill tiles + a reveal panel. This runs recursively: opening a tile
+  // clones that item's content and immediately re-scans it for further
+  // item runs, converting those too, all the way down to plain leaf
+  // content (paragraphs, code, flows) with nothing left to tile.
+
+  // Flatten away `.list` wrapper divs so every item run is just a plain
+  // sequence of sibling `.item` elements, regardless of original markup.
+  function unwrapLists(root) {
+    Array.from(root.querySelectorAll('.list')).forEach(list => {
+      const parent = list.parentNode;
+      if (!parent) return;
+      while (list.firstChild) parent.insertBefore(list.firstChild, list);
+      parent.removeChild(list);
+    });
+  }
+  unwrapLists(document);
+
+  function nextTier(items) {
+    if (items.length > 0 && items.every(el => el.classList.contains('question-item'))) return 'question';
+    return 'subtopic';
+  }
+
+  function buildTileRun(container, items, tier, refBefore) {
+    const isQuestion = tier === 'question';
+    const navClass = tier === 'topic' ? 'topic-nav' : isQuestion ? 'question-tile-nav' : 'subtopic-nav';
+    const navInnerClass = tier === 'topic' ? 'topic-nav-inner' : isQuestion ? 'question-tile-nav-inner' : 'subtopic-nav-inner';
+    const tileClass = tier === 'topic' ? 'topic-tile' : isQuestion ? 'question-tile' : 'subtopic-tile';
+    const panelClass = tier === 'topic' ? 'topic-panel' : isQuestion ? 'question-panel' : 'subtopic-panel';
+    const panelTitleClass = tier === 'topic' ? 'topic-panel-title' : isQuestion ? 'question-panel-title' : 'subtopic-panel-title';
+    const panelBodyClass = tier === 'topic' ? 'topic-panel-body' : isQuestion ? 'question-panel-body' : 'subtopic-panel-body';
 
     const nav = document.createElement('div');
-    nav.className = 'question-tile-nav';
+    nav.className = navClass;
     const navInner = document.createElement('div');
-    navInner.className = 'question-tile-nav-inner';
+    navInner.className = navInnerClass;
     nav.appendChild(navInner);
 
-    // The panel is a flex child of navInner itself (not a separate block
-    // after the whole grid), with flex-basis:100% so it forces a line
-    // break right where it's inserted — tiles before it stay on their
-    // row, tiles after it flow onto new rows below it.
-    const panel = document.createElement('div');
-    panel.className = 'question-panel';
-
-    const entries = directQuestions.map((q, i) => {
-      const key = q.dataset.question || ('q' + i);
-      const titleEl = q.querySelector(':scope > .item-head .item-title');
-      const bodyInner = q.querySelector(':scope > .item-body > .item-body-inner');
-
+    const entries = items.map(it => {
+      const titleEl = it.querySelector(':scope > .item-head .item-title');
+      const tagEl = it.querySelector(':scope > .item-head .tag');
+      const bodyInner = it.querySelector(':scope > .item-body > .item-body-inner');
       const tile = document.createElement('button');
       tile.type = 'button';
-      tile.className = 'question-tile';
-      tile.dataset.questionTarget = key;
-      if (titleEl) {
-        tile.innerHTML = titleEl.innerHTML;
-      } else {
-        tile.textContent = 'Question ' + (i + 1);
-      }
+      tile.className = tileClass;
+      tile.innerHTML = titleEl ? titleEl.innerHTML : 'Untitled';
       navInner.appendChild(tile);
-
-      return { tile, key, titleEl, bodyInner };
+      return { tile, titleEl, tagEl, bodyInner };
     });
 
-    function showQuestion(key) {
-      entries.forEach(e => e.tile.classList.toggle('is-active', e.key === key));
-      const match = entries.find(e => e.key === key);
-      if (!match) return;
+    function renderEntry(entry, panelEl, closeFn) {
+      panelEl.innerHTML = '';
 
-      panel.innerHTML = '';
-
-      const h4 = document.createElement('h4');
-      h4.className = 'question-panel-title';
-      h4.textContent = match.titleEl ? match.titleEl.textContent : '';
-      panel.appendChild(h4);
-
-      if (match.bodyInner) {
-        const clone = match.bodyInner.cloneNode(true);
-        clone.classList.add('question-panel-body');
-        panel.appendChild(clone);
-        bindAccordions(clone);
-        initSubtopicNav(clone);
-        convertQuestionsToTiles(clone);
-        observeInner(clone);
-      }
-
-      // Move the panel to sit immediately after the clicked tile.
-      match.tile.insertAdjacentElement('afterend', panel);
-    }
-
-    function closeQuestion() {
-      entries.forEach(e => e.tile.classList.remove('is-active'));
-      panel.remove();
-    }
-
-    entries.forEach(e => {
-      e.tile.addEventListener('click', () => {
-        if (e.tile.classList.contains('is-active')) {
-          closeQuestion();
-        } else {
-          showQuestion(e.key);
-        }
-      });
-    });
-
-    const firstQ = directQuestions[0];
-    root.insertBefore(nav, firstQ);
-    directQuestions.forEach(q => q.remove());
-  }
-
-  function initSubtopicNav(root) {
-    root.querySelectorAll('[data-subtopic-nav]').forEach(nav => {
-      if (nav.dataset.bound === '1') return;
-      nav.dataset.bound = '1';
-
-      const panel = nav.nextElementSibling;
-      const list = panel ? panel.nextElementSibling : null;
-      if (!panel || !panel.hasAttribute('data-subtopic-panel') || !list || !list.classList.contains('list') || !list.hasAttribute('data-subtopic-source')) return;
-
-      const keyAttr = nav.dataset.subtopicKey || 'question';
-      const tiles = Array.from(nav.querySelectorAll('.subtopic-tile'));
-
-      function showStep(key) {
-        tiles.forEach(t => t.classList.toggle('is-active', t.dataset.subtopicTarget === key));
-
-        const sourceItem = list.querySelector(`:scope > .item[data-${keyAttr}="${key}"]`);
-        if (!sourceItem) return;
-
-        const titleEl = sourceItem.querySelector(':scope > .item-head .item-title');
-        const bodyInner = sourceItem.querySelector(':scope > .item-body > .item-body-inner');
-
-        panel.innerHTML = '';
-
-        const h4 = document.createElement('h4');
-        h4.className = 'subtopic-panel-title';
-        h4.textContent = titleEl ? titleEl.textContent : '';
-        panel.appendChild(h4);
-
-        if (bodyInner) {
-          const clone = bodyInner.cloneNode(true);
-          clone.classList.add('subtopic-panel-body');
-          panel.appendChild(clone);
-          bindAccordions(clone);
-          initSubtopicNav(clone);
-          convertQuestionsToTiles(clone);
-
-          clone.querySelectorAll('.item-body-inner').forEach(inner => observeInner(inner));
-          observeInner(clone);
-        }
-      }
-
-      function resetStep() {
-        tiles.forEach(t => t.classList.remove('is-active'));
-        panel.innerHTML = '';
-        const placeholder = document.createElement('p');
-        placeholder.className = 'subtopic-panel-placeholder';
-        placeholder.textContent = 'Select an item to view details.';
-        panel.appendChild(placeholder);
-      }
-
-      tiles.forEach(tile => {
-        tile.addEventListener('click', () => {
-          if (tile.classList.contains('is-active')) {
-            resetStep();
-          } else {
-            showStep(tile.dataset.subtopicTarget);
-          }
-        });
-      });
-
-      resetStep();
-    });
-  }
-
-  function initTopicNav() {
-    document.querySelectorAll('[data-topic-nav]').forEach(nav => {
-      if (nav.dataset.bound === '1') return;
-      nav.dataset.bound = '1';
-
-      const panel = nav.nextElementSibling;
-      const list = panel ? panel.nextElementSibling : null;
-      if (!panel || !panel.hasAttribute('data-topic-panel') || !list || !list.classList.contains('list') || !list.hasAttribute('data-topic-source')) return;
-
-      const tiles = Array.from(nav.querySelectorAll('.topic-tile'));
-
-      function showTopic(index) {
-        tiles.forEach(t => t.classList.toggle('is-active', t.dataset.topicTarget === index));
-
-        const sourceItem = list.querySelector(`:scope > .item[data-index="${index}"]`);
-        if (!sourceItem) return;
-
-        const titleEl = sourceItem.querySelector(':scope > .item-head .item-title');
-        const tagEl = sourceItem.querySelector(':scope > .item-head .tag');
-        const bodyInner = sourceItem.querySelector(':scope > .item-body > .item-body-inner');
-
-        panel.innerHTML = '';
-
+      if (tier === 'topic') {
         const head = document.createElement('div');
         head.className = 'topic-panel-head';
-
         const h3 = document.createElement('h3');
-        h3.className = 'topic-panel-title';
-        h3.textContent = titleEl ? titleEl.textContent : '';
+        h3.className = panelTitleClass;
+        h3.textContent = entry.titleEl ? entry.titleEl.textContent : '';
+        h3.title = 'Click to close';
+        h3.addEventListener('click', closeFn);
         head.appendChild(h3);
-
-        if (tagEl) {
+        if (entry.tagEl) {
           const tag = document.createElement('span');
           tag.className = 'tag';
-          tag.textContent = tagEl.textContent;
+          tag.textContent = entry.tagEl.textContent;
           head.appendChild(tag);
         }
-
-        panel.appendChild(head);
-
-        if (bodyInner) {
-          const clone = bodyInner.cloneNode(true);
-          clone.classList.add('topic-panel-body');
-          panel.appendChild(clone);
-          bindAccordions(clone);
-          initSubtopicNav(clone);
-          convertQuestionsToTiles(clone);
-
-          clone.querySelectorAll('.item-body-inner').forEach(inner => observeInner(inner));
-          observeInner(clone);
-        }
+        panelEl.appendChild(head);
+      } else {
+        const h4 = document.createElement('h4');
+        h4.className = panelTitleClass;
+        h4.textContent = entry.titleEl ? entry.titleEl.textContent : '';
+        h4.title = 'Click to close';
+        h4.addEventListener('click', closeFn);
+        panelEl.appendChild(h4);
       }
 
-      function resetPanel() {
-        tiles.forEach(t => t.classList.remove('is-active'));
-        panel.innerHTML = '';
-        const placeholder = document.createElement('p');
-        placeholder.className = 'topic-panel-placeholder';
-        placeholder.textContent = 'Select a topic to view details.';
-        panel.appendChild(placeholder);
-      }
+      if (entry.bodyInner) {
+        const clone = entry.bodyInner.cloneNode(true);
+        clone.classList.add(panelBodyClass);
+        panelEl.appendChild(clone);
 
-      tiles.forEach(tile => {
-        tile.addEventListener('click', () => {
-          if (tile.classList.contains('is-active')) {
-            resetPanel();
-          } else {
-            showTopic(tile.dataset.topicTarget);
-          }
+        // Recurse: convert whatever item run(s) live directly inside this
+        // freshly-cloned content into tiles too.
+        tileifyRuns(clone);
+
+        bindAccordions(clone);
+        clone.querySelectorAll('.item-body-inner').forEach(inner => observeInner(inner));
+        observeInner(clone);
+      }
+    }
+
+    // Every tier opens its panel directly under the clicked tile: the
+    // panel is inserted as a flex sibling right after that tile (inside
+    // navInner, which wraps), so tiles before it stay on their row and
+    // tiles after it flow onto a new row below the open panel.
+    function removePanelFor(e) {
+      e.tile.classList.remove('is-active');
+      const sib = e.tile.nextElementSibling;
+      if (sib && sib.classList.contains(panelClass)) sib.remove();
+    }
+
+    entries.forEach(entry => {
+      entry.tile.addEventListener('click', () => {
+        const isActive = entry.tile.classList.contains('is-active');
+
+        // Close any other open panel in this row first.
+        entries.forEach(e => {
+          if (e !== entry) removePanelFor(e);
         });
+
+        if (isActive) {
+          removePanelFor(entry);
+          return;
+        }
+
+        entry.tile.classList.add('is-active');
+        const panel = document.createElement('div');
+        panel.className = panelClass;
+        renderEntry(entry, panel, () => removePanelFor(entry));
+        entry.tile.insertAdjacentElement('afterend', panel);
       });
-
-      resetPanel();
-
-      const hostItem = nav.closest('.item');
-      const hostBody = hostItem ? hostItem.querySelector(':scope > .item-body') : null;
-      if (hostItem && hostBody) {
-        let wasOpen = hostItem.classList.contains('open');
-        const syncOverflow = () => {
-          const isOpen = hostItem.classList.contains('open');
-          if (isOpen && !wasOpen) {
-            hostBody.style.overflow = 'hidden';
-            setTimeout(() => {
-              if (hostItem.classList.contains('open')) hostBody.style.overflow = 'visible';
-            }, 380);
-          } else if (!isOpen) {
-            hostBody.style.overflow = '';
-            resetPanel();
-          }
-          wasOpen = isOpen;
-        };
-        new MutationObserver(syncOverflow).observe(hostItem, { attributes: true, attributeFilter: ['class'] });
-        if (wasOpen) hostBody.style.overflow = 'visible';
-      }
     });
+
+    container.insertBefore(nav, refBefore);
+    items.forEach(it => it.remove());
   }
 
-  initSubtopicNav(document);
-  initTopicNav();
+  // Scan `root`'s direct children for runs of consecutive `.item` elements
+  // and convert each run found into a tile row. Non-item content (prose,
+  // headings, flows) in between or around a run is left exactly in place.
+  function tileifyRuns(root, forceTier) {
+    const children = Array.from(root.children);
+    let i = 0;
+    while (i < children.length) {
+      const el = children[i];
+      if (el.classList && el.classList.contains('item')) {
+        const run = [el];
+        let j = i + 1;
+        while (j < children.length && children[j].classList && children[j].classList.contains('item')) {
+          run.push(children[j]);
+          j++;
+        }
+        const refBefore = children[j] || null;
+        buildTileRun(root, run, forceTier || nextTier(run), refBefore);
+        i = j;
+      } else {
+        i++;
+      }
+    }
+  }
+
+  // Seed the very top level: the item run(s) directly inside each page
+  // section (e.g. "MY INTRO", "WORK EXPERIENCE & DASHBOARDS...") become
+  // the big top-tier tiles. Everything nested beneath is discovered and
+  // converted recursively as each tile is opened.
+  document.querySelectorAll('.section-body-inner').forEach(sec => {
+    tileifyRuns(sec, 'topic');
+  });
 </script>
 </body>
 </html>
