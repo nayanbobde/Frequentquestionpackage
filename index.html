@@ -234,7 +234,7 @@
     border-top: 1px solid var(--line);
   }
 
-/* ===== Tile-based topic navigation (top level, one per section) ===== */
+  /* ===== Tile-based topic navigation (top level, one per section) ===== */
   .topic-nav{
     position: sticky;
     top: 0;
@@ -374,7 +374,6 @@
     .topic-panel{ padding: 16px; }
     .subtopic-panel{ padding: 14px 16px; }
   }
-
 </style>
 </head>
 <body>
@@ -538,7 +537,7 @@
 </button>
 <div class="item-body">
 <div class="item-body-inner">
-<div class="item question-item" data-question="sar-flow-1">
+<div class="subtopic-nav" data-subtopic-nav=""><div class="subtopic-nav-inner"><button class="subtopic-tile" data-subtopic-target="sar-flow-1" type="button">Requirement Gathering</button><button class="subtopic-tile" data-subtopic-target="sar-flow-2" type="button">Business Understanding</button><button class="subtopic-tile" data-subtopic-target="sar-flow-3" type="button">Data Source Identification</button><button class="subtopic-tile" data-subtopic-target="sar-flow-4" type="button">Data Extraction</button><button class="subtopic-tile" data-subtopic-target="sar-flow-5" type="button">ETL / Data Transformation</button><button class="subtopic-tile" data-subtopic-target="sar-flow-6" type="button">Currency Conversion Logic</button><button class="subtopic-tile" data-subtopic-target="sar-flow-7" type="button">Fiscal Calendar Handling</button><button class="subtopic-tile" data-subtopic-target="sar-flow-8" type="button">Data Cleaning &amp; Validation</button><button class="subtopic-tile" data-subtopic-target="sar-flow-9" type="button">Data Modeling (Star Schema)</button><button class="subtopic-tile" data-subtopic-target="sar-flow-10" type="button">DAX Development</button><button class="subtopic-tile" data-subtopic-target="sar-flow-11" type="button">Report &amp; Dashboard Development</button><button class="subtopic-tile" data-subtopic-target="sar-flow-12" type="button">Row-Level Security (Dynamic RLS)</button><button class="subtopic-tile" data-subtopic-target="sar-flow-13" type="button">Testing &amp; Validation</button><button class="subtopic-tile" data-subtopic-target="sar-flow-14" type="button">User Acceptance Testing (UAT)</button><button class="subtopic-tile" data-subtopic-target="sar-flow-15" type="button">Performance Optimization</button><button class="subtopic-tile" data-subtopic-target="sar-flow-16" type="button">Deployment / Publishing</button><button class="subtopic-tile" data-subtopic-target="sar-flow-17" type="button">Scheduling &amp; Refresh</button><button class="subtopic-tile" data-subtopic-target="sar-flow-18" type="button">Documentation</button><button class="subtopic-tile" data-subtopic-target="sar-flow-19" type="button">User Training</button><button class="subtopic-tile" data-subtopic-target="sar-flow-20" type="button">Production Support &amp; Maintenance</button><button class="subtopic-tile" data-subtopic-target="sar-flow-21" type="button">Business Impact</button></div></div><div class="subtopic-panel" data-subtopic-panel=""></div><div class="list" data-subtopic-source=""><div class="item question-item" data-question="sar-flow-1">
 <button class="item-head">
 <span class="idx">01</span>
 <span class="item-title">Requirement Gathering</span>
@@ -549,8 +548,7 @@
 <p>Worked closely with Finance leadership, SET teams, and business stakeholders to understand spend reporting requirements, budget tracking needs, regional spend visibility, fiscal calendar requirements, and security access expectations.</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="sar-flow-2">
+</div><div class="item question-item" data-question="sar-flow-2">
 <button class="item-head">
 <span class="idx">02</span>
 <span class="item-title">Business Understanding</span>
@@ -561,8 +559,7 @@
 <p>Understood the complete financial reporting process across regions, departments, cost centers, and spend categories, including Actual vs Budget analysis, variance reporting, YTD tracking, and prior-year comparisons.</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="sar-flow-3">
+</div><div class="item question-item" data-question="sar-flow-3">
 <button class="item-head">
 <span class="idx">03</span>
 <span class="item-title">Data Source Identification</span>
@@ -573,8 +570,7 @@
 <p>Worked with enterprise financial data stored in MS SQL Server, including spend transactions, budget data, cost center mappings, exchange rates, organizational hierarchy, and user access mapping tables.</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="sar-flow-4">
+</div><div class="item question-item" data-question="sar-flow-4">
 <button class="item-head">
 <span class="idx">04</span>
 <span class="item-title">Data Extraction</span>
@@ -585,8 +581,7 @@
 <p>Used SQL Views and complex SQL queries to consolidate financial data from multiple source tables and prepare reporting-ready datasets for Power BI.</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="sar-flow-5">
+</div><div class="item question-item" data-question="sar-flow-5">
 <button class="item-head">
 <span class="idx">05</span>
 <span class="item-title">ETL / Data Transformation</span>
@@ -597,8 +592,7 @@
 <p>Leveraged ETL pipelines maintained by the Data Engineering team and implemented reporting-level transformations through SQL Views and Power Query where required.</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="sar-flow-6">
+</div><div class="item question-item" data-question="sar-flow-6">
 <button class="item-head">
 <span class="idx">06</span>
 <span class="item-title">Currency Conversion Logic</span>
@@ -609,8 +603,7 @@
 <p>Implemented multi-region currency conversion logic directly in the SQL View. Applied the last available exchange rate of completed months and used the previous month's closing exchange rate for the current month to ensure stable and consistent financial reporting.</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="sar-flow-7">
+</div><div class="item question-item" data-question="sar-flow-7">
 <button class="item-head">
 <span class="idx">07</span>
 <span class="item-title">Fiscal Calendar Handling</span>
@@ -621,8 +614,7 @@
 <p>Designed reporting logic around the organization's custom fiscal year beginning in August, ensuring all YTD Actual, Budget YTD, Prior Year YTD, and variance calculations aligned with the fiscal calendar.</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="sar-flow-8">
+</div><div class="item question-item" data-question="sar-flow-8">
 <button class="item-head">
 <span class="idx">08</span>
 <span class="item-title">Data Cleaning &amp; Validation</span>
@@ -633,8 +625,7 @@
 <p>Validated financial transactions, exchange rate mappings, budget allocations, and reporting outputs to ensure data accuracy and consistency across all reporting regions.</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="sar-flow-9">
+</div><div class="item question-item" data-question="sar-flow-9">
 <button class="item-head">
 <span class="idx">09</span>
 <span class="item-title">Data Modeling (Star Schema)</span>
@@ -645,8 +636,7 @@
 <p>Developed and maintained a Star Schema consisting of financial fact tables connected to dimensions such as Date, Cost Center, Department, Region, Functional Area, Currency, and Organizational Hierarchy.</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="sar-flow-10">
+</div><div class="item question-item" data-question="sar-flow-10">
 <button class="item-head">
 <span class="idx">10</span>
 <span class="item-title">DAX Development</span>
@@ -657,8 +647,7 @@
 <p>Developed advanced DAX measures for YTD Actual Spend, Budget YTD, Prior Year YTD, Variance Analysis, Budget vs Actual %, and Spend Trends, incorporating custom fiscal calendar logic.</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="sar-flow-11">
+</div><div class="item question-item" data-question="sar-flow-11">
 <button class="item-head">
 <span class="idx">11</span>
 <span class="item-title">Report &amp; Dashboard Development</span>
@@ -669,8 +658,7 @@
 <p>Built an executive-level Power BI dashboard with KPI cards, variance analysis, trend reporting, drill-through functionality, slicers, departmental views, and regional spend analysis.</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="sar-flow-12">
+</div><div class="item question-item" data-question="sar-flow-12">
 <button class="item-head">
 <span class="idx">12</span>
 <span class="item-title">Row-Level Security (Dynamic RLS)</span>
@@ -681,8 +669,7 @@
 <p>Implemented Dynamic RLS using <code>USERPRINCIPALNAME()</code> and a security mapping table. Configured multiple access levels including Executive users, SET-level users, and Functional Area users with page-level visibility controls.</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="sar-flow-13">
+</div><div class="item question-item" data-question="sar-flow-13">
 <button class="item-head">
 <span class="idx">13</span>
 <span class="item-title">Testing &amp; Validation</span>
@@ -693,8 +680,7 @@
 <p>Performed detailed validation of dashboard calculations, fiscal-year logic, currency conversion outputs, filters, and security access against source data.</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="sar-flow-14">
+</div><div class="item question-item" data-question="sar-flow-14">
 <button class="item-head">
 <span class="idx">14</span>
 <span class="item-title">User Acceptance Testing (UAT)</span>
@@ -705,8 +691,7 @@
 <p>Partnered with Finance stakeholders during UAT to validate spend figures, budget calculations, security requirements, and dashboard usability.</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="sar-flow-15">
+</div><div class="item question-item" data-question="sar-flow-15">
 <button class="item-head">
 <span class="idx">15</span>
 <span class="item-title">Performance Optimization</span>
@@ -717,8 +702,7 @@
 <p>Minimized Power Query transformations by pushing business logic into SQL Views, optimized DAX calculations, and improved overall report refresh performance.</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="sar-flow-16">
+</div><div class="item question-item" data-question="sar-flow-16">
 <button class="item-head">
 <span class="idx">16</span>
 <span class="item-title">Deployment / Publishing</span>
@@ -729,8 +713,7 @@
 <p>Published datasets and reports to Power BI Service workspaces and supported deployment through appropriate environments.</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="sar-flow-17">
+</div><div class="item question-item" data-question="sar-flow-17">
 <button class="item-head">
 <span class="idx">17</span>
 <span class="item-title">Scheduling &amp; Refresh</span>
@@ -741,8 +724,7 @@
 <p>Supported scheduled refresh processes and monitored successful data availability for monthly and executive reporting cycles.</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="sar-flow-18">
+</div><div class="item question-item" data-question="sar-flow-18">
 <button class="item-head">
 <span class="idx">18</span>
 <span class="item-title">Documentation</span>
@@ -753,8 +735,7 @@
 <p>Documented fiscal calendar logic, exchange-rate conversion rules, KPI definitions, RLS design, and dashboard functionality for business and support teams.</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="sar-flow-19">
+</div><div class="item question-item" data-question="sar-flow-19">
 <button class="item-head">
 <span class="idx">19</span>
 <span class="item-title">User Training</span>
@@ -765,8 +746,7 @@
 <p>Assisted Finance and business users in understanding dashboard navigation, security behavior, KPI interpretation, and self-service reporting capabilities.</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="sar-flow-20">
+</div><div class="item question-item" data-question="sar-flow-20">
 <button class="item-head">
 <span class="idx">20</span>
 <span class="item-title">Production Support &amp; Maintenance</span>
@@ -777,8 +757,7 @@
 <p>Supported post-production issues related to spend calculations, security access, refresh failures, and reporting discrepancies. Maintained reporting logic, exchange-rate mappings, fiscal calendar updates, and security configurations based on evolving business requirements.</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="sar-flow-21">
+</div><div class="item question-item" data-question="sar-flow-21">
 <button class="item-head">
 <span class="idx">21</span>
 <span class="item-title">Business Impact</span>
@@ -789,7 +768,27 @@
 <p>Enabled Finance teams to move from manual spend reconciliation and spreadsheet-based analysis to a centralized, trusted reporting solution with controlled data access and consistent financial metrics.</p>
 </div>
 </div>
-</div>
+</div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 </div>
 </div>
 </div>
@@ -843,7 +842,7 @@
 </button>
 <div class="item-body">
 <div class="item-body-inner">
-<div class="item question-item" data-question="sar-1">
+<div class="subtopic-nav" data-subtopic-nav=""><div class="subtopic-nav-inner"><button class="subtopic-tile" data-subtopic-target="sar-1" type="button">Why did you implement currency conversion</button><button class="subtopic-tile" data-subtopic-target="sar-2" type="button">How did you handle the August</button><button class="subtopic-tile" data-subtopic-target="sar-3" type="button">Why keep Power Query transformations minimal?</button><button class="subtopic-tile" data-subtopic-target="sar-4" type="button">Explain your Dynamic RLS implementation.</button><button class="subtopic-tile" data-subtopic-target="sar-5" type="button">How did you test RLS?</button><button class="subtopic-tile" data-subtopic-target="sar-6" type="button">What was the data model design?</button><button class="subtopic-tile" data-subtopic-target="sar-7" type="button">What DAX measures did you build?</button></div></div><div class="subtopic-panel" data-subtopic-panel=""></div><div class="list" data-subtopic-source=""><div class="item question-item" data-question="sar-1">
 <button class="item-head">
 <span class="idx">01</span>
 <span class="item-title">Why did you implement currency conversion in SQL instead of Power BI?</span>
@@ -856,8 +855,7 @@
 <div class="table-wrap"><table><thead><tr><th>Flow Step</th><th>Table / Column</th></tr></thead><tbody><tr><td>Regional Transaction</td><td><code>FactSpend.Amount</code></td></tr><tr><td>Local Currency</td><td><code>FactSpend.CurrencyCode</code></td></tr><tr><td>SQL View</td><td><code>vw_GlobalSpend</code></td></tr><tr><td>Find Month</td><td><code>FactSpend.TransactionDate</code></td></tr><tr><td>Find Currency</td><td><code>FactSpend.CurrencyCode</code></td></tr><tr><td>Exchange Rate Table</td><td><code>FactExchangeRate</code></td></tr><tr><td>Last Rate of Month</td><td><code>FactExchangeRate.ExchangeRate</code></td></tr><tr><td>Apply Conversion</td><td><code>Amount * ExchangeRate</code></td></tr><tr><td>Converted Amount</td><td><code>ConvertedAmountUSD</code></td></tr><tr><td>Power BI</td><td>Import from <code>vw_GlobalSpend</code></td></tr></tbody></table></div>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="sar-2">
+</div><div class="item question-item" data-question="sar-2">
 <button class="item-head">
 <span class="idx">02</span>
 <span class="item-title">How did you handle the August fiscal year in Power BI?</span>
@@ -873,8 +871,7 @@ CALCULATE(
 )</code></pre>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="sar-3">
+</div><div class="item question-item" data-question="sar-3">
 <button class="item-head">
 <span class="idx">03</span>
 <span class="item-title">Why keep Power Query transformations minimal?</span>
@@ -885,8 +882,7 @@ CALCULATE(
 <p><strong>Answer:</strong> Heavy transformations in Power Query can increase refresh time and reduce maintainability. Since the logic was already available in SQL views, Power BI focused mainly on modeling and visualization.</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="sar-4">
+</div><div class="item question-item" data-question="sar-4">
 <button class="item-head">
 <span class="idx">04</span>
 <span class="item-title">Explain your Dynamic RLS implementation.</span>
@@ -898,8 +894,7 @@ CALCULATE(
 <pre><code class="language-DAX">UserAccess[Email] = USERPRINCIPALNAME()</code></pre>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="sar-5">
+</div><div class="item question-item" data-question="sar-5">
 <button class="item-head">
 <span class="idx">05</span>
 <span class="item-title">How did you test RLS?</span>
@@ -910,8 +905,7 @@ CALCULATE(
 <p><strong>Answer:</strong> I used the "View As" feature in Power BI Desktop and validated access with sample user accounts before deployment.</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="sar-6">
+</div><div class="item question-item" data-question="sar-6">
 <button class="item-head">
 <span class="idx">06</span>
 <span class="item-title">What was the data model design?</span>
@@ -922,8 +916,7 @@ CALCULATE(
 <p><strong>Answer:</strong> A Star Schema with a central fact table containing spend transactions and dimension tables such as Date, Department, Region, Cost Center, and Currency.</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="sar-7">
+</div><div class="item question-item" data-question="sar-7">
 <button class="item-head">
 <span class="idx">07</span>
 <span class="item-title">What DAX measures did you build?</span>
@@ -934,7 +927,13 @@ CALCULATE(
 <p><strong>Answer:</strong> Actual Spend, Budget Spend, Fiscal YTD, Prior Year YTD, Variance, Variance %, and Spend Trend Analysis.</p>
 </div>
 </div>
-</div>
+</div></div>
+
+
+
+
+
+
 </div>
 </div>
 </div>
@@ -947,7 +946,7 @@ CALCULATE(
 </button>
 <div class="item-body">
 <div class="item-body-inner">
-<div class="item question-item" data-question="rev-1">
+<div class="subtopic-nav" data-subtopic-nav=""><div class="subtopic-nav-inner"><button class="subtopic-tile" data-subtopic-target="rev-1" type="button">How did you identify that relationships</button><button class="subtopic-tile" data-subtopic-target="rev-2" type="button">What relationship issue did you find?</button><button class="subtopic-tile" data-subtopic-target="rev-3" type="button">How did you validate the numbers?</button><button class="subtopic-tile" data-subtopic-target="rev-4" type="button">What DAX issue did you find?</button><button class="subtopic-tile" data-subtopic-target="rev-5" type="button">What do you mean by filter</button><button class="subtopic-tile" data-subtopic-target="rev-6" type="button">Why did totals look correct but</button><button class="subtopic-tile" data-subtopic-target="rev-7" type="button">What changes did you make to</button><button class="subtopic-tile" data-subtopic-target="rev-8" type="button">How do you approach debugging Power</button></div></div><div class="subtopic-panel" data-subtopic-panel=""></div><div class="list" data-subtopic-source=""><div class="item question-item" data-question="rev-1">
 <button class="item-head">
 <span class="idx">01</span>
 <span class="item-title">How did you identify that relationships were causing issues?</span>
@@ -958,8 +957,7 @@ CALCULATE(
 <p><strong>Answer:</strong> I compared report outputs with source data and noticed discrepancies only when product-level filters were applied. That indicated filter propagation issues, which led me to investigate the relationships.</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="rev-2">
+</div><div class="item question-item" data-question="rev-2">
 <button class="item-head">
 <span class="idx">02</span>
 <span class="item-title">What relationship issue did you find?</span>
@@ -970,8 +968,7 @@ CALCULATE(
 <p><strong>Answer:</strong> The model had incorrect relationship design causing filter propagation problems. After redesigning it into a proper Star Schema, the drill-down calculations became accurate.</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="rev-3">
+</div><div class="item question-item" data-question="rev-3">
 <button class="item-head">
 <span class="idx">03</span>
 <span class="item-title">How did you validate the numbers?</span>
@@ -982,8 +979,7 @@ CALCULATE(
 <p><strong>Answer:</strong> I exported source data, created reconciliation checks, and compared Power BI outputs against the source system at summary and detailed levels until the results matched.</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="rev-4">
+</div><div class="item question-item" data-question="rev-4">
 <button class="item-head">
 <span class="idx">04</span>
 <span class="item-title">What DAX issue did you find?</span>
@@ -994,8 +990,7 @@ CALCULATE(
 <p><strong>Answer:</strong> Some measures ignored filter context, which caused incorrect results when users drilled down. I rewrote the measures to respect the current filter context.</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="rev-5">
+</div><div class="item question-item" data-question="rev-5">
 <button class="item-head">
 <span class="idx">05</span>
 <span class="item-title">What do you mean by filter context?</span>
@@ -1006,8 +1001,7 @@ CALCULATE(
 <p><strong>Answer:</strong> Filter context is the set of filters applied to a calculation through slicers, rows, columns, or visual interactions. DAX evaluates measures based on the active filter context.</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="rev-6">
+</div><div class="item question-item" data-question="rev-6">
 <button class="item-head">
 <span class="idx">06</span>
 <span class="item-title">Why did totals look correct but drill-down values were wrong?</span>
@@ -1018,8 +1012,7 @@ CALCULATE(
 <p><strong>Answer:</strong> At the aggregate level, the measure happened to return the expected total. However, when additional dimensions such as Product Group were introduced, incorrect relationships and filter-context handling caused inaccurate calculations.</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="rev-7">
+</div><div class="item question-item" data-question="rev-7">
 <button class="item-head">
 <span class="idx">07</span>
 <span class="item-title">What changes did you make to the data model?</span>
@@ -1030,8 +1023,7 @@ CALCULATE(
 <p><strong>Answer:</strong> I redesigned the model following Star Schema principles by keeping fact and dimension tables separate and ensuring relationships supported correct filter propagation.</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="rev-8">
+</div><div class="item question-item" data-question="rev-8">
 <button class="item-head">
 <span class="idx">08</span>
 <span class="item-title">How do you approach debugging Power BI issues?</span>
@@ -1050,7 +1042,14 @@ CALCULATE(
 </ol>
 </div>
 </div>
-</div>
+</div></div>
+
+
+
+
+
+
+
 </div>
 </div>
 </div>
@@ -1063,7 +1062,7 @@ CALCULATE(
 </button>
 <div class="item-body">
 <div class="item-body-inner">
-<div class="item question-item" data-question="deepdive-1">
+<div class="subtopic-nav" data-subtopic-nav=""><div class="subtopic-nav-inner"><button class="subtopic-tile" data-subtopic-target="deepdive-1" type="button">What happens when USERPRINCIPALNAME() returns</button><button class="subtopic-tile" data-subtopic-target="deepdive-2" type="button">Why is Star Schema preferred in</button><button class="subtopic-tile" data-subtopic-target="deepdive-3" type="button">How would you improve dashboard performance?</button></div></div><div class="subtopic-panel" data-subtopic-panel=""></div><div class="list" data-subtopic-source=""><div class="item question-item" data-question="deepdive-1">
 <button class="item-head">
 <span class="idx">01</span>
 <span class="item-title">What happens when USERPRINCIPALNAME() returns blank?</span>
@@ -1074,8 +1073,7 @@ CALCULATE(
 <p><strong>Answer:</strong> RLS won't work correctly. I verify that users exist in the mapping table and test access after publishing to the Power BI Service because <code>USERPRINCIPALNAME()</code> behaves differently in Desktop and Service.</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="deepdive-2">
+</div><div class="item question-item" data-question="deepdive-2">
 <button class="item-head">
 <span class="idx">02</span>
 <span class="item-title">Why is Star Schema preferred in Power BI?</span>
@@ -1086,8 +1084,7 @@ CALCULATE(
 <p><strong>Answer:</strong> It improves performance, simplifies DAX calculations, supports correct filter propagation, and makes the model easier to maintain.</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="deepdive-3">
+</div><div class="item question-item" data-question="deepdive-3">
 <button class="item-head">
 <span class="idx">03</span>
 <span class="item-title">How would you improve dashboard performance?</span>
@@ -1098,7 +1095,9 @@ CALCULATE(
 <p><strong>Answer:</strong> Reduce unnecessary columns, use Star Schema, push transformations to SQL, optimize DAX measures, enable incremental refresh where appropriate, and avoid high-cardinality columns.</p>
 </div>
 </div>
-</div>
+</div></div>
+
+
 </div>
 </div>
 </div>
@@ -1125,7 +1124,7 @@ CALCULATE(
 </button>
 <div class="item-body">
 <div class="item-body-inner">
-<div class="item question-item" data-question="pa-1">
+<div class="subtopic-nav" data-subtopic-nav=""><div class="subtopic-nav-inner"><button class="subtopic-tile" data-subtopic-target="pa-1" type="button">What is Power Automate?</button><button class="subtopic-tile" data-subtopic-target="pa-2" type="button">What are the different types of</button><button class="subtopic-tile" data-subtopic-target="pa-3" type="button">What is a Trigger and an</button><button class="subtopic-tile" data-subtopic-target="pa-4" type="button">Give a real-world Power BI +</button></div></div><div class="subtopic-panel" data-subtopic-panel=""></div><div class="list" data-subtopic-source=""><div class="item question-item" data-question="pa-1">
 <button class="item-head">
 <span class="idx">01</span>
 <span class="item-title">What is Power Automate?</span>
@@ -1137,8 +1136,7 @@ CALCULATE(
 <p><strong>Simple Example:</strong> When a file is uploaded to SharePoint, automatically send an email notification.</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="pa-2">
+</div><div class="item question-item" data-question="pa-2">
 <button class="item-head">
 <span class="idx">02</span>
 <span class="item-title">What are the different types of flows?</span>
@@ -1156,8 +1154,7 @@ CALCULATE(
 <p><strong>Simple Example:</strong> A scheduled flow sends a daily sales report every morning at 9 AM.</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="pa-3">
+</div><div class="item question-item" data-question="pa-3">
 <button class="item-head">
 <span class="idx">03</span>
 <span class="item-title">What is a Trigger and an Action?</span>
@@ -1169,8 +1166,7 @@ CALCULATE(
 <p><strong>Simple Example:</strong> Trigger: New file uploaded. Action: Send email to manager.</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="pa-4">
+</div><div class="item question-item" data-question="pa-4">
 <button class="item-head">
 <span class="idx">04</span>
 <span class="item-title">Give a real-world Power BI + Power Automate use case.</span>
@@ -1182,7 +1178,10 @@ CALCULATE(
 <p><strong>Simple Example:</strong> If inventory falls below 100 units, send an email to the supply chain team.</p>
 </div>
 </div>
-</div>
+</div></div>
+
+
+
 </div>
 </div>
 </div>
@@ -1195,7 +1194,7 @@ CALCULATE(
 </button>
 <div class="item-body">
 <div class="item-body-inner">
-<div class="item question-item" data-question="pa-5">
+<div class="subtopic-nav" data-subtopic-nav=""><div class="subtopic-nav-inner"><button class="subtopic-tile" data-subtopic-target="pa-5" type="button">What is Power Apps?</button><button class="subtopic-tile" data-subtopic-target="pa-6" type="button">Difference between Canvas App and Model-Driven</button><button class="subtopic-tile" data-subtopic-target="pa-7" type="button">How does Power BI integrate with</button></div></div><div class="subtopic-panel" data-subtopic-panel=""></div><div class="list" data-subtopic-source=""><div class="item question-item" data-question="pa-5">
 <button class="item-head">
 <span class="idx">01</span>
 <span class="item-title">What is Power Apps?</span>
@@ -1207,8 +1206,7 @@ CALCULATE(
 <p><strong>Simple Example:</strong> Store managers use a mobile app to submit stock adjustment requests.</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="pa-6">
+</div><div class="item question-item" data-question="pa-6">
 <button class="item-head">
 <span class="idx">02</span>
 <span class="item-title">Difference between Canvas App and Model-Driven App?</span>
@@ -1224,8 +1222,7 @@ CALCULATE(
 </ul>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="pa-7">
+</div><div class="item question-item" data-question="pa-7">
 <button class="item-head">
 <span class="idx">03</span>
 <span class="item-title">How does Power BI integrate with Power Apps?</span>
@@ -1237,7 +1234,9 @@ CALCULATE(
 <p><strong>Simple Example:</strong> A manager sees low inventory in Power BI and raises a replenishment request directly from the report.</p>
 </div>
 </div>
-</div>
+</div></div>
+
+
 </div>
 </div>
 </div>
@@ -1250,7 +1249,7 @@ CALCULATE(
 </button>
 <div class="item-body">
 <div class="item-body-inner">
-<div class="item question-item" data-question="pa-8">
+<div class="subtopic-nav" data-subtopic-nav=""><div class="subtopic-nav-inner"><button class="subtopic-tile" data-subtopic-target="pa-8" type="button">What is Dataverse?</button><button class="subtopic-tile" data-subtopic-target="pa-9" type="button">Why use Dataverse instead of Excel</button></div></div><div class="subtopic-panel" data-subtopic-panel=""></div><div class="list" data-subtopic-source=""><div class="item question-item" data-question="pa-8">
 <button class="item-head">
 <span class="idx">01</span>
 <span class="item-title">What is Dataverse?</span>
@@ -1262,8 +1261,7 @@ CALCULATE(
 <p><strong>Simple Example:</strong> Store employee details, leave requests, and approval status in Dataverse.</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="pa-9">
+</div><div class="item question-item" data-question="pa-9">
 <button class="item-head">
 <span class="idx">02</span>
 <span class="item-title">Why use Dataverse instead of Excel or SharePoint?</span>
@@ -1275,7 +1273,8 @@ CALCULATE(
 <p><strong>Simple Example:</strong> Managing 10,000 employee records is easier and more secure in Dataverse than in Excel.</p>
 </div>
 </div>
-</div>
+</div></div>
+
 </div>
 </div>
 </div>
@@ -1288,7 +1287,7 @@ CALCULATE(
 </button>
 <div class="item-body">
 <div class="item-body-inner">
-<div class="item question-item" data-question="pa-10">
+<div class="subtopic-nav" data-subtopic-nav=""><div class="subtopic-nav-inner"><button class="subtopic-tile" data-subtopic-target="pa-10" type="button">How does Power BI connect to</button><button class="subtopic-tile" data-subtopic-target="pa-11" type="button">When is a Gateway required?</button></div></div><div class="subtopic-panel" data-subtopic-panel=""></div><div class="list" data-subtopic-source=""><div class="item question-item" data-question="pa-10">
 <button class="item-head">
 <span class="idx">01</span>
 <span class="item-title">How does Power BI connect to Azure SQL Database?</span>
@@ -1300,8 +1299,7 @@ CALCULATE(
 <p><strong>Simple Example:</strong> Sales data stored in Azure SQL is directly connected to Power BI dashboards.</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="pa-11">
+</div><div class="item question-item" data-question="pa-11">
 <button class="item-head">
 <span class="idx">02</span>
 <span class="item-title">When is a Gateway required?</span>
@@ -1313,7 +1311,8 @@ CALCULATE(
 <p><strong>Simple Example:</strong> A company SQL Server exists inside the office network, so a gateway is required for scheduled refresh.</p>
 </div>
 </div>
-</div>
+</div></div>
+
 </div>
 </div>
 </div>
@@ -1326,7 +1325,7 @@ CALCULATE(
 </button>
 <div class="item-body">
 <div class="item-body-inner">
-<div class="item question-item" data-question="pa-12">
+<div class="subtopic-nav" data-subtopic-nav=""><div class="subtopic-nav-inner"><button class="subtopic-tile" data-subtopic-target="pa-12" type="button">What is Azure Data Factory (ADF)?</button><button class="subtopic-tile" data-subtopic-target="pa-13" type="button">Explain an ADF Pipeline.</button></div></div><div class="subtopic-panel" data-subtopic-panel=""></div><div class="list" data-subtopic-source=""><div class="item question-item" data-question="pa-12">
 <button class="item-head">
 <span class="idx">01</span>
 <span class="item-title">What is Azure Data Factory (ADF)?</span>
@@ -1338,8 +1337,7 @@ CALCULATE(
 <p><strong>Simple Example:</strong> Copy sales data from SQL Server to Azure Data Lake every night.</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="pa-13">
+</div><div class="item question-item" data-question="pa-13">
 <button class="item-head">
 <span class="idx">02</span>
 <span class="item-title">Explain an ADF Pipeline.</span>
@@ -1351,7 +1349,8 @@ CALCULATE(
 <p><strong>Simple Example:</strong> Read data from SQL → Clean data → Store in Data Lake.</p>
 </div>
 </div>
-</div>
+</div></div>
+
 </div>
 </div>
 </div>
@@ -1364,7 +1363,7 @@ CALCULATE(
 </button>
 <div class="item-body">
 <div class="item-body-inner">
-<div class="item question-item" data-question="pa-14">
+<div class="subtopic-nav" data-subtopic-nav=""><div class="subtopic-nav-inner"><button class="subtopic-tile" data-subtopic-target="pa-14" type="button">What is Azure Data Lake Storage</button><button class="subtopic-tile" data-subtopic-target="pa-15" type="button">Difference between Azure Synapse and Data</button></div></div><div class="subtopic-panel" data-subtopic-panel=""></div><div class="list" data-subtopic-source=""><div class="item question-item" data-question="pa-14">
 <button class="item-head">
 <span class="idx">01</span>
 <span class="item-title">What is Azure Data Lake Storage Gen2?</span>
@@ -1376,8 +1375,7 @@ CALCULATE(
 <p><strong>Simple Example:</strong> Store sales, inventory, and customer files in one location.</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="pa-15">
+</div><div class="item question-item" data-question="pa-15">
 <button class="item-head">
 <span class="idx">02</span>
 <span class="item-title">Difference between Azure Synapse and Data Lake?</span>
@@ -1393,7 +1391,8 @@ CALCULATE(
 </ul>
 </div>
 </div>
-</div>
+</div></div>
+
 </div>
 </div>
 </div>
@@ -1406,7 +1405,7 @@ CALCULATE(
 </button>
 <div class="item-body">
 <div class="item-body-inner">
-<div class="item question-item" data-question="pa-16">
+<div class="subtopic-nav" data-subtopic-nav=""><div class="subtopic-nav-inner"><button class="subtopic-tile" data-subtopic-target="pa-16" type="button">What is Microsoft Fabric?</button><button class="subtopic-tile" data-subtopic-target="pa-17" type="button">What is OneLake?</button><button class="subtopic-tile" data-subtopic-target="pa-18" type="button">What is Direct Lake?</button><button class="subtopic-tile" data-subtopic-target="pa-19" type="button">Difference between Import, DirectQuery, and</button><button class="subtopic-tile" data-subtopic-target="pa-20" type="button">Difference between Azure SQL and SQL</button><button class="subtopic-tile" data-subtopic-target="pa-21" type="button">What is ETL vs ELT?</button></div></div><div class="subtopic-panel" data-subtopic-panel=""></div><div class="list" data-subtopic-source=""><div class="item question-item" data-question="pa-16">
 <button class="item-head">
 <span class="idx">01</span>
 <span class="item-title">What is Microsoft Fabric?</span>
@@ -1418,8 +1417,7 @@ CALCULATE(
 <p><strong>Simple Example:</strong> Instead of using ADF, Synapse, and Power BI separately, organizations can use Fabric in one place.</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="pa-17">
+</div><div class="item question-item" data-question="pa-17">
 <button class="item-head">
 <span class="idx">02</span>
 <span class="item-title">What is OneLake?</span>
@@ -1431,8 +1429,7 @@ CALCULATE(
 <p><strong>Simple Example:</strong> Like OneDrive, but for enterprise data.</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="pa-18">
+</div><div class="item question-item" data-question="pa-18">
 <button class="item-head">
 <span class="idx">03</span>
 <span class="item-title">What is Direct Lake?</span>
@@ -1444,8 +1441,7 @@ CALCULATE(
 <p><strong>Simple Example:</strong> No import process is required; reports read directly from Fabric storage.</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="pa-19">
+</div><div class="item question-item" data-question="pa-19">
 <button class="item-head">
 <span class="idx">04</span>
 <span class="item-title">Difference between Import, DirectQuery, and Direct Lake?</span>
@@ -1463,8 +1459,7 @@ CALCULATE(
 </table>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="pa-20">
+</div><div class="item question-item" data-question="pa-20">
 <button class="item-head">
 <span class="idx">05</span>
 <span class="item-title">Difference between Azure SQL and SQL Server?</span>
@@ -1482,8 +1477,7 @@ CALCULATE(
 <p><strong>Simple Example:</strong> Azure SQL = Renting a managed apartment. SQL Server = Owning and maintaining your own house.</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="pa-21">
+</div><div class="item question-item" data-question="pa-21">
 <button class="item-head">
 <span class="idx">06</span>
 <span class="item-title">What is ETL vs ELT?</span>
@@ -1496,7 +1490,12 @@ CALCULATE(
 <p><strong>Simple Example:</strong> ETL = Clean data before loading. ELT = Load data first, then transform in the cloud.</p>
 </div>
 </div>
-</div>
+</div></div>
+
+
+
+
+
 </div>
 </div>
 </div>
@@ -1878,7 +1877,7 @@ SUM(FactSales[NetRevenue])</code></pre>
 </button>
 <div class="item-body">
 <div class="item-body-inner">
-<div class="item question-item" data-question="pbi-1">
+<div class="subtopic-nav" data-subtopic-nav=""><div class="subtopic-nav-inner"><button class="subtopic-tile" data-subtopic-target="pbi-1" type="button">Write a DAX measure to calculate</button><button class="subtopic-tile" data-subtopic-target="pbi-2" type="button">Difference between a Measure and a</button><button class="subtopic-tile" data-subtopic-target="pbi-3" type="button">Difference betweenSUM()andSUMX(). Write an</button><button class="subtopic-tile" data-subtopic-target="pbi-4" type="button">Explain Row Context vs Filter Context</button><button class="subtopic-tile" data-subtopic-target="pbi-5" type="button">What isCALCULATE()? Calculate sales for a</button><button class="subtopic-tile" data-subtopic-target="pbi-6" type="button">What is Context Transition? Show an</button><button class="subtopic-tile" data-subtopic-target="pbi-7" type="button">UseFILTER()insideCALCULATE()to calculate</button><button class="subtopic-tile" data-subtopic-target="pbi-8" type="button">Create a measure usingVAR.</button></div></div><div class="subtopic-panel" data-subtopic-panel=""></div><div class="list" data-subtopic-source=""><div class="item question-item" data-question="pbi-1">
 <button class="item-head">
 <span class="idx">01</span>
 <span class="item-title">Write a DAX measure to calculate Total Sales.</span>
@@ -1893,8 +1892,7 @@ SUM(Sales[SalesAmount])</code></pre>
 <p>---</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="pbi-2">
+</div><div class="item question-item" data-question="pbi-2">
 <button class="item-head">
 <span class="idx">02</span>
 <span class="item-title">Difference between a Measure and a Calculated Column. Show how to create each.</span>
@@ -1913,8 +1911,7 @@ SUM(Sales[SalesAmount])</code></pre>
 <p>---</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="pbi-3">
+</div><div class="item question-item" data-question="pbi-3">
 <button class="item-head">
 <span class="idx">03</span>
 <span class="item-title">Difference between <code>SUM()</code> and <code>SUMX()</code>. Write an example of both.</span>
@@ -1934,8 +1931,7 @@ SUMX(
 <p>---</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="pbi-4">
+</div><div class="item question-item" data-question="pbi-4">
 <button class="item-head">
 <span class="idx">04</span>
 <span class="item-title">Explain Row Context vs Filter Context with a practical example.</span>
@@ -1957,8 +1953,7 @@ CALCULATE(
 <p>---</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="pbi-5">
+</div><div class="item question-item" data-question="pbi-5">
 <button class="item-head">
 <span class="idx">05</span>
 <span class="item-title">What is <code>CALCULATE()</code>? Calculate sales for a specific category.</span>
@@ -1976,8 +1971,7 @@ CALCULATE(
 <p>---</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="pbi-6">
+</div><div class="item question-item" data-question="pbi-6">
 <button class="item-head">
 <span class="idx">06</span>
 <span class="item-title">What is Context Transition? Show an example using <code>CALCULATE()</code>.</span>
@@ -1995,8 +1989,7 @@ CALCULATE(
 <p>---</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="pbi-7">
+</div><div class="item question-item" data-question="pbi-7">
 <button class="item-head">
 <span class="idx">07</span>
 <span class="item-title">Use <code>FILTER()</code> inside <code>CALCULATE()</code> to calculate sales based on a condition.</span>
@@ -2017,8 +2010,7 @@ CALCULATE(
 <p>---</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="pbi-8">
+</div><div class="item question-item" data-question="pbi-8">
 <button class="item-head">
 <span class="idx">08</span>
 <span class="item-title">Create a measure using <code>VAR</code>.</span>
@@ -2036,7 +2028,14 @@ RETURN
 DIVIDE(Profit, TotalSales)</code></pre>
 </div>
 </div>
-</div>
+</div></div>
+
+
+
+
+
+
+
 </div>
 </div>
 </div>
@@ -2049,7 +2048,7 @@ DIVIDE(Profit, TotalSales)</code></pre>
 </button>
 <div class="item-body">
 <div class="item-body-inner">
-<div class="item question-item" data-question="pbi-9">
+<div class="subtopic-nav" data-subtopic-nav=""><div class="subtopic-nav-inner"><button class="subtopic-tile" data-subtopic-target="pbi-9" type="button">Calculate YTD Sales.</button><button class="subtopic-tile" data-subtopic-target="pbi-10" type="button">Calculate MTD Sales.</button><button class="subtopic-tile" data-subtopic-target="pbi-11" type="button">Calculate QTD Sales.</button><button class="subtopic-tile" data-subtopic-target="pbi-12" type="button">Calculate Previous Year Sales</button><button class="subtopic-tile" data-subtopic-target="pbi-13" type="button">Calculate YoY Sales Growth %.</button><button class="subtopic-tile" data-subtopic-target="pbi-14" type="button">Calculate Month-over-Month Sales Growth %.</button><button class="subtopic-tile" data-subtopic-target="pbi-15" type="button">Create a running/cumulative Sales measure.</button><button class="subtopic-tile" data-subtopic-target="pbi-16" type="button">Create a rolling 30-day Sales measure.</button></div></div><div class="subtopic-panel" data-subtopic-panel=""></div><div class="list" data-subtopic-source=""><div class="item question-item" data-question="pbi-9">
 <button class="item-head">
 <span class="idx">09</span>
 <span class="item-title">Calculate YTD Sales.</span>
@@ -2067,8 +2066,7 @@ TOTALYTD(
 <p>---</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="pbi-10">
+</div><div class="item question-item" data-question="pbi-10">
 <button class="item-head">
 <span class="idx">10</span>
 <span class="item-title">Calculate MTD Sales.</span>
@@ -2086,8 +2084,7 @@ TOTALMTD(
 <p>---</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="pbi-11">
+</div><div class="item question-item" data-question="pbi-11">
 <button class="item-head">
 <span class="idx">11</span>
 <span class="item-title">Calculate QTD Sales.</span>
@@ -2103,8 +2100,7 @@ TOTALQTD(
 <p>---</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="pbi-12">
+</div><div class="item question-item" data-question="pbi-12">
 <button class="item-head">
 <span class="idx">12</span>
 <span class="item-title">Calculate Previous Year Sales using <code>SAMEPERIODLASTYEAR()</code>.</span>
@@ -2122,8 +2118,7 @@ CALCULATE(
 <p>---</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="pbi-13">
+</div><div class="item question-item" data-question="pbi-13">
 <button class="item-head">
 <span class="idx">13</span>
 <span class="item-title">Calculate YoY Sales Growth %.</span>
@@ -2144,8 +2139,7 @@ DIVIDE(
 <p>---</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="pbi-14">
+</div><div class="item question-item" data-question="pbi-14">
 <button class="item-head">
 <span class="idx">14</span>
 <span class="item-title">Calculate Month-over-Month Sales Growth %.</span>
@@ -2168,8 +2162,7 @@ DIVIDE(
 <p>---</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="pbi-15">
+</div><div class="item question-item" data-question="pbi-15">
 <button class="item-head">
 <span class="idx">15</span>
 <span class="item-title">Create a running/cumulative Sales measure.</span>
@@ -2190,8 +2183,7 @@ CALCULATE(
 <p>---</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="pbi-16">
+</div><div class="item question-item" data-question="pbi-16">
 <button class="item-head">
 <span class="idx">16</span>
 <span class="item-title">Create a rolling 30-day Sales measure.</span>
@@ -2213,7 +2205,14 @@ CALCULATE(
 )</code></pre>
 </div>
 </div>
-</div>
+</div></div>
+
+
+
+
+
+
+
 </div>
 </div>
 </div>
@@ -2226,7 +2225,7 @@ CALCULATE(
 </button>
 <div class="item-body">
 <div class="item-body-inner">
-<div class="item question-item" data-question="pbi-17">
+<div class="subtopic-nav" data-subtopic-nav=""><div class="subtopic-nav-inner"><button class="subtopic-tile" data-subtopic-target="pbi-17" type="button">Create a Top 5 Products by</button><button class="subtopic-tile" data-subtopic-target="pbi-18" type="button">Rank products usingRANKX().</button><button class="subtopic-tile" data-subtopic-target="pbi-19" type="button">Rank products within each category.</button><button class="subtopic-tile" data-subtopic-target="pbi-20" type="button">Calculate each product's percentage</button><button class="subtopic-tile" data-subtopic-target="pbi-21" type="button">ExplainALL()vsALLEXCEPT()vsALLSELECTED().</button><button class="subtopic-tile" data-subtopic-target="pbi-22" type="button">UseREMOVEFILTERS()to remove a particular</button><button class="subtopic-tile" data-subtopic-target="pbi-23" type="button">UseSWITCH()for dynamic KPI/status</button></div></div><div class="subtopic-panel" data-subtopic-panel=""></div><div class="list" data-subtopic-source=""><div class="item question-item" data-question="pbi-17">
 <button class="item-head">
 <span class="idx">17</span>
 <span class="item-title">Create a Top 5 Products by Sales using <code>TOPN()</code>.</span>
@@ -2257,8 +2256,7 @@ CALCULATE(
 <p>---</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="pbi-18">
+</div><div class="item question-item" data-question="pbi-18">
 <button class="item-head">
 <span class="idx">18</span>
 <span class="item-title">Rank products using <code>RANKX()</code>.</span>
@@ -2279,8 +2277,7 @@ RANKX(
 <p>---</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="pbi-19">
+</div><div class="item question-item" data-question="pbi-19">
 <button class="item-head">
 <span class="idx">19</span>
 <span class="item-title">Rank products within each category.</span>
@@ -2302,8 +2299,7 @@ RANKX(
 <p>---</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="pbi-20">
+</div><div class="item question-item" data-question="pbi-20">
 <button class="item-head">
 <span class="idx">20</span>
 <span class="item-title">Calculate each product's percentage contribution to total sales.</span>
@@ -2324,8 +2320,7 @@ DIVIDE(
 <p>---</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="pbi-21">
+</div><div class="item question-item" data-question="pbi-21">
 <button class="item-head">
 <span class="idx">21</span>
 <span class="item-title">Explain <code>ALL()</code> vs <code>ALLEXCEPT()</code> vs <code>ALLSELECTED()</code>.</span>
@@ -2353,8 +2348,7 @@ CALCULATE(
 <p>---</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="pbi-22">
+</div><div class="item question-item" data-question="pbi-22">
 <button class="item-head">
 <span class="idx">22</span>
 <span class="item-title">Use <code>REMOVEFILTERS()</code> to remove a particular filter.</span>
@@ -2372,8 +2366,7 @@ CALCULATE(
 <p>---</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="pbi-23">
+</div><div class="item question-item" data-question="pbi-23">
 <button class="item-head">
 <span class="idx">23</span>
 <span class="item-title">Use <code>SWITCH()</code> for dynamic KPI/status classification.</span>
@@ -2393,7 +2386,13 @@ SWITCH(
 )</code></pre>
 </div>
 </div>
-</div>
+</div></div>
+
+
+
+
+
+
 </div>
 </div>
 </div>
@@ -2406,7 +2405,7 @@ SWITCH(
 </button>
 <div class="item-body">
 <div class="item-body-inner">
-<div class="item question-item" data-question="pbi-24">
+<div class="subtopic-nav" data-subtopic-nav=""><div class="subtopic-nav-inner"><button class="subtopic-tile" data-subtopic-target="pbi-24" type="button">Remove duplicate rows and null values.</button><button class="subtopic-tile" data-subtopic-target="pbi-25" type="button">Change data types and clean text.</button><button class="subtopic-tile" data-subtopic-target="pbi-26" type="button">Difference between Merge and Append.</button><button class="subtopic-tile" data-subtopic-target="pbi-27" type="button">Unpivot months stored as columns.</button><button class="subtopic-tile" data-subtopic-target="pbi-28" type="button">Create a Conditional/Custom Column</button><button class="subtopic-tile" data-subtopic-target="pbi-29" type="button">UseTable.TransformColumns()to clean a column.</button><button class="subtopic-tile" data-subtopic-target="pbi-30" type="button">Create and use a Power Query</button></div></div><div class="subtopic-panel" data-subtopic-panel=""></div><div class="list" data-subtopic-source=""><div class="item question-item" data-question="pbi-24">
 <button class="item-head">
 <span class="idx">24</span>
 <span class="item-title">Remove duplicate rows and null values.</span>
@@ -2426,8 +2425,7 @@ Remove Rows → Remove Duplicates</code></pre>
 <p>---</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="pbi-25">
+</div><div class="item question-item" data-question="pbi-25">
 <button class="item-head">
 <span class="idx">25</span>
 <span class="item-title">Change data types and clean text.</span>
@@ -2454,8 +2452,7 @@ Remove Rows → Remove Duplicates</code></pre>
 <p>---</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="pbi-26">
+</div><div class="item question-item" data-question="pbi-26">
 <button class="item-head">
 <span class="idx">26</span>
 <span class="item-title">Difference between Merge and Append. Demonstrate both.</span>
@@ -2474,8 +2471,7 @@ Table1 + Table2</code></pre>
 <p>---</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="pbi-27">
+</div><div class="item question-item" data-question="pbi-27">
 <button class="item-head">
 <span class="idx">27</span>
 <span class="item-title">Unpivot months stored as columns.</span>
@@ -2497,8 +2493,7 @@ A       | Feb   | 150</code></pre>
 <p>---</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="pbi-28">
+</div><div class="item question-item" data-question="pbi-28">
 <button class="item-head">
 <span class="idx">28</span>
 <span class="item-title">Create a Conditional/Custom Column using <code>if...then...else</code>.</span>
@@ -2520,8 +2515,7 @@ A       | Feb   | 150</code></pre>
 <p>---</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="pbi-29">
+</div><div class="item question-item" data-question="pbi-29">
 <button class="item-head">
 <span class="idx">29</span>
 <span class="item-title">Use <code>Table.TransformColumns()</code> to clean a column.</span>
@@ -2540,8 +2534,7 @@ A       | Feb   | 150</code></pre>
 <p>---</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="pbi-30">
+</div><div class="item question-item" data-question="pbi-30">
 <button class="item-head">
 <span class="idx">30</span>
 <span class="item-title">Create and use a Power Query parameter.</span>
@@ -2560,7 +2553,13 @@ A       | Feb   | 150</code></pre>
 )</code></pre>
 </div>
 </div>
-</div>
+</div></div>
+
+
+
+
+
+
 </div>
 </div>
 </div>
@@ -2573,7 +2572,7 @@ A       | Feb   | 150</code></pre>
 </button>
 <div class="item-body">
 <div class="item-body-inner">
-<div class="item question-item" data-question="pbi-31">
+<div class="subtopic-nav" data-subtopic-nav=""><div class="subtopic-nav-inner"><button class="subtopic-tile" data-subtopic-target="pbi-31" type="button">Create Static Row-Level Security for a</button><button class="subtopic-tile" data-subtopic-target="pbi-32" type="button">Create Dynamic RLS usingUSERPRINCIPALNAME().</button><button class="subtopic-tile" data-subtopic-target="pbi-33" type="button">Create a User Mapping table and</button><button class="subtopic-tile" data-subtopic-target="pbi-34" type="button">Test RLS using "View As Roles"</button></div></div><div class="subtopic-panel" data-subtopic-panel=""></div><div class="list" data-subtopic-source=""><div class="item question-item" data-question="pbi-31">
 <button class="item-head">
 <span class="idx">31</span>
 <span class="item-title">Create Static Row-Level Security for a Region.</span>
@@ -2593,8 +2592,7 @@ A       | Feb   | 150</code></pre>
 <p>---</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="pbi-32">
+</div><div class="item question-item" data-question="pbi-32">
 <button class="item-head">
 <span class="idx">32</span>
 <span class="item-title">Create Dynamic RLS using <code>USERPRINCIPALNAME()</code>.</span>
@@ -2612,8 +2610,7 @@ A       | Feb   | 150</code></pre>
 <p>---</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="pbi-33">
+</div><div class="item question-item" data-question="pbi-33">
 <button class="item-head">
 <span class="idx">33</span>
 <span class="item-title">Create a User Mapping table and implement Dynamic RLS.</span>
@@ -2639,8 +2636,7 @@ Sales</code></pre>
 <p>---</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="pbi-34">
+</div><div class="item question-item" data-question="pbi-34">
 <button class="item-head">
 <span class="idx">34</span>
 <span class="item-title">Test RLS using "View As Roles" and explain after publishing.</span>
@@ -2662,7 +2658,10 @@ Sales</code></pre>
 → Add users/groups to role</code></pre>
 </div>
 </div>
-</div>
+</div></div>
+
+
+
 </div>
 </div>
 </div>
@@ -2675,7 +2674,7 @@ Sales</code></pre>
 </button>
 <div class="item-body">
 <div class="item-body-inner">
-<div class="item question-item" data-question="pbi-35">
+<div class="subtopic-nav" data-subtopic-nav=""><div class="subtopic-nav-inner"><button class="subtopic-tile" data-subtopic-target="pbi-35" type="button">Calculate Sales based on Ship Date</button><button class="subtopic-tile" data-subtopic-target="pbi-36" type="button">UseRELATED()orLOOKUPVALUE().</button><button class="subtopic-tile" data-subtopic-target="pbi-37" type="button">UseVALUES()/DISTINCT()to calculate unique</button></div></div><div class="subtopic-panel" data-subtopic-panel=""></div><div class="list" data-subtopic-source=""><div class="item question-item" data-question="pbi-35">
 <button class="item-head">
 <span class="idx">35</span>
 <span class="item-title">Calculate Sales based on Ship Date using <code>USERELATIONSHIP()</code>.</span>
@@ -2696,8 +2695,7 @@ CALCULATE(
 <p>---</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="pbi-36">
+</div><div class="item question-item" data-question="pbi-36">
 <button class="item-head">
 <span class="idx">36</span>
 <span class="item-title">Use <code>RELATED()</code> or <code>LOOKUPVALUE()</code>.</span>
@@ -2720,8 +2718,7 @@ LOOKUPVALUE(
 <p>---</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="pbi-37">
+</div><div class="item question-item" data-question="pbi-37">
 <button class="item-head">
 <span class="idx">37</span>
 <span class="item-title">Use <code>VALUES()</code> / <code>DISTINCT()</code> to calculate unique customers/products.</span>
@@ -2742,7 +2739,9 @@ COUNTROWS(
 )</code></pre>
 </div>
 </div>
-</div>
+</div></div>
+
+
 </div>
 </div>
 </div>
@@ -2755,7 +2754,7 @@ COUNTROWS(
 </button>
 <div class="item-body">
 <div class="item-body-inner">
-<div class="item question-item" data-question="pbi-38">
+<div class="subtopic-nav" data-subtopic-nav=""><div class="subtopic-nav-inner"><button class="subtopic-tile" data-subtopic-target="pbi-38" type="button">Power Query refresh is very slow.</button><button class="subtopic-tile" data-subtopic-target="pbi-39" type="button">A DAX measure is slow. Troubleshoot</button><button class="subtopic-tile" data-subtopic-target="pbi-40" type="button">Large dataset</button></div></div><div class="subtopic-panel" data-subtopic-panel=""></div><div class="list" data-subtopic-source=""><div class="item question-item" data-question="pbi-38">
 <button class="item-head">
 <span class="idx">38</span>
 <span class="item-title">Power Query refresh is very slow. Identify and fix it, including Query Folding.</span>
@@ -2777,8 +2776,7 @@ COUNTROWS(
 <p>---</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="pbi-39">
+</div><div class="item question-item" data-question="pbi-39">
 <button class="item-head">
 <span class="idx">39</span>
 <span class="item-title">A DAX measure is slow. Troubleshoot and optimize it.</span>
@@ -2808,8 +2806,7 @@ DIVIDE(
 <p>---</p>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="pbi-40">
+</div><div class="item question-item" data-question="pbi-40">
 <button class="item-head">
 <span class="idx">40</span>
 <span class="item-title">Large dataset — reduce columns/rows and optimize the model.</span>
@@ -2840,7 +2837,9 @@ Create efficient DAX measures</code></pre>
 <p>“I would not load unnecessary high-cardinality columns, unused fields or duplicate data into the model because they increase model size and can affect refresh and report performance.”</p>
 </div>
 </div>
-</div>
+</div></div>
+
+
 </div>
 </div>
 </div></div>
@@ -2861,7 +2860,7 @@ Create efficient DAX measures</code></pre>
 <div class="topic-nav" data-topic-nav=""><div class="topic-nav-inner"><button class="topic-tile" data-topic-target="powerbi-1" type="button">Measure vs Calculated Column</button><button class="topic-tile" data-topic-target="powerbi-2" type="button">SUM() vs SUMX()</button><button class="topic-tile" data-topic-target="powerbi-3" type="button">Row, Filter &amp; Evaluation Context, ALL()</button><button class="topic-tile" data-topic-target="powerbi-4" type="button">CALCULATE() and Row-to-Filter Context</button><button class="topic-tile" data-topic-target="powerbi-5" type="button">YoY, SAMEPERIODLASTYEAR(), DATEADD() &amp;</button><button class="topic-tile" data-topic-target="powerbi-6" type="button">Calculation Groups, RELATED() vs</button><button class="topic-tile" data-topic-target="powerbi-7" type="button">Power Query Editor, Reference vs Duplicate</button><button class="topic-tile" data-topic-target="powerbi-8" type="button">Append vs Merge</button><button class="topic-tile" data-topic-target="powerbi-9" type="button">Query Folding</button><button class="topic-tile" data-topic-target="powerbi-10" type="button">Power Query Parameters &amp; Their Role</button><button class="topic-tile" data-topic-target="powerbi-11" type="button">Star vs Snowflake Schema</button><button class="topic-tile" data-topic-target="powerbi-12" type="button">Cardinality, Bi-Directional Filtering &amp;</button><button class="topic-tile" data-topic-target="powerbi-13" type="button">Many-to-Many Relationships, Bridge Tables</button><button class="topic-tile" data-topic-target="powerbi-14" type="button">Static/Dynamic RLS, USERPRINCIPALNAME() &amp;</button><button class="topic-tile" data-topic-target="powerbi-15" type="button">Import vs DirectQuery vs Live Connection</button><button class="topic-tile" data-topic-target="powerbi-16" type="button">Indexes &amp; Execution Plans Behind DirectQuery</button><button class="topic-tile" data-topic-target="powerbi-17" type="button">Scheduled vs Incremental Refresh &amp; Gateway</button><button class="topic-tile" data-topic-target="powerbi-18" type="button">Power BI Premium, Capacity &amp; Refresh</button><button class="topic-tile" data-topic-target="powerbi-19" type="button">Drill-Through, Reports vs Dashboards</button><button class="topic-tile" data-topic-target="powerbi-20" type="button">Visualization Types Used Across Power BI</button><button class="topic-tile" data-topic-target="powerbi-21" type="button">Rating Your Own DAX Confidence &amp;</button><button class="topic-tile" data-topic-target="powerbi-22" type="button">Scenario Round</button><button class="topic-tile" data-topic-target="powerbi-23" type="button">Handling Requirements, Deadlines, DBA</button><button class="topic-tile" data-topic-target="powerbi-24" type="button">Lead-Level Quick Revision Reference Sheet</button><button class="topic-tile" data-topic-target="powerbi-25" type="button">Answer Framework by Question Type (Theory</button></div></div><div class="topic-panel" data-topic-panel=""></div><div class="list" data-topic-source="" id="powerbi-topics">
 <div class="item topic-item" data-index="powerbi-1">
 <button class="item-head"><span class="idx">01</span><span class="item-title">Measure vs Calculated Column: Storage, Timing &amp; Performance</span><span class="tag">12 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="powerbi-1">
+<div class="item-body"><div class="item-body-inner"><div class="subtopic-nav" data-subtopic-nav=""><div class="subtopic-nav-inner"><button class="subtopic-tile" data-subtopic-target="powerbi-1" type="button">What is a measure?</button><button class="subtopic-tile" data-subtopic-target="powerbi-2" type="button">What is a calculated column?</button><button class="subtopic-tile" data-subtopic-target="powerbi-3" type="button">What is the difference between a</button><button class="subtopic-tile" data-subtopic-target="powerbi-4" type="button">When is a measure calculated?</button><button class="subtopic-tile" data-subtopic-target="powerbi-5" type="button">When is a calculated column calculated?</button><button class="subtopic-tile" data-subtopic-target="powerbi-6" type="button">Is a measure stored?</button><button class="subtopic-tile" data-subtopic-target="powerbi-7" type="button">Is a calculated column stored?</button><button class="subtopic-tile" data-subtopic-target="powerbi-8" type="button">How does a calculated column affect</button><button class="subtopic-tile" data-subtopic-target="powerbi-9" type="button">Why are measures generally better for</button><button class="subtopic-tile" data-subtopic-target="powerbi-10" type="button">Calculated Column vs Measure --- when</button><button class="subtopic-tile" data-subtopic-target="powerbi-11" type="button">You can add a new column</button><button class="subtopic-tile" data-subtopic-target="powerbi-12" type="button">Have you added new columns in</button></div></div><div class="subtopic-panel" data-subtopic-panel=""></div><div class="list" data-subtopic-source=""><div class="item question-item" data-question="powerbi-1">
 <button class="item-head"><span class="idx">01</span><span class="item-title">What is a measure?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> A measure is a DAX calculation evaluated at query time based on
 the current filter context; it is not stored as a value for every row.</p>
@@ -2965,10 +2964,10 @@ only when necessary."</p>
 and classification logic in Power Query and keep business KPIs as
 measures.</p>
 </div></div>
-</div></div></div>
+</div></div></div></div>
 </div><div class="item topic-item" data-index="powerbi-2">
 <button class="item-head"><span class="idx">02</span><span class="item-title">SUM() vs SUMX(): Iterators, Speed &amp; When to Use Each</span><span class="tag">7 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="powerbi-13">
+<div class="item-body"><div class="item-body-inner"><div class="subtopic-nav" data-subtopic-nav=""><div class="subtopic-nav-inner"><button class="subtopic-tile" data-subtopic-target="powerbi-13" type="button">What isSUM()?</button><button class="subtopic-tile" data-subtopic-target="powerbi-14" type="button">What isSUMX()?</button><button class="subtopic-tile" data-subtopic-target="powerbi-15" type="button">What is the difference betweenSUM()andSUMX()?</button><button class="subtopic-tile" data-subtopic-target="powerbi-16" type="button">What is an iterator function?</button><button class="subtopic-tile" data-subtopic-target="powerbi-17" type="button">How doesSUMX()evaluate values?</button><button class="subtopic-tile" data-subtopic-target="powerbi-18" type="button">Which is faster,SUM()orSUMX()?</button><button class="subtopic-tile" data-subtopic-target="powerbi-19" type="button">When isSUMX()mandatory?</button></div></div><div class="subtopic-panel" data-subtopic-panel=""></div><div class="list" data-subtopic-source=""><div class="item question-item" data-question="powerbi-13">
 <button class="item-head"><span class="idx">13</span><span class="item-title">What is <code>SUM()</code>?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> <code>SUM()</code> adds the values of a single numeric column.</p>
 <p><strong>Query:</strong></p>
@@ -3042,10 +3041,10 @@ SUMX(
 <p><strong>Real-life case:</strong> Calculate transaction-level revenue when only
 quantity and price are available.</p>
 </div></div>
-</div></div></div>
+</div></div></div></div>
 </div><div class="item topic-item" data-index="powerbi-3">
 <button class="item-head"><span class="idx">03</span><span class="item-title">Row, Filter &amp; Evaluation Context, ALL(), ALLEXCEPT(), KEEPFILTERS()</span><span class="tag">12 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="powerbi-20">
+<div class="item-body"><div class="item-body-inner"><div class="subtopic-nav" data-subtopic-nav=""><div class="subtopic-nav-inner"><button class="subtopic-tile" data-subtopic-target="powerbi-20" type="button">What is row context?</button><button class="subtopic-tile" data-subtopic-target="powerbi-21" type="button">What is filter context?</button><button class="subtopic-tile" data-subtopic-target="powerbi-22" type="button">What is evaluation context?</button><button class="subtopic-tile" data-subtopic-target="powerbi-23" type="button">What creates filter context?</button><button class="subtopic-tile" data-subtopic-target="powerbi-24" type="button">How do slicers create filter context?</button><button class="subtopic-tile" data-subtopic-target="powerbi-25" type="button">How do visuals create filter context?</button><button class="subtopic-tile" data-subtopic-target="powerbi-26" type="button">How doesCALCULATE()affect filter context?</button><button class="subtopic-tile" data-subtopic-target="powerbi-27" type="button">What is filter precedence</button><button class="subtopic-tile" data-subtopic-target="powerbi-28" type="button">What isALL()?</button><button class="subtopic-tile" data-subtopic-target="powerbi-29" type="button">What isALLEXCEPT()?</button><button class="subtopic-tile" data-subtopic-target="powerbi-30" type="button">What isALLSELECTED()?</button><button class="subtopic-tile" data-subtopic-target="powerbi-31" type="button">What isKEEPFILTERS()?</button></div></div><div class="subtopic-panel" data-subtopic-panel=""></div><div class="list" data-subtopic-source=""><div class="item question-item" data-question="powerbi-20">
 <button class="item-head"><span class="idx">20</span><span class="item-title">What is row context?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> Row context means DAX is evaluating the current row, commonly
 in calculated columns and iterator functions.</p>
@@ -3179,10 +3178,10 @@ CALCULATE(
 <p><strong>Real-life case:</strong> Preserve an existing category selection while
 applying an additional business condition.</p>
 </div></div>
-</div></div></div>
+</div></div></div></div>
 </div><div class="item topic-item" data-index="powerbi-4">
 <button class="item-head"><span class="idx">04</span><span class="item-title">CALCULATE() and Row-to-Filter Context Transition</span><span class="tag">4 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="powerbi-32">
+<div class="item-body"><div class="item-body-inner"><div class="subtopic-nav" data-subtopic-nav=""><div class="subtopic-nav-inner"><button class="subtopic-tile" data-subtopic-target="powerbi-32" type="button">What isCALCULATE()?</button><button class="subtopic-tile" data-subtopic-target="powerbi-33" type="button">What is context transition?</button><button class="subtopic-tile" data-subtopic-target="powerbi-34" type="button">When does context transition occur?</button><button class="subtopic-tile" data-subtopic-target="powerbi-35" type="button">How doesCALCULATE()convert row context into</button></div></div><div class="subtopic-panel" data-subtopic-panel=""></div><div class="list" data-subtopic-source=""><div class="item question-item" data-question="powerbi-32">
 <button class="item-head"><span class="idx">32</span><span class="item-title">What is <code>CALCULATE()</code>?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> <code>CALCULATE()</code> evaluates an expression in a modified filter
 context and is one of the most important DAX functions for advanced
@@ -3223,10 +3222,10 @@ CALCULATE([Total Sales])
 <p><strong>Real-life case:</strong> Inside an iterator over customers, the current
 CustomerID can become a filter when the measure is evaluated.</p>
 </div></div>
-</div></div></div>
+</div></div></div></div>
 </div><div class="item topic-item" data-index="powerbi-5">
 <button class="item-head"><span class="idx">05</span><span class="item-title">YoY, SAMEPERIODLASTYEAR(), DATEADD() &amp; TOTALYTD() Concepts</span><span class="tag">8 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="powerbi-36">
+<div class="item-body"><div class="item-body-inner"><div class="subtopic-nav" data-subtopic-nav=""><div class="subtopic-nav-inner"><button class="subtopic-tile" data-subtopic-target="powerbi-36" type="button">How do you calculate Year-over-Year growth?</button><button class="subtopic-tile" data-subtopic-target="powerbi-37" type="button">What isSAMEPERIODLASTYEAR()?</button><button class="subtopic-tile" data-subtopic-target="powerbi-38" type="button">What isDATEADD()?</button><button class="subtopic-tile" data-subtopic-target="powerbi-39" type="button">What isTOTALYTD()?</button><button class="subtopic-tile" data-subtopic-target="powerbi-40" type="button">How isCALCULATE()used in time intelligence?</button><button class="subtopic-tile" data-subtopic-target="powerbi-41" type="button">How do you calculate current year</button><button class="subtopic-tile" data-subtopic-target="powerbi-42" type="button">Have you implemented Month-over-Month growth?</button><button class="subtopic-tile" data-subtopic-target="powerbi-43" type="button">What are the prerequisites for reliable</button></div></div><div class="subtopic-panel" data-subtopic-panel=""></div><div class="list" data-subtopic-source=""><div class="item question-item" data-question="powerbi-36">
 <button class="item-head"><span class="idx">36</span><span class="item-title">How do you calculate Year-over-Year growth?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> I calculate current-period sales, calculate prior-year sales
 using a proper Date table, and divide the difference by prior-year
@@ -3337,10 +3336,10 @@ and use the Date table's date column in time-intelligence functions.</p>
 <p><strong>Real-life case:</strong> A dedicated Date dimension prevents inconsistent
 time calculations across sales and inventory reports.</p>
 </div></div>
-</div></div></div>
+</div></div></div></div>
 </div><div class="item topic-item" data-index="powerbi-6">
 <button class="item-head"><span class="idx">06</span><span class="item-title">Calculation Groups, RELATED() vs RELATEDTABLE() &amp; Dynamic Top N</span><span class="tag">6 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="powerbi-44">
+<div class="item-body"><div class="item-body-inner"><div class="subtopic-nav" data-subtopic-nav=""><div class="subtopic-nav-inner"><button class="subtopic-tile" data-subtopic-target="powerbi-44" type="button">How would you handle dynamic currency</button><button class="subtopic-tile" data-subtopic-target="powerbi-45" type="button">What are Calculation Groups?</button><button class="subtopic-tile" data-subtopic-target="powerbi-46" type="button">RELATED()vsRELATEDTABLE()?</button><button class="subtopic-tile" data-subtopic-target="powerbi-47" type="button">VALUES()vsDISTINCT()vsALLNOBLANKROW()?</button><button class="subtopic-tile" data-subtopic-target="powerbi-48" type="button">How do you create a dynamic</button><button class="subtopic-tile" data-subtopic-target="powerbi-49" type="button">How would you create a dynamic</button></div></div><div class="subtopic-panel" data-subtopic-panel=""></div><div class="list" data-subtopic-source=""><div class="item question-item" data-question="powerbi-44">
 <button class="item-head"><span class="idx">44</span><span class="item-title">How would you handle dynamic currency conversion?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> I keep exchange rates in a rate table and use the selected
 currency plus the relevant date/rate to convert the base amount
@@ -3437,10 +3436,10 @@ slicer so the user can switch the analysis level.</p>
 City-wise sales without creating separate visuals, while the sales
 measure remains unchanged.</p>
 </div></div>
-</div></div></div>
+</div></div></div></div>
 </div><div class="item topic-item" data-index="powerbi-7">
 <button class="item-head"><span class="idx">07</span><span class="item-title">Power Query Editor, Reference vs Duplicate &amp; M Best Practices</span><span class="tag">14 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="powerbi-50">
+<div class="item-body"><div class="item-body-inner"><div class="subtopic-nav" data-subtopic-nav=""><div class="subtopic-nav-inner"><button class="subtopic-tile" data-subtopic-target="powerbi-50" type="button">What is Power Query?</button><button class="subtopic-tile" data-subtopic-target="powerbi-51" type="button">What is Power Query Editor?</button><button class="subtopic-tile" data-subtopic-target="powerbi-52" type="button">How do you clean data in</button><button class="subtopic-tile" data-subtopic-target="powerbi-53" type="button">What transformations have you used?</button><button class="subtopic-tile" data-subtopic-target="powerbi-54" type="button">Difference between duplicating and</button><button class="subtopic-tile" data-subtopic-target="powerbi-55" type="button">Can Power Query handle complex logic</button><button class="subtopic-tile" data-subtopic-target="powerbi-56" type="button">What issues have you faced in</button><button class="subtopic-tile" data-subtopic-target="powerbi-57" type="button">How do you use Power Query</button><button class="subtopic-tile" data-subtopic-target="powerbi-58" type="button">How can you divide a day</button><button class="subtopic-tile" data-subtopic-target="powerbi-59" type="button">How would you extract the username</button><button class="subtopic-tile" data-subtopic-target="powerbi-60" type="button">What are Power Query best practices?</button><button class="subtopic-tile" data-subtopic-target="powerbi-61" type="button">How do you handle Power Query</button><button class="subtopic-tile" data-subtopic-target="powerbi-62" type="button">How do conditional columns, unpivoting, and</button><button class="subtopic-tile" data-subtopic-target="powerbi-63" type="button">How do you calculate a calendar</button></div></div><div class="subtopic-panel" data-subtopic-panel=""></div><div class="list" data-subtopic-source=""><div class="item question-item" data-question="powerbi-50">
 <button class="item-head"><span class="idx">50</span><span class="item-title">What is Power Query?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> Power Query is Power BI's data ingestion and transformation
 engine used to connect, clean, reshape, combine, and prepare data before
@@ -3597,10 +3596,10 @@ in
 <p><strong>Real-life case:</strong> Parameters allow the calendar range to be changed
 without rewriting the transformation.</p>
 </div></div>
-</div></div></div>
+</div></div></div></div>
 </div><div class="item topic-item" data-index="powerbi-8">
 <button class="item-head"><span class="idx">08</span><span class="item-title">Append vs Merge: Key Differences Explained</span><span class="tag">3 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="powerbi-64">
+<div class="item-body"><div class="item-body-inner"><div class="subtopic-nav" data-subtopic-nav=""><div class="subtopic-nav-inner"><button class="subtopic-tile" data-subtopic-target="powerbi-64" type="button">What is Append?</button><button class="subtopic-tile" data-subtopic-target="powerbi-65" type="button">What is Merge?</button><button class="subtopic-tile" data-subtopic-target="powerbi-66" type="button">Difference between Append and Merge?</button></div></div><div class="subtopic-panel" data-subtopic-panel=""></div><div class="list" data-subtopic-source=""><div class="item question-item" data-question="powerbi-64">
 <button class="item-head"><span class="idx">64</span><span class="item-title">What is Append?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> Append combines rows from two or more tables with compatible
 structures.</p>
@@ -3621,10 +3620,10 @@ horizontally based on matching keys.</p>
 <p><strong>Real-life case:</strong> Monthly files are appended; Product attributes are
 merged into sales data.</p>
 </div></div>
-</div></div></div>
+</div></div></div></div>
 </div><div class="item topic-item" data-index="powerbi-9">
 <button class="item-head"><span class="idx">09</span><span class="item-title">Query Folding: What It Is, Why It Matters &amp; What Breaks It</span><span class="tag">6 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="powerbi-67">
+<div class="item-body"><div class="item-body-inner"><div class="subtopic-nav" data-subtopic-nav=""><div class="subtopic-nav-inner"><button class="subtopic-tile" data-subtopic-target="powerbi-67" type="button">What is Query Folding?</button><button class="subtopic-tile" data-subtopic-target="powerbi-68" type="button">Why is Query Folding important?</button><button class="subtopic-tile" data-subtopic-target="powerbi-69" type="button">How does Query Folding improve performance?</button><button class="subtopic-tile" data-subtopic-target="powerbi-70" type="button">How does Query Folding push transformations</button><button class="subtopic-tile" data-subtopic-target="powerbi-71" type="button">What operations can break Query Folding?</button><button class="subtopic-tile" data-subtopic-target="powerbi-72" type="button">How would you use Query Folding</button></div></div><div class="subtopic-panel" data-subtopic-panel=""></div><div class="list" data-subtopic-source=""><div class="item question-item" data-question="powerbi-67">
 <button class="item-head"><span class="idx">67</span><span class="item-title">What is Query Folding?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> Query folding is Power Query's ability to translate supported
 transformation steps into native source queries so the source performs
@@ -3671,10 +3670,10 @@ filtering, and verify folding during development.</p>
 <p><strong>Real-life case:</strong> For a large SQL fact table, I push date and business
 filters to SQL Server before loading the model.</p>
 </div></div>
-</div></div></div>
+</div></div></div></div>
 </div><div class="item topic-item" data-index="powerbi-10">
 <button class="item-head"><span class="idx">10</span><span class="item-title">Power Query Parameters &amp; Their Role in Incremental Refresh</span><span class="tag">3 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="powerbi-73">
+<div class="item-body"><div class="item-body-inner"><div class="subtopic-nav" data-subtopic-nav=""><div class="subtopic-nav-inner"><button class="subtopic-tile" data-subtopic-target="powerbi-73" type="button">Have you worked with parameters in</button><button class="subtopic-tile" data-subtopic-target="powerbi-74" type="button">What is a use case of</button><button class="subtopic-tile" data-subtopic-target="powerbi-75" type="button">How are parameters related to incremental</button></div></div><div class="subtopic-panel" data-subtopic-panel=""></div><div class="list" data-subtopic-source=""><div class="item question-item" data-question="powerbi-73">
 <button class="item-head"><span class="idx">73</span><span class="item-title">Have you worked with parameters in Power BI?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> Yes; parameters can make source paths, date ranges,
 environments, and transformation logic configurable without rewriting
@@ -3697,10 +3696,10 @@ data.</p>
 <p><strong>Real-life case:</strong> Only recent partitions are refreshed while older
 historical partitions remain unchanged.</p>
 </div></div>
-</div></div></div>
+</div></div></div></div>
 </div><div class="item topic-item" data-index="powerbi-11">
 <button class="item-head"><span class="idx">11</span><span class="item-title">Star vs Snowflake Schema: Facts, Dimensions &amp; Performance</span><span class="tag">8 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="powerbi-76">
+<div class="item-body"><div class="item-body-inner"><div class="subtopic-nav" data-subtopic-nav=""><div class="subtopic-nav-inner"><button class="subtopic-tile" data-subtopic-target="powerbi-76" type="button">What is a star schema?</button><button class="subtopic-tile" data-subtopic-target="powerbi-77" type="button">What is a fact table?</button><button class="subtopic-tile" data-subtopic-target="powerbi-78" type="button">What is a dimension table?</button><button class="subtopic-tile" data-subtopic-target="powerbi-79" type="button">Why is star schema recommended?</button><button class="subtopic-tile" data-subtopic-target="powerbi-80" type="button">How does star schema improve performance?</button><button class="subtopic-tile" data-subtopic-target="powerbi-81" type="button">What is a snowflake schema?</button><button class="subtopic-tile" data-subtopic-target="powerbi-82" type="button">Star schema vs Snowflake schema?</button><button class="subtopic-tile" data-subtopic-target="powerbi-83" type="button">Why can a snowflake schema be</button></div></div><div class="subtopic-panel" data-subtopic-panel=""></div><div class="list" data-subtopic-source=""><div class="item question-item" data-question="powerbi-76">
 <button class="item-head"><span class="idx">76</span><span class="item-title">What is a star schema?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> A star schema has a central fact table connected directly to
 denormalized dimension tables.</p>
@@ -3757,10 +3756,10 @@ increase model complexity and query work.</p>
 <p><strong>Real-life case:</strong> I avoid unnecessary snowflaking in a semantic model
 when a simple dimension can provide the required attributes.</p>
 </div></div>
-</div></div></div>
+</div></div></div></div>
 </div><div class="item topic-item" data-index="powerbi-12">
 <button class="item-head"><span class="idx">12</span><span class="item-title">Cardinality, Bi-Directional Filtering &amp; High-Cardinality Columns</span><span class="tag">6 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="powerbi-84">
+<div class="item-body"><div class="item-body-inner"><div class="subtopic-nav" data-subtopic-nav=""><div class="subtopic-nav-inner"><button class="subtopic-tile" data-subtopic-target="powerbi-84" type="button">What are relationship cardinalities?</button><button class="subtopic-tile" data-subtopic-target="powerbi-85" type="button">Why avoid unnecessary bi-directional</button><button class="subtopic-tile" data-subtopic-target="powerbi-86" type="button">Active vs inactive relationships?</button><button class="subtopic-tile" data-subtopic-target="powerbi-87" type="button">How do you handle high-cardinality columns?</button><button class="subtopic-tile" data-subtopic-target="powerbi-88" type="button">How would you combine data from</button><button class="subtopic-tile" data-subtopic-target="powerbi-89" type="button">How would you handle a many-to-many</button></div></div><div class="subtopic-panel" data-subtopic-panel=""></div><div class="list" data-subtopic-source=""><div class="item question-item" data-question="powerbi-84">
 <button class="item-head"><span class="idx">84</span><span class="item-title">What are relationship cardinalities?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> The main cardinalities are one-to-one, one-to-many,
 many-to-one, and many-to-many.</p>
@@ -3818,10 +3817,10 @@ one-to-many relationships from the bridge to the participating tables.</p>
 <p><strong>Real-life case:</strong> A Customer can belong to multiple Segments, so a
 CustomerSegment bridge can model the relationship cleanly.</p>
 </div></div>
-</div></div></div>
+</div></div></div></div>
 </div><div class="item topic-item" data-index="powerbi-13">
 <button class="item-head"><span class="idx">13</span><span class="item-title">Many-to-Many Relationships, Bridge Tables, CROSSFILTER() &amp; TREATAS()</span><span class="tag">6 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="powerbi-90">
+<div class="item-body"><div class="item-body-inner"><div class="subtopic-nav" data-subtopic-nav=""><div class="subtopic-nav-inner"><button class="subtopic-tile" data-subtopic-target="powerbi-90" type="button">What is a many-to-many relationship?</button><button class="subtopic-tile" data-subtopic-target="powerbi-91" type="button">What is a bridge table?</button><button class="subtopic-tile" data-subtopic-target="powerbi-92" type="button">How are many-to-many relationships handled</button><button class="subtopic-tile" data-subtopic-target="powerbi-93" type="button">What is relationship direction?</button><button class="subtopic-tile" data-subtopic-target="powerbi-94" type="button">What isCROSSFILTER()?</button><button class="subtopic-tile" data-subtopic-target="powerbi-95" type="button">What isTREATAS()?</button></div></div><div class="subtopic-panel" data-subtopic-panel=""></div><div class="list" data-subtopic-source=""><div class="item question-item" data-question="powerbi-90">
 <button class="item-head"><span class="idx">90</span><span class="item-title">What is a many-to-many relationship?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> It occurs when multiple rows in one table can relate to
 multiple rows in another table.</p>
@@ -3891,10 +3890,10 @@ CALCULATE(
 <p><strong>Real-life case:</strong> Use it when a disconnected selector needs to filter
 a model table without creating a physical relationship.</p>
 </div></div>
-</div></div></div>
+</div></div></div></div>
 </div><div class="item topic-item" data-index="powerbi-14">
 <button class="item-head"><span class="idx">14</span><span class="item-title">Static/Dynamic RLS, USERPRINCIPALNAME() &amp; Column-Level Security</span><span class="tag">9 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="powerbi-96">
+<div class="item-body"><div class="item-body-inner"><div class="subtopic-nav" data-subtopic-nav=""><div class="subtopic-nav-inner"><button class="subtopic-tile" data-subtopic-target="powerbi-96" type="button">What is Row-Level Security?</button><button class="subtopic-tile" data-subtopic-target="powerbi-97" type="button">What is static RLS?</button><button class="subtopic-tile" data-subtopic-target="powerbi-98" type="button">What is dynamic RLS?</button><button class="subtopic-tile" data-subtopic-target="powerbi-99" type="button">What isUSERPRINCIPALNAME()?</button><button class="subtopic-tile" data-subtopic-target="powerbi-100" type="button">What are RLS roles?</button><button class="subtopic-tile" data-subtopic-target="powerbi-101" type="button">How are security filters applied?</button><button class="subtopic-tile" data-subtopic-target="powerbi-102" type="button">How would you implement dynamic RLS?</button><button class="subtopic-tile" data-subtopic-target="powerbi-103" type="button">How would you implement column-level security</button><button class="subtopic-tile" data-subtopic-target="powerbi-104" type="button">How would you handle security/governance when</button></div></div><div class="subtopic-panel" data-subtopic-panel=""></div><div class="list" data-subtopic-source=""><div class="item question-item" data-question="powerbi-96">
 <button class="item-head"><span class="idx">96</span><span class="item-title">What is Row-Level Security?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> RLS restricts which rows a user can see based on roles and
 filter expressions in the semantic model.</p>
@@ -3972,10 +3971,10 @@ mechanisms, and avoid exposing unnecessary sensitive data.</p>
 approved dataset/report and validate access using test accounts before
 release.</p>
 </div></div>
-</div></div></div>
+</div></div></div></div>
 </div><div class="item topic-item" data-index="powerbi-15">
 <button class="item-head"><span class="idx">15</span><span class="item-title">Import vs DirectQuery vs Live Connection &amp; Data Sources</span><span class="tag">17 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="powerbi-105">
+<div class="item-body"><div class="item-body-inner"><div class="subtopic-nav" data-subtopic-nav=""><div class="subtopic-nav-inner"><button class="subtopic-tile" data-subtopic-target="powerbi-105" type="button">What is Import mode?</button><button class="subtopic-tile" data-subtopic-target="powerbi-106" type="button">What is DirectQuery?</button><button class="subtopic-tile" data-subtopic-target="powerbi-107" type="button">What is Live Connection?</button><button class="subtopic-tile" data-subtopic-target="powerbi-108" type="button">Difference between Import and DirectQuery?</button><button class="subtopic-tile" data-subtopic-target="powerbi-109" type="button">Difference between Import and Live Connection?</button><button class="subtopic-tile" data-subtopic-target="powerbi-110" type="button">Difference between DirectQuery and Live</button><button class="subtopic-tile" data-subtopic-target="powerbi-111" type="button">Which mode is fastest?</button><button class="subtopic-tile" data-subtopic-target="powerbi-112" type="button">When is DirectQuery used?</button><button class="subtopic-tile" data-subtopic-target="powerbi-113" type="button">When is Live Connection used?</button><button class="subtopic-tile" data-subtopic-target="powerbi-114" type="button">What types of connections have you</button><button class="subtopic-tile" data-subtopic-target="powerbi-115" type="button">Which mode do you use when</button><button class="subtopic-tile" data-subtopic-target="powerbi-116" type="button">What is a disadvantage of Import</button><button class="subtopic-tile" data-subtopic-target="powerbi-117" type="button">What data sources and data sizes</button><button class="subtopic-tile" data-subtopic-target="powerbi-118" type="button">Have you integrated Power BI with</button><button class="subtopic-tile" data-subtopic-target="powerbi-119" type="button">Have you worked with Native Queries</button><button class="subtopic-tile" data-subtopic-target="powerbi-120" type="button">Have you worked with Cube models?</button><button class="subtopic-tile" data-subtopic-target="powerbi-121" type="button">Have you connected Power BI to</button></div></div><div class="subtopic-panel" data-subtopic-panel=""></div><div class="list" data-subtopic-source=""><div class="item question-item" data-question="powerbi-105">
 <button class="item-head"><span class="idx">105</span><span class="item-title">What is Import mode?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> Import mode loads data into Power BI's in-memory storage
 engine, generally providing fast report performance with scheduled
@@ -4122,10 +4121,10 @@ in
 <p><strong>Real-life case:</strong> An API can provide external sales, exchange-rate,
 weather, or operational data that is not available in the warehouse.</p>
 </div></div>
-</div></div></div>
+</div></div></div></div>
 </div><div class="item topic-item" data-index="powerbi-16">
 <button class="item-head"><span class="idx">16</span><span class="item-title">Indexes &amp; Execution Plans Behind DirectQuery Speed</span><span class="tag">1 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="powerbi-122">
+<div class="item-body"><div class="item-body-inner"><div class="subtopic-nav" data-subtopic-nav=""><div class="subtopic-nav-inner"><button class="subtopic-tile" data-subtopic-target="powerbi-122" type="button">How do clustered/non-clustered indexes and</button></div></div><div class="subtopic-panel" data-subtopic-panel=""></div><div class="list" data-subtopic-source=""><div class="item question-item" data-question="powerbi-122">
 <button class="item-head"><span class="idx">122</span><span class="item-title">How do clustered/non-clustered indexes and execution plans help DirectQuery?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> In DirectQuery, source-side indexing and query-plan
 optimization can reduce scan time and improve response time because
@@ -4134,10 +4133,10 @@ report interactions generate source queries.</p>
 execution plan and work with the DBA to optimize indexes and expensive
 operations.</p>
 </div></div>
-</div></div></div>
+</div></div></div></div>
 </div><div class="item topic-item" data-index="powerbi-17">
 <button class="item-head"><span class="idx">17</span><span class="item-title">Scheduled vs Incremental Refresh &amp; Gateway Timeout Fixes</span><span class="tag">8 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="powerbi-123">
+<div class="item-body"><div class="item-body-inner"><div class="subtopic-nav" data-subtopic-nav=""><div class="subtopic-nav-inner"><button class="subtopic-tile" data-subtopic-target="powerbi-123" type="button">What is data refresh?</button><button class="subtopic-tile" data-subtopic-target="powerbi-124" type="button">What is incremental refresh?</button><button class="subtopic-tile" data-subtopic-target="powerbi-125" type="button">How does scheduled refresh work?</button><button class="subtopic-tile" data-subtopic-target="powerbi-126" type="button">What is the purpose of incremental</button><button class="subtopic-tile" data-subtopic-target="powerbi-127" type="button">How would you configure incremental refresh</button><button class="subtopic-tile" data-subtopic-target="powerbi-128" type="button">Scenario</button><button class="subtopic-tile" data-subtopic-target="powerbi-129" type="button">Scheduled Refresh vs Incremental Refresh vs</button><button class="subtopic-tile" data-subtopic-target="powerbi-130" type="button">How would you use incremental refresh</button></div></div><div class="subtopic-panel" data-subtopic-panel=""></div><div class="list" data-subtopic-source=""><div class="item question-item" data-question="powerbi-123">
 <button class="item-head"><span class="idx">123</span><span class="item-title">What is data refresh?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> Data refresh updates the Power BI model with the latest
 available source data according to the configured refresh strategy.</p>
@@ -4202,10 +4201,10 @@ model, and monitor refresh behavior.</p>
 <p><strong>Real-life case:</strong> Only recent sales partitions are processed while
 historical partitions remain unchanged.</p>
 </div></div>
-</div></div></div>
+</div></div></div></div>
 </div><div class="item topic-item" data-index="powerbi-18">
 <button class="item-head"><span class="idx">18</span><span class="item-title">Power BI Premium, Capacity &amp; Refresh Behavior</span><span class="tag">4 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="powerbi-131">
+<div class="item-body"><div class="item-body-inner"><div class="subtopic-nav" data-subtopic-nav=""><div class="subtopic-nav-inner"><button class="subtopic-tile" data-subtopic-target="powerbi-131" type="button">What is Power BI Premium?</button><button class="subtopic-tile" data-subtopic-target="powerbi-132" type="button">What is capacity?</button><button class="subtopic-tile" data-subtopic-target="powerbi-133" type="button">How does capacity work?</button><button class="subtopic-tile" data-subtopic-target="powerbi-134" type="button">How would you handle Premium capacity</button></div></div><div class="subtopic-panel" data-subtopic-panel=""></div><div class="list" data-subtopic-source=""><div class="item question-item" data-question="powerbi-131">
 <button class="item-head"><span class="idx">131</span><span class="item-title">What is Power BI Premium?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> Power BI Premium provides dedicated capacity capabilities and
 enterprise features for larger-scale analytics, depending on the
@@ -4239,10 +4238,10 @@ and investigate resource-heavy workloads.</p>
 resources, I would identify the heavy workloads and adjust model/refresh
 design.</p>
 </div></div>
-</div></div></div>
+</div></div></div></div>
 </div><div class="item topic-item" data-index="powerbi-19">
 <button class="item-head"><span class="idx">19</span><span class="item-title">Drill-Through, Reports vs Dashboards, Gateways &amp; Workspace Roles</span><span class="tag">7 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="powerbi-135">
+<div class="item-body"><div class="item-body-inner"><div class="subtopic-nav" data-subtopic-nav=""><div class="subtopic-nav-inner"><button class="subtopic-tile" data-subtopic-target="powerbi-135" type="button">What is your experience with Power</button><button class="subtopic-tile" data-subtopic-target="powerbi-136" type="button">What activities have you performed in</button><button class="subtopic-tile" data-subtopic-target="powerbi-137" type="button">Drill-Down vs Drill-Through vs Tooltip pages?</button><button class="subtopic-tile" data-subtopic-target="powerbi-138" type="button">Power BI Report vs Dashboard?</button><button class="subtopic-tile" data-subtopic-target="powerbi-139" type="button">Standard On-Premises Gateway vs Personal</button><button class="subtopic-tile" data-subtopic-target="powerbi-140" type="button">Dataflows vs Semantic Models/Datasets?</button><button class="subtopic-tile" data-subtopic-target="powerbi-141" type="button">What are Power BI workspace roles?</button></div></div><div class="subtopic-panel" data-subtopic-panel=""></div><div class="list" data-subtopic-source=""><div class="item question-item" data-question="powerbi-135">
 <button class="item-head"><span class="idx">135</span><span class="item-title">What is your experience with Power BI Service?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> "After developing reports, I have worked with publishing,
 workspaces, refresh configuration, security, sharing, and validating
@@ -4298,10 +4297,10 @@ publishing, editing, and consuming content.</p>
 <p><strong>Real-life case:</strong> I give users the least privilege required for their
 responsibilities.</p>
 </div></div>
-</div></div></div>
+</div></div></div></div>
 </div><div class="item topic-item" data-index="powerbi-20">
 <button class="item-head"><span class="idx">20</span><span class="item-title">Visualization Types Used Across Power BI Projects</span><span class="tag">1 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="powerbi-142">
+<div class="item-body"><div class="item-body-inner"><div class="subtopic-nav" data-subtopic-nav=""><div class="subtopic-nav-inner"><button class="subtopic-tile" data-subtopic-target="powerbi-142" type="button">What visualizations have you worked with?</button></div></div><div class="subtopic-panel" data-subtopic-panel=""></div><div class="list" data-subtopic-source=""><div class="item question-item" data-question="powerbi-142">
 <button class="item-head"><span class="idx">142</span><span class="item-title">What visualizations have you worked with?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> I have used cards/KPIs, bar and column charts, line charts,
 combo charts, tables, matrices, slicers, maps, decomposition-style
@@ -4310,10 +4309,10 @@ analysis, and custom/advanced visuals where appropriate.</p>
 for executive metrics, trends for sales movement, and matrices/tables
 for operational detail.</p>
 </div></div>
-</div></div></div>
+</div></div></div></div>
 </div><div class="item topic-item" data-index="powerbi-21">
 <button class="item-head"><span class="idx">21</span><span class="item-title">Rating Your Own DAX Confidence &amp; Proficiency</span><span class="tag">1 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="powerbi-143">
+<div class="item-body"><div class="item-body-inner"><div class="subtopic-nav" data-subtopic-nav=""><div class="subtopic-nav-inner"><button class="subtopic-tile" data-subtopic-target="powerbi-143" type="button">How confident are you in writing</button></div></div><div class="subtopic-panel" data-subtopic-panel=""></div><div class="list" data-subtopic-source=""><div class="item question-item" data-question="powerbi-143">
 <button class="item-head"><span class="idx">143</span><span class="item-title">How confident are you in writing DAX? How would you rate yourself?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> "I would rate myself around 8/10 for practical DAX; I am
 confident with measures, context, <code>CALCULATE</code>, time intelligence,
@@ -4323,10 +4322,10 @@ advanced optimization topics."</p>
 measures and explain why the result changes under different filter
 contexts.</p>
 </div></div>
-</div></div></div>
+</div></div></div></div>
 </div><div class="item topic-item" data-index="powerbi-22">
 <button class="item-head"><span class="idx">22</span><span class="item-title">Scenario Round: SQL, DAX, RLS, Storage Mode &amp; Performance</span><span class="tag">13 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="powerbi-144">
+<div class="item-body"><div class="item-body-inner"><div class="subtopic-nav" data-subtopic-nav=""><div class="subtopic-nav-inner"><button class="subtopic-tile" data-subtopic-target="powerbi-144" type="button">How would you use SQL to</button><button class="subtopic-tile" data-subtopic-target="powerbi-145" type="button">How would you choose between a</button><button class="subtopic-tile" data-subtopic-target="powerbi-146" type="button">When would you useSUMX()instead ofSUM()?</button><button class="subtopic-tile" data-subtopic-target="powerbi-147" type="button">How would you calculate YoY growth?</button><button class="subtopic-tile" data-subtopic-target="powerbi-148" type="button">How would you handle a many-to-many</button><button class="subtopic-tile" data-subtopic-target="powerbi-149" type="button">How would you implement dynamic RLS?</button><button class="subtopic-tile" data-subtopic-target="powerbi-150" type="button">When would you choose Import mode?</button><button class="subtopic-tile" data-subtopic-target="powerbi-151" type="button">When would you choose DirectQuery?</button><button class="subtopic-tile" data-subtopic-target="powerbi-152" type="button">When would you choose Live Connection?</button><button class="subtopic-tile" data-subtopic-target="powerbi-153" type="button">How would you use Query Folding</button><button class="subtopic-tile" data-subtopic-target="powerbi-154" type="button">How would you use incremental refresh?</button><button class="subtopic-tile" data-subtopic-target="powerbi-155" type="button">How would you handle Power BI</button><button class="subtopic-tile" data-subtopic-target="powerbi-156" type="button">Scenario</button></div></div><div class="subtopic-panel" data-subtopic-panel=""></div><div class="list" data-subtopic-source=""><div class="item question-item" data-question="powerbi-144">
 <button class="item-head"><span class="idx">144</span><span class="item-title">How would you use SQL to find the top 3 customers by total order value?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> I aggregate order value by customer, rank or sort the totals,
 and return the top three; I clarify whether ties should be included.</p>
@@ -4457,10 +4456,10 @@ largest contributor rather than guessing.</p>
 expensive visuals/measures, reduce high-cardinality fields, optimize
 relationships, and check source query plans for DirectQuery.</p>
 </div></div>
-</div></div></div>
+</div></div></div></div>
 </div><div class="item topic-item" data-index="powerbi-23">
 <button class="item-head"><span class="idx">23</span><span class="item-title">Handling Requirements, Deadlines, DBA Conflicts &amp; Staying Current</span><span class="tag">4 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="powerbi-157">
+<div class="item-body"><div class="item-body-inner"><div class="subtopic-nav" data-subtopic-nav=""><div class="subtopic-nav-inner"><button class="subtopic-tile" data-subtopic-target="powerbi-157" type="button">How do you handle vague or</button><button class="subtopic-tile" data-subtopic-target="powerbi-158" type="button">How do you prioritize urgent requests</button><button class="subtopic-tile" data-subtopic-target="powerbi-159" type="button">How do you handle disagreement with</button><button class="subtopic-tile" data-subtopic-target="powerbi-160" type="button">How do you stay updated with</button></div></div><div class="subtopic-panel" data-subtopic-panel=""></div><div class="list" data-subtopic-source=""><div class="item question-item" data-question="powerbi-157">
 <button class="item-head"><span class="idx">157</span><span class="item-title">How do you handle vague or changing business requirements?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> "I clarify the objective, users, KPI definitions, scope, and
 acceptance criteria, document assumptions, and confirm the requirement
@@ -4495,7 +4494,7 @@ they solve a real business or technical problem."</p>
 into production, I validate performance, governance, licensing, and
 compatibility.</p>
 </div></div>
-</div></div></div>
+</div></div></div></div>
 </div><div class="item topic-item" data-index="powerbi-24">
 <button class="item-head"><span class="idx">24</span><span class="item-title">Lead-Level Quick Revision Reference Sheet</span><span class="tag">Quick Reference</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p>Topic                              One-line memory</p>
@@ -4614,7 +4613,7 @@ and validate the result with stakeholders."</p>
 </button>
 <div class="item-body">
 <div class="item-body-inner">
-<div class="item question-item" data-question="sql-1">
+<div class="subtopic-nav" data-subtopic-nav=""><div class="subtopic-nav-inner"><button class="subtopic-tile" data-subtopic-target="sql-1" type="button">Find customers who have never placed</button><button class="subtopic-tile" data-subtopic-target="sql-2" type="button">Find records that exist in Table</button><button class="subtopic-tile" data-subtopic-target="sql-3" type="button">Find employees earning more than their</button></div></div><div class="subtopic-panel" data-subtopic-panel=""></div><div class="list" data-subtopic-source=""><div class="item question-item" data-question="sql-1">
 <button class="item-head">
 <span class="idx">01</span>
 <span class="item-title">Find customers who have never placed an order.</span>
@@ -4631,8 +4630,7 @@ LEFT JOIN Orders o
 WHERE o.CustomerID IS NULL;</code></pre>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="sql-2">
+</div><div class="item question-item" data-question="sql-2">
 <button class="item-head">
 <span class="idx">02</span>
 <span class="item-title">Find records that exist in Table A but not in Table B.</span>
@@ -4649,8 +4647,7 @@ LEFT JOIN TableB b
 WHERE b.ID IS NULL;</code></pre>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="sql-3">
+</div><div class="item question-item" data-question="sql-3">
 <button class="item-head">
 <span class="idx">03</span>
 <span class="item-title">Find employees earning more than their managers using a self-join.</span>
@@ -4669,7 +4666,9 @@ JOIN Employees m
 WHERE e.Salary &gt; m.Salary;</code></pre>
 </div>
 </div>
-</div>
+</div></div>
+
+
 </div>
 </div>
 </div>
@@ -4682,7 +4681,7 @@ WHERE e.Salary &gt; m.Salary;</code></pre>
 </button>
 <div class="item-body">
 <div class="item-body-inner">
-<div class="item question-item" data-question="sql-4">
+<div class="subtopic-nav" data-subtopic-nav=""><div class="subtopic-nav-inner"><button class="subtopic-tile" data-subtopic-target="sql-4" type="button">Find duplicate records usingGROUP BYandHAVING.</button><button class="subtopic-tile" data-subtopic-target="sql-5" type="button">Calculate total revenue per product.</button><button class="subtopic-tile" data-subtopic-target="sql-6" type="button">Find departments whose total salary expense</button><button class="subtopic-tile" data-subtopic-target="sql-7" type="button">Calculate average sales per region.</button><button class="subtopic-tile" data-subtopic-target="sql-8" type="button">Find the most profitable/top 3 regions</button></div></div><div class="subtopic-panel" data-subtopic-panel=""></div><div class="list" data-subtopic-source=""><div class="item question-item" data-question="sql-4">
 <button class="item-head">
 <span class="idx">04</span>
 <span class="item-title">Find duplicate records using <code>GROUP BY</code> and <code>HAVING</code>.</span>
@@ -4698,8 +4697,7 @@ GROUP BY Name
 HAVING COUNT(*) &gt; 1;</code></pre>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="sql-5">
+</div><div class="item question-item" data-question="sql-5">
 <button class="item-head">
 <span class="idx">05</span>
 <span class="item-title">Calculate total revenue per product.</span>
@@ -4715,8 +4713,7 @@ FROM Sales
 GROUP BY ProductID;</code></pre>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="sql-6">
+</div><div class="item question-item" data-question="sql-6">
 <button class="item-head">
 <span class="idx">06</span>
 <span class="item-title">Find departments whose total salary expense is greater than a specified amount.</span>
@@ -4733,8 +4730,7 @@ GROUP BY DepartmentID
 HAVING SUM(Salary) &gt; 100000;</code></pre>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="sql-7">
+</div><div class="item question-item" data-question="sql-7">
 <button class="item-head">
 <span class="idx">07</span>
 <span class="item-title">Calculate average sales per region.</span>
@@ -4750,8 +4746,7 @@ FROM Sales
 GROUP BY Region;</code></pre>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="sql-8">
+</div><div class="item question-item" data-question="sql-8">
 <button class="item-head">
 <span class="idx">08</span>
 <span class="item-title">Find the most profitable/top 3 regions by revenue.</span>
@@ -4768,7 +4763,11 @@ GROUP BY Region
 ORDER BY TotalRevenue DESC;</code></pre>
 </div>
 </div>
-</div>
+</div></div>
+
+
+
+
 </div>
 </div>
 </div>
@@ -4781,7 +4780,7 @@ ORDER BY TotalRevenue DESC;</code></pre>
 </button>
 <div class="item-body">
 <div class="item-body-inner">
-<div class="item question-item" data-question="sql-9">
+<div class="subtopic-nav" data-subtopic-nav=""><div class="subtopic-nav-inner"><button class="subtopic-tile" data-subtopic-target="sql-9" type="button">Find the second-highest salary.</button><button class="subtopic-tile" data-subtopic-target="sql-10" type="button">Find employees earning more than the</button><button class="subtopic-tile" data-subtopic-target="sql-11" type="button">Find the top 3 employees with</button><button class="subtopic-tile" data-subtopic-target="sql-12" type="button">Find products that have never been</button></div></div><div class="subtopic-panel" data-subtopic-panel=""></div><div class="list" data-subtopic-source=""><div class="item question-item" data-question="sql-9">
 <button class="item-head">
 <span class="idx">09</span>
 <span class="item-title">Find the second-highest salary.</span>
@@ -4799,8 +4798,7 @@ WHERE Salary &lt; (
 );</code></pre>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="sql-10">
+</div><div class="item question-item" data-question="sql-10">
 <button class="item-head">
 <span class="idx">10</span>
 <span class="item-title">Find employees earning more than the average salary.</span>
@@ -4818,8 +4816,7 @@ WHERE Salary &gt; (
 );</code></pre>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="sql-11">
+</div><div class="item question-item" data-question="sql-11">
 <button class="item-head">
 <span class="idx">11</span>
 <span class="item-title">Find the top 3 employees with the highest salaries.</span>
@@ -4834,8 +4831,7 @@ FROM Employees
 ORDER BY Salary DESC;</code></pre>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="sql-12">
+</div><div class="item question-item" data-question="sql-12">
 <button class="item-head">
 <span class="idx">12</span>
 <span class="item-title">Find products that have never been sold.</span>
@@ -4854,7 +4850,10 @@ WHERE NOT EXISTS (
 );</code></pre>
 </div>
 </div>
-</div>
+</div></div>
+
+
+
 </div>
 </div>
 </div>
@@ -4867,7 +4866,7 @@ WHERE NOT EXISTS (
 </button>
 <div class="item-body">
 <div class="item-body-inner">
-<div class="item question-item" data-question="sql-13">
+<div class="subtopic-nav" data-subtopic-nav=""><div class="subtopic-nav-inner"><button class="subtopic-tile" data-subtopic-target="sql-13" type="button">Delete duplicate records while keeping one</button><button class="subtopic-tile" data-subtopic-target="sql-14" type="button">Write a CTE-based query for a</button></div></div><div class="subtopic-panel" data-subtopic-panel=""></div><div class="list" data-subtopic-source=""><div class="item question-item" data-question="sql-13">
 <button class="item-head">
 <span class="idx">13</span>
 <span class="item-title">Delete duplicate records while keeping one record.</span>
@@ -4889,8 +4888,7 @@ DELETE FROM CTE
 WHERE rn &gt; 1;</code></pre>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="sql-14">
+</div><div class="item question-item" data-question="sql-14">
 <button class="item-head">
 <span class="idx">14</span>
 <span class="item-title">Write a CTE-based query for a multi-step business problem.</span>
@@ -4911,7 +4909,8 @@ FROM SalesSummary
 WHERE TotalSales &gt; 10000;</code></pre>
 </div>
 </div>
-</div>
+</div></div>
+
 </div>
 </div>
 </div>
@@ -4924,7 +4923,7 @@ WHERE TotalSales &gt; 10000;</code></pre>
 </button>
 <div class="item-body">
 <div class="item-body-inner">
-<div class="item question-item" data-question="sql-15">
+<div class="subtopic-nav" data-subtopic-nav=""><div class="subtopic-nav-inner"><button class="subtopic-tile" data-subtopic-target="sql-15" type="button">Find the Nth highest salary usingDENSE_RANK().</button><button class="subtopic-tile" data-subtopic-target="sql-16" type="button">Calculate a running total of sales.</button><button class="subtopic-tile" data-subtopic-target="sql-17" type="button">Find the second-highest transaction amount for</button><button class="subtopic-tile" data-subtopic-target="sql-18" type="button">Find month-over-month sales increases</button><button class="subtopic-tile" data-subtopic-target="sql-19" type="button">Calculate percentage contribution of each</button><button class="subtopic-tile" data-subtopic-target="sql-20" type="button">Find the second-most-recent order for each</button><button class="subtopic-tile" data-subtopic-target="sql-21" type="button">ExplainROW_NUMBER(),RANK()andDENSE_RANK().</button><button class="subtopic-tile" data-subtopic-target="sql-22" type="button">Find the second-highest salary within each</button></div></div><div class="subtopic-panel" data-subtopic-panel=""></div><div class="list" data-subtopic-source=""><div class="item question-item" data-question="sql-15">
 <button class="item-head">
 <span class="idx">15</span>
 <span class="item-title">Find the Nth highest salary using <code>DENSE_RANK()</code>.</span>
@@ -4944,8 +4943,7 @@ FROM CTE
 WHERE rnk = 3;</code></pre>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="sql-16">
+</div><div class="item question-item" data-question="sql-16">
 <button class="item-head">
 <span class="idx">16</span>
 <span class="item-title">Calculate a running total of sales.</span>
@@ -4963,8 +4961,7 @@ WHERE rnk = 3;</code></pre>
 FROM Sales;</code></pre>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="sql-17">
+</div><div class="item question-item" data-question="sql-17">
 <button class="item-head">
 <span class="idx">17</span>
 <span class="item-title">Find the second-highest transaction amount for each user.</span>
@@ -4987,8 +4984,7 @@ FROM CTE
 WHERE rnk = 2;</code></pre>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="sql-18">
+</div><div class="item question-item" data-question="sql-18">
 <button class="item-head">
 <span class="idx">18</span>
 <span class="item-title">Find month-over-month sales increases using <code>LAG()</code>.</span>
@@ -5010,8 +5006,7 @@ FROM CTE
 WHERE Sales &gt; PreviousSales;</code></pre>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="sql-19">
+</div><div class="item question-item" data-question="sql-19">
 <button class="item-head">
 <span class="idx">19</span>
 <span class="item-title">Calculate percentage contribution of each product to total revenue.</span>
@@ -5029,8 +5024,7 @@ FROM Sales
 GROUP BY ProductID;</code></pre>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="sql-20">
+</div><div class="item question-item" data-question="sql-20">
 <button class="item-head">
 <span class="idx">20</span>
 <span class="item-title">Find the second-most-recent order for each customer.</span>
@@ -5053,8 +5047,7 @@ FROM CTE
 WHERE rn = 2;</code></pre>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="sql-21">
+</div><div class="item question-item" data-question="sql-21">
 <button class="item-head">
 <span class="idx">21</span>
 <span class="item-title">Explain <code>ROW_NUMBER()</code>, <code>RANK()</code> and <code>DENSE_RANK()</code>.</span>
@@ -5072,8 +5065,7 @@ WHERE rn = 2;</code></pre>
 FROM Employees;</code></pre>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="sql-22">
+</div><div class="item question-item" data-question="sql-22">
 <button class="item-head">
 <span class="idx">22</span>
 <span class="item-title">Find the second-highest salary within each department.</span>
@@ -5096,7 +5088,14 @@ FROM CTE
 WHERE rnk = 2;</code></pre>
 </div>
 </div>
-</div>
+</div></div>
+
+
+
+
+
+
+
 </div>
 </div>
 </div>
@@ -5109,7 +5108,7 @@ WHERE rnk = 2;</code></pre>
 </button>
 <div class="item-body">
 <div class="item-body-inner">
-<div class="item question-item" data-question="sql-23">
+<div class="subtopic-nav" data-subtopic-nav=""><div class="subtopic-nav-inner"><button class="subtopic-tile" data-subtopic-target="sql-23" type="button">Find the highest-selling product in each</button><button class="subtopic-tile" data-subtopic-target="sql-24" type="button">Find the top 3 products by</button><button class="subtopic-tile" data-subtopic-target="sql-25" type="button">Find the percentage of total sales</button></div></div><div class="subtopic-panel" data-subtopic-panel=""></div><div class="list" data-subtopic-source=""><div class="item question-item" data-question="sql-23">
 <button class="item-head">
 <span class="idx">23</span>
 <span class="item-title">Find the highest-selling product in each category.</span>
@@ -5134,8 +5133,7 @@ FROM CTE
 WHERE rnk = 1;</code></pre>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="sql-24">
+</div><div class="item question-item" data-question="sql-24">
 <button class="item-head">
 <span class="idx">24</span>
 <span class="item-title">Find the top 3 products by total revenue.</span>
@@ -5152,8 +5150,7 @@ GROUP BY ProductID
 ORDER BY TotalRevenue DESC;</code></pre>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="sql-25">
+</div><div class="item question-item" data-question="sql-25">
 <button class="item-head">
 <span class="idx">25</span>
 <span class="item-title">Find the percentage of total sales contributed by the top 5 products.</span>
@@ -5175,7 +5172,9 @@ SELECT SUM(Sales) * 100.0 /
 FROM ProductSales;</code></pre>
 </div>
 </div>
-</div>
+</div></div>
+
+
 </div>
 </div>
 </div>
@@ -5188,7 +5187,7 @@ FROM ProductSales;</code></pre>
 </button>
 <div class="item-body">
 <div class="item-body-inner">
-<div class="item question-item" data-question="sql-26">
+<div class="subtopic-nav" data-subtopic-nav=""><div class="subtopic-nav-inner"><button class="subtopic-tile" data-subtopic-target="sql-26" type="button">Find duplicate records.</button><button class="subtopic-tile" data-subtopic-target="sql-27" type="button">Delete duplicates while keeping one record.</button></div></div><div class="subtopic-panel" data-subtopic-panel=""></div><div class="list" data-subtopic-source=""><div class="item question-item" data-question="sql-26">
 <button class="item-head">
 <span class="idx">26</span>
 <span class="item-title">Find duplicate records.</span>
@@ -5204,8 +5203,7 @@ GROUP BY Name
 HAVING COUNT(*) &gt; 1;</code></pre>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="sql-27">
+</div><div class="item question-item" data-question="sql-27">
 <button class="item-head">
 <span class="idx">27</span>
 <span class="item-title">Delete duplicates while keeping one record.</span>
@@ -5227,7 +5225,8 @@ DELETE FROM CTE
 WHERE rn &gt; 1;</code></pre>
 </div>
 </div>
-</div>
+</div></div>
+
 </div>
 </div>
 </div>
@@ -5240,7 +5239,7 @@ WHERE rn &gt; 1;</code></pre>
 </button>
 <div class="item-body">
 <div class="item-body-inner">
-<div class="item question-item" data-question="sql-28">
+<div class="subtopic-nav" data-subtopic-nav=""><div class="subtopic-nav-inner"><button class="subtopic-tile" data-subtopic-target="sql-28" type="button">Find the first and last purchase</button><button class="subtopic-tile" data-subtopic-target="sql-29" type="button">Find customers with no purchases in</button><button class="subtopic-tile" data-subtopic-target="sql-30" type="button">Find customers whose spending increased</button><button class="subtopic-tile" data-subtopic-target="sql-31" type="button">Find first and last transaction within</button><button class="subtopic-tile" data-subtopic-target="sql-32" type="button">Find the difference in days between</button><button class="subtopic-tile" data-subtopic-target="sql-33" type="button">Find customers who made purchases in</button><button class="subtopic-tile" data-subtopic-target="sql-34" type="button">Generate a month-wise/year-wise sales report.</button><button class="subtopic-tile" data-subtopic-target="sql-35" type="button">Find customers who are inactive for</button></div></div><div class="subtopic-panel" data-subtopic-panel=""></div><div class="list" data-subtopic-source=""><div class="item question-item" data-question="sql-28">
 <button class="item-head">
 <span class="idx">28</span>
 <span class="item-title">Find the first and last purchase date for each customer.</span>
@@ -5257,8 +5256,7 @@ FROM Orders
 GROUP BY CustomerID;</code></pre>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="sql-29">
+</div><div class="item question-item" data-question="sql-29">
 <button class="item-head">
 <span class="idx">29</span>
 <span class="item-title">Find customers with no purchases in the last 6 months.</span>
@@ -5274,8 +5272,7 @@ GROUP BY CustomerID
 HAVING MAX(OrderDate) &lt; DATEADD(MONTH, -6, GETDATE());</code></pre>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="sql-30">
+</div><div class="item question-item" data-question="sql-30">
 <button class="item-head">
 <span class="idx">30</span>
 <span class="item-title">Find customers whose spending increased compared with the previous month.</span>
@@ -5306,8 +5303,7 @@ FROM CompareSales
 WHERE Sales &gt; PreviousSales;</code></pre>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="sql-31">
+</div><div class="item question-item" data-question="sql-31">
 <button class="item-head">
 <span class="idx">31</span>
 <span class="item-title">Find first and last transaction within a date range.</span>
@@ -5325,8 +5321,7 @@ WHERE TransactionDate BETWEEN '2026-01-01' AND '2026-06-30'
 GROUP BY CustomerID;</code></pre>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="sql-32">
+</div><div class="item question-item" data-question="sql-32">
 <button class="item-head">
 <span class="idx">32</span>
 <span class="item-title">Find the difference in days between first and last order.</span>
@@ -5346,8 +5341,7 @@ FROM Orders
 GROUP BY CustomerID;</code></pre>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="sql-33">
+</div><div class="item question-item" data-question="sql-33">
 <button class="item-head">
 <span class="idx">33</span>
 <span class="item-title">Find customers who made purchases in two consecutive months.</span>
@@ -5376,8 +5370,7 @@ FROM CTE
 WHERE DATEDIFF(MONTH, PreviousMonth, Month) = 1;</code></pre>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="sql-34">
+</div><div class="item question-item" data-question="sql-34">
 <button class="item-head">
 <span class="idx">34</span>
 <span class="item-title">Generate a month-wise/year-wise sales report.</span>
@@ -5396,8 +5389,7 @@ GROUP BY YEAR(OrderDate),
 ORDER BY Year, Month;</code></pre>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="sql-35">
+</div><div class="item question-item" data-question="sql-35">
 <button class="item-head">
 <span class="idx">35</span>
 <span class="item-title">Find customers who are inactive for 6 months/churned customers.</span>
@@ -5414,7 +5406,14 @@ GROUP BY CustomerID
 HAVING MAX(OrderDate) &lt; DATEADD(MONTH, -6, GETDATE());</code></pre>
 </div>
 </div>
-</div>
+</div></div>
+
+
+
+
+
+
+
 </div>
 </div>
 </div>
@@ -5427,7 +5426,7 @@ HAVING MAX(OrderDate) &lt; DATEADD(MONTH, -6, GETDATE());</code></pre>
 </button>
 <div class="item-body">
 <div class="item-body-inner">
-<div class="item question-item" data-question="sql-36">
+<div class="subtopic-nav" data-subtopic-nav=""><div class="subtopic-nav-inner"><button class="subtopic-tile" data-subtopic-target="sql-36" type="button">Categorize employees/customers into</button><button class="subtopic-tile" data-subtopic-target="sql-37" type="button">Pivot rows into columns usingCASE WHEN.</button><button class="subtopic-tile" data-subtopic-target="sql-38" type="button">CorrectSUM()used inWHERE.</button></div></div><div class="subtopic-panel" data-subtopic-panel=""></div><div class="list" data-subtopic-source=""><div class="item question-item" data-question="sql-36">
 <button class="item-head">
 <span class="idx">36</span>
 <span class="item-title">Categorize employees/customers into Low/Medium/High.</span>
@@ -5447,8 +5446,7 @@ HAVING MAX(OrderDate) &lt; DATEADD(MONTH, -6, GETDATE());</code></pre>
 FROM Employees;</code></pre>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="sql-37">
+</div><div class="item question-item" data-question="sql-37">
 <button class="item-head">
 <span class="idx">37</span>
 <span class="item-title">Pivot rows into columns using <code>CASE WHEN</code>.</span>
@@ -5466,8 +5464,7 @@ FROM Sales
 GROUP BY CustomerID;</code></pre>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="sql-38">
+</div><div class="item question-item" data-question="sql-38">
 <button class="item-head">
 <span class="idx">38</span>
 <span class="item-title">Correct <code>SUM()</code> used in <code>WHERE</code>.</span>
@@ -5490,7 +5487,9 @@ GROUP BY DepartmentID
 HAVING SUM(Salary) &gt; 100000;</code></pre>
 </div>
 </div>
-</div>
+</div></div>
+
+
 </div>
 </div>
 </div>
@@ -5503,7 +5502,7 @@ HAVING SUM(Salary) &gt; 100000;</code></pre>
 </button>
 <div class="item-body">
 <div class="item-body-inner">
-<div class="item question-item" data-question="sql-39">
+<div class="subtopic-nav" data-subtopic-nav=""><div class="subtopic-nav-inner"><button class="subtopic-tile" data-subtopic-target="sql-39" type="button">Find numbers/records that occur consecutively</button><button class="subtopic-tile" data-subtopic-target="sql-40" type="button">Find gaps in sequential data, such</button></div></div><div class="subtopic-panel" data-subtopic-panel=""></div><div class="list" data-subtopic-source=""><div class="item question-item" data-question="sql-39">
 <button class="item-head">
 <span class="idx">39</span>
 <span class="item-title">Find numbers/records that occur consecutively three times.</span>
@@ -5526,8 +5525,7 @@ WHERE Value = Prev1
   AND Value = Prev2;</code></pre>
 </div>
 </div>
-</div>
-<div class="item question-item" data-question="sql-40">
+</div><div class="item question-item" data-question="sql-40">
 <button class="item-head">
 <span class="idx">40</span>
 <span class="item-title">Find gaps in sequential data, such as missing invoice numbers.</span>
@@ -5550,7 +5548,8 @@ FROM CTE
 WHERE InvoiceNo - PreviousInvoice &gt; 1;</code></pre>
 </div>
 </div>
-</div>
+</div></div>
+
 </div>
 </div>
 </div></div>
@@ -5571,7 +5570,7 @@ WHERE InvoiceNo - PreviousInvoice &gt; 1;</code></pre>
 <div class="topic-nav" data-topic-nav=""><div class="topic-nav-inner"><button class="topic-tile" data-topic-target="senior-1" type="button">ROW_NUMBER(), RANK(), DENSE_RANK(), OVER() &amp;</button><button class="topic-tile" data-topic-target="senior-2" type="button">CTE vs Subquery vs Temp Table</button><button class="topic-tile" data-topic-target="senior-3" type="button">INNER, LEFT, RIGHT, FULL OUTER, CROSS</button><button class="topic-tile" data-topic-target="senior-4" type="button">UNION vs UNION ALL &amp; LIKE</button><button class="topic-tile" data-topic-target="senior-5" type="button">WHERE vs HAVING, Execution Order, TOP</button><button class="topic-tile" data-topic-target="senior-6" type="button">Primary, Foreign, Candidate, Composite &amp;</button><button class="topic-tile" data-topic-target="senior-7" type="button">Views, SQL/DAX Variables, Stored Procedures &amp;</button><button class="topic-tile" data-topic-target="senior-8" type="button">Local vs Global Temporary Tables</button><button class="topic-tile" data-topic-target="senior-9" type="button">Normalization Basics &amp; 1NF, 2NF, 3NF</button><button class="topic-tile" data-topic-target="senior-10" type="button">Clustered vs Non-Clustered Indexes</button><button class="topic-tile" data-topic-target="senior-11" type="button">ISNULL(), COALESCE(), NULLIF() &amp; CASE</button><button class="topic-tile" data-topic-target="senior-12" type="button">DELETE vs TRUNCATE vs DROP</button><button class="topic-tile" data-topic-target="senior-13" type="button">EXISTS vs IN &amp; Finding Inactive</button><button class="topic-tile" data-topic-target="senior-14" type="button">SQL Transactions &amp; ACID Properties Explained</button><button class="topic-tile" data-topic-target="senior-15" type="button">Latest Record, Top Sellers &amp; Threshold-Based</button><button class="topic-tile" data-topic-target="senior-16" type="button">Final SQL Quick Revision Reference Sheet</button></div></div><div class="topic-panel" data-topic-panel=""></div><div class="list" data-topic-source="" id="senior-sql-topics">
 <div class="item topic-item" data-index="senior-1">
 <button class="item-head"><span class="idx">01</span><span class="item-title">ROW_NUMBER(), RANK(), DENSE_RANK(), OVER() &amp; PARTITION BY</span><span class="tag">18 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="senior-sql-1-1">
+<div class="item-body"><div class="item-body-inner"><div class="subtopic-nav" data-subtopic-nav=""><div class="subtopic-nav-inner"><button class="subtopic-tile" data-subtopic-target="senior-sql-1-1" type="button">What isROW_NUMBER()?</button><button class="subtopic-tile" data-subtopic-target="senior-sql-1-2" type="button">What isRANK()?</button><button class="subtopic-tile" data-subtopic-target="senior-sql-1-3" type="button">What isDENSE_RANK()?</button><button class="subtopic-tile" data-subtopic-target="senior-sql-1-4" type="button">Difference</button><button class="subtopic-tile" data-subtopic-target="senior-sql-1-5" type="button">How do you find the second-highest</button><button class="subtopic-tile" data-subtopic-target="senior-sql-1-6" type="button">How do you find the Nth</button><button class="subtopic-tile" data-subtopic-target="senior-sql-1-7" type="button">How do you find the top</button><button class="subtopic-tile" data-subtopic-target="senior-sql-1-8" type="button">How can window functions solve the</button><button class="subtopic-tile" data-subtopic-target="senior-sql-1-9" type="button">What are window functions?</button><button class="subtopic-tile" data-subtopic-target="senior-sql-1-10" type="button">What isOVER()?</button><button class="subtopic-tile" data-subtopic-target="senior-sql-1-11" type="button">What isPARTITION BY?</button><button class="subtopic-tile" data-subtopic-target="senior-sql-1-12" type="button">What isORDER BYinside a window function?</button><button class="subtopic-tile" data-subtopic-target="senior-sql-1-13" type="button">How do you calculate a running</button><button class="subtopic-tile" data-subtopic-target="senior-sql-1-14" type="button">What is the difference between running</button><button class="subtopic-tile" data-subtopic-target="senior-sql-1-15" type="button">How do you useLAG()andLEAD()?</button><button class="subtopic-tile" data-subtopic-target="senior-sql-1-16" type="button">Difference betweenGROUP BYandPARTITION BY?</button><button class="subtopic-tile" data-subtopic-target="senior-sql-1-17" type="button">How do you find duplicates usingROW_NUMBER()?</button><button class="subtopic-tile" data-subtopic-target="senior-sql-1-18" type="button">How do you delete duplicates while</button></div></div><div class="subtopic-panel" data-subtopic-panel=""></div><div class="list" data-subtopic-source=""><div class="item question-item" data-question="senior-sql-1-1">
 <button class="item-head"><span class="idx">01</span><span class="item-title">What is <code>ROW_NUMBER()</code>?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> <code>ROW_NUMBER()</code> assigns a unique sequential number to every row within the specified window, even when values are tied.</p>
 <p><strong>Query:</strong></p>
@@ -5771,11 +5770,11 @@ INNER JOIN RankedCustomers r
     ON c.customer_id = r.customer_id
 WHERE r.rn &gt; 1;</code></pre>
 <p><strong>Real-life case:</strong> Keep the first customer record and remove repeated records with the same email.</p></div></div>
-</div></div></div>
+</div></div></div></div>
 </div>
 <div class="item topic-item" data-index="senior-2">
 <button class="item-head"><span class="idx">02</span><span class="item-title">CTE vs Subquery vs Temp Table &amp; Recursive CTEs</span><span class="tag">8 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="senior-sql-2-19">
+<div class="item-body"><div class="item-body-inner"><div class="subtopic-nav" data-subtopic-nav=""><div class="subtopic-nav-inner"><button class="subtopic-tile" data-subtopic-target="senior-sql-2-19" type="button">What is a CTE?</button><button class="subtopic-tile" data-subtopic-target="senior-sql-2-20" type="button">What are the advantages of a</button><button class="subtopic-tile" data-subtopic-target="senior-sql-2-21" type="button">What is a recursive CTE?</button><button class="subtopic-tile" data-subtopic-target="senior-sql-2-22" type="button">What is a subquery?</button><button class="subtopic-tile" data-subtopic-target="senior-sql-2-23" type="button">Difference between CTE and subquery?</button><button class="subtopic-tile" data-subtopic-target="senior-sql-2-24" type="button">Difference between CTE and temporary table?</button><button class="subtopic-tile" data-subtopic-target="senior-sql-2-25" type="button">Which is faster, CTE or subquery?</button><button class="subtopic-tile" data-subtopic-target="senior-sql-2-26" type="button">What is a correlated subquery?</button></div></div><div class="subtopic-panel" data-subtopic-panel=""></div><div class="list" data-subtopic-source=""><div class="item question-item" data-question="senior-sql-2-19">
 <button class="item-head"><span class="idx">19</span><span class="item-title">What is a CTE?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> A CTE is a temporary named result set that exists for the duration of one SQL statement and makes complex logic easier to organize.</p>
 <p><strong>Query:</strong></p>
@@ -5845,11 +5844,11 @@ WHERE e.Salary &gt; (
     WHERE e2.DepartmentID = e.DepartmentID
 );</code></pre>
 <p><strong>Real-life case:</strong> Find employees earning above the average salary of their own department.</p></div></div>
-</div></div></div>
+</div></div></div></div>
 </div>
 <div class="item topic-item" data-index="senior-3">
 <button class="item-head"><span class="idx">03</span><span class="item-title">INNER, LEFT, RIGHT, FULL OUTER, CROSS &amp; SELF JOIN Explained</span><span class="tag">8 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="senior-sql-3-27">
+<div class="item-body"><div class="item-body-inner"><div class="subtopic-nav" data-subtopic-nav=""><div class="subtopic-nav-inner"><button class="subtopic-tile" data-subtopic-target="senior-sql-3-27" type="button">What is anINNER JOIN?</button><button class="subtopic-tile" data-subtopic-target="senior-sql-3-28" type="button">What is aLEFT JOIN?</button><button class="subtopic-tile" data-subtopic-target="senior-sql-3-29" type="button">What is aRIGHT JOIN?</button><button class="subtopic-tile" data-subtopic-target="senior-sql-3-30" type="button">What is aFULL OUTER JOIN?</button><button class="subtopic-tile" data-subtopic-target="senior-sql-3-31" type="button">What is aCROSS JOIN?</button><button class="subtopic-tile" data-subtopic-target="senior-sql-3-32" type="button">What is aSELF JOIN?</button><button class="subtopic-tile" data-subtopic-target="senior-sql-3-33" type="button">When would you use each JOIN?</button><button class="subtopic-tile" data-subtopic-target="senior-sql-3-34" type="button">Sales + Product + Customer</button></div></div><div class="subtopic-panel" data-subtopic-panel=""></div><div class="list" data-subtopic-source=""><div class="item question-item" data-question="senior-sql-3-27">
 <button class="item-head"><span class="idx">27</span><span class="item-title">What is an <code>INNER JOIN</code>?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> <code>INNER JOIN</code> returns only rows with matching keys in both tables.</p>
 <p><strong>Query:</strong></p>
@@ -5920,11 +5919,11 @@ INNER JOIN Customer c
 INNER JOIN Product p
     ON s.ProductID = p.ProductID;</code></pre>
 <p><strong>Real-life case:</strong> Produce a report showing customer, product and sales amount for every transaction.</p></div></div>
-</div></div></div>
+</div></div></div></div>
 </div>
 <div class="item topic-item" data-index="senior-4">
 <button class="item-head"><span class="idx">04</span><span class="item-title">UNION vs UNION ALL &amp; LIKE Wildcard Patterns</span><span class="tag">4 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="senior-sql-4-35">
+<div class="item-body"><div class="item-body-inner"><div class="subtopic-nav" data-subtopic-nav=""><div class="subtopic-nav-inner"><button class="subtopic-tile" data-subtopic-target="senior-sql-4-35" type="button">Difference betweenUNIONandUNION ALL?</button><button class="subtopic-tile" data-subtopic-target="senior-sql-4-36" type="button">Which is generally faster,UNIONorUNION ALL?</button><button class="subtopic-tile" data-subtopic-target="senior-sql-4-37" type="button">What isLIKE?</button><button class="subtopic-tile" data-subtopic-target="senior-sql-4-38" type="button">What do%and_mean inLIKE?</button></div></div><div class="subtopic-panel" data-subtopic-panel=""></div><div class="list" data-subtopic-source=""><div class="item question-item" data-question="senior-sql-4-35">
 <button class="item-head"><span class="idx">35</span><span class="item-title">Difference between <code>UNION</code> and <code>UNION ALL</code>?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> <code>UNION</code> combines result sets and removes duplicate rows, while <code>UNION ALL</code> combines them without removing duplicates and generally has less overhead.</p>
 <p><strong>Query:</strong></p>
@@ -5968,11 +5967,11 @@ SELECT *
 FROM Customers
 WHERE name LIKE 'A_';   -- A + exactly one character</code></pre>
 <p><strong>Real-life case:</strong> Search customer/product names using flexible text patterns.</p></div></div>
-</div></div></div>
+</div></div></div></div>
 </div>
 <div class="item topic-item" data-index="senior-5">
 <button class="item-head"><span class="idx">05</span><span class="item-title">WHERE vs HAVING, Execution Order, TOP &amp; OFFSET-FETCH</span><span class="tag">4 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="senior-sql-5-39">
+<div class="item-body"><div class="item-body-inner"><div class="subtopic-nav" data-subtopic-nav=""><div class="subtopic-nav-inner"><button class="subtopic-tile" data-subtopic-target="senior-sql-5-39" type="button">Difference betweenWHEREandHAVING?</button><button class="subtopic-tile" data-subtopic-target="senior-sql-5-40" type="button">CanWHEREuse aggregate functions?</button><button class="subtopic-tile" data-subtopic-target="senior-sql-5-41" type="button">What is the logical order of</button><button class="subtopic-tile" data-subtopic-target="senior-sql-5-42" type="button">What areTOPandOFFSET-FETCHused for?</button></div></div><div class="subtopic-panel" data-subtopic-panel=""></div><div class="list" data-subtopic-source=""><div class="item question-item" data-question="senior-sql-5-39">
 <button class="item-head"><span class="idx">39</span><span class="item-title">Difference between <code>WHERE</code> and <code>HAVING</code>?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> <code>WHERE</code> filters individual rows before aggregation, while <code>HAVING</code> filters groups after aggregation.</p>
 <p><strong>Query:</strong></p>
@@ -6003,11 +6002,11 @@ HAVING SUM(order_value) &gt; 100000;</code></pre>
 FROM Employees
 ORDER BY Salary DESC;</code></pre>
 <p><strong>Real-life case:</strong> Return the top three products by sales or paginate a result set.</p></div></div>
-</div></div></div>
+</div></div></div></div>
 </div>
 <div class="item topic-item" data-index="senior-6">
 <button class="item-head"><span class="idx">06</span><span class="item-title">Primary, Foreign, Candidate, Composite &amp; Surrogate Keys</span><span class="tag">8 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="senior-sql-6-43">
+<div class="item-body"><div class="item-body-inner"><div class="subtopic-nav" data-subtopic-nav=""><div class="subtopic-nav-inner"><button class="subtopic-tile" data-subtopic-target="senior-sql-6-43" type="button">What is a Primary Key?</button><button class="subtopic-tile" data-subtopic-target="senior-sql-6-44" type="button">What is a Foreign Key?</button><button class="subtopic-tile" data-subtopic-target="senior-sql-6-45" type="button">Difference between Primary Key and Foreign</button><button class="subtopic-tile" data-subtopic-target="senior-sql-6-46" type="button">What is a Candidate Key?</button><button class="subtopic-tile" data-subtopic-target="senior-sql-6-47" type="button">What is an Alternate Key?</button><button class="subtopic-tile" data-subtopic-target="senior-sql-6-48" type="button">What is a Composite Key?</button><button class="subtopic-tile" data-subtopic-target="senior-sql-6-49" type="button">What is a Surrogate Key?</button><button class="subtopic-tile" data-subtopic-target="senior-sql-6-50" type="button">How do you decide between Primary</button></div></div><div class="subtopic-panel" data-subtopic-panel=""></div><div class="list" data-subtopic-source=""><div class="item question-item" data-question="senior-sql-6-43">
 <button class="item-head"><span class="idx">43</span><span class="item-title">What is a Primary Key?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> A Primary Key uniquely identifies each row in a table and cannot contain duplicate or <code>NULL</code> values.</p>
 <p><strong>Query:</strong></p>
@@ -6058,11 +6057,11 @@ ORDER BY Salary DESC;</code></pre>
 <button class="item-head"><span class="idx">50</span><span class="item-title">How do you decide between Primary, Foreign and Unique Key?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> If it uniquely identifies its own row use PK; if it references another table use FK; if it only needs uniqueness use a Unique Key.</p>
 <p><strong>Real-life case:</strong> CustomerID = PK in Customers, CustomerID = FK in Orders, Email = UNIQUE.</p></div></div>
-</div></div></div>
+</div></div></div></div>
 </div>
 <div class="item topic-item" data-index="senior-7">
 <button class="item-head"><span class="idx">07</span><span class="item-title">Views, SQL/DAX Variables, Stored Procedures &amp; Triggers</span><span class="tag">9 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="senior-sql-7-51">
+<div class="item-body"><div class="item-body-inner"><div class="subtopic-nav" data-subtopic-nav=""><div class="subtopic-nav-inner"><button class="subtopic-tile" data-subtopic-target="senior-sql-7-51" type="button">What is a View?</button><button class="subtopic-tile" data-subtopic-target="senior-sql-7-52" type="button">What are limitations of a View?</button><button class="subtopic-tile" data-subtopic-target="senior-sql-7-53" type="button">Can you use variables inside a</button><button class="subtopic-tile" data-subtopic-target="senior-sql-7-54" type="button">What is a SQL variable?</button><button class="subtopic-tile" data-subtopic-target="senior-sql-7-55" type="button">What is a DAX variable?</button><button class="subtopic-tile" data-subtopic-target="senior-sql-7-56" type="button">Difference between Stored Procedure and</button><button class="subtopic-tile" data-subtopic-target="senior-sql-7-57" type="button">Have you worked with Stored Procedures?</button><button class="subtopic-tile" data-subtopic-target="senior-sql-7-58" type="button">Have you worked with user-defined Functions?</button><button class="subtopic-tile" data-subtopic-target="senior-sql-7-59" type="button">What is a Trigger?</button></div></div><div class="subtopic-panel" data-subtopic-panel=""></div><div class="list" data-subtopic-source=""><div class="item question-item" data-question="senior-sql-7-51">
 <button class="item-head"><span class="idx">51</span><span class="item-title">What is a View?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> A View is a stored SQL query that presents its result as a virtual table; a normal View does not physically store the result set.</p>
 <p><strong>Query:</strong></p>
@@ -6134,11 +6133,11 @@ BEGIN
     FROM inserted;
 END;</code></pre>
 <p><strong>Real-life case:</strong> Automatically create an audit record whenever an employee record is updated.</p></div></div>
-</div></div></div>
+</div></div></div></div>
 </div>
 <div class="item topic-item" data-index="senior-8">
 <button class="item-head"><span class="idx">08</span><span class="item-title">Local vs Global Temporary Tables</span><span class="tag">2 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="senior-sql-8-60">
+<div class="item-body"><div class="item-body-inner"><div class="subtopic-nav" data-subtopic-nav=""><div class="subtopic-nav-inner"><button class="subtopic-tile" data-subtopic-target="senior-sql-8-60" type="button">What is a temporary table?</button><button class="subtopic-tile" data-subtopic-target="senior-sql-8-61" type="button">Difference between local and global temporary</button></div></div><div class="subtopic-panel" data-subtopic-panel=""></div><div class="list" data-subtopic-source=""><div class="item question-item" data-question="senior-sql-8-60">
 <button class="item-head"><span class="idx">60</span><span class="item-title">What is a temporary table?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> A temporary table stores intermediate data temporarily and is useful when results must be reused or indexed across multiple steps.</p>
 <p><strong>Query:</strong></p>
@@ -6154,11 +6153,11 @@ END;</code></pre>
 <pre><code class="language-sql">CREATE TABLE #Sales (...);
 CREATE TABLE ##Sales (...);</code></pre>
 <p><strong>Real-life case:</strong> Use a local temp table for your session-specific analysis; use a global one only when cross-session sharing is required.</p></div></div>
-</div></div></div>
+</div></div></div></div>
 </div>
 <div class="item topic-item" data-index="senior-9">
 <button class="item-head"><span class="idx">09</span><span class="item-title">Normalization Basics &amp; 1NF, 2NF, 3NF</span><span class="tag">3 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="senior-sql-9-62">
+<div class="item-body"><div class="item-body-inner"><div class="subtopic-nav" data-subtopic-nav=""><div class="subtopic-nav-inner"><button class="subtopic-tile" data-subtopic-target="senior-sql-9-62" type="button">What is Normalization?</button><button class="subtopic-tile" data-subtopic-target="senior-sql-9-63" type="button">Why is Normalization important?</button><button class="subtopic-tile" data-subtopic-target="senior-sql-9-64" type="button">What are 1NF, 2NF and 3NF?</button></div></div><div class="subtopic-panel" data-subtopic-panel=""></div><div class="list" data-subtopic-source=""><div class="item question-item" data-question="senior-sql-9-62">
 <button class="item-head"><span class="idx">62</span><span class="item-title">What is Normalization?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> Normalization organizes data into related tables to reduce redundancy and improve data integrity.</p>
 <p><strong>Real-life case:</strong> Instead of repeating customer information on every order row, store customer details once and reference them through CustomerID.</p></div></div>
@@ -6170,19 +6169,19 @@ CREATE TABLE ##Sales (...);</code></pre>
 <button class="item-head"><span class="idx">64</span><span class="item-title">What are 1NF, 2NF and 3NF?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> <code>1NF</code> removes repeating groups and requires atomic values; <code>2NF</code> removes partial dependency on part of a composite key; <code>3NF</code> removes transitive dependency between non-key attributes.</p>
 <p><strong>Real-life case:</strong> Split customer, order and product information into appropriate related tables instead of storing repeated attributes in one large table.</p></div></div>
-</div></div></div>
+</div></div></div></div>
 </div>
 <div class="item topic-item" data-index="senior-10">
 <button class="item-head"><span class="idx">10</span><span class="item-title">Clustered vs Non-Clustered Indexes</span><span class="tag">1 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="senior-sql-10-65">
+<div class="item-body"><div class="item-body-inner"><div class="subtopic-nav" data-subtopic-nav=""><div class="subtopic-nav-inner"><button class="subtopic-tile" data-subtopic-target="senior-sql-10-65" type="button">Clustered vs Non-Clustered Index?</button></div></div><div class="subtopic-panel" data-subtopic-panel=""></div><div class="list" data-subtopic-source=""><div class="item question-item" data-question="senior-sql-10-65">
 <button class="item-head"><span class="idx">65</span><span class="item-title">Clustered vs Non-Clustered Index?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> A clustered index organizes table data around the index key and a table can have one, while a non-clustered index is a separate structure and multiple can exist.</p>
 <p><strong>Real-life case:</strong> Use an appropriate clustered index for common range/sequential access and non-clustered indexes for frequently searched columns.</p></div></div>
-</div></div></div>
+</div></div></div></div>
 </div>
 <div class="item topic-item" data-index="senior-11">
 <button class="item-head"><span class="idx">11</span><span class="item-title">ISNULL(), COALESCE(), NULLIF() &amp; CASE Statement</span><span class="tag">2 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="senior-sql-11-66">
+<div class="item-body"><div class="item-body-inner"><div class="subtopic-nav" data-subtopic-nav=""><div class="subtopic-nav-inner"><button class="subtopic-tile" data-subtopic-target="senior-sql-11-66" type="button">Difference</button><button class="subtopic-tile" data-subtopic-target="senior-sql-11-67" type="button">What isCASEin SQL?</button></div></div><div class="subtopic-panel" data-subtopic-panel=""></div><div class="list" data-subtopic-source=""><div class="item question-item" data-question="senior-sql-11-66">
 <button class="item-head"><span class="idx">66</span><span class="item-title">Difference between <code>ISNULL()</code>, <code>COALESCE()</code> and <code>NULLIF()</code>?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> <code>ISNULL</code> replaces a NULL, <code>COALESCE</code> returns the first non-NULL expression, and <code>NULLIF</code> returns NULL when two expressions are equal.</p>
 <p><strong>Query:</strong></p>
@@ -6208,11 +6207,11 @@ FROM Sales;</code></pre>
        END AS SalesCategory
 FROM Products;</code></pre>
 <p><strong>Real-life case:</strong> Classify inventory risk or sales performance into business-friendly categories; the source gives WOC examples of <code>&lt;5</code>, <code>5–12</code>, and <code>&gt;12</code>.</p></div></div>
-</div></div></div>
+</div></div></div></div>
 </div>
 <div class="item topic-item" data-index="senior-12">
 <button class="item-head"><span class="idx">12</span><span class="item-title">DELETE vs TRUNCATE vs DROP: Differences &amp; Speed</span><span class="tag">2 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="senior-sql-12-68">
+<div class="item-body"><div class="item-body-inner"><div class="subtopic-nav" data-subtopic-nav=""><div class="subtopic-nav-inner"><button class="subtopic-tile" data-subtopic-target="senior-sql-12-68" type="button">Difference betweenDELETE,TRUNCATEandDROP?</button><button class="subtopic-tile" data-subtopic-target="senior-sql-12-69" type="button">Which is generally</button></div></div><div class="subtopic-panel" data-subtopic-panel=""></div><div class="list" data-subtopic-source=""><div class="item question-item" data-question="senior-sql-12-68">
 <button class="item-head"><span class="idx">68</span><span class="item-title">Difference between <code>DELETE</code>, <code>TRUNCATE</code> and <code>DROP</code>?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> <code>DELETE</code> removes selected rows and supports <code>WHERE</code>; <code>TRUNCATE</code> removes all rows while keeping the table; <code>DROP</code> removes the table object.</p>
 <p><strong>Query:</strong></p>
@@ -6227,11 +6226,11 @@ DROP TABLE Employees;</code></pre>
 <button class="item-head"><span class="idx">69</span><span class="item-title">Which is generally faster: <code>DELETE</code>, <code>TRUNCATE</code> or <code>DROP</code>?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> For removing all rows, <code>TRUNCATE</code> is generally more efficient than row-by-row <code>DELETE</code>; <code>DROP</code> removes the table object entirely, and actual performance depends on the operation and execution plan.</p>
 <p><strong>Real-life case:</strong> For clearing a staging table completely, <code>TRUNCATE</code> is generally preferable to row-by-row <code>DELETE</code>.</p></div></div>
-</div></div></div>
+</div></div></div></div>
 </div>
 <div class="item topic-item" data-index="senior-13">
 <button class="item-head"><span class="idx">13</span><span class="item-title">EXISTS vs IN &amp; Finding Inactive Customers</span><span class="tag">2 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="senior-sql-13-70">
+<div class="item-body"><div class="item-body-inner"><div class="subtopic-nav" data-subtopic-nav=""><div class="subtopic-nav-inner"><button class="subtopic-tile" data-subtopic-target="senior-sql-13-70" type="button">Difference betweenEXISTSandIN?</button><button class="subtopic-tile" data-subtopic-target="senior-sql-13-71" type="button">How do you find customers with</button></div></div><div class="subtopic-panel" data-subtopic-panel=""></div><div class="list" data-subtopic-source=""><div class="item question-item" data-question="senior-sql-13-70">
 <button class="item-head"><span class="idx">70</span><span class="item-title">Difference between <code>EXISTS</code> and <code>IN</code>?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> <code>IN</code> compares a value with a list/result set, while <code>EXISTS</code> checks whether at least one related row exists; <code>NOT IN</code> needs special care with NULLs.</p>
 <p><strong>Query:</strong></p>
@@ -6265,11 +6264,11 @@ WHERE NOT EXISTS (
       AND o.OrderDate &gt;= DATEADD(MONTH, -6, GETDATE())
 );</code></pre>
 <p><strong>Real-life case:</strong> Identify inactive customers for a retention or re-engagement campaign.</p></div></div>
-</div></div></div>
+</div></div></div></div>
 </div>
 <div class="item topic-item" data-index="senior-14">
 <button class="item-head"><span class="idx">14</span><span class="item-title">SQL Transactions &amp; ACID Properties Explained</span><span class="tag">2 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="senior-sql-14-72">
+<div class="item-body"><div class="item-body-inner"><div class="subtopic-nav" data-subtopic-nav=""><div class="subtopic-nav-inner"><button class="subtopic-tile" data-subtopic-target="senior-sql-14-72" type="button">What is a transaction?</button><button class="subtopic-tile" data-subtopic-target="senior-sql-14-73" type="button">What are ACID properties?</button></div></div><div class="subtopic-panel" data-subtopic-panel=""></div><div class="list" data-subtopic-source=""><div class="item question-item" data-question="senior-sql-14-72">
 <button class="item-head"><span class="idx">72</span><span class="item-title">What is a transaction?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> A transaction groups one or more database operations into one logical unit that can be committed or rolled back.</p>
 <p><strong>Query:</strong></p>
@@ -6297,11 +6296,11 @@ END CATCH;</code></pre>
 <button class="item-head"><span class="idx">73</span><span class="item-title">What are ACID properties?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> ACID means Atomicity, Consistency, Isolation and Durability: all-or-nothing, valid state, controlled concurrency, and persistence after commit.</p>
 <p><strong>Real-life case:</strong> A financial transaction must either complete fully or roll back without leaving inconsistent balances.</p></div></div>
-</div></div></div>
+</div></div></div></div>
 </div>
 <div class="item topic-item" data-index="senior-15">
 <button class="item-head"><span class="idx">15</span><span class="item-title">Latest Record, Top Sellers &amp; Threshold-Based Queries</span><span class="tag">4 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="senior-sql-15-74">
+<div class="item-body"><div class="item-body-inner"><div class="subtopic-nav" data-subtopic-nav=""><div class="subtopic-nav-inner"><button class="subtopic-tile" data-subtopic-target="senior-sql-15-74" type="button">Find the latest record for each</button><button class="subtopic-tile" data-subtopic-target="senior-sql-15-75" type="button">Find the highest-selling product(s) in each</button><button class="subtopic-tile" data-subtopic-target="senior-sql-15-76" type="button">Find the top N products per</button><button class="subtopic-tile" data-subtopic-target="senior-sql-15-77" type="button">Find customers whose total sales exceed</button></div></div><div class="subtopic-panel" data-subtopic-panel=""></div><div class="list" data-subtopic-source=""><div class="item question-item" data-question="senior-sql-15-74">
 <button class="item-head"><span class="idx">74</span><span class="item-title">Find the latest record for each customer.</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> I use <code>ROW_NUMBER()</code> partitioned by customer and ordered by date descending, then keep <code>rn = 1</code>.</p>
 <p><strong>Query:</strong></p>
@@ -6393,15 +6392,15 @@ FROM Orders
 GROUP BY customer_id
 HAVING SUM(order_value) &gt; 100000;</code></pre>
 <p><strong>Real-life case:</strong> Identify high-value customers for management reporting.</p></div></div>
-</div></div></div>
+</div></div></div></div>
 </div>
 <div class="item topic-item" data-index="senior-16">
 <button class="item-head"><span class="idx">16</span><span class="item-title">Final SQL Quick Revision Reference Sheet</span><span class="tag">Interview Guide</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><div class="table-wrap"><table><thead><tr><th>Concept</th><th>One-line memory</th></tr></thead><tbody><tr><td><code>ROW_NUMBER()</code></td><td>Unique numbering</td></tr><tr><td><code>RANK()</code></td><td>Ties + gaps</td></tr><tr><td><code>DENSE_RANK()</code></td><td>Ties + no gaps</td></tr><tr><td>Window Function</td><td>Calculate across rows without collapsing</td></tr><tr><td><code>PARTITION BY</code></td><td>Groups for a window calculation</td></tr><tr><td><code>OVER()</code></td><td>Defines the window</td></tr><tr><td><code>LAG()</code></td><td>Previous row</td></tr><tr><td><code>LEAD()</code></td><td>Next row</td></tr><tr><td><code>GROUP BY</code></td><td>Groups + collapses</td></tr><tr><td>CTE</td><td>Named temporary result for one statement</td></tr><tr><td>Subquery</td><td>Query inside another query</td></tr><tr><td>Correlated Subquery</td><td>Inner query depends on outer row</td></tr><tr><td><code>INNER JOIN</code></td><td>Matching rows</td></tr><tr><td><code>LEFT JOIN</code></td><td>All left + matching right</td></tr><tr><td><code>RIGHT JOIN</code></td><td>All right + matching left</td></tr><tr><td><code>FULL JOIN</code></td><td>Everything from both</td></tr><tr><td><code>CROSS JOIN</code></td><td>Every combination</td></tr><tr><td><code>SELF JOIN</code></td><td>Table joined to itself</td></tr><tr><td><code>UNION</code></td><td>Combines + removes duplicates</td></tr><tr><td><code>UNION ALL</code></td><td>Combines + keeps duplicates</td></tr><tr><td><code>LIKE</code></td><td>Pattern matching</td></tr><tr><td><code>WHERE</code></td><td>Filters rows before aggregation</td></tr><tr><td><code>HAVING</code></td><td>Filters groups after aggregation</td></tr><tr><td>Primary Key</td><td>Uniquely identifies row</td></tr><tr><td>Foreign Key</td><td>Connects tables</td></tr><tr><td>Candidate Key</td><td>Can become PK</td></tr><tr><td>Alternate Key</td><td>Candidate key not selected as PK</td></tr><tr><td>Composite Key</td><td>Multiple columns form key</td></tr><tr><td>Surrogate Key</td><td>System-generated identifier</td></tr><tr><td>View</td><td>Reusable virtual table</td></tr><tr><td>Temp Table</td><td>Reusable intermediate stored result</td></tr><tr><td>Stored Procedure</td><td>Performs operations/business process</td></tr><tr><td>Function</td><td>Returns reusable value/table</td></tr><tr><td>Trigger</td><td>Automatically fires on database event</td></tr><tr><td>Normalization</td><td>Reduces redundancy and anomalies</td></tr><tr><td>Clustered Index</td><td>Organizes table data around key</td></tr><tr><td>Non-Clustered Index</td><td>Separate lookup structure</td></tr><tr><td><code>ISNULL()</code></td><td>Replace NULL</td></tr><tr><td><code>COALESCE()</code></td><td>First non-NULL</td></tr><tr><td><code>NULLIF()</code></td><td>Return NULL when equal</td></tr><tr><td><code>CASE</code></td><td>Conditional business logic</td></tr><tr><td><code>DELETE</code></td><td>Remove selected/all rows</td></tr><tr><td><code>TRUNCATE</code></td><td>Remove all rows, keep table</td></tr><tr><td><code>DROP</code></td><td>Remove table object</td></tr><tr><td><code>EXISTS</code></td><td>Check whether related row exists</td></tr><tr><td>Transaction</td><td>Unit of work</td></tr><tr><td>ACID</td><td>Reliable transaction properties</td></tr></tbody></table></div><div class="item question-item" data-question="senior-sql-16-guide">
+<div class="item-body"><div class="item-body-inner"><div class="table-wrap"><table><thead><tr><th>Concept</th><th>One-line memory</th></tr></thead><tbody><tr><td><code>ROW_NUMBER()</code></td><td>Unique numbering</td></tr><tr><td><code>RANK()</code></td><td>Ties + gaps</td></tr><tr><td><code>DENSE_RANK()</code></td><td>Ties + no gaps</td></tr><tr><td>Window Function</td><td>Calculate across rows without collapsing</td></tr><tr><td><code>PARTITION BY</code></td><td>Groups for a window calculation</td></tr><tr><td><code>OVER()</code></td><td>Defines the window</td></tr><tr><td><code>LAG()</code></td><td>Previous row</td></tr><tr><td><code>LEAD()</code></td><td>Next row</td></tr><tr><td><code>GROUP BY</code></td><td>Groups + collapses</td></tr><tr><td>CTE</td><td>Named temporary result for one statement</td></tr><tr><td>Subquery</td><td>Query inside another query</td></tr><tr><td>Correlated Subquery</td><td>Inner query depends on outer row</td></tr><tr><td><code>INNER JOIN</code></td><td>Matching rows</td></tr><tr><td><code>LEFT JOIN</code></td><td>All left + matching right</td></tr><tr><td><code>RIGHT JOIN</code></td><td>All right + matching left</td></tr><tr><td><code>FULL JOIN</code></td><td>Everything from both</td></tr><tr><td><code>CROSS JOIN</code></td><td>Every combination</td></tr><tr><td><code>SELF JOIN</code></td><td>Table joined to itself</td></tr><tr><td><code>UNION</code></td><td>Combines + removes duplicates</td></tr><tr><td><code>UNION ALL</code></td><td>Combines + keeps duplicates</td></tr><tr><td><code>LIKE</code></td><td>Pattern matching</td></tr><tr><td><code>WHERE</code></td><td>Filters rows before aggregation</td></tr><tr><td><code>HAVING</code></td><td>Filters groups after aggregation</td></tr><tr><td>Primary Key</td><td>Uniquely identifies row</td></tr><tr><td>Foreign Key</td><td>Connects tables</td></tr><tr><td>Candidate Key</td><td>Can become PK</td></tr><tr><td>Alternate Key</td><td>Candidate key not selected as PK</td></tr><tr><td>Composite Key</td><td>Multiple columns form key</td></tr><tr><td>Surrogate Key</td><td>System-generated identifier</td></tr><tr><td>View</td><td>Reusable virtual table</td></tr><tr><td>Temp Table</td><td>Reusable intermediate stored result</td></tr><tr><td>Stored Procedure</td><td>Performs operations/business process</td></tr><tr><td>Function</td><td>Returns reusable value/table</td></tr><tr><td>Trigger</td><td>Automatically fires on database event</td></tr><tr><td>Normalization</td><td>Reduces redundancy and anomalies</td></tr><tr><td>Clustered Index</td><td>Organizes table data around key</td></tr><tr><td>Non-Clustered Index</td><td>Separate lookup structure</td></tr><tr><td><code>ISNULL()</code></td><td>Replace NULL</td></tr><tr><td><code>COALESCE()</code></td><td>First non-NULL</td></tr><tr><td><code>NULLIF()</code></td><td>Return NULL when equal</td></tr><tr><td><code>CASE</code></td><td>Conditional business logic</td></tr><tr><td><code>DELETE</code></td><td>Remove selected/all rows</td></tr><tr><td><code>TRUNCATE</code></td><td>Remove all rows, keep table</td></tr><tr><td><code>DROP</code></td><td>Remove table object</td></tr><tr><td><code>EXISTS</code></td><td>Check whether related row exists</td></tr><tr><td>Transaction</td><td>Unit of work</td></tr><tr><td>ACID</td><td>Reliable transaction properties</td></tr></tbody></table></div><div class="subtopic-nav" data-subtopic-nav=""><div class="subtopic-nav-inner"><button class="subtopic-tile" data-subtopic-target="senior-sql-16-guide" type="button">Best interview pattern</button></div></div><div class="subtopic-panel" data-subtopic-panel=""></div><div class="list" data-subtopic-source=""><div class="item question-item" data-question="senior-sql-16-guide">
 <button class="item-head"><span class="idx">01</span><span class="item-title">Best interview pattern</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p>*<em><strong>For theory:</strong></em>*\\ \\&gt; "One-line definition + when I use it."</p>
 <p>*<em><strong>For SQL coding:</strong></em>*\\ \\&gt; "First I identify the required grain, then filter/aggregate, apply the appropriate join or window function, and finally filter/order the result."</p>
-<p>*<em><strong>For real-life scenarios:</strong></em>*\\ \\&gt; "I would first clarify the business requirement, identify the correct tables and keys, validate duplicates/nulls, write the query, and verify the result before using it in reporting."</p></div></div></div></div></div>
+<p>*<em><strong>For real-life scenarios:</strong></em>*\\ \\&gt; "I would first clarify the business requirement, identify the correct tables and keys, validate duplicates/nulls, write the query, and verify the result before using it in reporting."</p></div></div></div></div></div></div>
 </div>
 </div>
 </div>
@@ -6523,13 +6522,9 @@ HAVING SUM(order_value) &gt; 100000;</code></pre>
       if (nav.dataset.bound === '1') return;
       nav.dataset.bound = '1';
 
-      // Use immediate siblings rather than parentElement.querySelector so that
-      // multiple independent nav/panel/list groups sharing the same parent
-      // (e.g. two separate tile groups under one answer) never cross-target
-      // each other's panel or list.
-      const panel = nav.nextElementSibling;
-      const list = panel ? panel.nextElementSibling : null;
-      if (!panel || !panel.hasAttribute('data-subtopic-panel') || !list || !list.classList.contains('list') || !list.hasAttribute('data-subtopic-source')) return;
+      const panel = nav.parentElement.querySelector(':scope > [data-subtopic-panel]');
+      const list = nav.parentElement.querySelector(':scope > .list[data-subtopic-source]');
+      if (!panel || !list) return;
 
       const keyAttr = nav.dataset.subtopicKey || 'question';
       const tiles = Array.from(nav.querySelectorAll('.subtopic-tile'));
@@ -6585,12 +6580,9 @@ HAVING SUM(order_value) &gt; 100000;</code></pre>
       if (nav.dataset.bound === '1') return;
       nav.dataset.bound = '1';
 
-      // Use immediate siblings rather than parentElement.querySelector so that
-      // multiple independent nav/panel/list groups sharing the same parent
-      // never cross-target each other's panel or list.
-      const panel = nav.nextElementSibling;
-      const list = panel ? panel.nextElementSibling : null;
-      if (!panel || !panel.hasAttribute('data-topic-panel') || !list || !list.classList.contains('list') || !list.hasAttribute('data-topic-source')) return;
+      const panel = nav.parentElement.querySelector(':scope > [data-topic-panel]');
+      const list = nav.parentElement.querySelector(':scope > .list[data-topic-source]');
+      if (!panel || !list) return;
 
       const tiles = Array.from(nav.querySelectorAll('.topic-tile'));
 
