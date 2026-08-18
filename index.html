@@ -21,6 +21,12 @@
 
   * { box-sizing: border-box; }
 
+  html{
+    -webkit-text-size-adjust: 100%;
+    -moz-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+  }
+
   body{
     margin:0;
     background: var(--bg);
@@ -458,6 +464,23 @@
   @media (max-width: 560px){
     .question-tile{ font-size: 12.5px; padding: 7px 11px; }
     .question-panel{ padding: 14px 16px; }
+  }
+
+  /* ===== Content-text lock for mobile landscape =====
+     Prevents body/paragraph copy from rendering larger than portrait mode.
+     Targets content text only — headings, tiles, buttons, panels and layout are untouched. */
+  @media (max-width: 900px) and (orientation: landscape){
+    .item-body-inner,
+    .item-body-inner p,
+    .section-body-inner p,
+    .question-panel-body,
+    .question-panel-body p,
+    .placeholder .item-body-inner,
+    .flow,
+    pre,
+    pre code{
+      font-size: 14px;
+    }
   }
 
 </style>
