@@ -2994,7 +2994,7 @@ DIVIDE(Profit, TotalSales)</code></pre>
 <button class="item-head">
 <span class="idx">02</span>
 <span class="item-title">Building YTD, MTD, QTD, YoY, MoM &amp; Rolling Measures</span>
-<span class="tag">8 Questions</span>
+<span class="tag">9 Questions</span>
 <svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
 </button>
 <div class="item-body">
@@ -3164,6 +3164,30 @@ CALCULATE(
 </div>
 </div>
 </div>
+<div class="item question-item" data-question="pbi-50">
+<button class="item-head">
+<span class="idx">50</span>
+<span class="item-title">Based on a slicer value, how would you calculate the average sales of the last three months?</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<p><strong>Say:</strong></p>
+<p>“I'll use <code>AVERAGEX()</code> over <code>DATESINPERIOD()</code>, anchored to the max date in the current filter context, so whatever period the slicer selects, the measure recalculates the trailing 3-month average from that point.”</p>
+<pre><code class="language-DAX">Avg Sales Last 3 Months =
+AVERAGEX(
+    DATESINPERIOD(
+        'Date'[Date],
+        MAX('Date'[Date]),
+        -3,
+        MONTH
+    ),
+    [Total Sales]
+)</code></pre>
+<p>---</p>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -3171,7 +3195,7 @@ CALCULATE(
 <button class="item-head">
 <span class="idx">03</span>
 <span class="item-title">Building TOPN(), RANKX(), % Contribution &amp; SWITCH() Measures</span>
-<span class="tag">8 Questions</span>
+<span class="tag">10 Questions</span>
 <svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
 </button>
 <div class="item-body">
@@ -3370,6 +3394,54 @@ SWITCH(
 </div>
 </div>
 </div>
+<div class="item question-item" data-question="pbi-51">
+<button class="item-head">
+<span class="idx">51</span>
+<span class="item-title">In Power BI, how would you create a Calculated Column for price-range categorization (Low/Medium/High)?</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<p><strong>Say:</strong></p>
+<p>“I'll use a <code>SWITCH(TRUE())</code> calculated column checking the amount against thresholds, returning a text label for each row.”</p>
+<pre><code class="language-DAX">Spend Range =
+SWITCH(
+    TRUE(),
+    Spend[Amount] &lt; 10000, "Low",
+    Spend[Amount] &lt; 100000, "Medium",
+    "High"
+)</code></pre>
+<p>“I'd use this as a Calculated Column rather than a measure since it needs to be usable as a slicer/filter field on the SAR dashboard.”</p>
+<p>---</p>
+</div>
+</div>
+</div>
+<div class="item question-item" data-question="pbi-53">
+<button class="item-head">
+<span class="idx">53</span>
+<span class="item-title">With 15 customers, how would you find the customer with the second-highest sales amount using DAX?</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<p><strong>Say:</strong></p>
+<p>“I'll rank customers with RANKX over the full customer list, then filter for rank 2.”</p>
+<pre><code class="language-DAX">Second Highest Customer =
+VAR RankedSales =
+    ADDCOLUMNS(
+        ALL(Customer),
+        "CustRank", RANKX(ALL(Customer), [Total Sales])
+    )
+RETURN
+    MAXX(
+        FILTER(RankedSales, [CustRank] = 2),
+        Customer[CustomerName]
+    )</code></pre>
+<p>“I build the rank as a virtual table with ADDCOLUMNS/RANKX, then filter it to rank 2 rather than hardcoding a customer name, so the answer updates automatically as sales change.”</p>
+<p>---</p>
+</div>
+</div>
+</div>
 </div>
 </div>
 </div>
@@ -3377,7 +3449,7 @@ SWITCH(
 <button class="item-head">
 <span class="idx">04</span>
 <span class="item-title">Cleaning Data, Merge/Append, Unpivot &amp; Custom Columns in M</span>
-<span class="tag">9 Questions</span>
+<span class="tag">10 Questions</span>
 <svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
 </button>
 <div class="item-body">
@@ -3597,6 +3669,30 @@ P100</code></pre>
 5. Compare Source Counts</code></pre>
 <p><strong>Most Common Cause</strong></p>
 <p>Duplicate records in dimension table creating fan-out.</p>
+</div>
+</div>
+</div>
+<div class="item question-item" data-question="pbi-52">
+<button class="item-head">
+<span class="idx">52</span>
+<span class="item-title">If a Period column has special characters, how would you clean and convert it to a P01, P02 format?</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<p><strong>Say:</strong></p>
+<p>"In Power Query, I'd use Text.Remove or Text.Select to strip non-numeric characters, then pad the remaining number to two digits and prefix it with 'P' using Text.PadStart combined with Text.Combine, turning something messy like 'Period-1!' into a clean 'P01'."</p>
+<pre><code class="language-powerquery">= Text.Combine(
+    {
+        "P",
+        Text.PadStart(
+            Text.Select([Period], {"0".."9"}),
+            2,
+            "0"
+        )
+    }
+)</code></pre>
+<p>---</p>
 </div>
 </div>
 </div>
@@ -4140,7 +4236,7 @@ measures.</p>
 </div></div>
 </div></div></div>
 </div><div class="item topic-item" data-index="powerbi-2">
-<button class="item-head"><span class="idx">02</span><span class="item-title">SUM() vs SUMX(): Iterators, Speed &amp; When to Use Each</span><span class="tag">7 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<button class="item-head"><span class="idx">02</span><span class="item-title">SUM() vs SUMX(): Iterators, Speed &amp; When to Use Each</span><span class="tag">8 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="powerbi-13">
 <button class="item-head"><span class="idx">13</span><span class="item-title">What is <code>SUM()</code>?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> <code>SUM()</code> adds the values of a single numeric column.</p>
@@ -4214,6 +4310,26 @@ SUMX(
 </code></pre>
 <p><strong>Real-life case:</strong> Calculate transaction-level revenue when only
 quantity and price are available.</p>
+</div></div>
+</div><div class="item question-item" data-question="powerbi-220">
+<button class="item-head"><span class="idx">220</span><span class="item-title">Which DAX functions do you use for Global Minimum and Maximum — does MIN need an expression or column?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> <code>MIN()</code> and <code>MAX()</code> can take either a column reference or an
+expression, so I can write <code>MIN(Spend[Amount])</code> directly, or use
+<code>MINX</code>/<code>MAXX</code> when the minimum or maximum depends on a calculated
+expression rather than a raw column. For a true global min/max that
+ignores the current filter context, I wrap it in <code>CALCULATE</code> with
+<code>ALL()</code>.</p>
+<p><strong>Query:</strong></p>
+<pre><code class="language-dax">Global Max Spend =
+CALCULATE(
+    MAX(Spend[Amount]),
+    ALL(Spend)
+)
+</code></pre>
+<p><strong>Real-life case:</strong> On the SAR dashboard I used this pattern for a
+benchmark card showing the single highest spend transaction
+company-wide, regardless of which cost center or region was currently
+filtered elsewhere on the page.</p>
 </div></div>
 </div></div></div>
 </div><div class="item topic-item" data-index="powerbi-3">
@@ -4512,7 +4628,7 @@ time calculations across sales and inventory reports.</p>
 </div></div>
 </div></div></div>
 </div><div class="item topic-item" data-index="powerbi-6">
-<button class="item-head"><span class="idx">06</span><span class="item-title">Calculation Groups, RELATED() vs RELATEDTABLE() &amp; Dynamic Top N</span><span class="tag">6 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<button class="item-head"><span class="idx">06</span><span class="item-title">Calculation Groups, RELATED() vs RELATEDTABLE() &amp; Dynamic Top N</span><span class="tag">7 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="powerbi-44">
 <button class="item-head"><span class="idx">44</span><span class="item-title">How would you handle dynamic currency conversion?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> I keep exchange rates in a rate table and use the selected
@@ -4610,9 +4726,25 @@ slicer so the user can switch the analysis level.</p>
 City-wise sales without creating separate visuals, while the sales
 measure remains unchanged.</p>
 </div></div>
+</div><div class="item question-item" data-question="powerbi-224">
+<button class="item-head"><span class="idx">224</span><span class="item-title">Do you know about Scope in DAX?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> Scope generally refers to Calculation Groups' <code>SELECTEDMEASURE()</code>
+and scoped calculation items, or more broadly to how a measure's
+filter/row context is scoped by <code>CALCULATE</code>.</p>
+<p><strong>Query:</strong></p>
+<pre><code class="language-dax">CALCULATION ITEM "YTD" =
+CALCULATE(
+    SELECTEDMEASURE(),
+    DATESYTD('Date'[Date])
+)
+</code></pre>
+<p><strong>Real-life case:</strong> I understand this concept from certification study
+— my hands-on DAX work has centered more on CALCULATE-based filter
+context than on Calculation Group scoping specifically.</p>
+</div></div>
 </div></div></div>
 </div><div class="item topic-item" data-index="powerbi-7">
-<button class="item-head"><span class="idx">07</span><span class="item-title">Advanced DAX: Virtual Tables, Table Functions &amp; Dynamic Measures</span><span class="tag">10 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<button class="item-head"><span class="idx">07</span><span class="item-title">Advanced DAX: Virtual Tables, Table Functions &amp; Dynamic Measures</span><span class="tag">14 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="powerbi-50">
 <button class="item-head"><span class="idx">50</span><span class="item-title">How do you let users dynamically switch between measures using a slicer?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> I create a small disconnected Metric table and a SWITCH() measure that returns the selected measure based on SELECTEDVALUE(), so one visual can show Revenue, Profit, or Quantity depending on the slicer.</p>
@@ -4721,6 +4853,83 @@ CALCULATE(
 )
 </code></pre>
 <p><strong>Real-life case:</strong> For a selected date of 30-Jun, this measure automatically aggregates 01-Jan through 30-Jun without hardcoding a date range.</p>
+</div></div>
+</div><div class="item question-item" data-question="powerbi-221">
+<button class="item-head"><span class="idx">221</span><span class="item-title">Can you give a SUMMARIZE example, and what's the difference from SUMMARIZECOLUMNS?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> SUMMARIZE groups a table by given columns and can add aggregated
+columns — <code>SUMMARIZECOLUMNS</code> is the newer, more efficient version,
+purpose-built for creating summary tables with filters and aggregations
+in one step. It handles filter context better and is generally
+recommended over SUMMARIZE with extra columns for performance.</p>
+<p><strong>Query:</strong></p>
+<pre><code class="language-dax">SUMMARIZECOLUMNS(
+    Spend[Region],
+    Spend[Category],
+    FILTER(ALL('Date'), 'Date'[Year] = 2026),
+    "Total Spend", [Total Spend]
+)
+</code></pre>
+<p><strong>Real-life case:</strong> On the SAR dashboard I lean toward SUMMARIZECOLUMNS
+for summary-table logic that needs its own filter arguments, rather than
+wrapping SUMMARIZE with extra CALCULATE/FILTER layers.</p>
+</div></div>
+</div><div class="item question-item" data-question="powerbi-222">
+<button class="item-head"><span class="idx">222</span><span class="item-title">Which DAX function would you use to display multiple selected slicer values in a Card visual?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> <code>CONCATENATEX()</code> — it concatenates the values returned by
+<code>VALUES()</code> on the slicer column into a single text string, so a card can
+show something like "North, East, West" when multiple regions are
+selected.</p>
+<p><strong>Query:</strong></p>
+<pre><code class="language-dax">Selected Regions =
+CONCATENATEX(
+    VALUES(Geography[Region]),
+    Geography[Region],
+    ", "
+)
+</code></pre>
+<p><strong>Real-life case:</strong> I use this mainly to display multiple selected
+slicer values as a single readable string in a card or tooltip on the
+SAR dashboard.</p>
+</div></div>
+</div><div class="item question-item" data-question="powerbi-223">
+<button class="item-head"><span class="idx">223</span><span class="item-title">Have you used hierarchical functions in DAX, like PATH()?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> I have conceptual understanding of PATH()-based functions for
+building organizational or parent-child hierarchies, though my
+hands-on project work hasn't required a self-referencing hierarchy —
+my dimensions were flat, such as Region, Department, and Cost Category.</p>
+<p><strong>Query:</strong></p>
+<pre><code class="language-dax">Org Path =
+PATH(Employee[EmployeeID], Employee[ManagerID])
+</code></pre>
+<p><strong>Real-life case:</strong> I'd reach for PATH() if a future model needed a
+self-referencing cost-center or approval hierarchy rather than the flat
+dimensions I've worked with so far.</p>
+</div></div>
+</div><div class="item question-item" data-question="powerbi-262">
+<button class="item-head"><span class="idx">262</span><span class="item-title">How would you build time-travel KPIs on top of multiple fact tables?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> I'd ensure both fact tables share a common conformed Date
+dimension, then write measures that explicitly reference each fact
+table with <code>SAMEPERIODLASTYEAR</code> or <code>DATEADD</code> for comparison
+periods, keeping the fact tables at a consistent grain so year-over-year
+and period comparisons align correctly across both.</p>
+<p><strong>Query:</strong></p>
+<pre><code class="language-dax">Actuals PY =
+CALCULATE(
+    [Total Actuals],
+    SAMEPERIODLASTYEAR('Date'[Date])
+)
+
+Budget PY =
+CALCULATE(
+    [Total Budget],
+    SAMEPERIODLASTYEAR('Date'[Date])
+)
+</code></pre>
+<p><strong>Real-life case:</strong> On the SAR model, Actuals and Budget are separate
+fact tables sharing the same Date dimension — this is exactly the
+pattern I used so a Fiscal-YTD-vs-Prior-Year comparison lines up
+correctly across both, rather than one fact table's time intelligence
+silently drifting out of sync with the other's.</p>
 </div></div>
 </div></div></div>
 </div><div class="item topic-item" data-index="powerbi-31"><button class="item-head"><span class="idx">31</span><span class="item-title">Measure vs Calculated Column Memory &amp; Dynamic Measure Selection</span><span class="tag">4 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="powerbi-195"><button class="item-head"><span class="idx">195</span><span class="item-title">Which consumes more memory — Measure vs Calculated Column?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><p>Calculated columns consume more storage/memory because they’re computed row-by-row at refresh time and physically stored in the VertiPaq compressed model, just like a regular column. Measures consume more runtime/CPU instead — they’re computed on the fly at query time in the current filter context and aren’t stored at all. So the trade-off is: calculated columns cost you model size, measures cost you query-time calculation.</p></div></div></div><div class="item question-item" data-question="powerbi-196"><button class="item-head"><span class="idx">196</span><span class="item-title">Can a Measure be used in a slicer? Why or why not?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><p>No. Slicers filter based on column values that exist in the model — a measure returns a single dynamic scalar recalculated per context, so there’s nothing static to slice by. The workaround is a disconnected “parameter” table with static values, paired with <code>SWITCH(SELECTEDVALUE(...))</code> logic in a measure, so the user is technically slicing a column on the parameter table, not the measure itself — that’s how I built dynamic measure selection.</p></div></div></div><div class="item question-item" data-question="powerbi-197"><button class="item-head"><span class="idx">197</span><span class="item-title">Why should large datasets avoid excessive Calculated Columns?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><p>Because every calculated column is materialized and stored per row in the compressed model — with millions of rows, that adds real memory overhead and slows down processing/refresh time. It also doesn’t benefit from context transition the way measures do. My rule of thumb: if a value needs to be used as a filter, slicer, or in RLS, it has to be a calculated column; anything purely for calculation and aggregation should be a measure instead.</p></div></div></div><div class="item question-item" data-question="powerbi-198"><button class="item-head"><span class="idx">198</span><span class="item-title">Dynamic Measure Selection</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><p>I use a disconnected table listing measure names, then a single measure that switches between the real measures based on what’s selected in a slicer built off that disconnected table:</p><pre><code class="language-dax">Selected Measure =
@@ -4930,7 +5139,7 @@ otherwise 0
 </div></div>
 </div></div></div>
 </div><div class="item topic-item" data-index="powerbi-9">
-<button class="item-head"><span class="idx">09</span><span class="item-title">Append vs Merge: Key Differences Explained</span><span class="tag">3 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<button class="item-head"><span class="idx">09</span><span class="item-title">Append vs Merge: Key Differences Explained</span><span class="tag">5 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="powerbi-76">
 <button class="item-head"><span class="idx">76</span><span class="item-title">What is Append?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> Append combines rows from two or more tables with compatible
@@ -4952,9 +5161,32 @@ horizontally based on matching keys.</p>
 <p><strong>Real-life case:</strong> Monthly files are appended; Product attributes are
 merged into sales data.</p>
 </div></div>
+</div><div class="item question-item" data-question="powerbi-266">
+<button class="item-head"><span class="idx">266</span><span class="item-title">How many types of joins are there in Power Query?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> Power Query's Merge supports six join kinds: Left Outer, Right
+Outer, Full Outer, Inner, Left Anti, and Right Anti — the anti joins
+return only the non-matching rows from one side.</p>
+<p><strong>Real-life case:</strong> I've used Left Anti to find records in a source
+table that have no match in a reference table — for example
+transactions with a ProductID that doesn't exist in the Product
+dimension, which is a useful data-quality check.</p>
+</div></div>
+</div><div class="item question-item" data-question="powerbi-267">
+<button class="item-head"><span class="idx">267</span><span class="item-title">If you need to concatenate values from multiple columns, how would you do it in Power Query?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> I'd use "Merge Columns" from the UI for a simple concatenation
+with a chosen separator, or write a Custom Column with M like
+<code>Text.Combine({[Col1],[Col2]}, " ")</code> for more control over
+formatting.</p>
+<p><strong>Query:</strong></p>
+<pre><code class="language-powerquery">= Text.Combine({[FirstName], [LastName]}, " ")
+</code></pre>
+<p><strong>Real-life case:</strong> I use the Custom Column/M approach whenever I need
+conditional formatting or handling of nulls within the concatenation,
+since the UI-only "Merge Columns" option is more limited.</p>
+</div></div>
 </div></div></div>
 </div><div class="item topic-item" data-index="powerbi-10">
-<button class="item-head"><span class="idx">10</span><span class="item-title">Query Folding: What It Is, Why It Matters &amp; What Breaks It</span><span class="tag">6 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<button class="item-head"><span class="idx">10</span><span class="item-title">Query Folding: What It Is, Why It Matters &amp; What Breaks It</span><span class="tag">8 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="powerbi-79">
 <button class="item-head"><span class="idx">79</span><span class="item-title">What is Query Folding?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> Query folding is Power Query's ability to translate supported
@@ -5002,6 +5234,30 @@ filtering, and verify folding during development.</p>
 <p><strong>Real-life case:</strong> For a large SQL fact table, I push date and business
 filters to SQL Server before loading the model.</p>
 </div></div>
+</div><div class="item question-item" data-question="powerbi-225">
+<button class="item-head"><span class="idx">225</span><span class="item-title">Have you used Query Folding? If the source is Excel, how does it work?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> Yes — with SQL Server sources folding works well since Power
+Query can translate filters and joins into SQL. Excel and CSV sources
+don't support query folding at all, because there's no query engine on
+the other end to push logic into — Power Query has to load the file and
+process every step locally.</p>
+<p><strong>Real-life case:</strong> For Excel-based sources, keeping the file small and
+filtering early in Excel itself matters more than step ordering, since
+there's no source-side engine to fold into.</p>
+</div></div>
+</div><div class="item question-item" data-question="powerbi-226">
+<button class="item-head"><span class="idx">226</span><span class="item-title">How do you identify if a transformation is folded, and how do you optimize mixed folded/non-folded steps?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> I check by right-clicking a step and seeing if "View Native
+Query" is available — if it's greyed out, folding has broken at that
+step. For mixed scenarios, I reorder steps so all foldable operations
+(filters, column selection, basic type changes) happen first, and push
+non-foldable custom logic to the end, so the source still does as much
+filtering as possible before the non-folding steps run.</p>
+<p><strong>Real-life case:</strong> On the SAR project I caught a broken fold this way —
+a custom column placed early was silently forcing every downstream step
+to run locally, so I moved it to the end of the query and folding
+resumed.</p>
+</div></div>
 </div></div></div>
 </div><div class="item topic-item" data-index="powerbi-11">
 <button class="item-head"><span class="idx">11</span><span class="item-title">Power Query Parameters &amp; Their Role in Incremental Refresh</span><span class="tag">3 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
@@ -5030,7 +5286,7 @@ historical partitions remain unchanged.</p>
 </div></div>
 </div></div></div>
 </div><p class="pbi-group-header">Data Modeling</p><div class="item topic-item" data-index="powerbi-12">
-<button class="item-head"><span class="idx">12</span><span class="item-title">Star vs Snowflake Schema: Facts, Dimensions &amp; Performance</span><span class="tag">15 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<button class="item-head"><span class="idx">12</span><span class="item-title">Star vs Snowflake Schema: Facts, Dimensions &amp; Performance</span><span class="tag">17 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="powerbi-88">
 <button class="item-head"><span class="idx">88</span><span class="item-title">What is a star schema?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> A star schema has a central fact table connected directly to
@@ -5122,6 +5378,32 @@ when a simple dimension can provide the required attributes.</p>
 <button class="item-head"><span class="idx">102</span><span class="item-title">How would you design a star schema for a retail sales dashboard?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> I'd build one central FactSales table holding keys and metrics like Quantity and Revenue, surrounded by DimDate, DimProduct, DimStore, and DimCustomer tables holding descriptive attributes.</p>
 <p><strong>Real-life case:</strong> This is the same structure I used for the DC allocation project — FactSales connected to DimDate, DimStore, DimProduct, and DimCustomer, which kept the model fast and easy to filter.</p>
+</div></div>
+</div><div class="item question-item" data-question="powerbi-227">
+<button class="item-head"><span class="idx">227</span><span class="item-title">What guidelines/best practices do you follow for data model, visualizations, and transformations?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> Modeling: star schema over snowflake, single-direction
+relationships unless a real scenario needs bidirectional, and measures
+instead of calculated columns wherever possible. Visualization: keep
+each page focused on one decision, use consistent color/KPI
+conventions, and avoid overloading a single page with too many
+visuals. Transformation: keep Power Query minimal and folding-friendly,
+and push heavy logic into SQL views for performance and auditability.</p>
+<p><strong>Real-life case:</strong> On the SAR project I kept currency conversion and
+heavy joins in SQL views, used Power Query only for final shaping, and
+built a star schema so DAX measures stayed simple and fast.</p>
+</div></div>
+</div><div class="item question-item" data-question="powerbi-274">
+<button class="item-head"><span class="idx">274</span><span class="item-title">Where would you implement business rules across layers (source, SQL, Power Query, DAX), and what are the pros/cons of each?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> Source/SQL: best for heavy logic like currency conversion —
+auditable, performant, reusable across reports, but changes need a
+deployment/DBA involvement. Power Query: good for lighter shaping close
+to the report, but can break folding and slow refresh if overused. DAX:
+best for logic that must respond dynamically to user filters/slicers,
+but it's the most expensive layer computationally if the underlying
+rule is static.</p>
+<p><strong>Real-life case:</strong> On the SAR project I put currency conversion in SQL
+specifically because it's a static, performance-sensitive rule, not
+something that needs to change per user interaction.</p>
 </div></div>
 </div></div></div>
 </div><div class="item topic-item" data-index="powerbi-13">
@@ -5258,8 +5540,8 @@ CALCULATE(
 a model table without creating a physical relationship.</p>
 </div></div>
 </div></div></div>
-</div><div class="item topic-item" data-index="powerbi-30"><button class="item-head"><span class="idx">30</span><span class="item-title">Star Schema, Cross-Filter Direction &amp; Cardinality Design</span><span class="tag">5 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="powerbi-190"><button class="item-head"><span class="idx">190</span><span class="item-title">Why is Star Schema preferred over a normalized/OLTP structure for reporting?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><p>OLTP/normalized schemas are optimized for transactional integrity — lots of joins, third normal form, minimal redundancy. That’s the wrong shape for analytics. Star schema denormalizes into a central fact table surrounded by dimension tables, which gives VertiPaq fewer, simpler join paths to resolve, so DAX queries are faster and filter propagation is predictable — one hop from dimension to fact instead of chaining through multiple normalized tables. It’s also easier for business users to understand: a Date, Product, and DC dimension around a Shipments fact table maps directly to how they think about the business, versus an ERD with 15 linked tables.</p></div></div></div><div class="item question-item" data-question="powerbi-191"><button class="item-head"><span class="idx">191</span><span class="item-title">What is cross-filter direction (single vs both)?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><p>Single direction means filters flow only from the “one” side (dimension) to the “many” side (fact) — the standard star schema pattern. Both/bidirectional lets filters flow both ways, so filtering the fact table can also filter the dimension. I use bidirectional sparingly — mainly for many-to-many bridge tables — because it can create ambiguous filter paths and hurt performance. In my model I kept dimension-to-fact relationships single-direction and only turned on bidirectional filtering on the one bridge table I needed for a many-to-many product-to-region mapping.</p></div></div></div><div class="item question-item" data-question="powerbi-192"><button class="item-head"><span class="idx">192</span><span class="item-title">Can two tables have more than one relationship? How do you manage that?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><p>Yes — Power BI allows multiple relationships between two tables, but only one can be active at a time; the rest are inactive. A common case is a fact table with both an Order Date and a Ship Date, both relating to the same Date dimension. The Order Date relationship is active by default; to use Ship Date in a calculation I activate it explicitly with <code>USERELATIONSHIP()</code> inside a <code>CALCULATE()</code>, rather than making it the default active path.</p></div></div></div><div class="item question-item" data-question="powerbi-193"><button class="item-head"><span class="idx">193</span><span class="item-title">How do you identify correct cardinality?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><p>I check which side has unique values on the join key. If the dimension table has one row per key (e.g., one row per DC), the relationship is one-to-many from dimension to fact. I verify this with a quick Power Query or SQL profiling step — count distinct vs. total rows on the key column. If both sides have duplicates on the key, it’s actually many-to-many and needs a bridge table rather than a direct relationship.</p></div></div></div><div class="item question-item" data-question="powerbi-194"><button class="item-head"><span class="idx">194</span><span class="item-title">What issues arise from incorrect cardinality?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><p>The most common one is row multiplication/fan-out — if the “dimension” side isn’t actually unique on the key, joining causes duplicate fact rows, which silently inflates sums. Wrong cardinality also breaks filter propagation direction, causes ambiguous relationship errors, and can degrade performance because VertiPaq has to resolve many-to-many joins instead of a clean one-to-many hop. On the DC project this is exactly the kind of bug I check for first if a total looks doubled.</p></div></div></div></div></div></div><p class="pbi-group-header">Security (RLS & Governance)</p><div class="item topic-item" data-index="powerbi-15">
-<button class="item-head"><span class="idx">15</span><span class="item-title">Static/Dynamic RLS, USERPRINCIPALNAME() &amp; Column-Level Security</span><span class="tag">9 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+</div><div class="item topic-item" data-index="powerbi-30"><button class="item-head"><span class="idx">30</span><span class="item-title">Star Schema, Cross-Filter Direction &amp; Cardinality Design</span><span class="tag">7 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="powerbi-190"><button class="item-head"><span class="idx">190</span><span class="item-title">Why is Star Schema preferred over a normalized/OLTP structure for reporting?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><p>OLTP/normalized schemas are optimized for transactional integrity — lots of joins, third normal form, minimal redundancy. That’s the wrong shape for analytics. Star schema denormalizes into a central fact table surrounded by dimension tables, which gives VertiPaq fewer, simpler join paths to resolve, so DAX queries are faster and filter propagation is predictable — one hop from dimension to fact instead of chaining through multiple normalized tables. It’s also easier for business users to understand: a Date, Product, and DC dimension around a Shipments fact table maps directly to how they think about the business, versus an ERD with 15 linked tables.</p></div></div></div><div class="item question-item" data-question="powerbi-191"><button class="item-head"><span class="idx">191</span><span class="item-title">What is cross-filter direction (single vs both)?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><p>Single direction means filters flow only from the “one” side (dimension) to the “many” side (fact) — the standard star schema pattern. Both/bidirectional lets filters flow both ways, so filtering the fact table can also filter the dimension. I use bidirectional sparingly — mainly for many-to-many bridge tables — because it can create ambiguous filter paths and hurt performance. In my model I kept dimension-to-fact relationships single-direction and only turned on bidirectional filtering on the one bridge table I needed for a many-to-many product-to-region mapping.</p></div></div></div><div class="item question-item" data-question="powerbi-192"><button class="item-head"><span class="idx">192</span><span class="item-title">Can two tables have more than one relationship? How do you manage that?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><p>Yes — Power BI allows multiple relationships between two tables, but only one can be active at a time; the rest are inactive. A common case is a fact table with both an Order Date and a Ship Date, both relating to the same Date dimension. The Order Date relationship is active by default; to use Ship Date in a calculation I activate it explicitly with <code>USERELATIONSHIP()</code> inside a <code>CALCULATE()</code>, rather than making it the default active path.</p></div></div></div><div class="item question-item" data-question="powerbi-193"><button class="item-head"><span class="idx">193</span><span class="item-title">How do you identify correct cardinality?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><p>I check which side has unique values on the join key. If the dimension table has one row per key (e.g., one row per DC), the relationship is one-to-many from dimension to fact. I verify this with a quick Power Query or SQL profiling step — count distinct vs. total rows on the key column. If both sides have duplicates on the key, it’s actually many-to-many and needs a bridge table rather than a direct relationship.</p></div></div></div><div class="item question-item" data-question="powerbi-194"><button class="item-head"><span class="idx">194</span><span class="item-title">What issues arise from incorrect cardinality?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><p>The most common one is row multiplication/fan-out — if the “dimension” side isn’t actually unique on the key, joining causes duplicate fact rows, which silently inflates sums. Wrong cardinality also breaks filter propagation direction, causes ambiguous relationship errors, and can degrade performance because VertiPaq has to resolve many-to-many joins instead of a clean one-to-many hop. On the DC project this is exactly the kind of bug I check for first if a total looks doubled.</p></div></div></div><div class="item question-item" data-question="powerbi-270"><button class="item-head"><span class="idx">270</span><span class="item-title">If a hierarchy does not exist in the Data Warehouse, can it be created in the model?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><p>Yes — Power BI lets you build a hierarchy directly on top of existing columns in the model (for example Region to Department), even if the source Data Warehouse doesn't have that hierarchy physically defined.</p><p><strong>Real-life case:</strong> I built a Region → Department → Cost Center hierarchy in the model itself on the SAR dashboard, even though the source SQL views didn't have a formal hierarchy table — it's just a drag-and-drop grouping of existing dimension columns in Model view.</p></div></div></div><div class="item question-item" data-question="powerbi-271"><button class="item-head"><span class="idx">271</span><span class="item-title">What is Circular Dependency in Power BI, what causes it, and how do you resolve it?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><p>Circular Dependency happens when relationships or calculated columns create a filter loop back to their own source, often from bidirectional relationships between multiple tables that all connect to each other.</p><p><strong>Real-life case:</strong> I'd resolve it by setting relationships back to single-direction where possible, or breaking the loop by removing one redundant relationship so filters have exactly one path — this is exactly why I keep bidirectional filtering limited to the one bridge table that genuinely needs it, rather than turning it on wherever convenient.</p></div></div></div></div></div></div><p class="pbi-group-header">Security (RLS & Governance)</p><div class="item topic-item" data-index="powerbi-15">
+<button class="item-head"><span class="idx">15</span><span class="item-title">Static/Dynamic RLS, USERPRINCIPALNAME() &amp; Column-Level Security</span><span class="tag">11 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="powerbi-115">
 <button class="item-head"><span class="idx">115</span><span class="item-title">What is Row-Level Security?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> RLS restricts which rows a user can see based on roles and
@@ -5338,9 +5620,42 @@ mechanisms, and avoid exposing unnecessary sensitive data.</p>
 approved dataset/report and validate access using test accounts before
 release.</p>
 </div></div>
+</div><div class="item question-item" data-question="powerbi-240">
+<button class="item-head"><span class="idx">240</span><span class="item-title">Have you worked on Organizational Hierarchy-Level RLS, and which DAX functions would you use to build the hierarchy?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> My hands-on RLS work was region/department based rather than a
+self-referencing org hierarchy. For a true manager-to-report-chain
+hierarchy, I'd use <code>PATH()</code>-based functions like
+<code>PATHCONTAINS()</code> to check if a logged-in manager's ID appears
+anywhere in an employee's reporting chain.</p>
+<p><strong>Query:</strong></p>
+<pre><code class="language-dax">Manager RLS Filter =
+PATHCONTAINS(
+    Employee[HierarchyPath],
+    USERPRINCIPALNAME()
+)
+</code></pre>
+<p><strong>Real-life case:</strong> This pattern would let a manager see their own row
+plus every employee below them in the org chart, without hardcoding a
+separate role per manager.</p>
+</div></div>
+</div><div class="item question-item" data-question="powerbi-241">
+<button class="item-head"><span class="idx">241</span><span class="item-title">Apart from RLS, are you aware of Object-Level Security (OLS), and how would you implement it — Tabular Editor vs Desktop?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> Yes — OLS restricts visibility of specific tables or columns
+(not just rows) for certain roles, for example hiding a Salary column
+entirely from a role rather than filtering rows. OLS isn't configurable
+natively in Power BI Desktop; it's implemented using external tools
+like Tabular Editor, which is why I know it conceptually but haven't
+hands-on configured it since my project's security need was row-level,
+not object-level.</p>
+<p><strong>Real-life case:</strong> If a dashboard needed to hide a Salary or Margin
+column from a subset of viewers entirely — not just filter their rows —
+I'd open the model in Tabular Editor, set that column's object-level
+security to "None" for the relevant role, since Desktop has no UI for
+this.</p>
+</div></div>
 </div></div></div>
 </div><div class="item topic-item" data-index="powerbi-34"><button class="item-head"><span class="idx">34</span><span class="item-title">Dynamic RLS Design for Multi-Region Access</span><span class="tag">1 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="powerbi-205"><button class="item-head"><span class="idx">205</span><span class="item-title">Multiple regions require different security access. Design RLS.</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><p>I’d build a mapping table — UserEmail to Region (one-to-many, since a manager might cover multiple regions) — and relate it to the Region dimension. The RLS role filter would be:</p><pre><code class="language-dax">[UserRegion] = USERPRINCIPALNAME()</code></pre><p>applied against the mapping table’s region column, which then filters the fact table through the existing star schema relationships. This is exactly the pattern I used for dynamic RLS on the allocation dashboard — one role, driven entirely by the mapping table, instead of hardcoding a separate static role per region.</p></div></div></div></div></div></div><p class="pbi-group-header">Storage Modes & Connectivity</p><div class="item topic-item" data-index="powerbi-16">
-<button class="item-head"><span class="idx">16</span><span class="item-title">Import vs DirectQuery vs Live Connection &amp; Data Sources</span><span class="tag">17 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<button class="item-head"><span class="idx">16</span><span class="item-title">Import vs DirectQuery vs Live Connection &amp; Data Sources</span><span class="tag">21 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="powerbi-124">
 <button class="item-head"><span class="idx">124</span><span class="item-title">What is Import mode?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> Import mode loads data into Power BI's in-memory storage
@@ -5488,9 +5803,56 @@ in
 <p><strong>Real-life case:</strong> An API can provide external sales, exchange-rate,
 weather, or operational data that is not available in the warehouse.</p>
 </div></div>
+</div><div class="item question-item" data-question="powerbi-268">
+<button class="item-head"><span class="idx">268</span><span class="item-title">How did you connect to Jira?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> I haven't personally connected Power BI to Jira as a data
+source. My data connections have been to SQL Server and Excel/CSV; if a
+project needed Jira data, the standard approach is Power BI's Jira
+connector or the Jira REST API through Power Query's
+<code>Web.Contents</code>.</p>
+<p><strong>Real-life case:</strong> The same <code>Web.Contents()</code> + <code>Json.Document()</code>
+pattern I'd use for any REST API would apply to Jira's API specifically,
+just pointed at Jira's endpoints with the right authentication.</p>
+</div></div>
+</div><div class="item question-item" data-question="powerbi-228">
+<button class="item-head"><span class="idx">228</span><span class="item-title">Have you worked with cloud-specific technologies such as AWS or Azure?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> I haven't worked hands-on with AWS. On Azure, my exposure is
+through Microsoft Fabric and Azure analytics concepts covered in my
+DP-600 certification — Lakehouses, Warehouses, Data Factory pipelines —
+rather than day-to-day production work.</p>
+<p><strong>Real-life case:</strong> My hands-on production work has been centered on SQL
+Server and Power BI; I'd be upfront about that distinction if asked,
+rather than overstating cloud experience I don't have.</p>
+</div></div>
+</div><div class="item question-item" data-question="powerbi-237">
+<button class="item-head"><span class="idx">237</span><span class="item-title">Have you worked with Microsoft Fabric hands-on, and which Fabric components have you used?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> My Fabric knowledge comes from the DP-600 certification — I
+covered Lakehouses for file-based/Delta storage, Warehouses for
+SQL-based structured storage, Notebooks for Spark-based transformation,
+semantic model design, SQL/DAX-based analysis, and KQL fundamentals in
+that context, plus OneLake tying them together. My day-to-day
+production work has been on SQL Server and Power BI Desktop/Service
+rather than a live Fabric workspace, and I'd say that clearly if asked.</p>
+<p><strong>Real-life case:</strong> I haven't implemented Lakehouses, Warehouses, or
+Notebooks in a live production Fabric environment yet — my production
+experience has been SQL Server and Power BI, with Fabric knowledge as a
+certified but self-study skill I'm ready to apply.</p>
+</div></div>
+</div><div class="item question-item" data-question="powerbi-265">
+<button class="item-head"><span class="idx">265</span><span class="item-title">If a Finance model with a different refresh cadence is connected to a Revenue model, will it work correctly?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> It can work, but numbers can go out of sync if the two models
+refresh at different times and one feeds into the other via Live
+Connection or DirectQuery — I'd want to confirm the connected model
+isn't showing a mismatched point-in-time compared to the source model
+until both refreshes align.</p>
+<p><strong>Real-life case:</strong> I'd push to align both models on the same refresh
+window, or at minimum add a "Last Refreshed" timestamp to both reports
+so anyone comparing numbers across them can see if they're looking at
+different points in time.</p>
+</div></div>
 </div></div></div>
 </div><div class="item topic-item" data-index="powerbi-19">
-<button class="item-head"><span class="idx">19</span><span class="item-title">Composite Models, Hybrid Tables, Partitioning &amp; Incremental Refresh Parameters</span><span class="tag">4 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<button class="item-head"><span class="idx">19</span><span class="item-title">Composite Models, Hybrid Tables, Partitioning &amp; Incremental Refresh Parameters</span><span class="tag">5 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="powerbi-150">
 <button class="item-head"><span class="idx">150</span><span class="item-title">What is a composite model?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> A composite model combines Import mode and DirectQuery mode within the same dataset, so different tables can use different storage modes based on how fresh they need to be.</p>
@@ -5515,6 +5877,20 @@ AND OrderDate &lt; RangeEnd
 </code></pre>
 <p><strong>Real-life case:</strong> I've used this pattern to refresh only the last 30 days of orders on a nightly schedule instead of reloading the entire fact table.</p>
 </div></div>
+</div><div class="item question-item" data-question="powerbi-229">
+<button class="item-head"><span class="idx">229</span><span class="item-title">Can you explain Dual Storage Mode, and how is it different from Composite Mode?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> Dual Storage Mode is a setting on an individual table inside a
+Composite model — the table can behave as either Import or DirectQuery
+depending on which gives better performance for a given query.
+Composite Mode is the model-level concept of mixing Import and
+DirectQuery tables together; Dual is the specific mode I'd assign to a
+table (often a dimension) inside that composite model so Power BI can
+choose the most efficient path at query time.</p>
+<p><strong>Real-life case:</strong> I'd set a shared dimension like Date or Region to Dual
+so it can join efficiently whether it's being queried alongside an
+Import fact table or a DirectQuery fact table in the same composite
+model.</p>
+</div></div>
 </div></div></div>
 </div><div class="item topic-item" data-index="powerbi-33"><button class="item-head"><span class="idx">33</span><span class="item-title">Import vs DirectQuery, Incremental Load &amp; Large-Scale Model Design</span><span class="tag">4 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="powerbi-201"><button class="item-head"><span class="idx">201</span><span class="item-title">How does Import mode affect report performance compared to DirectQuery?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><p>Import loads a compressed copy of the data into VertiPaq’s in-memory columnar engine, so visuals query local memory — that’s why Import reports feel near-instant. DirectQuery sends a native query to the source database on every interaction, so performance depends entirely on the source system’s speed and indexing, and it’s almost always slower for complex DAX. The trade-off is freshness: Import means data is only as current as the last refresh, DirectQuery is real-time. On my project I used Import for the KPI dashboards since daily refresh was acceptable, and would only reach for DirectQuery/composite models if the business needed intraday numbers.</p></div></div></div><div class="item question-item" data-question="powerbi-202"><button class="item-head"><span class="idx">202</span><span class="item-title">Incremental Load Logic</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><p>I set up RangeStart/RangeEnd parameters in Power Query, filter the fact table on the date column using those parameters, then configure the incremental refresh policy in the dataset settings — e.g., “refresh last 5 days, archive the rest as historical partitions.” Power BI then only reprocesses the recent partitions on each refresh instead of reloading the entire table, which is what makes multi-year fact tables refreshable in minutes instead of hours.</p></div></div></div><div class="item question-item" data-question="powerbi-203"><button class="item-head"><span class="idx">203</span><span class="item-title">How would you design a model for a 500M row dataset?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><p>At that scale I wouldn’t rely purely on Import. My approach: strict star schema, incremental refresh so only recent partitions reload, aggregation tables at a coarser grain (e.g., daily/DC level) that most visuals hit instead of the full detail table, remove any unused or high-cardinality columns, and consider a composite model — Import for aggregates, DirectQuery for the rare drill-to-detail query. I’d also push heavy transformation logic upstream into SQL views rather than Power Query, so the engine isn’t doing row-by-row work on 500M rows.</p></div></div></div><div class="item question-item" data-question="powerbi-204"><button class="item-head"><span class="idx">204</span><span class="item-title">What do you do when a dataset exceeds the memory limit?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><p>First I’d check what’s actually driving size — usually it’s unnecessary columns, high-cardinality text columns, or calculated columns that could be measures instead. Then: enable incremental refresh so I’m not loading full history every time, build aggregation tables for common query patterns, remove columns not used in any visual or relationship, and if it’s still too large for the license tier, move to a Premium/Fabric capacity with a higher memory limit or switch part of the model to DirectQuery.</p></div></div></div></div></div></div><p class="pbi-group-header">SQL & Database Concepts (Power BI Integration)</p><div class="item topic-item" data-index="powerbi-17">
 <button class="item-head"><span class="idx">17</span><span class="item-title">Indexes &amp; Execution Plans Behind DirectQuery Speed</span><span class="tag">1 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
@@ -5529,7 +5905,7 @@ operations.</p>
 </div></div>
 </div></div></div>
 </div><p class="pbi-group-header">Refresh, Gateway & Performance Optimization</p><div class="item topic-item" data-index="powerbi-18">
-<button class="item-head"><span class="idx">18</span><span class="item-title">Scheduled vs Incremental Refresh &amp; Gateway Timeout Fixes</span><span class="tag">8 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<button class="item-head"><span class="idx">18</span><span class="item-title">Scheduled vs Incremental Refresh &amp; Gateway Timeout Fixes</span><span class="tag">13 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="powerbi-142">
 <button class="item-head"><span class="idx">142</span><span class="item-title">What is data refresh?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> Data refresh updates the Power BI model with the latest
@@ -5595,6 +5971,69 @@ model, and monitor refresh behavior.</p>
 <p><strong>Real-life case:</strong> Only recent sales partitions are processed while
 historical partitions remain unchanged.</p>
 </div></div>
+</div><div class="item question-item" data-question="powerbi-231">
+<button class="item-head"><span class="idx">231</span><span class="item-title">What's the difference between backend-side and report-level partitioning, and how would you implement report-level partitioning?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> Backend/model partitioning splits a table's storage into chunks
+— like by month or year — so refresh and queries only touch relevant
+partitions; that's what incremental refresh configures automatically.
+Report-level partitioning isn't a real separate concept in Power BI the
+way it is in a database — the closest equivalent is splitting large
+reports into multiple pages or separate reports so each one queries a
+smaller, more focused portion of the model.</p>
+<p><strong>Real-life case:</strong> On the SAR project, rather than one page with every
+KPI, I split the report into a summary page (aggregated, fast) and
+detail drill-through pages (row-level, only loaded when a user actually
+drills in), which kept the default landing page snappy.</p>
+</div></div>
+</div><div class="item question-item" data-question="powerbi-238">
+<button class="item-head"><span class="idx">238</span><span class="item-title">If a report refreshes via both SQL and Excel sources, how do you connect, and did you use a gateway?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> The SQL Server side goes through the on-premises gateway for
+scheduled refresh; Excel/CSV files, if they're local or on a network
+share, also route through the same gateway so the whole dataset can
+refresh together rather than needing separate manual steps for each
+source type.</p>
+<p><strong>Real-life case:</strong> On the SAR project the fact tables came from SQL
+Server and a small reference file lived on a network share — both
+were registered under the same gateway data source list so one
+scheduled refresh covered the entire model.</p>
+</div></div>
+</div><div class="item question-item" data-question="powerbi-239">
+<button class="item-head"><span class="idx">239</span><span class="item-title">Can Incremental Refresh apply to Dimension Tables? Why is it mainly used on Fact Tables, and what attribute is needed?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> It's technically possible on dimension tables, but it's rarely
+useful there since dimensions are usually small and change slowly. It's
+primarily used on fact tables because those grow large and have new
+rows added continuously; the required attribute is a reliable
+date/datetime column that can be used to filter and partition the table
+by RangeStart/RangeEnd.</p>
+<p><strong>Real-life case:</strong> On the SAR model, incremental refresh made sense on
+the Actuals fact table but not on the Region or Cost Category
+dimensions, which were small, static lookup tables refreshed in full
+every time at negligible cost.</p>
+</div></div>
+</div><div class="item question-item" data-question="powerbi-263">
+<button class="item-head"><span class="idx">263</span><span class="item-title">If you have three connected queries where two should refresh daily and one should not, how would you handle this in Desktop and Service?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> In Desktop, I'd disable "Include in report refresh" for the
+query that shouldn't refresh, so it loads once and stays static. In
+Service, scheduled refresh applies at the dataset level, so the query
+settings from Desktop are what actually controls which tables get
+reprocessed on each scheduled run.</p>
+<p><strong>Real-life case:</strong> A static currency-rate lookup or a reference table
+that rarely changes is a good candidate for this — no need to hit the
+source and reprocess it every single day alongside the fact tables.</p>
+</div></div>
+</div><div class="item question-item" data-question="powerbi-264">
+<button class="item-head"><span class="idx">264</span><span class="item-title">In a semantic model with chained refresh, if Query A is set to refresh weekly and Query B (which depends on A) refreshes daily, will it work correctly?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> Not reliably — if B depends on A but refreshes daily while A
+only updates weekly, B will keep reprocessing against stale upstream
+data most days, producing numbers that look refreshed but aren't
+actually new. Dependent queries should generally share the same or a
+compatible refresh cadence, or be sequenced explicitly rather than
+scheduled independently.</p>
+<p><strong>Real-life case:</strong> I'd flag this as a design smell in a review — either
+align both queries to the same cadence, or make the dependency explicit
+in a single pipeline step rather than relying on two independent
+schedules to happen to line up.</p>
+</div></div>
 </div></div></div>
 </div><div class="item topic-item" data-index="powerbi-20">
 <button class="item-head"><span class="idx">20</span><span class="item-title">Power BI Premium, Capacity &amp; Refresh Behavior</span><span class="tag">4 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
@@ -5634,7 +6073,7 @@ design.</p>
 </div></div>
 </div></div></div>
 </div><div class="item topic-item" data-index="powerbi-21">
-<button class="item-head"><span class="idx">21</span><span class="item-title">Performance Tools: VertiPaq, DAX Studio, Performance Analyzer &amp; Deployment Pipelines</span><span class="tag">4 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<button class="item-head"><span class="idx">21</span><span class="item-title">Performance Tools: VertiPaq, DAX Studio, Performance Analyzer &amp; Deployment Pipelines</span><span class="tag">8 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="powerbi-158">
 <button class="item-head"><span class="idx">158</span><span class="item-title">What is VertiPaq compression?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> VertiPaq is Power BI's in-memory columnar storage engine — it compresses imported data using dictionary and value encoding, which is why Import mode is fast and why a 10 GB source can shrink to a few hundred MB in the model.</p>
@@ -5655,9 +6094,58 @@ design.</p>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> Deployment pipelines automate moving Power BI content between Dev, Test/UAT, and Production workspaces, giving controlled releases and reducing manual deployment errors.</p>
 <p><strong>Real-life case:</strong> I've used this flow to publish a report in Dev, validate it in UAT, and only then promote it to Production, instead of manually re-publishing files across workspaces.</p>
 </div></div>
+</div><div class="item question-item" data-question="powerbi-230">
+<button class="item-head"><span class="idx">230</span><span class="item-title">If there's a performance issue, how do you resolve it, and which DAX functions tend to be slower?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> I start with Performance Analyzer to isolate whether the
+bottleneck is a visual, a DAX measure, or the model, then drop into DAX
+Studio if I need to see Storage Engine vs Formula Engine time.
+Row-by-row iterator functions like <code>SUMX</code> and <code>FILTER</code> used
+inefficiently, and heavy nested <code>CALCULATE</code> calls, tend to be slower
+than set-based functions, so I look at replacing iterators with simpler
+aggregations where the logic allows.</p>
+<p><strong>Real-life case:</strong> On the SAR dashboard I found a measure nesting
+several <code>CALCULATE(FILTER(...))</code> patterns where a plain <code>CALCULATE</code>
+with a boolean filter argument would do the same job faster — DAX
+Studio's Server Timings made that obvious once I compared query plans.</p>
+</div></div>
+</div><div class="item question-item" data-question="powerbi-233">
+<button class="item-head"><span class="idx">233</span><span class="item-title">How would you use the XMLA Endpoint to refresh a specific table, and have you heard of the Power BI REST API?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> XMLA endpoint access, available on Premium/Fabric capacity,
+lets external tools like Tabular Editor or SSMS connect to the semantic
+model and trigger table- or partition-level refresh instead of
+refreshing the whole dataset. I'm aware of the Power BI REST API for
+programmatic refresh, embedding, and admin tasks, though my hands-on
+refresh work has been through standard Power BI Service scheduling
+rather than the API directly.</p>
+<p><strong>Real-life case:</strong> A table-level XMLA refresh would let me refresh just
+a fast-changing dimension without reprocessing the entire semantic
+model, which matters once a dataset gets large enough that a full
+refresh is expensive.</p>
+</div></div>
+</div><div class="item question-item" data-question="powerbi-234">
+<button class="item-head"><span class="idx">234</span><span class="item-title">Have you used tools such as Measure Killer or Tabular Editor?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> I haven't used Measure Killer or Tabular Editor hands-on in my
+project work — my model development has been through Power BI Desktop
+directly. I'm aware of them as community tools for cleaning up unused
+measures and doing bulk/advanced model edits.</p>
+<p><strong>Real-life case:</strong> If I inherited a large legacy model with a lot of
+unused measures, Measure Killer would be the natural tool to identify
+and safely remove dead calculations before a cleanup pass.</p>
+</div></div>
+</div><div class="item question-item" data-question="powerbi-235">
+<button class="item-head"><span class="idx">235</span><span class="item-title">Have you worked with Power BI Template Files (.PBIT)?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> I've primarily worked with and distributed PBIX files. I
+understand PBIT's purpose as a structure-only template — model,
+measures, and report layout without the data itself — for standardizing
+new report starting points, but it hasn't been part of my actual
+delivery process.</p>
+<p><strong>Real-life case:</strong> A PBIT would make sense for giving other analysts a
+pre-built star schema and measure library to plug their own data
+source into, rather than rebuilding the model from scratch each time.</p>
+</div></div>
 </div></div></div>
-</div><div class="item topic-item" data-index="powerbi-35"><button class="item-head"><span class="idx">35</span><span class="item-title">Data Type Importance &amp; Diagnosing Slow Refreshes</span><span class="tag">2 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="powerbi-206"><button class="item-head"><span class="idx">206</span><span class="item-title">Why is Data Type important in Power Query?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><p>Correct data types aren’t just cosmetic — they affect query folding (a mistyped column can silently break folding and push transformation load onto the local engine), storage size (a date stored as text takes far more space than a proper Date type), and correctness of aggregations and sorting. I always explicitly set types right after import rather than trusting auto-detect, especially for date and numeric columns coming from CSV sources.</p></div></div></div><div class="item question-item" data-question="powerbi-207"><button class="item-head"><span class="idx">207</span><span class="item-title">Refresh takes 4 hours — what do you do?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><p>I’d start with Query Diagnostics to see which step is expensive, and check whether folding broke — usually caused by a custom column, merge, or Power Query-native transformation placed before a filter step that would otherwise push down to the source. My fix order: reorder steps so filters happen as early as possible and folding stays intact, move heavy logic (joins, aggregations) back into a SQL view instead of Power Query, and set up incremental refresh so I’m not reprocessing the full history every run. I hit a version of this on my project with a 2-hour refresh caused by a non-folding merge — moving that merge into the source SQL view got it back under folding and cut the runtime significantly.</p></div></div></div></div></div></div><div class="item topic-item" data-index="powerbi-36"><button class="item-head"><span class="idx">36</span><span class="item-title">Diagnosing Slow Report Loads &amp; Premium vs Pro Licensing</span><span class="tag">2 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="powerbi-208"><button class="item-head"><span class="idx">208</span><span class="item-title">Report takes 20 seconds to load. What will you check first?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><p>I open Performance Analyzer first — it breaks down time spent per visual into DAX query time vs. visual rendering time vs. other. If one or two visuals dominate, I look at their DAX (usually a non-optimized measure, unnecessary bidirectional filter, or too many nested CALCULATEs). If it’s spread evenly across many visuals, it’s more likely a model-level issue — too many visuals on one page, high-cardinality columns, or unnecessary calculated columns bloating the model. I always isolate the bottleneck with data before touching anything.</p></div></div></div><div class="item question-item" data-question="powerbi-209"><button class="item-head"><span class="idx">209</span><span class="item-title">Premium vs Pro licensing considerations.</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><p>Pro is a per-user license — good for smaller teams where everyone consuming reports also has a Pro license, but capped around a 1GB dataset size and limited large-model/dataflow features. Premium (or Premium-Per-User/Fabric capacity) is capacity-based rather than per-user, supports much larger datasets, XMLA endpoint access for external tools, dataflows, paginated reports, and — importantly — lets you share reports with users who don’t have Pro licenses. I’d recommend Premium once you’re distributing to a large read-only audience or your datasets are pushing past the Pro size limits, which is a real conversation on an enterprise retail deployment like mine.</p></div></div></div></div></div></div><p class="pbi-group-header">Power BI Service, Deployment & Administration</p><div class="item topic-item" data-index="powerbi-22">
-<button class="item-head"><span class="idx">22</span><span class="item-title">Drill-Through, Reports vs Dashboards, Gateways &amp; Workspace Roles</span><span class="tag">7 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+</div><div class="item topic-item" data-index="powerbi-35"><button class="item-head"><span class="idx">35</span><span class="item-title">Data Type Importance &amp; Diagnosing Slow Refreshes</span><span class="tag">2 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="powerbi-206"><button class="item-head"><span class="idx">206</span><span class="item-title">Why is Data Type important in Power Query?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><p>Correct data types aren’t just cosmetic — they affect query folding (a mistyped column can silently break folding and push transformation load onto the local engine), storage size (a date stored as text takes far more space than a proper Date type), and correctness of aggregations and sorting. I always explicitly set types right after import rather than trusting auto-detect, especially for date and numeric columns coming from CSV sources.</p></div></div></div><div class="item question-item" data-question="powerbi-207"><button class="item-head"><span class="idx">207</span><span class="item-title">Refresh takes 4 hours — what do you do?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><p>I’d start with Query Diagnostics to see which step is expensive, and check whether folding broke — usually caused by a custom column, merge, or Power Query-native transformation placed before a filter step that would otherwise push down to the source. My fix order: reorder steps so filters happen as early as possible and folding stays intact, move heavy logic (joins, aggregations) back into a SQL view instead of Power Query, and set up incremental refresh so I’m not reprocessing the full history every run. I hit a version of this on my project with a 2-hour refresh caused by a non-folding merge — moving that merge into the source SQL view got it back under folding and cut the runtime significantly.</p></div></div></div></div></div></div><div class="item topic-item" data-index="powerbi-36"><button class="item-head"><span class="idx">36</span><span class="item-title">Diagnosing Slow Report Loads &amp; Premium vs Pro Licensing</span><span class="tag">4 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="powerbi-208"><button class="item-head"><span class="idx">208</span><span class="item-title">Report takes 20 seconds to load. What will you check first?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><p>I open Performance Analyzer first — it breaks down time spent per visual into DAX query time vs. visual rendering time vs. other. If one or two visuals dominate, I look at their DAX (usually a non-optimized measure, unnecessary bidirectional filter, or too many nested CALCULATEs). If it’s spread evenly across many visuals, it’s more likely a model-level issue — too many visuals on one page, high-cardinality columns, or unnecessary calculated columns bloating the model. I always isolate the bottleneck with data before touching anything.</p></div></div></div><div class="item question-item" data-question="powerbi-209"><button class="item-head"><span class="idx">209</span><span class="item-title">Premium vs Pro licensing considerations.</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><p>Pro is a per-user license — good for smaller teams where everyone consuming reports also has a Pro license, but capped around a 1GB dataset size and limited large-model/dataflow features. Premium (or Premium-Per-User/Fabric capacity) is capacity-based rather than per-user, supports much larger datasets, XMLA endpoint access for external tools, dataflows, paginated reports, and — importantly — lets you share reports with users who don’t have Pro licenses. I’d recommend Premium once you’re distributing to a large read-only audience or your datasets are pushing past the Pro size limits, which is a real conversation on an enterprise retail deployment like mine.</p></div></div></div><div class="item question-item" data-question="powerbi-232"><button class="item-head"><span class="idx">232</span><span class="item-title">How do you optimize report visuals and pages, and what unnecessary visuals have you removed?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><p>I limit visuals per page, avoid unnecessary high-cardinality visuals like large tables with many columns, and remove redundant KPI cards that duplicate what a chart already shows. On one page of the SAR dashboard I replaced several overlapping small multiples with a single well-designed matrix, which cut both visual count and query load — Performance Analyzer showed the page's total render time drop noticeably once the redundant visuals were gone.</p></div></div></div><div class="item question-item" data-question="powerbi-272"><button class="item-head"><span class="idx">272</span><span class="item-title">If a visual is not loading, what could be the possible reasons?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><p>Common causes: a slow or broken DAX measure behind that visual, a filter/slicer creating an unusually large query, a broken or ambiguous relationship, DirectQuery source latency, or simply too much data/too many visuals on one page competing for rendering resources — I would check Performance Analyzer first to see exactly which query is slow or failing.</p></div></div></div></div></div></div><p class="pbi-group-header">Power BI Service, Deployment & Administration</p><div class="item topic-item" data-index="powerbi-22">
+<button class="item-head"><span class="idx">22</span><span class="item-title">Drill-Through, Reports vs Dashboards, Gateways &amp; Workspace Roles</span><span class="tag">9 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="powerbi-162">
 <button class="item-head"><span class="idx">162</span><span class="item-title">What is your experience with Power BI Service?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> "After developing reports, I have worked with publishing,
@@ -5690,6 +6178,17 @@ tiles.</p>
 <p><strong>Real-life case:</strong> Use a report for detailed analysis and a dashboard
 for high-level executive monitoring.</p>
 </div></div>
+</div><div class="item question-item" data-question="powerbi-236">
+<button class="item-head"><span class="idx">236</span><span class="item-title">When you publish a report, how many types of files/artifacts do you get?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> Publishing produces a semantic model (dataset) and one or more
+reports built on it in the workspace. If you publish to a Premium/Fabric
+workspace you can also get a dataflow, and reports can be pinned into a
+separate dashboard artifact.</p>
+<p><strong>Real-life case:</strong> On the SAR project, publishing the PBIX created the
+semantic model plus the report; I then pinned key visuals into a
+dashboard for the executive summary view separate from the full
+multi-page report.</p>
+</div></div>
 </div><div class="item question-item" data-question="powerbi-166">
 <button class="item-head"><span class="idx">166</span><span class="item-title">Standard On-Premises Gateway vs Personal Gateway?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> The standard gateway is designed for centrally managed
@@ -5706,6 +6205,17 @@ analytical model used by reports and other consumers.</p>
 <p><strong>Real-life case:</strong> A dataflow can prepare reusable customer data, which
 can then feed a semantic model used by multiple reports.</p>
 </div></div>
+</div><div class="item question-item" data-question="powerbi-269">
+<button class="item-head"><span class="idx">269</span><span class="item-title">Have you created a datamart in Power BI?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> I haven't used the Power BI Datamart feature specifically —
+my project's data layer was SQL Server views feeding directly into the
+Power BI semantic model, which serves a similar governed-data purpose
+without using the dedicated Datamart artifact.</p>
+<p><strong>Real-life case:</strong> A Datamart would make sense for a team without a
+dedicated SQL Server backend that still wants a governed, queryable
+layer with built-in Power BI integration — my SQL views already covered
+that role on the SAR project.</p>
+</div></div>
 </div><div class="item question-item" data-question="powerbi-168">
 <button class="item-head"><span class="idx">168</span><span class="item-title">What are Power BI workspace roles?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> Common workspace roles are Admin, Member, Contributor, and
@@ -5716,7 +6226,7 @@ responsibilities.</p>
 </div></div>
 </div></div></div>
 </div><div class="item topic-item" data-index="powerbi-23">
-<button class="item-head"><span class="idx">23</span><span class="item-title">Bookmarks &amp; Field Parameters for Interactive Navigation</span><span class="tag">2 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<button class="item-head"><span class="idx">23</span><span class="item-title">Bookmarks &amp; Field Parameters for Interactive Navigation</span><span class="tag">3 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="powerbi-169">
 <button class="item-head"><span class="idx">169</span><span class="item-title">What are bookmarks in Power BI?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> Bookmarks capture the current state of a report page — filters, slicer selections, and visual visibility — so a button can instantly switch the page into that saved state.</p>
@@ -5727,9 +6237,23 @@ responsibilities.</p>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> A field parameter lets users dynamically change which dimension or measure a visual uses, driven by a slicer, instead of building a separate visual for every option.</p>
 <p><strong>Real-life case:</strong> I created a field parameter with Region, Store, and Category so a single chart's axis switches based on what the user picks — this is Microsoft's recommended approach for dynamic dimensions and measures.</p>
 </div></div>
+</div><div class="item question-item" data-question="powerbi-242">
+<button class="item-head"><span class="idx">242</span><span class="item-title">What is the difference between a Filter and a Slicer, and page-level filter vs slicer?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> A Filter (in the Filters pane) is applied behind the scenes at
+visual, page, or report level and isn't visible on the canvas by
+default; a Slicer is a visible, interactive canvas object users click
+directly to change the selection. A page-level filter affects every
+visual on that page from the Filters pane without taking up canvas
+space, while a slicer placed on the page does the same thing but as a
+visible, user-facing control.</p>
+<p><strong>Real-life case:</strong> On the SAR dashboard I used page-level filters for
+things the user never needs to touch (like excluding test/void
+transactions), and slicers for things I want stakeholders actively
+changing, like Region and Fiscal Period.</p>
+</div></div>
 </div></div></div>
 </div><div class="item topic-item" data-index="powerbi-24">
-<button class="item-head"><span class="idx">24</span><span class="item-title">Visualization Types Used Across Power BI Projects</span><span class="tag">1 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<button class="item-head"><span class="idx">24</span><span class="item-title">Visualization Types Used Across Power BI Projects</span><span class="tag">6 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="powerbi-171">
 <button class="item-head"><span class="idx">171</span><span class="item-title">What visualizations have you worked with?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> I have used cards/KPIs, bar and column charts, line charts,
@@ -5738,6 +6262,109 @@ analysis, and custom/advanced visuals where appropriate.</p>
 <p><strong>Real-life case:</strong> For a retail control tower, I would use KPI cards
 for executive metrics, trends for sales movement, and matrices/tables
 for operational detail.</p>
+</div></div>
+</div><div class="item question-item" data-question="powerbi-243">
+<button class="item-head"><span class="idx">243</span><span class="item-title">When would you use a Scatter Plot in Power BI?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> I'd use a Scatter Plot to show the relationship between two
+numeric measures across a category — for example plotting Spend vs
+Budget Variance per department to spot outliers that are both
+overspending and off-plan.</p>
+<p><strong>Real-life case:</strong> On the SAR dashboard a scatter of Spend vs Variance
+by Cost Center immediately flagged the two or three departments that
+were both high-spend and badly off-budget, which a bar chart wouldn't
+have surfaced as clearly.</p>
+</div></div>
+</div><div class="item question-item" data-question="powerbi-244">
+<button class="item-head"><span class="idx">244</span><span class="item-title">Which visualization would you use to highlight high/low-performing regions for a sales dashboard?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> A filled/shape map or a conditional-formatted bar chart sorted
+by performance works well — color intensity or bar length immediately
+shows which regions are over- or under-performing without reading
+numbers row by row.</p>
+<p><strong>Real-life case:</strong> A shape map with a red-to-green color scale on
+Stockout Rate by Region let stakeholders spot the worst regions at a
+glance during a review meeting.</p>
+</div></div>
+</div><div class="item question-item" data-question="powerbi-245">
+<button class="item-head"><span class="idx">245</span><span class="item-title">How would you display up/down arrow icons based on KPI performance?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> I'd use conditional formatting with icon sets on the measure,
+or a KPI visual, comparing the current value against a target — showing
+an up arrow when above target and a down arrow when below.</p>
+<p><strong>Real-life case:</strong> I applied icon-set conditional formatting on the
+Revenue variance measure so stakeholders could scan a table and
+immediately see which departments were trending up versus down against
+budget.</p>
+</div></div>
+</div><div class="item question-item" data-question="powerbi-246">
+<button class="item-head"><span class="idx">246</span><span class="item-title">What is the difference between a Matrix visual and a Table visual?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> A Table shows flat rows and columns with no grouping
+hierarchy; a Matrix supports row and column grouping with
+drill-down/expand-collapse, making it better for cross-tab reporting
+like Region by Month by KPI.</p>
+<p><strong>Real-life case:</strong> I used a Matrix for the SAR summary view — Region
+on rows, Fiscal Month on columns, Spend as values — so users could
+expand any region to see the department-level breakdown underneath.</p>
+</div></div>
+</div><div class="item question-item" data-question="powerbi-247">
+<button class="item-head"><span class="idx">247</span><span class="item-title">How would you hide 'Export to Excel' for one table visual only?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> Export options are controlled at the report or visual level
+depending on tenant settings; for a single visual, I'd disable the
+export option in that visual's format pane under general/options if
+available, or restrict export at the report level if per-visual control
+isn't exposed.</p>
+<p><strong>Real-life case:</strong> If per-visual export control isn't available in a
+given tenant, I'd flag that as a tenant-admin setting rather than
+something I can control from the report itself, and set expectations
+with the stakeholder accordingly.</p>
+</div></div>
+</div></div></div>
+</div><div class="item topic-item" data-index="powerbi-38">
+<button class="item-head"><span class="idx">38</span><span class="item-title">Power Automate, Power Apps &amp; Paginated Reports</span><span class="tag">4 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="powerbi-248">
+<button class="item-head"><span class="idx">248</span><span class="item-title">What is your Power Automate experience, and how would it work for report distribution?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> I understand Power Automate's trigger-and-action flow model
+and how it pairs with Power BI — for example a data-driven alert
+triggering a flow that emails a report snapshot or a Teams message to
+stakeholders on a schedule or when a KPI crosses a threshold, rather
+than users manually checking the dashboard.</p>
+<p><strong>Real-life case:</strong> A stockout-rate alert crossing a threshold could
+trigger a flow that posts to a Teams channel automatically, instead of
+someone having to notice it on the dashboard first.</p>
+</div></div>
+</div><div class="item question-item" data-question="powerbi-249">
+<button class="item-head"><span class="idx">249</span><span class="item-title">What is your Power Apps experience?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> My exposure to Power Apps is conceptual — understanding Canvas
+vs Model-Driven apps and how a Power Apps visual can be embedded in a
+Power BI report for write-back or action scenarios. It hasn't been
+part of my hands-on project delivery.</p>
+<p><strong>Real-life case:</strong> A Power Apps visual embedded in a report could let a
+manager submit an allocation override directly from the dashboard, but
+that write-back pattern wasn't something my project required.</p>
+</div></div>
+</div><div class="item question-item" data-question="powerbi-250">
+<button class="item-head"><span class="idx">250</span><span class="item-title">How would dynamic URL parameters in Power Automate work, how would you automate a table refresh, and what are alternatives to PowerShell?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> Power Automate flows can pass dynamic parameters into a Power
+BI REST API call URL to trigger a dataset refresh on an event rather
+than a fixed schedule. As an alternative to PowerShell scripting for
+refresh automation, Power Automate itself — calling the REST API
+through its built-in HTTP action — is the more accessible, low-code
+option.</p>
+<p><strong>Real-life case:</strong> Instead of a PowerShell script on a scheduled task,
+a Power Automate flow triggered by an upstream file-arrival event could
+call the REST API to refresh only once new data actually lands, rather
+than refreshing on a fixed clock time regardless of whether new data
+exists.</p>
+</div></div>
+</div><div class="item question-item" data-question="powerbi-251">
+<button class="item-head"><span class="idx">251</span><span class="item-title">Have you worked with Paginated Reports / Power BI Report Builder — what are they?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> I haven't built Paginated Reports hands-on. They're
+pixel-perfect, print-ready reports built in Power BI Report Builder,
+meant for fixed-layout documents like invoices or regulatory reports
+rather than the interactive exploration Power BI Desktop reports are
+built for.</p>
+<p><strong>Real-life case:</strong> A finance team needing an exact, printable monthly
+statement layout would be a Paginated Report use case, versus the
+interactive SAR dashboard itself, which is built for exploration rather
+than a fixed print layout.</p>
 </div></div>
 </div></div></div>
 </div><p class="pbi-group-header">Scenario-Based / Troubleshooting</p><div class="item topic-item" data-index="powerbi-26">
@@ -5885,7 +6512,7 @@ relationships, and check source query plans for DirectQuery.</p>
 SELECT *
 FROM Ranked
 WHERE rn = 1;</code></pre><p>More importantly, I’d trace why duplicates are entering in the first place — usually a retry in the source system or a fan-out from an incorrect join upstream — and fix it at the source rather than just filtering downstream every time.</p></div></div></div><div class="item question-item" data-question="powerbi-215"><button class="item-head"><span class="idx">215</span><span class="item-title">Sales doubled after adding a dimension table.</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><p>That’s the classic fan-out symptom — the “dimension” table wasn’t actually unique on the join key, so each fact row matched multiple dimension rows and got duplicated in the join. Fix: profile the dimension table for duplicates on the key, dedupe it (or fix the source), and re-verify cardinality shows one-to-many, not many-to-many, before re-checking the totals.</p></div></div></div><div class="item question-item" data-question="powerbi-216"><button class="item-head"><span class="idx">216</span><span class="item-title">Sales report numbers don’t match the source system. What steps would you take?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><p>I reconcile step by step: confirm the date range and filters match exactly between the report and the source query, check whether RLS is silently filtering the comparison user’s view, check for timezone/currency conversion differences, check for duplicate rows from a bad join (see the fan-out issue above), and compare row counts before comparing sums — if row counts match but sums don’t, it’s a calculation logic issue; if row counts don’t match, it’s a join/filter issue.</p></div></div></div><div class="item question-item" data-question="powerbi-217"><button class="item-head"><span class="idx">217</span><span class="item-title">Fact table contains 100 million rows. What optimization techniques would you apply?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><p>Star schema with single-direction relationships, incremental refresh so I’m not reprocessing full history, aggregation tables for common report-level queries, appropriate (smallest possible) data types to help VertiPaq compression, removing unused columns, and avoiding calculated columns on the fact table in favor of measures. I’d also check for unnecessary high-cardinality columns like transaction-level GUIDs that don’t need to be in the reporting model at all.</p></div></div></div><div class="item question-item" data-question="powerbi-218"><button class="item-head"><span class="idx">218</span><span class="item-title">A refresh suddenly starts failing after months of success. How would you troubleshoot?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><p>I’d check the refresh history error message first — most common causes are: a schema change at the source (renamed/dropped column), an expired credential or gateway token, a gateway going offline, or data volume finally exceeding a capacity/memory limit. I’d also check if a Power Query step that relied on folding stopped folding because of an upstream source change, which can silently blow up refresh time until it eventually times out and fails.</p></div></div></div><div class="item question-item" data-question="powerbi-219"><button class="item-head"><span class="idx">219</span><span class="item-title">Two stakeholders want conflicting KPI definitions. How do you handle it?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><p>I don’t try to satisfy both silently — I get the exact definitions each stakeholder is using in writing, show them side by side with the discrepancy, and get agreement on a single source-of-truth definition, usually escalating to whoever owns the metric if they can’t agree. On my project this came up with “stockout rate” being defined differently by two teams — I documented both definitions, built both as separate measures temporarily, and let the business decide which one became the official KPI going forward, then retired the other.</p></div></div></div></div></div></div><p class="pbi-group-header">Behavioral / Project & Leadership</p><div class="item topic-item" data-index="powerbi-27">
-<button class="item-head"><span class="idx">27</span><span class="item-title">Handling Requirements, Deadlines, DBA Conflicts &amp; Staying Current</span><span class="tag">4 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<button class="item-head"><span class="idx">27</span><span class="item-title">Handling Requirements, Deadlines, DBA Conflicts &amp; Staying Current</span><span class="tag">5 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="powerbi-186">
 <button class="item-head"><span class="idx">186</span><span class="item-title">How do you handle vague or changing business requirements?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> "I clarify the objective, users, KPI definitions, scope, and
@@ -5920,6 +6547,19 @@ they solve a real business or technical problem."</p>
 <p><strong>Real-life case:</strong> Before introducing a new Fabric/Power BI capability
 into production, I validate performance, governance, licensing, and
 compatibility.</p>
+</div></div>
+</div><div class="item question-item" data-question="powerbi-273">
+<button class="item-head"><span class="idx">273</span><span class="item-title">If you were given a dashboard mock-up, how would you get started — what is your first step, and what is a reasonable time estimate?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> First step: map every visual on the mock-up back to its
+required data fields and calculations, and confirm the data actually
+exists at the needed grain before building anything. Then: build the
+data model, core DAX measures, and one representative page first for
+stakeholder sign-off before finishing the rest.</p>
+<p><strong>Real-life case:</strong> Time estimate depends on complexity, but a single
+well-defined dashboard page with an existing clean data source
+typically takes about a week including validation, versus several
+weeks for a multi-page dashboard with new fiscal/security logic like
+the SAR project.</p>
 </div></div>
 </div></div></div>
 </div><p class="pbi-group-header">Quick Revision & Interview Framework</p><div class="item topic-item" data-index="powerbi-28">
@@ -7000,7 +7640,7 @@ GROUP BY p.ProductName;</code></pre><p>the engine first joins Sales to Product r
 <p class="sub">Interview-ready SQL topics with questions, “Say” answers, queries, and real-life cases.</p>
 <div class="list" id="senior-sql-topics">
 <div class="item topic-item" data-index="senior-1">
-<button class="item-head"><span class="idx">01</span><span class="item-title">ROW_NUMBER(), RANK(), DENSE_RANK(), OVER() &amp; PARTITION BY</span><span class="tag">18 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<button class="item-head"><span class="idx">01</span><span class="item-title">ROW_NUMBER(), RANK(), DENSE_RANK(), OVER() &amp; PARTITION BY</span><span class="tag">22 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="senior-sql-1-1">
 <button class="item-head"><span class="idx">01</span><span class="item-title">What is <code>ROW_NUMBER()</code>?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> <code>ROW_NUMBER()</code> assigns a unique sequential number to every row within the specified window, even when values are tied.</p>
@@ -7201,6 +7841,40 @@ INNER JOIN RankedCustomers r
     ON c.customer_id = r.customer_id
 WHERE r.rn &gt; 1;</code></pre>
 <p><strong>Real-life case:</strong> Keep the first customer record and remove repeated records with the same email.</p></div></div>
+</div><div class="item question-item" data-question="senior-sql-1-88">
+<button class="item-head"><span class="idx">88</span><span class="item-title">How would you write a query to find products with an upward sales trend for the last 3 consecutive months?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> I'd use <code>LAG()</code> partitioned by product and ordered by month to compare each month's sales against the previous one, flag whether it increased, then use a window count or a CTE with conditional aggregation to check that the flag was true for the last 3 consecutive months per product.</p>
+<p><strong>Query:</strong></p>
+<pre><code class="language-sql">WITH MonthlyTrend AS (
+    SELECT
+        ProductID,
+        SalesMonth,
+        MonthlySales,
+        CASE WHEN MonthlySales &gt; LAG(MonthlySales) OVER (
+            PARTITION BY ProductID ORDER BY SalesMonth
+        ) THEN 1 ELSE 0 END AS IsUp
+    FROM MonthlySalesSummary
+)
+SELECT ProductID
+FROM MonthlyTrend
+GROUP BY ProductID
+HAVING SUM(IsUp) &gt;= 3;</code></pre>
+<p><strong>Real-life case:</strong> This pattern generalizes to any "N consecutive periods of improvement" business question, not just sales.</p></div></div>
+</div><div class="item question-item" data-question="senior-sql-1-89">
+<button class="item-head"><span class="idx">89</span><span class="item-title">Have you worked with functions in SQL — what different types are there?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> I've used aggregate functions (<code>SUM</code>, <code>AVG</code>, <code>COUNT</code>), window/ranking functions (<code>ROW_NUMBER</code>, <code>RANK</code>, <code>DENSE_RANK</code>, <code>LAG</code>, <code>LEAD</code>), scalar functions (<code>GETDATE</code>, <code>ISNULL</code>, <code>CAST</code>), and string functions for cleaning data extensively for reporting and validation.</p>
+<p><strong>Real-life case:</strong> On the SAR project, window functions handled ranking and period-over-period comparisons, while scalar and string functions handled the data-cleaning layer before it reached the reporting views.</p>
+</div></div>
+</div><div class="item question-item" data-question="senior-sql-1-90">
+<button class="item-head"><span class="idx">90</span><span class="item-title">Are SUMX and AVERAGEX considered window functions?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> No — <code>SUMX</code> and <code>AVERAGEX</code> are DAX iterator functions, not SQL window functions. They loop row-by-row over a table expression and evaluate an expression for each row before aggregating, which is conceptually similar to a window function's per-row evaluation, but it's a DAX-specific pattern, not the SQL <code>OVER()</code>/<code>PARTITION BY</code> mechanism.</p>
+<p><strong>Real-life case:</strong> I'm careful not to conflate the two in an interview — DAX iterators and SQL window functions solve a similar row-by-row problem but live in completely different engines with different syntax.</p>
+</div></div>
+</div><div class="item question-item" data-question="senior-sql-1-91">
+<button class="item-head"><span class="idx">91</span><span class="item-title">What is the difference between COUNT and COUNTA (or COUNT vs COUNT(*) in SQL/DAX context)?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> In DAX, <code>COUNT</code> counts numeric/date values in a column and ignores blanks and text, while <code>COUNTA</code> counts any non-blank value regardless of type, including text. In SQL, <code>COUNT(column)</code> skips <code>NULL</code>s while <code>COUNT(*)</code> counts every row regardless of <code>NULL</code>s.</p>
+<p><strong>Real-life case:</strong> I use <code>COUNT(*)</code> when I need a raw row count for validation, and <code>COUNT(column)</code> specifically when I need to know how many rows actually have a value in that field.</p>
+</div></div>
 </div></div></div>
 </div>
 <div class="item topic-item" data-index="senior-2">
@@ -7310,7 +7984,7 @@ WHERE e.Salary &gt; (
 </div></div></div>
 </div>
 <div class="item topic-item" data-index="senior-4">
-<button class="item-head"><span class="idx">04</span><span class="item-title">INNER, LEFT, RIGHT, FULL OUTER, CROSS &amp; SELF JOIN Explained</span><span class="tag">11 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<button class="item-head"><span class="idx">04</span><span class="item-title">INNER, LEFT, RIGHT, FULL OUTER, CROSS &amp; SELF JOIN Explained</span><span class="tag">13 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="senior-sql-4-29">
 <button class="item-head"><span class="idx">29</span><span class="item-title">What is an <code>INNER JOIN</code>?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> <code>INNER JOIN</code> returns only rows with matching keys in both tables.</p>
@@ -7411,6 +8085,14 @@ FROM A
 LEFT JOIN B ON A.ID = B.ID
 WHERE B.Status = 'Active';</code></pre>
 <p><strong>Real-life case:</strong> This is one of the most commonly asked SQL interview questions — I always double-check filter placement whenever a <code>LEFT JOIN</code> unexpectedly drops rows.</p></div></div>
+</div><div class="item question-item" data-question="senior-sql-4-252">
+<button class="item-head"><span class="idx">252</span><span class="item-title">If a table has 5 matching rows on one side and 3 on the other, how many rows does an INNER JOIN return including duplicates?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> An <code>INNER JOIN</code> returns one row for every matching combination — so if the join key has duplicates on both sides, the result is the product of the matching duplicate counts for that key, not just 5 or 3. For example, 5 matching rows on one side against 3 on the other for the same key returns 15 rows.</p>
+<p><strong>Real-life case:</strong> This is the exact mechanism behind an unexpected "fan-out" — joining a fact table to a dimension that isn't actually unique on the key silently multiplies row counts and inflates sums.</p></div></div>
+</div><div class="item question-item" data-question="senior-sql-4-253">
+<button class="item-head"><span class="idx">253</span><span class="item-title">What happens if a table has NULL values in the join column?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> Rows with <code>NULL</code> in the join column won't match anything in a standard <code>INNER</code> or <code>OUTER</code> JOIN, since <code>NULL</code> is never considered equal to another <code>NULL</code> in a join comparison — those rows simply get excluded (or appear with <code>NULL</code>s on the other side in an <code>OUTER JOIN</code>).</p>
+<p><strong>Real-life case:</strong> I've seen this surface as "missing" rows in a report that turned out to be legitimate records with a blank foreign key — the fix was deciding whether those really belonged in the join at all, or needed a default/unknown-member row in the dimension.</p></div></div>
 </div></div></div>
 </div>
 <div class="item topic-item" data-index="senior-5">
@@ -7462,7 +8144,7 @@ WHERE name LIKE 'A_';   -- A + exactly one character</code></pre>
 </div></div></div>
 </div>
 <div class="item topic-item" data-index="senior-6">
-<button class="item-head"><span class="idx">06</span><span class="item-title">WHERE vs HAVING, Execution Order, TOP &amp; OFFSET-FETCH</span><span class="tag">4 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<button class="item-head"><span class="idx">06</span><span class="item-title">WHERE vs HAVING, Execution Order, TOP &amp; OFFSET-FETCH</span><span class="tag">5 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="senior-sql-6-44">
 <button class="item-head"><span class="idx">44</span><span class="item-title">Difference between <code>WHERE</code> and <code>HAVING</code>?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> <code>WHERE</code> filters individual rows before aggregation, while <code>HAVING</code> filters groups after aggregation.</p>
@@ -7494,6 +8176,10 @@ HAVING SUM(order_value) &gt; 100000;</code></pre>
 FROM Employees
 ORDER BY Salary DESC;</code></pre>
 <p><strong>Real-life case:</strong> Return the top three products by sales or paginate a result set.</p></div></div>
+</div><div class="item question-item" data-question="senior-sql-6-254">
+<button class="item-head"><span class="idx">254</span><span class="item-title">In what situations would you use the GROUP BY clause?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> Whenever I need an aggregated result per category — total spend per region, count of orders per customer, average sales per product — <code>GROUP BY</code> collapses detail rows into one summary row per group so aggregate functions like <code>SUM</code>/<code>COUNT</code>/<code>AVG</code> can be applied.</p>
+<p><strong>Real-life case:</strong> Most of the summary views feeding the SAR dashboard use <code>GROUP BY</code> to roll transaction-level spend up to Region/Department/Month before Power BI ever sees the data.</p></div></div>
 </div></div></div>
 </div>
 <div class="item topic-item" data-index="senior-7">
@@ -7552,7 +8238,7 @@ ORDER BY Salary DESC;</code></pre>
 </div></div></div>
 </div>
 <div class="item topic-item" data-index="senior-8">
-<button class="item-head"><span class="idx">08</span><span class="item-title">Views, SQL/DAX Variables, Stored Procedures &amp; Triggers</span><span class="tag">10 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<button class="item-head"><span class="idx">08</span><span class="item-title">Views, SQL/DAX Variables, Stored Procedures &amp; Triggers</span><span class="tag">15 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="senior-sql-8-56">
 <button class="item-head"><span class="idx">56</span><span class="item-title">What is a View?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> A View is a stored SQL query that presents its result as a virtual table; a normal View does not physically store the result set.</p>
@@ -7638,10 +8324,47 @@ BEGIN
     SELECT * FROM Sales;
 END</code></pre>
 <p><strong>Real-life case:</strong> Power BI reads from a View for reporting, while nightly ETL jobs run through Stored Procedures for the actual data processing logic.</p></div></div>
+</div><div class="item question-item" data-question="senior-sql-8-66">
+<button class="item-head"><span class="idx">66</span><span class="item-title">What are user-defined functions in SQL?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> A User-Defined Function is a reusable piece of SQL logic that returns either a scalar value or a table, which you can call inside other queries the same way you'd call a built-in function like <code>SUM()</code> or <code>GETDATE()</code>.</p>
+<p><strong>Query:</strong></p>
+<pre><code class="language-sql">CREATE FUNCTION dbo.fn_GetFiscalYear (@OrderDate DATE)
+RETURNS INT
+AS
+BEGIN
+    RETURN YEAR(DATEADD(MONTH, 3, @OrderDate))
+END</code></pre>
+<p><strong>Real-life case:</strong> A scalar function like this could standardize fiscal-year logic across multiple queries instead of repeating the same CASE/DATEADD expression everywhere.</p></div></div>
+</div><div class="item question-item" data-question="senior-sql-8-67">
+<button class="item-head"><span class="idx">67</span><span class="item-title">What are Materialized Views, and what's the trigger point for using one versus a regular View or Stored Procedure?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> SQL Server doesn't have a Materialized View in the Oracle/PostgreSQL sense — the closest equivalent is an Indexed View, which physically stores the result set and updates it as underlying data changes.</p>
+<p><strong>Real-life case:</strong> You'd reach for an Indexed View when a query is run very frequently and the underlying joins/aggregations are expensive, and a regular View's on-the-fly execution is too slow — I haven't used Indexed Views directly in my project, since my views like <code>vw_kpi_master</code> were kept as standard views.</p></div></div>
+</div><div class="item question-item" data-question="senior-sql-8-68">
+<button class="item-head"><span class="idx">68</span><span class="item-title">Do you have experience improving SQL query performance, like taking a query from 10 minutes to 1 minute?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> My optimization work has mainly been at the query and view level — adding appropriate <code>WHERE</code> filters earlier, avoiding unnecessary <code>SELECT *</code>, and restructuring joins so indexed columns are used for the join key, rather than a single dramatic before/after story on a specific query.</p>
+<p><strong>Real-life case:</strong> General approach: check the execution plan, look for table scans that could become index seeks, and reduce the data volume before joining rather than after.</p></div></div>
+</div><div class="item question-item" data-question="senior-sql-8-255">
+<button class="item-head"><span class="idx">255</span><span class="item-title">Have you handled exceptions in stored procedures — can you give an example?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> My hands-on SQL work centered on queries and views rather than procedural error-handling logic in Stored Procedures. Conceptually, that's done with <code>TRY...CATCH</code> blocks, where the <code>CATCH</code> block can log the error details (using <code>ERROR_MESSAGE()</code>, <code>ERROR_NUMBER()</code>) or roll back a transaction cleanly.</p>
+<p><strong>Query:</strong></p>
+<pre><code class="language-sql">BEGIN TRY
+    UPDATE Accounts SET Balance = Balance - 100 WHERE AccountID = 1;
+    UPDATE Accounts SET Balance = Balance + 100 WHERE AccountID = 2;
+END TRY
+BEGIN CATCH
+    ROLLBACK TRANSACTION;
+    INSERT INTO ErrorLog (Message, ErrorNumber, LoggedAt)
+    VALUES (ERROR_MESSAGE(), ERROR_NUMBER(), GETDATE());
+END CATCH</code></pre>
+<p><strong>Real-life case:</strong> I'd present this concept accurately in an interview without claiming hands-on ownership I don't have.</p></div></div>
+</div><div class="item question-item" data-question="senior-sql-8-256">
+<button class="item-head"><span class="idx">256</span><span class="item-title">If a Stored Procedure with thousands of lines takes 10 minutes to run, what factors would you look at to improve it?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> I'd check the execution plan for expensive operations like table scans, look for missing indexes on join/filter columns, check for excessive use of cursors or row-by-row logic that could be set-based instead, and see if the procedure can be broken into smaller, testable steps to isolate the slow part.</p>
+<p><strong>Real-life case:</strong> With a procedure that large, I'd rather isolate and time each major section first than guess at an optimization — the slowest 10% of the logic is usually responsible for most of the runtime.</p></div></div>
 </div></div></div>
 </div>
 <div class="item topic-item" data-index="senior-9">
-<button class="item-head"><span class="idx">09</span><span class="item-title">Local vs Global Temporary Tables</span><span class="tag">2 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<button class="item-head"><span class="idx">09</span><span class="item-title">Local vs Global Temporary Tables</span><span class="tag">3 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="senior-sql-9-66">
 <button class="item-head"><span class="idx">66</span><span class="item-title">What is a temporary table?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> A temporary table stores intermediate data temporarily and is useful when results must be reused or indexed across multiple steps.</p>
@@ -7658,6 +8381,10 @@ END</code></pre>
 <pre><code class="language-sql">CREATE TABLE #Sales (...);
 CREATE TABLE ##Sales (...);</code></pre>
 <p><strong>Real-life case:</strong> Use a local temp table for your session-specific analysis; use a global one only when cross-session sharing is required.</p></div></div>
+</div><div class="item question-item" data-question="senior-sql-9-257">
+<button class="item-head"><span class="idx">257</span><span class="item-title">What is the difference between a Table Variable and a Temporary Table?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> A Table Variable is scoped to the current batch, has limited statistics for the query optimizer, and generally suits small datasets; a Temp Table behaves more like a regular table, supports indexes, and the optimizer has better statistics for it, making it a better fit for larger intermediate datasets.</p>
+<p><strong>Real-life case:</strong> I'd reach for a table variable for a small lookup set inside a single batch, but switch to a temp table the moment the intermediate result gets large enough that indexing and accurate row-count estimates start to matter.</p></div></div>
 </div></div></div>
 </div>
 <div class="item topic-item" data-index="senior-10">
@@ -7697,7 +8424,7 @@ CREATE TABLE ##Sales (...);</code></pre>
 </div></div></div>
 </div>
 <div class="item topic-item" data-index="senior-13">
-<button class="item-head"><span class="idx">13</span><span class="item-title">ISNULL(), COALESCE(), NULLIF() &amp; CASE Statement</span><span class="tag">2 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<button class="item-head"><span class="idx">13</span><span class="item-title">ISNULL(), COALESCE(), NULLIF() &amp; CASE Statement</span><span class="tag">5 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="senior-sql-13-74">
 <button class="item-head"><span class="idx">74</span><span class="item-title">Difference between <code>ISNULL()</code>, <code>COALESCE()</code> and <code>NULLIF()</code>?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> <code>ISNULL</code> replaces a NULL, <code>COALESCE</code> returns the first non-NULL expression, and <code>NULLIF</code> returns NULL when two expressions are equal.</p>
@@ -7724,6 +8451,18 @@ FROM Sales;</code></pre>
        END AS SalesCategory
 FROM Products;</code></pre>
 <p><strong>Real-life case:</strong> Classify inventory risk or sales performance into business-friendly categories; the source gives WOC examples of <code>&lt;5</code>, <code>5–12</code>, and <code>&gt;12</code>.</p></div></div>
+</div><div class="item question-item" data-question="senior-sql-13-258">
+<button class="item-head"><span class="idx">258</span><span class="item-title">What is the output of: SELECT * FROM A WHERE NULL = NULL?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> It returns zero rows — in SQL, <code>NULL</code> represents an unknown value, so <code>NULL = NULL</code> evaluates to unknown (not true), and the <code>WHERE</code> clause only keeps rows where the condition evaluates to true.</p>
+<p><strong>Real-life case:</strong> This is exactly why you use <code>IS NULL</code> instead of <code>= NULL</code> to actually find NULL rows — a classic gotcha that trips people up in interviews and in real queries alike.</p></div></div>
+</div><div class="item question-item" data-question="senior-sql-13-259">
+<button class="item-head"><span class="idx">259</span><span class="item-title">Have you used the BLOB data type?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> I haven't used BLOB-style storage in my project work. In SQL Server, the equivalent for storing binary/large object data is <code>VARBINARY(MAX)</code>; my project data was structured relational data, not binary files.</p>
+<p><strong>Real-life case:</strong> If a future project needed to store scanned documents or images alongside transactional data, <code>VARBINARY(MAX)</code> would be the SQL Server type to reach for.</p></div></div>
+</div><div class="item question-item" data-question="senior-sql-13-260">
+<button class="item-head"><span class="idx">260</span><span class="item-title">Which data type would you use for multilingual characters, and what's the max length of NVARCHAR?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> <code>NVARCHAR</code>, since it stores Unicode data and supports multilingual characters, unlike <code>VARCHAR</code> which is limited to a single character set. <code>NVARCHAR(MAX)</code> can store up to roughly 2GB of character data; a fixed-length <code>NVARCHAR(n)</code> supports up to 4,000 characters.</p>
+<p><strong>Real-life case:</strong> Any customer- or vendor-name field that might contain non-English characters should be <code>NVARCHAR</code> from the start — retrofitting it after data has already been mangled by <code>VARCHAR</code> is much harder.</p></div></div>
 </div></div></div>
 </div>
 <div class="item topic-item" data-index="senior-14">
@@ -7816,7 +8555,7 @@ END CATCH;</code></pre>
 </div></div></div>
 </div>
 <div class="item topic-item" data-index="senior-17">
-<button class="item-head"><span class="idx">17</span><span class="item-title">Latest Record, Top Sellers &amp; Threshold-Based Queries</span><span class="tag">4 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<button class="item-head"><span class="idx">17</span><span class="item-title">Latest Record, Top Sellers &amp; Threshold-Based Queries</span><span class="tag">5 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="senior-sql-17-82">
 <button class="item-head"><span class="idx">82</span><span class="item-title">Find the latest record for each customer.</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> I use <code>ROW_NUMBER()</code> partitioned by customer and ordered by date descending, then keep <code>rn = 1</code>.</p>
@@ -7909,6 +8648,16 @@ FROM Orders
 GROUP BY customer_id
 HAVING SUM(order_value) &gt; 100000;</code></pre>
 <p><strong>Real-life case:</strong> Identify high-value customers for management reporting.</p></div></div>
+</div><div class="item question-item" data-question="senior-sql-17-261">
+<button class="item-head"><span class="idx">261</span><span class="item-title">With an Employee table, how would you display employees with an annual salary greater than 1 crore in 2023?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> A simple filtered query combining a value threshold with a date/year condition on whichever column represents the relevant year.</p>
+<p><strong>Query:</strong></p>
+<pre><code class="language-sql">SELECT *
+FROM Employee
+WHERE Salary &gt; 10000000
+  AND YEAR(JoiningOrSalaryDate) = 2023;</code></pre>
+<p><strong>Real-life case:</strong> I'd confirm with the interviewer which date column represents "in 2023" — salary effective date, joining date, or review date — since that changes the actual filter column even though the query shape stays the same.</p>
+</div></div>
 </div></div></div>
 </div>
 <div class="item topic-item" data-index="senior-18">
