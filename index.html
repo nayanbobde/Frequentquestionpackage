@@ -540,7 +540,7 @@
             Manage &amp; secure → Workspaces, refresh, RLS, sharing and deployment</p>
 <p><strong>Strong closing line</strong><br/>For example, in a retail Power BI project, I would connect Power BI to SQL Server, extract sales, inventory and allocation data, and use Power Query to clean and transform the data. I would then build a Star Schema with fact and dimension tables, create relationships and develop DAX measures such as Revenue, Gross Margin, WOC and Stockout Rate.</p>
 <p>Next, I would build an interactive Power BI report with KPI cards, trends, drill-throughs, slicers and conditional formatting so business users can analyze store, product and DC performance. Finally, I would publish the report to a Power BI workspace, configure scheduled refresh and Row-Level Security, and monitor the solution for performance and data issues.</p>
-<div class="flow">Connect → Transform → Model → DAX → Visualize → Publish → Refresh → Secure</div>
+<p><strong>Connect → Transform → Model → DAX → Visualize → Publish → Refresh → Secure</strong></p>
 </div>
 </div>
 </div>
@@ -563,7 +563,7 @@
 <p>Microsoft currently describes the certification around preparing/enriching data, securing and maintaining analytics assets, and implementing/managing semantic models.</p>
 <p>Take a retail company that wants to analyze sales and inventory across stores. Data comes from ERP, POS and inventory systems and is ingested into a Fabric Lakehouse using Data Factory pipelines. The data is cleaned and transformed using Dataflow Gen2 or Spark, and curated into fact and dimension tables.</p>
 <p>I would then create a Warehouse or Lakehouse-based semantic model using a Star Schema, define DAX measures such as Revenue, Gross Margin, WOC and Stockout Rate, and build Power BI reports on top of the semantic model. I would apply security such as RLS, configure refresh and monitor the solution through Fabric.</p>
-<div class="flow">Source systems → Data Factory → Lakehouse → Transformation → Warehouse/Semantic Model → DAX → Power BI → Security &amp; Monitoring</div>
+<p><strong>Source systems → Data Factory → Lakehouse → Transformation → Warehouse/Semantic Model → DAX → Power BI → Security &amp; Monitoring</strong></p>
 <p><strong>One-line flow to memorize</strong><br/>ERP/POS → Fabric Data Factory → Lakehouse → Transform → Warehouse/Semantic Model → DAX → Power BI → RLS/Deployment/Monitoring</p>
 <h3>FABRIC IN PASSAGE</h3>
 <p>Microsoft Fabric is Microsoft's unified end-to-end analytics platform that brings together Data Factory, Data Engineering, Data Warehouse, Data Science, Real-Time Analytics, and Power BI into a single SaaS solution. Before Fabric, organizations typically used multiple separate services such as Azure Data Factory for ETL, Azure Synapse for warehousing and analytics, Azure Data Lake for storage, and Power BI for reporting. Managing multiple tools increased complexity, integration effort, security management, and cost.</p>
@@ -573,26 +573,7 @@
 <p>Fabric also supports Dataflow Gen2 and Data Factory pipelines for ETL processes, Warehouses for SQL analytics, and Real-Time Analytics for streaming and log data. Since everything is integrated into one platform, organizations get better governance, simplified architecture, reduced maintenance, improved performance, and faster development cycles.</p>
 <p>Although my primary hands-on experience is with Power BI, I understand how Fabric unifies the modern data platform and enables scalable analytics through OneLake, Lakehouse, Warehouses, and Direct Lake integration.</p>
 <h3>TOP FABRIC QUESTIONS ASKED</h3>
-<pre><code>1. What is Microsoft Fabric?
-2. Why did Microsoft introduce Fabric?
-3. What are the major workloads in Microsoft Fabric?
-4. What is OneLake?
-5. What is a Lakehouse?
-6. Difference Between Lakehouse and Data Warehouse?
-7. What is Direct Lake Mode?
-8. Difference Between Import, DirectQuery and Direct Lake?
-9. What is Delta Lake?
-10. What is a Fabric Capacity?
-11. What is Data Factory in Fabric?
-12. What is a Pipeline in Fabric?
-13. What is a Dataflow Gen2?
-14. How is Fabric different from Synapse?
-15. What is Mirroring in Fabric?
-16. What is Real-Time Analytics?
-17. What is KQL Database?
-18. How does Power BI integrate with Fabric?
-19. What are the benefits of Fabric?
-20. What Fabric features have you used?</code></pre>
+<p><strong>1. What is Microsoft Fabric?<br>2. Why did Microsoft introduce Fabric?<br>3. What are the major workloads in Microsoft Fabric?<br>4. What is OneLake?<br>5. What is a Lakehouse?<br>6. Difference Between Lakehouse and Data Warehouse?<br>7. What is Direct Lake Mode?<br>8. Difference Between Import, DirectQuery and Direct Lake?<br>9. What is Delta Lake?<br>10. What is a Fabric Capacity?<br>11. What is Data Factory in Fabric?<br>12. What is a Pipeline in Fabric?<br>13. What is a Dataflow Gen2?<br>14. How is Fabric different from Synapse?<br>15. What is Mirroring in Fabric?<br>16. What is Real-Time Analytics?<br>17. What is KQL Database?<br>18. How does Power BI integrate with Fabric?<br>19. What are the benefits of Fabric?<br>20. What Fabric features have you used?</strong></p>
 </div>
 </div>
 </div>
@@ -679,20 +660,14 @@
 <button class="item-head"><span class="idx">03</span><span class="item-title">Who are the primary users of the dashboard?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner">
 <p><strong>Why ask?</strong> Executives, managers, and analysts need different views.</p>
-<pre><code>CEO → High-level KPIs
-Regional Manager → Region Performance
-Analyst → Detailed Drilldowns</code></pre>
+<p><strong>CEO → High-level KPIs<br>Regional Manager → Region Performance<br>Analyst → Detailed Drilldowns</strong></p>
 </div></div>
 </div>
 <div class="item question-item" data-question="sbq-4">
 <button class="item-head"><span class="idx">04</span><span class="item-title">What are the most important KPIs and how are they calculated?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner">
 <p><strong>Why ask?</strong> Avoid KPI definition conflicts later.</p>
-<pre><code>Revenue
-Profit Margin %
-Forecast Accuracy %
-Inventory Turnover
-Stockout %</code></pre>
+<p><strong>Revenue<br>Profit Margin %<br>Forecast Accuracy %<br>Inventory Turnover<br>Stockout %</strong></p>
 <p>Always ask: <em>"Can you provide the KPI formula and business definition?"</em></p>
 </div></div>
 </div>
@@ -700,53 +675,35 @@ Stockout %</code></pre>
 <button class="item-head"><span class="idx">05</span><span class="item-title">What dimensions do you want to analyze by?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner">
 <p><strong>Why ask?</strong> Determines model design and drilldowns.</p>
-<pre><code>Region
-Store
-Product
-Category
-Supplier
-Date</code></pre>
+<p><strong>Region<br>Store<br>Product<br>Category<br>Supplier<br>Date</strong></p>
 </div></div>
 </div>
 <div class="item question-item" data-question="sbq-6">
 <button class="item-head"><span class="idx">06</span><span class="item-title">What filters and slicers do users need?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner">
 <p><strong>Why ask?</strong> Users often expect filtering capabilities.</p>
-<pre><code>Date
-Region
-Store
-Category
-Brand
-Supplier</code></pre>
+<p><strong>Date<br>Region<br>Store<br>Category<br>Brand<br>Supplier</strong></p>
 </div></div>
 </div>
 <div class="item question-item" data-question="sbq-7">
 <button class="item-head"><span class="idx">07</span><span class="item-title">How frequently does the data need to be refreshed?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner">
 <p><strong>Why ask?</strong> Determines Import vs DirectQuery and refresh strategy.</p>
-<pre><code>Real-Time
-Hourly
-Daily
-Weekly</code></pre>
+<p><strong>Real-Time<br>Hourly<br>Daily<br>Weekly</strong></p>
 </div></div>
 </div>
 <div class="item question-item" data-question="sbq-8">
 <button class="item-head"><span class="idx">08</span><span class="item-title">What actions should users take when a KPI is off target?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner">
 <p><strong>Why ask?</strong> Helps design alerts, drilldowns, and exception reporting.</p>
-<pre><code>Stockout &gt; 5%
-→ Notify Inventory Team
-Forecast Accuracy &lt; 80%
-→ Review Forecast Model</code></pre>
+<p><strong>Stockout &gt; 5%<br>→ Notify Inventory Team<br>Forecast Accuracy &lt; 80%<br>→ Review Forecast Model</strong></p>
 </div></div>
 </div>
 <div class="item question-item" data-question="sbq-9">
 <button class="item-head"><span class="idx">09</span><span class="item-title">How will success of this dashboard be measured?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner">
 <p><strong>Why ask?</strong> Defines project success criteria.</p>
-<pre><code>Reduce manual reporting time by 50%
-Improve decision-making speed
-Increase dashboard adoption</code></pre>
+<p><strong>Reduce manual reporting time by 50%<br>Improve decision-making speed<br>Increase dashboard adoption</strong></p>
 </div></div>
 </div>
 <div class="item question-item" data-question="sbq-10">
@@ -760,9 +717,7 @@ Increase dashboard adoption</code></pre>
 <li>Missing insights</li>
 </ul>
 <p><strong>Example:</strong> Stakeholder shows:</p>
-<pre><code>15 Excel Reports
-3 Manual Reports
-2 Legacy Dashboards</code></pre>
+<p><strong>15 Excel Reports<br>3 Manual Reports<br>2 Legacy Dashboards</strong></p>
 <p>You identify consolidation opportunities.</p>
 </div></div>
 </div>
@@ -793,10 +748,7 @@ Increase dashboard adoption</code></pre>
 <div class="item question-item" data-question="sbq-15">
 <button class="item-head"><span class="idx">15</span><span class="item-title">Bonus: What drill-down path should users follow?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner">
-<pre><code>Revenue
- → Region
- → Store
- → Product</code></pre>
+<p><strong>Revenue<br> → Region<br> → Store<br> → Product</strong></p>
 </div></div>
 </div>
 <div class="item question-item" data-question="sbq-16">
@@ -830,10 +782,7 @@ Increase dashboard adoption</code></pre>
 <p><strong>What is it?</strong> Trend Analysis identifies whether a KPI is increasing, decreasing, or remaining stable over time. It helps understand long-term business performance.</p>
 <p><strong>Where used?</strong> Sales, Revenue, Inventory, Demand Forecasting.</p>
 <p><strong>Real Case:</strong> Monthly sales increased from ₹10M to ₹15M over six months.</p>
-<pre><code>Jan = ₹10M
-Feb = ₹11M
-Mar = ₹12M
-Apr = ₹13M</code></pre>
+<p><strong>Jan = ₹10M<br>Feb = ₹11M<br>Mar = ₹12M<br>Apr = ₹13M</strong></p>
 <p>Conclusion: Upward Sales Trend.</p>
 </div></div>
 </div>
@@ -843,10 +792,7 @@ Apr = ₹13M</code></pre>
 <p><strong>What is it?</strong> A structured approach used to identify the actual reason behind a problem. Focuses on "why it happened" rather than just reporting the issue.</p>
 <p><strong>Where used?</strong> Sales decline, Stockouts, KPI drops, Production Issues.</p>
 <p><strong>Real Case:</strong> Revenue dropped 15%. After analysis: top-selling products were out of stock. Root Cause = Inventory Shortage.</p>
-<pre><code>Revenue ↓
- → Product Sales ↓
-    → Inventory ↓
-       → Stockout</code></pre>
+<p><strong>Revenue ↓<br> → Product Sales ↓<br>    → Inventory ↓<br>       → Stockout</strong></p>
 </div></div>
 </div>
 <div class="item topic-item" data-index="da-3">
@@ -855,9 +801,7 @@ Apr = ₹13M</code></pre>
 <p><strong>What is it?</strong> Compares Actual performance against Target, Budget, Forecast, or Previous Period. Measures performance gaps.</p>
 <p><strong>Where used?</strong> Financial Reporting, Sales Reporting, KPI Monitoring.</p>
 <p><strong>Real Case:</strong></p>
-<pre><code>Target Sales = ₹10M
-Actual Sales = ₹8M
-Variance = -₹2M (-20%)</code></pre>
+<p><strong>Target Sales = ₹10M<br>Actual Sales = ₹8M<br>Variance = -₹2M (-20%)</strong></p>
 <p><strong>Formula:</strong> Variance = Actual − Target</p>
 </div></div>
 </div>
@@ -867,9 +811,7 @@ Variance = -₹2M (-20%)</code></pre>
 <p><strong>What is it?</strong> Identifying recurring behaviors, relationships, or trends in data. Helps uncover business insights.</p>
 <p><strong>Where used?</strong> Sales Analysis, Customer Behavior, Inventory Planning.</p>
 <p><strong>Real Case:</strong> Stockouts increase every weekend — a recurring pattern identified.</p>
-<pre><code>Saturday → High Demand
-Sunday → High Demand
-Monday → Normal</code></pre>
+<p><strong>Saturday → High Demand<br>Sunday → High Demand<br>Monday → Normal</strong></p>
 <p>Pattern = Weekend Demand Spike.</p>
 </div></div>
 </div>
@@ -879,13 +821,7 @@ Monday → Normal</code></pre>
 <p><strong>What is it?</strong> Breaking a KPI into smaller components to identify drivers behind performance.</p>
 <p><strong>Where used?</strong> Revenue, Margin, Inventory, Forecast Accuracy.</p>
 <p><strong>Real Case:</strong> Revenue fell 10%. Drilling down found the decline was concentrated in the South Region.</p>
-<pre><code>Revenue
-  ↓
-Region
-  ↓
-Store
-  ↓
-Product</code></pre>
+<p><strong>Revenue<br>  ↓<br>Region<br>  ↓<br>Store<br>  ↓<br>Product</strong></p>
 </div></div>
 </div>
 <div class="item topic-item" data-index="da-6">
@@ -903,8 +839,7 @@ Product</code></pre>
 <p><strong>What is it?</strong> States that roughly 80% of outcomes come from 20% of causes.</p>
 <p><strong>Where used?</strong> Sales, Inventory, Customer Analysis.</p>
 <p><strong>Real Case:</strong> 20% of products generate 80% of revenue.</p>
-<pre><code>Top 100 Products → ₹8M Revenue
-Remaining 400 Products → ₹2M Revenue</code></pre>
+<p><strong>Top 100 Products → ₹8M Revenue<br>Remaining 400 Products → ₹2M Revenue</strong></p>
 <p><strong>Interview Insight:</strong> Focus business efforts on the critical 20%.</p>
 </div></div>
 </div>
@@ -923,9 +858,7 @@ Remaining 400 Products → ₹2M Revenue</code></pre>
 <p><strong>What is it?</strong> Divides customers, products, or stores into meaningful groups based on characteristics.</p>
 <p><strong>Where used?</strong> Customer Analytics, Marketing, Retail Reporting.</p>
 <p><strong>Real Case:</strong></p>
-<pre><code>High Value Customers
-Medium Value Customers
-Low Value Customers</code></pre>
+<p><strong>High Value Customers<br>Medium Value Customers<br>Low Value Customers</strong></p>
 <p><strong>Example thresholds:</strong> Revenue &gt; ₹1L = High Value · Revenue ₹50K–₹1L = Medium · Revenue &lt; ₹50K = Low</p>
 </div></div>
 </div>
@@ -936,10 +869,8 @@ Low Value Customers</code></pre>
 <p><strong>Where used?</strong> Management Reporting, Executive Dashboards, Business Reviews.</p>
 <p><strong>Real Case:</strong> Instead of saying "Sales dropped 15%", say:</p>
 <p><em>"Sales dropped 15% because 3 top-selling products were out of stock in the South Region. Replenishing inventory could recover approximately ₹500K revenue."</em></p>
-<div class="flow">Data → Insight → Action</div>
-<pre><code>Stockout ↑
-→ Sales ↓
-→ Increase Inventory</code></pre>
+<p><strong>Data → Insight → Action</strong></p>
+<p><strong>Stockout ↑<br>→ Sales ↓<br>→ Increase Inventory</strong></p>
 </div></div>
 </div>
 </div>
@@ -956,7 +887,7 @@ Low Value Customers</code></pre>
 <p>In my Power BI projects, I have mainly worked with SQL Server/SSMS, JDA allocation data, ODBMS, store inventory, and sales/POS data. In the retail project, these sources provided information such as product, sales, inventory, purchase orders, and distribution-center allocation data. The production data was stored in SQL tables, while CSV files were mainly used as snapshots for analysis and validation.</p>
 <p>Yes, I have worked with multiple data sources. My approach was to bring the required data into the SQL/reporting layer, perform data cleaning, validation, joins, and business transformations using SQL, and then connect Power BI to the prepared reporting views. Power Query was mainly used for final transformations such as column selection and data types, while maintaining query folding wherever possible.</p>
 <p>For connectivity, the main dashboards used Import Mode because performance was important and the data was refreshed on a schedule. For scenarios requiring current data, DirectQuery was used for real-time DC stock monitoring. The Power BI Gateway connected the on-premise SQL Server to Power BI Service for scheduled refreshes.</p>
-<div class="flow">Multiple sources → SQL/ETL → validation &amp; transformation → Power BI/Power Query → data model → DAX → dashboard → Power BI Service</div>
+<p><strong>Multiple sources → SQL/ETL → validation &amp; transformation → Power BI/Power Query → data model → DAX → dashboard → Power BI Service</strong></p>
 </div>
 </div>
 </div><div class="item" data-index="etlprocess">
@@ -966,9 +897,9 @@ Low Value Customers</code></pre>
 <p>ETL stands for Extract, Transform, and Load, where data is cleaned and transformed before loading into the target system. ELT stands for Extract, Load, and Transform, where raw data is first loaded into a data warehouse or lake and then transformed using its compute power. Traditional data warehouses commonly use ETL, while modern cloud platforms like Microsoft Fabric, Snowflake, and Databricks mostly use ELT because it scales better for large datasets.</p>
 <p><strong>Real Project Example</strong></p>
 <p><strong>ETL:</strong></p>
-<div class="flow">SQL Server → Power Query transformations → Power BI Model</div>
+<p><strong>SQL Server → Power Query transformations → Power BI Model</strong></p>
 <p><strong>ELT:</strong></p>
-<div class="flow">SQL Server → Data Lake/Warehouse → Transform using SQL/Fabric/Dataflows → Reporting</div>
+<p><strong>SQL Server → Data Lake/Warehouse → Transform using SQL/Fabric/Dataflows → Reporting</strong></p>
 </div>
 </div>
 </div><div class="item" data-index="19">
@@ -985,7 +916,7 @@ Low Value Customers</code></pre>
 <p>For <strong>dashboard accuracy</strong>, I performed source-to-report validation by checking record counts, totals, filters, KPI values, and different business scenarios. I also validated that slicers and report filters produced the expected results.</p>
 <p>For <strong>UAT</strong>, after internal testing and DAX validation, I moved the report to the UAT environment and worked with business users to validate the KPIs and report functionality. Stakeholders reviewed the numbers against their business expectations, provided feedback, and I resolved any issues before getting their sign-off. The documented process includes sample-data testing, DAX unit testing, UAT with business-user KPI sign-off, and then production deployment.</p>
 <p>Before production, my final process was:</p>
-<div class="flow">Source validation → SQL data-quality checks → Duplicate/NULL checks → KPI validation → Power BI/DAX validation → Report testing → UAT → Stakeholder sign-off → Production deployment → Post-deployment refresh validation</div>
+<p><strong>Source validation → SQL data-quality checks → Duplicate/NULL checks → KPI validation → Power BI/DAX validation → Report testing → UAT → Stakeholder sign-off → Production deployment → Post-deployment refresh validation</strong></p>
 <p>I also used refresh monitoring in production. For example, when a Gateway refresh failed and the dashboard continued showing old allocation numbers, I added a <strong>Last Refreshed indicator and a data-validation check</strong> to detect silent refresh failures.</p>
 </div>
 </div>
@@ -1002,7 +933,7 @@ Low Value Customers</code></pre>
 <p>I have primarily worked with <strong>Star Schema</strong>, and the project documentation also covers concepts such as <strong>Snowflake Schema and Slowly Changing Dimensions</strong>. I prefer Star Schema in Power BI because relationships are simpler, filter propagation is cleaner, and DAX calculations are easier to maintain.</p>
 <p>When designing the model, I first identified the <strong>business grain</strong> of each fact table, then separated measurable transactional data from descriptive attributes. I created relationships between the dimensions and fact tables using keys, generally with <strong>one-to-many relationships</strong>, and added a proper Date table for time-based analysis. I then built DAX measures such as <strong>WOC, In-Stock %, MOM Revenue, YTD Sales, and Store Sales Rank</strong> on top of the model.</p>
 <p>I also focused on performance while designing the model by removing unnecessary columns, using appropriate data types, keeping relationships simple, and avoiding unnecessary bidirectional filtering. This helped create a model that was easier to maintain and performed well for the business dashboards.</p>
-<div class="flow">Define business grain → Identify facts &amp; dimensions → Build Star Schema → Create relationships → Add Date table → Validate data → Create DAX measures → Optimize the model → Build reports</div>
+<p><strong>Define business grain → Identify facts &amp; dimensions → Build Star Schema → Create relationships → Add Date table → Validate data → Create DAX measures → Optimize the model → Build reports</strong></p>
 </div>
 </div>
 </div><div class="item" data-index="13">
@@ -1018,7 +949,7 @@ Low Value Customers</code></pre>
 <p>I created <strong>SQL views</strong> to standardize and prepare the business logic before connecting Power BI. For example, the project documentation describes views being used to combine and transform data into reporting-ready datasets, including <code>vw_kpi_master</code>, and a <code>vw_revenue_standard</code> view that aligned Finance and Operations revenue definitions so both teams could use a consistent source of truth.</p>
 <p>I preferred using <strong>Views instead of writing the complete SQL logic directly in Power BI</strong> because the business logic could be centralized, reused across reports, easier to validate, and maintained at the SQL/reporting layer. It also allowed Power BI to consume a cleaner, reporting-ready dataset instead of repeatedly processing complex joins and transformations.</p>
 <p>For SQL performance, I focused on <strong>filtering and aggregating data at the SQL layer, using appropriate joins, avoiding unnecessary columns, and preparing aggregated/reporting views</strong> before Power BI consumed the data. This reduced the amount of raw data Power BI had to process and improved overall report performance. The project documentation specifically recommends pushing aggregations into SQL rather than making Power BI process large raw tables.</p>
-<div class="flow">SQL → Extract &amp; Clean → Join &amp; Validate → Create Reporting Views → Power BI Data Model → DAX → Dashboard</div>
+<p><strong>SQL → Extract &amp; Clean → Join &amp; Validate → Create Reporting Views → Power BI Data Model → DAX → Dashboard</strong></p>
 </div>
 </div>
 </div><div class="item" data-index="14">
@@ -1048,7 +979,7 @@ Low Value Customers</code></pre>
 <p>To ensure accuracy, I first validated the source data and SQL calculations, then compared the Power BI KPI results against SQL outputs and business expectations. During UAT, I worked with stakeholders to validate the KPI definitions and report numbers before production deployment. I also used data-quality checks and refresh validation to identify issues.</p>
 <p>For visualization, I selected the visual based on the business question. KPI cards were used for critical metrics such as WOC and Stockout Rate, line charts for trends, bar/column charts for category and seasonal comparisons, matrices for detailed product analysis, and gauges for DC utilization. I also used conditional formatting for WOC status and bookmarks to switch between stockout and excess-inventory views.</p>
 <p>The overall business value was that the dashboards converted complex inventory and allocation data into actionable insights. Instead of manually checking multiple sources, business teams could quickly identify where stock was too low, where inventory was excessive, and where allocation needed attention. This supported faster replenishment, better allocation decisions, and improved inventory visibility. My resume reflects the resulting impact as a 30% reduction in stockouts, 10% improvement in allocation accuracy, and 15% increase in revenue.</p>
-<div class="flow">Dashboard → KPIs → SQL/DAX calculation → Validation → Right visualization → Business action → Measurable impact</div>
+<p><strong>Dashboard → KPIs → SQL/DAX calculation → Validation → Right visualization → Business action → Measurable impact</strong></p>
 </div>
 </div>
 </div><div class="item" data-index="22">
@@ -1063,7 +994,7 @@ Low Value Customers</code></pre>
 <p>In my Cognizant retail supply-chain project, I developed <strong>Power BI dashboards</strong> focused on sales, inventory, allocation, replenishment, and store/DC performance. The data originated from ERP systems and was loaded into <strong>SQL Server</strong> through <strong>SSIS pipelines</strong> by the data engineering team. I used <strong>SQL Views</strong> and <strong>Power Query</strong> for data preparation, built a <strong>Star Schema</strong> data model with fact and dimension tables, and created <strong>DAX measures</strong> for KPIs such as Revenue, Inventory Value, In-Stock %, Stockout Rate, Sell-Through %, Allocation Accuracy, and Weeks of Cover (WOC).</p>
 <p>For visualization, I used <strong>KPI Cards</strong> to display executive-level metrics, <strong>Line Charts</strong> to analyze sales and inventory trends over time, <strong>Clustered Bar Charts</strong> to compare store, region, and DC performance, <strong>Matrix visuals</strong> for detailed product-store inventory analysis, <strong>Donut Charts</strong> for category contribution, <strong>Slicers</strong> for self-service filtering, and <strong>Conditional Formatting</strong> to highlight inventory risks such as stockouts and low WOC. I also implemented <strong>drill-through</strong> functionality so users could navigate from summary-level KPIs to detailed store and product analysis.</p>
 <p>One of the key challenges was ensuring KPI consistency and dashboard performance. I standardized business logic in <strong>SQL Views</strong>, validated Power BI calculations against SQL outputs, optimized DAX measures, and followed <strong>Star Schema</strong> modeling best practices. The dashboards helped business users monitor inventory health, allocation effectiveness, stockouts, and replenishment decisions, enabling data-driven supply-chain planning and operational decision-making.</p>
-<div class="flow">ERP data → SSIS load to SQL Server → SQL Views &amp; Power Query → Star Schema model → DAX KPIs → Power BI visuals (Cards, Line, Bar, Matrix, Donut, Drill-through) → business decision-making</div>
+<p><strong>ERP data → SSIS load to SQL Server → SQL Views &amp; Power Query → Star Schema model → DAX KPIs → Power BI visuals (Cards, Line, Bar, Matrix, Donut, Drill-through) → business decision-making</strong></p>
 </div>
 </div>
 </div><div class="item" data-index="16">
@@ -1080,7 +1011,7 @@ Low Value Customers</code></pre>
 <p>One of the more challenging DAX problems I faced was a regional sales-percentage measure that was giving the correct overall total but incorrect regional values. I traced the issue to the use of <code>ALL()</code>, which was removing the region filter. I corrected the measure by removing only the required product-level filter so that the region filter was preserved.</p>
 <p>The main DAX functions I used were <code>CALCULATE()</code>, <code>SUM()</code>, <code>DIVIDE()</code>, <code>FILTER()</code>, <code>DATEADD()</code>, <code>DATESYTD()</code>, <code>DATESINPERIOD()</code>, <code>RANKX()</code>, <code>ALL()</code>, <code>ALLEXCEPT()</code>, and <code>VAR</code>. I used them for time intelligence, KPI calculations, ranking, filter manipulation, and percentage calculations.</p>
 <p>For DAX optimization, I used variables with <code>VAR</code> to avoid repeated calculations, preferred efficient filter-context logic with <code>CALCULATE()</code>, avoided unnecessary iterators such as <code>SUMX()</code> over large fact tables, and pushed heavy aggregation work into SQL where possible. I also used measures instead of unnecessary calculated columns because measures are evaluated dynamically based on filter context.</p>
-<div class="flow">Power Query = Prepare &amp; Transform Data → Data Model → DAX = Calculate &amp; Analyze → KPIs → Dashboard</div>
+<p><strong>Power Query = Prepare &amp; Transform Data → Data Model → DAX = Calculate &amp; Analyze → KPIs → Dashboard</strong></p>
 </div>
 </div>
 </div><div class="item" data-index="17">
@@ -1096,7 +1027,7 @@ Low Value Customers</code></pre>
 <p>In my project, I optimized performance at multiple levels. At the SQL level, I pushed aggregations and transformations into SQL views so that Power BI did not have to process unnecessary raw data. At the data-model level, I removed unused columns, used appropriate data types, maintained a clean star schema, and avoided unnecessary bidirectional relationships. At the DAX level, I used measures appropriately, optimized <code>CALCULATE()</code> logic, used <code>VAR</code> to avoid repeated calculations, and avoided unnecessary iteration over large fact tables. The project documentation specifically recommends these approaches for large Power BI models.</p>
 <p>For refresh performance, I used Incremental Refresh, so instead of refreshing the complete historical dataset every time, only the required recent data was refreshed. In the documented project example, this reduced the refresh time from around 40 minutes to approximately 4 minutes.</p>
 <p>I also monitored the refresh and Gateway process because a report can appear incorrect or slow when the underlying dataset has not refreshed properly. In one production issue, the Gateway refresh failed silently, so I added a Last Refreshed indicator and a validation check comparing current and previous allocation records.</p>
-<div class="flow">Identify bottleneck → Optimize SQL → Optimize data model → Optimize DAX → Optimize visuals → Enable Incremental Refresh → Monitor Gateway/refresh → Validate performance</div>
+<p><strong>Identify bottleneck → Optimize SQL → Optimize data model → Optimize DAX → Optimize visuals → Enable Incremental Refresh → Monitor Gateway/refresh → Validate performance</strong></p>
 <p>The key principle I follow is "optimize the data before optimizing the visuals."</p>
 </div>
 </div>
@@ -1113,7 +1044,7 @@ Low Value Customers</code></pre>
 <p>For data refresh, the main dashboards used <strong>Import Mode</strong>, so the data was refreshed on a scheduled basis. An <strong>Enterprise Power BI Gateway</strong> connected the on-premise SQL Server to Power BI Service, with the documented project setup using a <strong>6 AM nightly refresh</strong> before the morning business reviews.</p>
 <p>For sharing, I published the reports to Power BI Service so that the relevant <strong>Buying, Planning, Supply Chain, Finance, DC Operations, and leadership teams</strong> could access the reports.</p>
 <p>For access management, I used <strong>workspace permissions and Row-Level Security (RLS)</strong> where required. In the inventory dashboard, I implemented <strong>Dynamic RLS</strong> using a <code>UserRegion</code> table and <code>USERPRINCIPALNAME()</code>, so users automatically saw data for their assigned region. I tested the roles using <strong>View as Role</strong> before publishing.</p>
-<div class="flow">Develop → Test/UAT → Publish → Configure Gateway &amp; Refresh → Apply Security/RLS → Share with Users → Monitor Production</div>
+<p><strong>Develop → Test/UAT → Publish → Configure Gateway &amp; Refresh → Apply Security/RLS → Share with Users → Monitor Production</strong></p>
 </div>
 </div>
 </div><div class="item" data-index="21">
@@ -1132,7 +1063,7 @@ Low Value Customers</code></pre>
 <p>For navigation, <strong>drill-down</strong> allows users to move to a more detailed level within the same visual — for example, Year → Quarter → Month → Day. <strong>Drill-through</strong> takes the user to a separate detail page while carrying the selected filter context. I used drill-down for time-based analysis and drill-through for detailed DC or stockout investigation.</p>
 <p>I used <strong>bookmarks</strong> when I wanted to provide different report views without creating separate pages. For example, my dashboard used a bookmark to toggle between <strong>stockout and excess-inventory views</strong> with a button.</p>
 <p>For <strong>data refresh</strong>, the main reports used Import Mode with scheduled refresh through the <strong>Enterprise Power BI Gateway</strong>, which connected the on-premise SQL Server to Power BI Service. The documented project setup used a nightly refresh at <strong>6 AM</strong>. I also monitored refresh status and added a <strong>Last Refreshed</strong> indicator and validation check to identify failed or stale refreshes.</p>
-<div class="flow">RLS → control rows | OLS → control objects/columns | Workspace → manage content | App → distribute content | Report → multi-page analysis | Dashboard → single-page KPI view | Drill-down → same visual | Drill-through → detail page | Bookmarks → alternate views | Gateway → scheduled refresh</div>
+<p><strong>RLS → control rows | OLS → control objects/columns | Workspace → manage content | App → distribute content | Report → multi-page analysis | Dashboard → single-page KPI view | Drill-down → same visual | Drill-through → detail page | Bookmarks → alternate views | Gateway → scheduled refresh</strong></p>
 </div>
 </div>
 </div><div class="item" data-index="projectdocs">
@@ -1556,7 +1487,7 @@ Low Value Customers</code></pre>
 </div>
 <h3>End-to-End Cloud Data Pipeline</h3>
 <p>Data moves from source systems into Azure/Fabric storage, gets transformed, and is consumed in Power BI.</p>
-<div class="flow">Sales System → ADF → Data Lake → Synapse/Fabric → Power BI Dashboard → Power Automate Email Alert</div>
+<p><strong>Sales System → ADF → Data Lake → Synapse/Fabric → Power BI Dashboard → Power Automate Email Alert</strong></p>
 <p>If a product's stock drops below 100 units, Power Automate automatically sends an email to the inventory team. This example covers ADF, ADLS Gen2, Synapse, Fabric, Power BI, Power Automate, and cloud analytics architecture in one end-to-end flow.</p>
 </div>
 </div>
@@ -1604,7 +1535,7 @@ Low Value Customers</code></pre>
 </table>
 <p><strong>Real-Time Example</strong></p>
 <p>In a retail company: sales data is loaded from stores into Azure Data Lake Gen2, Azure Data Factory performs ETL and loads cleaned data, data is stored in Azure Synapse Analytics, and Power BI connects to Synapse and displays dashboards for business users.</p>
-<div class="flow">Stores → Azure Data Lake Gen2 → Azure Data Factory (ETL) → Azure Synapse Analytics → Power BI Dashboard</div>
+<p><strong>Stores → Azure Data Lake Gen2 → Azure Data Factory (ETL) → Azure Synapse Analytics → Power BI Dashboard</strong></p>
 <p><strong>Interview One-Liner</strong></p>
 <p><em>"Microsoft Azure is Microsoft's cloud platform that provides computing, storage, networking, database, analytics, and AI services. In data projects, I've used Azure services such as Data Factory, Data Lake, Synapse, and Power BI to build scalable data pipelines and reporting solutions."</em></p>
 </div>
@@ -1720,9 +1651,7 @@ Low Value Customers</code></pre>
 <p><strong>What is it?</strong> A requirement written from the user's perspective.</p>
 <p><strong>Where used?</strong> Agile development.</p>
 <p><strong>Real Case — User Story:</strong></p>
-<pre><code>As a Regional Manager,
-I want to see sales by region,
-so that I can monitor performance.</code></pre>
+<p><strong>As a Regional Manager,<br>I want to see sales by region,<br>so that I can monitor performance.</strong></p>
 </div></div>
 </div>
 <div class="item topic-item" data-index="agile-10">
@@ -2145,11 +2074,7 @@ so that I can monitor performance.</code></pre>
 <div class="item-body">
 <div class="item-body-inner">
 <p><strong>Answer:</strong> I used a dedicated Date dimension and built Fiscal YTD measures using <code>DATESYTD()</code> with July 31 as the fiscal year end date.</p>
-<pre><code class="language-DAX">YTD Sales =
-CALCULATE(
-    [Total Sales],
-    DATESYTD('Date'[Date], "07/31")
-)</code></pre>
+<p><strong>YTD Sales =<br>CALCULATE(<br>    [Total Sales],<br>    DATESYTD('Date'[Date], "07/31")<br>)</strong></p>
 </div>
 </div>
 </div>
@@ -2174,7 +2099,7 @@ CALCULATE(
 <div class="item-body">
 <div class="item-body-inner">
 <p><strong>Answer:</strong> I maintained a role mapping table containing User Email, Department, and Access Level. <code>USERPRINCIPALNAME()</code> matched the logged-in user with this table and filtered data dynamically.</p>
-<pre><code class="language-DAX">UserAccess[Email] = USERPRINCIPALNAME()</code></pre>
+<p><strong>UserAccess[Email] = USERPRINCIPALNAME()</strong></p>
 </div>
 </div>
 </div>
@@ -2394,7 +2319,7 @@ CALCULATE(
 <div class="item-body">
 <div class="item-body-inner">
 <h3>Project Story</h3>
-<div class="flow">Project kickoff → Problem → What I did → Result</div>
+<p><strong>Project kickoff → Problem → What I did → Result</strong></p>
 <p>One of the projects I'm most proud of was the <strong>Global Direct SAR (Spend Analysis Report) Dashboard</strong> for the Finance Leadership team. The goal was to provide a single dashboard to track company spending across regions, departments, and cost categories.</p>
 <p><strong>Problem:</strong> There were two main challenges — the company followed a fiscal year from <strong>August to July</strong>, so normal YTD calculations would not work, and data came from multiple countries and currencies, requiring consistent currency conversion.</p>
 <p><strong>What I did:</strong> I implemented currency conversion logic in SQL views using exchange rates provided by the finance team. In Power BI, I created a Fiscal Calendar and developed DAX measures for Fiscal YTD, Budget YTD, and Prior Year Comparison. I also implemented Dynamic RLS using <code>USERPRINCIPALNAME()</code> so users could only see data relevant to their role.</p>
@@ -2438,7 +2363,7 @@ CALCULATE(
 <button class="item-head"><span class="idx">03</span><span class="item-title">What were the data sources?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner">
 <p><strong>Answer:</strong> The primary data source was SQL Server, where finance transaction data from multiple regions was consolidated.</p>
-<div class="flow">Regional Financial Systems → SQL Server Tables → SQL Views (Business Logic &amp; Currency Conversion) → Power BI Dataset → Power BI Service</div>
+<p><strong>Regional Financial Systems → SQL Server Tables → SQL Views (Business Logic &amp; Currency Conversion) → Power BI Dataset → Power BI Service</strong></p>
 <p>The SQL layer contained Expense Transactions, Budget Data, Prior Year Historical Data, Currency Exchange Rates, Employee and Headcount Information, and Security Mapping Tables. The SQL views were used to standardize currencies, clean and transform data, apply business rules, and improve Power BI performance. Power BI then consumed these optimized views for reporting.</p>
 <p><strong>Business Impact:</strong> Using SQL as the transformation layer reduced Power BI refresh times and ensured all reports used the same business logic.</p>
 </div></div>
@@ -2587,7 +2512,7 @@ CALCULATE(
 <button class="item-head"><span class="idx">13</span><span class="item-title">How was drill-down implemented?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner">
 <p><strong>Answer:</strong> I created hierarchies in Power BI that allowed users to drill from Region down to the transaction level, enabling users to investigate spending details without leaving the dashboard.</p>
-<div class="flow">Region → Functional Area → Department → Expense Category → Transaction Level</div>
+<p><strong>Region → Functional Area → Department → Expense Category → Transaction Level</strong></p>
 </div></div>
 </div>
 <div class="item question-item" data-question="sar2q-14">
@@ -2724,7 +2649,7 @@ CALCULATE(
 <p>The raw transaction data contained fields such as Order Date, Ship Date, Customer, Product, Category, Region, State, Sales, Profit, Quantity, and Discount. I first cleaned and structured the data and created a star-schema-oriented model, with the Orders table as the fact table and supporting dimensions such as Calendar, Product, Customer Segment, Region, and State Coordinates. One challenge was deciding which attributes should remain in the fact table versus being separated into dimensions; for a production model, I would normalize these into dedicated dimension tables.</p>
 <p>For analysis, I created KPIs such as YTD Sales, YTD Profit, YTD Quantity, Profit Margin %, Previous Year Sales, and YoY Growth %, using DAX functions such as <strong>TOTALYTD()</strong>, <strong>SAMEPERIODLASTYEAR()</strong>, and <strong>DIVIDE()</strong>. I also used ranking logic to identify Top 5 and Bottom 5 products. Customer performance was analyzed using sales and customer-segment trends; however, the project documentation does not specify a separate repeat-customer or high-value-customer segmentation methodology, so I would not claim a specific RFM model for this project.</p>
 <p>The dashboard then presented the insights through KPI cards, monthly trends, customer-segment comparisons, state-level maps, Top/Bottom product charts, regional analysis, and shipping-mode analysis, with slicers for interactive filtering. From a business perspective, these insights could help management identify high-performing products and regions, declining segments, and areas where marketing or operational attention was needed.</p>
-<div class="flow">raw transaction data → data modeling → DAX / KPI analysis → interactive Power BI dashboard → business insights → marketing &amp; management decisions</div>
+<p><strong>raw transaction data → data modeling → DAX / KPI analysis → interactive Power BI dashboard → business insights → marketing &amp; management decisions</strong></p>
 <p>The project helped me build practical experience in data modeling, DAX time intelligence, visualization, and translating transaction-level data into actionable business insights.</p>
 </div>
 </div>
@@ -7843,6 +7768,224 @@ HAVING SUM(order_value) &gt; 100000;</code></pre>
 <div class="item-body"><div class="item-body-inner"><p>*<em><strong>For theory:</strong></em>*\\ \\&gt; "One-line definition + when I use it."</p>
 <p>*<em><strong>For SQL coding:</strong></em>*\\ \\&gt; "First I identify the required grain, then filter/aggregate, apply the appropriate join or window function, and finally filter/order the result."</p>
 <p>*<em><strong>For real-life scenarios:</strong></em>*\\ \\&gt; "I would first clarify the business requirement, identify the correct tables and keys, validate duplicates/nulls, write the query, and verify the result before using it in reporting."</p></div></div></div></div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="item section-item" data-index="hr-screening">
+<div class="item-head section-head" role="button" tabindex="0" aria-expanded="false">
+<div class="section-head-text">
+<div class="eyebrow">HR / Screening Round</div>
+<h1>HR SCREENING QUESTIONS</h1>
+</div>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</div>
+<div class="item-body">
+<div class="item-body-inner section-body-inner">
+<p class="sub">Common HR / screening-round questions with ready-to-say answers, grounded in real project metrics.</p>
+<div class="list" id="hr-screening-list">
+<div class="item" data-index="hr-1">
+<button class="item-head"><span class="idx">01</span><span class="item-title">Tell me about yourself and walk me through your data analytics journey.</span><span class="tag">Intro</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p>Hi, I'm Nayan Bobde. I have around 2.5 years of experience as a Data Analyst, primarily working in Retail and Supply Chain Analytics at Cognizant.</p>
+<p>My core skills are SQL and Power BI, along with DAX, Power Query, Data Modeling, Advanced Excel, Python, and Microsoft Fabric. I completed PL-300 Power BI Data Analyst and DP-600 Microsoft Fabric Analytics Engineer certifications, which strengthened my analytics and reporting capabilities.</p>
+<p>My analytics journey started with SQL-based data extraction and reporting. Over time, I moved into end-to-end analytics, including requirement gathering, data validation, KPI development, dashboard design, stakeholder management, and business insights generation.</p>
+<p>I worked with a global apparel retail client where I analyzed inventory movement from Distribution Centers to stores, allocation performance, stock availability, and inventory optimization. I worked with over 500K records and 20,000+ SKUs and developed Power BI dashboards for Buying, Planning, Merchandising, Supply Chain, and Distribution teams.</p>
+<p>My most recent project was the Global Direct SAR Dashboard, where I developed financial and spend analytics reports using SQL and Power BI, handling custom fiscal-year calculations, multi-currency conversion, and dynamic security.</p>
+<p>Overall, my role has been to convert raw business data into meaningful insights that help stakeholders make better business decisions.</p>
+</div></div>
+</div>
+<div class="item" data-index="hr-2">
+<button class="item-head"><span class="idx">02</span><span class="item-title">Why are you looking to leave Cognizant after 2.4 years?</span><span class="tag">Reason to Leave</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p>The primary reason is that my project ended, and there were limited internal opportunities aligned with my skills and career goals.</p>
+<p>I was allocated to another project, but the work was not closely related to Data Analytics, Power BI, SQL, or business intelligence, which are the areas where I want to continue building my expertise.</p>
+<p>After spending more than two years developing strong analytics skills in retail and supply chain analytics, I wanted my next role to provide deeper exposure to data analytics, reporting, cloud analytics, and stakeholder-facing work.</p>
+<p>That's why I'm looking for an opportunity that aligns better with my long-term career path.</p>
+</div></div>
+</div>
+<div class="item" data-index="hr-3">
+<button class="item-head"><span class="idx">03</span><span class="item-title">What is your current fixed CTC, total CTC, and expected CTC?</span><span class="tag">CTC</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p><strong>Current Fixed CTC:</strong> ₹4.5 LPA</p>
+<p><strong>Current Total CTC:</strong> ₹4.5 LPA</p>
+<p><strong>Expected CTC:</strong> Around ₹9 LPA+, depending on the role, responsibilities, and overall compensation structure.</p>
+</div></div>
+</div>
+<div class="item" data-index="hr-4">
+<button class="item-head"><span class="idx">04</span><span class="item-title">What is your official notice period, and can it be negotiated for an early release?</span><span class="tag">Notice Period</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p>I have already completed my tenure at Cognizant and am available to join immediately.</p>
+</div></div>
+</div>
+<div class="item" data-index="hr-5">
+<button class="item-head"><span class="idx">05</span><span class="item-title">Do you have any active offers in hand or other interviews in advanced stages?</span><span class="tag">Offers</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p>Currently, I am actively interviewing with multiple organizations and have several interview processes in progress.</p>
+<p>However, my priority is finding the right role that aligns with my analytics background, learning goals, and long-term career growth.</p>
+</div></div>
+</div>
+<div class="item" data-index="hr-6">
+<button class="item-head"><span class="idx">06</span><span class="item-title">Why do you want to join our organization specifically?</span><span class="tag">Why Us</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p>From my research, your organization is investing heavily in data-driven decision-making, analytics, and modern data platforms.</p>
+<p>The role aligns well with my experience in SQL, Power BI, reporting, stakeholder management, and business analytics. It also provides an opportunity to work on larger datasets, more complex business problems, and modern technologies.</p>
+<p>I believe the combination of my analytics experience and your organization's growth opportunities would be a strong fit for both sides.</p>
+</div></div>
+</div>
+<div class="item" data-index="hr-7">
+<button class="item-head"><span class="idx">07</span><span class="item-title">What are your day-to-day responsibilities in your current retail analytics role?</span><span class="tag">Responsibilities</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p>My daily responsibilities included:</p>
+<ul>
+<li>Writing SQL queries for data extraction, validation, and analysis.</li>
+<li>Monitoring business KPIs and investigating KPI fluctuations.</li>
+<li>Developing and enhancing Power BI dashboards.</li>
+<li>Creating DAX measures and KPI calculations.</li>
+<li>Performing trend analysis, variance analysis, and root cause analysis.</li>
+<li>Supporting inventory and allocation reporting.</li>
+<li>Gathering requirements from stakeholders.</li>
+<li>Supporting UAT and production deployments.</li>
+<li>Presenting findings and recommendations to business users.</li>
+</ul>
+<p>The goal was to transform business data into actionable insights that improved inventory planning and allocation decisions.</p>
+</div></div>
+</div>
+<div class="item" data-index="hr-8">
+<button class="item-head"><span class="idx">08</span><span class="item-title">Can you walk me through your Inventory Optimization Dashboard project from start to finish?</span><span class="tag">Project</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p>The project objective was to improve inventory visibility and allocation decisions across the retail supply chain.</p>
+<p>First, I gathered requirements from stakeholders including Planning, Merchandising, Buying, and Supply Chain teams. We identified key KPIs such as Weeks of Cover, In-Stock %, Stockout Rate, Inventory Value, Sell-Through %, Allocation Accuracy, and Forecast Accuracy.</p>
+<p>The data came from SQL Server, JDA allocation systems, inventory systems, and sales data. I extracted and validated the data using SQL and performed transformations through SQL and Power Query.</p>
+<p>Next, I designed a Star Schema data model with fact and dimension tables and developed DAX measures for all KPIs.</p>
+<p>I then built interactive Power BI dashboards with drill-through capabilities, filters, KPI scorecards, trend analysis, and exception reporting.</p>
+<p>During testing, I validated all calculations with stakeholders and supported UAT.</p>
+<p>After deployment, business teams used the dashboard to monitor inventory flow from Distribution Centers to stores, identify stockouts and overstock situations, and improve allocation decisions.</p>
+<p>The dashboard helped improve inventory visibility and supported data-driven replenishment planning.</p>
+</div></div>
+</div>
+<div class="item" data-index="hr-9">
+<button class="item-head"><span class="idx">09</span><span class="item-title">What has been your single biggest professional achievement so far?</span><span class="tag">Achievement</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p>One of my biggest achievements was developing the Global Direct SAR (Spend Analysis Report) Dashboard for finance leadership.</p>
+<p>The challenge was that the company followed a custom fiscal year starting in August rather than January. Additionally, data came from multiple regions and currencies.</p>
+<p>I developed custom fiscal-year calculations, multi-currency conversion logic, and dynamic Row-Level Security.</p>
+<p>The dashboard became a centralized source of truth for spend analysis across departments and regions, helping leadership make faster and more informed financial decisions.</p>
+</div></div>
+</div>
+<div class="item" data-index="hr-10">
+<button class="item-head"><span class="idx">10</span><span class="item-title">Why should we hire you over other data analysts with similar experience?</span><span class="tag">Why You</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p>I bring a combination of strong technical skills and business understanding.</p>
+<p>Technically, I am comfortable with SQL, Power BI, DAX, Data Modeling, Power Query, and analytics best practices.</p>
+<p>Beyond technical skills, I understand retail and supply chain business processes, stakeholder management, KPI development, and translating business requirements into analytical solutions.</p>
+<p>I have worked directly with business users, performed root cause analysis, and delivered dashboards that supported real business decisions.</p>
+<p>This combination of technical expertise and business understanding allows me to create solutions that deliver measurable business value.</p>
+</div></div>
+</div>
+<div class="item" data-index="hr-11">
+<button class="item-head"><span class="idx">11</span><span class="item-title">How do you rate your SQL proficiency, and what complex queries or window functions do you write regularly?</span><span class="tag">SQL Skills</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p>I would rate myself around 8.5 out of 10 in SQL.</p>
+<p>I regularly work with:</p>
+<ul>
+<li>CTEs</li>
+<li>Window Functions</li>
+<li>ROW_NUMBER()</li>
+<li>RANK()</li>
+<li>DENSE_RANK()</li>
+<li>LEAD()</li>
+<li>LAG()</li>
+<li>CASE Statements</li>
+<li>Aggregate Functions</li>
+<li>Joins</li>
+<li>Subqueries</li>
+<li>Temporary Tables</li>
+<li>Views</li>
+</ul>
+<p><strong>Example:</strong></p>
+<p>For top-selling products analysis, I used:</p>
+<pre><code class="language-sql">ROW_NUMBER()
+RANK()
+DENSE_RANK()</code></pre>
+<p>For trend analysis and month-over-month comparisons, I used:</p>
+<pre><code class="language-sql">LAG()
+LEAD()</code></pre>
+<p>I also wrote complex joins across inventory, sales, allocation, and product master tables for KPI reporting.</p>
+</div></div>
+</div>
+<div class="item" data-index="hr-12">
+<button class="item-head"><span class="idx">12</span><span class="item-title">How do you handle changing requirements or difficult business stakeholders during a sprint?</span><span class="tag">Stakeholders</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p>I focus on communication and requirement clarification.</p>
+<p>When requirements change, I first understand the business reason behind the change and assess the impact on the existing solution.</p>
+<p>I discuss priorities with stakeholders, document revised requirements, and communicate timelines clearly.</p>
+<p>For difficult stakeholders, I focus on facts, business objectives, and regular updates. I also demonstrate prototypes early to gather feedback and avoid surprises later.</p>
+<p>My approach is collaborative rather than reactive.</p>
+</div></div>
+</div>
+<div class="item" data-index="hr-13">
+<button class="item-head"><span class="idx">13</span><span class="item-title">What is your experience with Databricks and Python in your data analytics workflow?</span><span class="tag">Python &amp; Databricks</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p>My primary hands-on experience has been with SQL and Power BI.</p>
+<p>For Python, I have used it for data cleaning, data manipulation, exploratory analysis, automation, and working with Pandas.</p>
+<p>I have foundational knowledge of Databricks, Spark concepts, and modern cloud analytics platforms through self-learning and certifications, although my day-to-day project work was primarily centered around SQL Server and Power BI.</p>
+<p>I am comfortable learning and working with Databricks-based environments as required.</p>
+</div></div>
+</div>
+<div class="item" data-index="hr-14">
+<button class="item-head"><span class="idx">14</span><span class="item-title">How have your PL-300 and DP-600 certifications helped you in practical, real-world projects?</span><span class="tag">Certifications</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p>PL-300 strengthened my understanding of the complete Power BI lifecycle:</p>
+<pre><code>Connect → Transform → Model → DAX → Visualize → Publish → Refresh → Secure</code></pre>
+<p>It directly helped me in building data models, DAX measures, performance optimization, RLS implementation, and dashboard development.</p>
+<p>DP-600 expanded my understanding of modern analytics architecture, including:</p>
+<pre><code>Data Factory → Lakehouse → Warehouse → Semantic Model → Power BI</code></pre>
+<p>It helped me understand enterprise-scale analytics, Fabric architecture, OneLake, Lakehouses, semantic models, governance, and modern data platforms.</p>
+<p>Together, these certifications improved both my practical reporting skills and my understanding of modern analytics ecosystems.</p>
+</div></div>
+</div>
+<div class="item" data-index="hr-15">
+<button class="item-head"><span class="idx">15</span><span class="item-title">Describe a time you faced a data discrepancy or missed a project deadline, and how you resolved it.</span><span class="tag">Discrepancy</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p>During dashboard validation, stakeholders reported that KPI numbers in Power BI did not match the source reports.</p>
+<p>I performed detailed SQL validation and discovered that different teams were using different business definitions for the same KPI.</p>
+<p>I arranged discussions with stakeholders, clarified the business rules, documented the approved logic, updated the SQL and DAX calculations, and revalidated the results.</p>
+<p>After implementing the agreed definition, the numbers matched across systems and the issue was resolved successfully.</p>
+<p>The experience reinforced the importance of validating business definitions before development.</p>
+</div></div>
+</div>
+<div class="item" data-index="hr-16">
+<button class="item-head"><span class="idx">16</span><span class="item-title">Are you comfortable with our hybrid/onsite work model and potential shift timings?</span><span class="tag">Work Model</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p>Yes, absolutely.</p>
+<p>I am comfortable with hybrid, onsite, and flexible work arrangements, including shift-based environments if required by the business.</p>
+</div></div>
+</div>
+<div class="item" data-index="hr-17">
+<button class="item-head"><span class="idx">17</span><span class="item-title">Where do you see your career heading over the next 3 years?</span><span class="tag">Career Goals</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p>Over the next three years, I want to grow into a Senior Data Analyst or Analytics Engineer role.</p>
+<p>I want to deepen my expertise in SQL, Power BI, Microsoft Fabric, cloud analytics, data modeling, and enterprise-scale analytics solutions.</p>
+<p>I also want to take on greater ownership of stakeholder interactions, business problem-solving, and end-to-end analytics projects.</p>
+<p>My goal is to become someone who can bridge both the technical and business sides of analytics.</p>
+</div></div>
+</div>
+<div class="item" data-index="hr-18">
+<button class="item-head"><span class="idx">18</span><span class="item-title">Do you have any questions for me regarding the role or our team?</span><span class="tag">Ask the Interviewer</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p>Yes, I do.</p>
+<ol>
+<li>What are the key business problems this role is expected to solve in the first six months?</li>
+<li>What does success look like for this position?</li>
+<li>What are the primary data sources and technologies used by the team?</li>
+<li>How is the analytics team structured and how closely do analysts work with business stakeholders?</li>
+<li>Are there opportunities to work on cloud analytics platforms such as Microsoft Fabric, Azure, Databricks, or modern data engineering tools?</li>
+<li>What are the biggest challenges currently faced by the team?</li>
+<li>What learning and growth opportunities are available within the organization?</li>
+</ol>
+</div></div>
 </div>
 </div>
 </div>
