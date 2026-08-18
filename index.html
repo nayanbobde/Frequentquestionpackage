@@ -640,11 +640,311 @@
 <p>I usually start by understanding the business objective and the problem stakeholders are trying to solve, rather than directly starting with the report. I discuss the required KPIs, filters, business rules, data sources, expected output, and target users, and document the requirements clearly. If the requirement is ambiguous, I ask focused questions, confirm the business logic with the stakeholder, and create a clear understanding of what should be delivered.</p>
 <p>Once the requirements are clear, I translate them into SQL logic, data-model requirements, DAX measures, KPIs, and Power BI visuals. For example, for inventory reporting, I would clarify metrics such as WOC, In-Stock %, and Stockout Rate and then build the report around those business definitions. I also work iteratively with stakeholders — sharing the initial report, collecting feedback, and incorporating approved change requests.</p>
 <p>For validation and UAT, I first validate the data and KPI calculations against SQL/source data, then share the report with business users in the UAT environment. I support stakeholders during UAT, resolve any data, calculation, or visualization issues, and make sure the final numbers match the agreed business definitions before production deployment. The project documentation also describes UAT as involving sample-data testing, DAX unit testing, business-user sign-off on KPIs, and validation before production deployment.</p>
+<div class="list">
+<div class="item topic-item" data-index="stakeholder-questions">
+<button class="item-head">
+<span class="idx">01</span>
+<span class="item-title">Questions to Ask Business Stakeholders</span>
+<span class="tag">16 Questions</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<div class="item question-item" data-question="sbq-1">
+<button class="item-head"><span class="idx">01</span><span class="item-title">What business problem are you trying to solve?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p><strong>Why ask?</strong> Understand the actual objective before discussing visuals.</p>
+<p><strong>Example:</strong></p>
+<ul>
+<li>Reduce stockouts</li>
+<li>Improve on-time delivery</li>
+<li>Monitor sales performance</li>
+<li>Improve forecast accuracy</li>
+</ul>
+</div></div>
+</div>
+<div class="item question-item" data-question="sbq-2">
+<button class="item-head"><span class="idx">02</span><span class="item-title">What decisions will users make using this dashboard?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p><strong>Why ask?</strong> A dashboard should support decisions, not just display data.</p>
+<p><strong>Example:</strong></p>
+<ul>
+<li>Which products need replenishment?</li>
+<li>Which stores are underperforming?</li>
+<li>Which regions need attention?</li>
+</ul>
+</div></div>
+</div>
+<div class="item question-item" data-question="sbq-3">
+<button class="item-head"><span class="idx">03</span><span class="item-title">Who are the primary users of the dashboard?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p><strong>Why ask?</strong> Executives, managers, and analysts need different views.</p>
+<pre><code>CEO → High-level KPIs
+Regional Manager → Region Performance
+Analyst → Detailed Drilldowns</code></pre>
+</div></div>
+</div>
+<div class="item question-item" data-question="sbq-4">
+<button class="item-head"><span class="idx">04</span><span class="item-title">What are the most important KPIs and how are they calculated?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p><strong>Why ask?</strong> Avoid KPI definition conflicts later.</p>
+<pre><code>Revenue
+Profit Margin %
+Forecast Accuracy %
+Inventory Turnover
+Stockout %</code></pre>
+<p>Always ask: <em>"Can you provide the KPI formula and business definition?"</em></p>
+</div></div>
+</div>
+<div class="item question-item" data-question="sbq-5">
+<button class="item-head"><span class="idx">05</span><span class="item-title">What dimensions do you want to analyze by?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p><strong>Why ask?</strong> Determines model design and drilldowns.</p>
+<pre><code>Region
+Store
+Product
+Category
+Supplier
+Date</code></pre>
+</div></div>
+</div>
+<div class="item question-item" data-question="sbq-6">
+<button class="item-head"><span class="idx">06</span><span class="item-title">What filters and slicers do users need?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p><strong>Why ask?</strong> Users often expect filtering capabilities.</p>
+<pre><code>Date
+Region
+Store
+Category
+Brand
+Supplier</code></pre>
+</div></div>
+</div>
+<div class="item question-item" data-question="sbq-7">
+<button class="item-head"><span class="idx">07</span><span class="item-title">How frequently does the data need to be refreshed?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p><strong>Why ask?</strong> Determines Import vs DirectQuery and refresh strategy.</p>
+<pre><code>Real-Time
+Hourly
+Daily
+Weekly</code></pre>
+</div></div>
+</div>
+<div class="item question-item" data-question="sbq-8">
+<button class="item-head"><span class="idx">08</span><span class="item-title">What actions should users take when a KPI is off target?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p><strong>Why ask?</strong> Helps design alerts, drilldowns, and exception reporting.</p>
+<pre><code>Stockout &gt; 5%
+→ Notify Inventory Team
+Forecast Accuracy &lt; 80%
+→ Review Forecast Model</code></pre>
+</div></div>
+</div>
+<div class="item question-item" data-question="sbq-9">
+<button class="item-head"><span class="idx">09</span><span class="item-title">How will success of this dashboard be measured?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p><strong>Why ask?</strong> Defines project success criteria.</p>
+<pre><code>Reduce manual reporting time by 50%
+Improve decision-making speed
+Increase dashboard adoption</code></pre>
+</div></div>
+</div>
+<div class="item question-item" data-question="sbq-10">
+<button class="item-head"><span class="idx">10</span><span class="item-title">Can you show me the current reports, Excel files, or dashboards you use today?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p><strong>Why ask?</strong> This reveals:</p>
+<ul>
+<li>Existing KPIs</li>
+<li>User expectations</li>
+<li>Pain points</li>
+<li>Missing insights</li>
+</ul>
+<p><strong>Example:</strong> Stakeholder shows:</p>
+<pre><code>15 Excel Reports
+3 Manual Reports
+2 Legacy Dashboards</code></pre>
+<p>You identify consolidation opportunities.</p>
+</div></div>
+</div>
+<div class="item question-item" data-question="sbq-11">
+<button class="item-head"><span class="idx">11</span><span class="item-title">Bonus: What keeps you awake at night regarding this business process?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p>This often reveals the real business pain point.</p>
+</div></div>
+</div>
+<div class="item question-item" data-question="sbq-12">
+<button class="item-head"><span class="idx">12</span><span class="item-title">Bonus: If you could see only 5 KPIs on the dashboard, which ones would they be?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p>Helps prioritize requirements.</p>
+</div></div>
+</div>
+<div class="item question-item" data-question="sbq-13">
+<button class="item-head"><span class="idx">13</span><span class="item-title">Bonus: What questions do users repeatedly ask that are difficult to answer today?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p>Great for identifying high-value insights.</p>
+</div></div>
+</div>
+<div class="item question-item" data-question="sbq-14">
+<button class="item-head"><span class="idx">14</span><span class="item-title">Bonus: What decisions are currently made manually?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p>Shows automation opportunities.</p>
+</div></div>
+</div>
+<div class="item question-item" data-question="sbq-15">
+<button class="item-head"><span class="idx">15</span><span class="item-title">Bonus: What drill-down path should users follow?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<pre><code>Revenue
+ → Region
+ → Store
+ → Product</code></pre>
+</div></div>
+</div>
+<div class="item question-item" data-question="sbq-16">
+<button class="item-head"><span class="idx">16</span><span class="item-title">Top 5 for Interviews — which questions matter most?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p><strong>Answer:</strong></p>
+<ol>
+<li>What business problem are we trying to solve?</li>
+<li>Who are the target users?</li>
+<li>What decisions will users make from this dashboard?</li>
+<li>What KPIs are important and how are they defined?</li>
+<li>How will success of the dashboard be measured?</li>
+</ol>
+<p>These five questions demonstrate business understanding, requirement gathering skills, and stakeholder management maturity.</p>
+</div></div>
 </div>
 </div>
-</div><div class="item placeholder">
-<button class="item-head"><span class="idx">03</span><span class="item-title">Data Analysis</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p>Data Analysis</p></div></div></div><div class="item" data-index="11">
+</div>
+</div>
+</div>
+</div>
+</div>
+</div><div class="item" data-index="dataanalysis">
+<button class="item-head"><span class="idx">03</span><span class="item-title">Data Analysis</span><span class="tag">Analysis</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p>In Cognizant, as a Data Analyst supporting retail and supply chain reporting, I was responsible not only for building Power BI dashboards but also for performing advanced data analysis to identify trends, patterns, and business insights. I regularly conducted trend analysis, variance analysis, and root cause analysis to investigate KPI movements such as sales decline, stockouts, inventory aging, and forecast accuracy issues. I used SQL and Power BI to perform drill-down analysis across regions, stores, products, and time periods to identify key business drivers. I also worked on customer and product segmentation, contribution analysis, Pareto (80/20) analysis, and seasonality analysis to support business decisions. When issues were identified, I collaborated with business users to understand the impact, validate findings through UAT, and provide actionable recommendations. My focus was not just on reporting numbers but on converting data into insights that helped stakeholders improve inventory planning, product allocation, sales performance, and operational efficiency.</p>
+<div class="list">
+<div class="item topic-item" data-index="da-1">
+<button class="item-head"><span class="idx">01</span><span class="item-title">Trend Analysis</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p><strong>What is it?</strong> Trend Analysis identifies whether a KPI is increasing, decreasing, or remaining stable over time. It helps understand long-term business performance.</p>
+<p><strong>Where used?</strong> Sales, Revenue, Inventory, Demand Forecasting.</p>
+<p><strong>Real Case:</strong> Monthly sales increased from ₹10M to ₹15M over six months.</p>
+<pre><code>Jan = ₹10M
+Feb = ₹11M
+Mar = ₹12M
+Apr = ₹13M</code></pre>
+<p>Conclusion: Upward Sales Trend.</p>
+</div></div>
+</div>
+<div class="item topic-item" data-index="da-2">
+<button class="item-head"><span class="idx">02</span><span class="item-title">Root Cause Analysis (RCA)</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p><strong>What is it?</strong> A structured approach used to identify the actual reason behind a problem. Focuses on "why it happened" rather than just reporting the issue.</p>
+<p><strong>Where used?</strong> Sales decline, Stockouts, KPI drops, Production Issues.</p>
+<p><strong>Real Case:</strong> Revenue dropped 15%. After analysis: top-selling products were out of stock. Root Cause = Inventory Shortage.</p>
+<pre><code>Revenue ↓
+ → Product Sales ↓
+    → Inventory ↓
+       → Stockout</code></pre>
+</div></div>
+</div>
+<div class="item topic-item" data-index="da-3">
+<button class="item-head"><span class="idx">03</span><span class="item-title">Variance Analysis</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p><strong>What is it?</strong> Compares Actual performance against Target, Budget, Forecast, or Previous Period. Measures performance gaps.</p>
+<p><strong>Where used?</strong> Financial Reporting, Sales Reporting, KPI Monitoring.</p>
+<p><strong>Real Case:</strong></p>
+<pre><code>Target Sales = ₹10M
+Actual Sales = ₹8M
+Variance = -₹2M (-20%)</code></pre>
+<p><strong>Formula:</strong> Variance = Actual − Target</p>
+</div></div>
+</div>
+<div class="item topic-item" data-index="da-4">
+<button class="item-head"><span class="idx">04</span><span class="item-title">Pattern Recognition</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p><strong>What is it?</strong> Identifying recurring behaviors, relationships, or trends in data. Helps uncover business insights.</p>
+<p><strong>Where used?</strong> Sales Analysis, Customer Behavior, Inventory Planning.</p>
+<p><strong>Real Case:</strong> Stockouts increase every weekend — a recurring pattern identified.</p>
+<pre><code>Saturday → High Demand
+Sunday → High Demand
+Monday → Normal</code></pre>
+<p>Pattern = Weekend Demand Spike.</p>
+</div></div>
+</div>
+<div class="item topic-item" data-index="da-5">
+<button class="item-head"><span class="idx">05</span><span class="item-title">KPI Drill-Down Analysis</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p><strong>What is it?</strong> Breaking a KPI into smaller components to identify drivers behind performance.</p>
+<p><strong>Where used?</strong> Revenue, Margin, Inventory, Forecast Accuracy.</p>
+<p><strong>Real Case:</strong> Revenue fell 10%. Drilling down found the decline was concentrated in the South Region.</p>
+<pre><code>Revenue
+  ↓
+Region
+  ↓
+Store
+  ↓
+Product</code></pre>
+</div></div>
+</div>
+<div class="item topic-item" data-index="da-6">
+<button class="item-head"><span class="idx">06</span><span class="item-title">Contribution Analysis</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p><strong>What is it?</strong> Measures how much each category, product, region, or customer contributes to a KPI.</p>
+<p><strong>Where used?</strong> Revenue Analysis, Profit Analysis, Business Reviews.</p>
+<p><strong>Real Case:</strong> North Region = 40% Revenue, South Region = 25% Revenue — North contributes the most.</p>
+<p><strong>Formula:</strong> Contribution % = Region Sales ÷ Total Sales</p>
+</div></div>
+</div>
+<div class="item topic-item" data-index="da-7">
+<button class="item-head"><span class="idx">07</span><span class="item-title">Pareto Analysis (80/20 Rule)</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p><strong>What is it?</strong> States that roughly 80% of outcomes come from 20% of causes.</p>
+<p><strong>Where used?</strong> Sales, Inventory, Customer Analysis.</p>
+<p><strong>Real Case:</strong> 20% of products generate 80% of revenue.</p>
+<pre><code>Top 100 Products → ₹8M Revenue
+Remaining 400 Products → ₹2M Revenue</code></pre>
+<p><strong>Interview Insight:</strong> Focus business efforts on the critical 20%.</p>
+</div></div>
+</div>
+<div class="item topic-item" data-index="da-8">
+<button class="item-head"><span class="idx">08</span><span class="item-title">Forecast Accuracy Analysis</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p><strong>What is it?</strong> Measures how close forecasted values are to actual values. Evaluates forecasting effectiveness.</p>
+<p><strong>Where used?</strong> Demand Planning, Supply Chain, Inventory Management.</p>
+<p><strong>Real Case:</strong> Forecast = 1000 Units, Actual = 950 Units — forecast performed well.</p>
+<p><strong>Formula:</strong> Forecast Accuracy = 1 − ABS(Forecast − Actual) ÷ Actual</p>
+</div></div>
+</div>
+<div class="item topic-item" data-index="da-9">
+<button class="item-head"><span class="idx">09</span><span class="item-title">Segmentation Analysis</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p><strong>What is it?</strong> Divides customers, products, or stores into meaningful groups based on characteristics.</p>
+<p><strong>Where used?</strong> Customer Analytics, Marketing, Retail Reporting.</p>
+<p><strong>Real Case:</strong></p>
+<pre><code>High Value Customers
+Medium Value Customers
+Low Value Customers</code></pre>
+<p><strong>Example thresholds:</strong> Revenue &gt; ₹1L = High Value · Revenue ₹50K–₹1L = Medium · Revenue &lt; ₹50K = Low</p>
+</div></div>
+</div>
+<div class="item topic-item" data-index="da-10">
+<button class="item-head"><span class="idx">10</span><span class="item-title">Data Storytelling</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p><strong>What is it?</strong> Converting data findings into actionable business recommendations. Focuses on explaining the "so what?" behind the numbers.</p>
+<p><strong>Where used?</strong> Management Reporting, Executive Dashboards, Business Reviews.</p>
+<p><strong>Real Case:</strong> Instead of saying "Sales dropped 15%", say:</p>
+<p><em>"Sales dropped 15% because 3 top-selling products were out of stock in the South Region. Replenishing inventory could recover approximately ₹500K revenue."</em></p>
+<div class="flow">Data → Insight → Action</div>
+<pre><code>Stockout ↑
+→ Sales ↓
+→ Increase Inventory</code></pre>
+</div></div>
+</div>
+</div>
+</div></div>
+</div><div class="item" data-index="11">
 <button class="item-head">
 <span class="idx">04</span>
 <span class="item-title">Data Sources &amp; Connectivity</span>
@@ -659,9 +959,19 @@
 <div class="flow">Multiple sources → SQL/ETL → validation &amp; transformation → Power BI/Power Query → data model → DAX → dashboard → Power BI Service</div>
 </div>
 </div>
-</div><div class="item placeholder">
-<button class="item-head"><span class="idx">05</span><span class="item-title">ETL Process</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p>ETL Process</p></div></div></div><div class="item" data-index="19">
+</div><div class="item" data-index="etlprocess">
+<button class="item-head"><span class="idx">05</span><span class="item-title">ETL Process</span><span class="tag">ETL / ELT</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p>ETL stands for Extract, Transform, and Load. In my projects, data is extracted from sources like SQL Server and Excel files, transformed using Power Query by cleaning data, handling nulls, removing duplicates, and applying business rules, and then loaded into the Power BI data model for reporting. ETL ensures data quality, consistency, and accuracy before it is used for analysis and dashboarding. It is a critical step for creating reliable business reports.</p>
+<p>ETL stands for Extract, Transform, and Load, where data is cleaned and transformed before loading into the target system. ELT stands for Extract, Load, and Transform, where raw data is first loaded into a data warehouse or lake and then transformed using its compute power. Traditional data warehouses commonly use ETL, while modern cloud platforms like Microsoft Fabric, Snowflake, and Databricks mostly use ELT because it scales better for large datasets.</p>
+<p><strong>Real Project Example</strong></p>
+<p><strong>ETL:</strong></p>
+<div class="flow">SQL Server → Power Query transformations → Power BI Model</div>
+<p><strong>ELT:</strong></p>
+<div class="flow">SQL Server → Data Lake/Warehouse → Transform using SQL/Fabric/Dataflows → Reporting</div>
+</div>
+</div>
+</div><div class="item" data-index="19">
 <button class="item-head">
 <span class="idx">06</span>
 <span class="item-title">Data Quality &amp; Validation</span>
@@ -823,6 +1133,29 @@
 <p>I used <strong>bookmarks</strong> when I wanted to provide different report views without creating separate pages. For example, my dashboard used a bookmark to toggle between <strong>stockout and excess-inventory views</strong> with a button.</p>
 <p>For <strong>data refresh</strong>, the main reports used Import Mode with scheduled refresh through the <strong>Enterprise Power BI Gateway</strong>, which connected the on-premise SQL Server to Power BI Service. The documented project setup used a nightly refresh at <strong>6 AM</strong>. I also monitored refresh status and added a <strong>Last Refreshed</strong> indicator and validation check to identify failed or stale refreshes.</p>
 <div class="flow">RLS → control rows | OLS → control objects/columns | Workspace → manage content | App → distribute content | Report → multi-page analysis | Dashboard → single-page KPI view | Drill-down → same visual | Drill-through → detail page | Bookmarks → alternate views | Gateway → scheduled refresh</div>
+</div>
+</div>
+</div><div class="item" data-index="projectdocs">
+<button class="item-head">
+<span class="idx">16</span>
+<span class="item-title">Project Documentation Skill</span>
+<span class="tag">Documentation</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<p>During the project, several documents were maintained throughout the project lifecycle.</p>
+<ul>
+<li><strong>Business Requirement Document (BRD)</strong> — Captured business objectives, reporting requirements, KPIs, and stakeholder expectations.</li>
+<li><strong>Functional Requirement Document (FRD)</strong> — Detailed report functionality, calculations, filters, drill-down requirements, and business rules.</li>
+<li><strong>Source-to-Target Mapping (STM)</strong> — Mapped source system fields to Power BI data model fields and transformations.</li>
+<li><strong>Data Dictionary</strong> — Documented table names, column definitions, data types, and business meanings.</li>
+<li><strong>Technical Design Document (TDD)</strong> — Included architecture, data flow, SQL views, data model design, DAX logic, and security implementation.</li>
+<li><strong>Test Cases / UAT Document</strong> — Used for validating dashboard calculations and obtaining business sign-off.</li>
+<li><strong>RLS Security Matrix</strong> — Defined user roles, access levels, and Row-Level Security rules.</li>
+<li><strong>Deployment &amp; Release Document</strong> — Contained deployment steps, refresh schedules, gateway configuration, and production release details.</li>
+<li><strong>User Guide / Knowledge Transfer Document</strong> — Explained dashboard navigation, filters, KPIs, and report usage for end users.</li>
+</ul>
 </div>
 </div>
 </div><div class="item" data-index="6">
@@ -1227,6 +1560,55 @@
 <p>If a product's stock drops below 100 units, Power Automate automatically sends an email to the inventory team. This example covers ADF, ADLS Gen2, Synapse, Fabric, Power BI, Power Automate, and cloud analytics architecture in one end-to-end flow.</p>
 </div>
 </div>
+</div><div class="item" data-index="azurecloud">
+<button class="item-head">
+<span class="idx">17</span>
+<span class="item-title">Microsoft Azure Cloud</span>
+<span class="tag">Cloud</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<p><strong>What is Microsoft Azure?</strong> Microsoft Azure is a cloud computing platform provided by Microsoft that offers services for computing, storage, networking, databases, analytics, AI, and application hosting. It allows organizations to build, deploy, and manage applications without maintaining physical infrastructure.</p>
+<p><strong>Why is Azure Used?</strong></p>
+<ul>
+<li>Host applications and websites</li>
+<li>Store and process large amounts of data</li>
+<li>Build data warehouses and analytics solutions</li>
+<li>Run ETL/ELT pipelines</li>
+<li>Implement AI/ML solutions</li>
+<li>Disaster recovery and backup</li>
+</ul>
+<p><strong>Azure Service Models</strong></p>
+<table>
+<thead><tr><th>Model</th><th>Description</th><th>Example</th></tr></thead>
+<tbody>
+<tr><td>IaaS</td><td>Infrastructure as a Service</td><td>Azure Virtual Machines</td></tr>
+<tr><td>PaaS</td><td>Platform as a Service</td><td>Azure App Service, Azure SQL Database</td></tr>
+<tr><td>SaaS</td><td>Software as a Service</td><td>Microsoft 365</td></tr>
+</tbody>
+</table>
+<p><strong>Azure Services Commonly Asked in Data Analyst Interviews</strong></p>
+<table>
+<thead><tr><th>Service</th><th>Purpose</th></tr></thead>
+<tbody>
+<tr><td>Azure Data Factory (ADF)</td><td>ETL/ELT data pipelines</td></tr>
+<tr><td>Azure Data Lake Gen2</td><td>Large-scale data storage</td></tr>
+<tr><td>Azure Synapse Analytics</td><td>Data warehouse &amp; analytics</td></tr>
+<tr><td>Azure SQL Database</td><td>Cloud SQL database</td></tr>
+<tr><td>Azure Databricks</td><td>Big data processing using Spark</td></tr>
+<tr><td>Azure Event Hubs</td><td>Real-time data ingestion</td></tr>
+<tr><td>Power BI Service</td><td>Reporting and dashboards</td></tr>
+<tr><td>Azure Blob Storage</td><td>Object/file storage</td></tr>
+</tbody>
+</table>
+<p><strong>Real-Time Example</strong></p>
+<p>In a retail company: sales data is loaded from stores into Azure Data Lake Gen2, Azure Data Factory performs ETL and loads cleaned data, data is stored in Azure Synapse Analytics, and Power BI connects to Synapse and displays dashboards for business users.</p>
+<div class="flow">Stores → Azure Data Lake Gen2 → Azure Data Factory (ETL) → Azure Synapse Analytics → Power BI Dashboard</div>
+<p><strong>Interview One-Liner</strong></p>
+<p><em>"Microsoft Azure is Microsoft's cloud platform that provides computing, storage, networking, database, analytics, and AI services. In data projects, I've used Azure services such as Data Factory, Data Lake, Synapse, and Power BI to build scalable data pipelines and reporting solutions."</em></p>
+</div>
+</div>
 </div><div class="item" data-index="15">
 <button class="item-head">
 <span class="idx">17</span>
@@ -1252,7 +1634,132 @@
 <p>One challenge was ensuring that the numbers shown in Power BI were consistent with the underlying SQL data. When a KPI or total did not match, I traced the data flow from the <strong>SQL base tables and Views through Power Query, the Power BI model and DAX measures</strong>. For example, for an inventory KPI, I would compare the SQL-level aggregation with the Power BI result and check for duplicate records, incorrect relationships, filters or transformation issues. I then corrected the relevant logic and revalidated the result. This helped ensure that the dashboards provided <strong>accurate and trusted numbers to business users</strong>.</p>
 </div>
 </div>
-</div></div></div></div>
+</div><div class="item" data-index="agile">
+<button class="item-head">
+<span class="idx">18</span>
+<span class="item-title">Agile</span>
+<span class="tag">Scrum</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<p>In Cognizant, I worked in an Agile Scrum environment. We followed 2-week sprints. During sprint planning, tasks were assigned from the product backlog. I attended daily standups to discuss progress and blockers. After development, we participated in sprint reviews to demonstrate Power BI dashboards to business users and collected feedback. We also conducted retrospectives to identify process improvements. My responsibilities included SQL development, Power BI reporting, dashboard enhancements, defect fixes, UAT support, and production support.</p>
+<div class="list">
+<div class="item topic-item" data-index="agile-1">
+<button class="item-head"><span class="idx">01</span><span class="item-title">What is Agile?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p><strong>What is it?</strong> Agile is a project management methodology that delivers work in small iterations and incorporates continuous feedback. Instead of delivering everything at the end, teams deliver value incrementally.</p>
+<p><strong>Where used?</strong> Software development, Data Analytics, Power BI, and Data Engineering projects.</p>
+<p><strong>Real Case:</strong> In Cognizant, dashboard requirements were delivered sprint by sprint rather than waiting for the complete project.</p>
+</div></div>
+</div>
+<div class="item topic-item" data-index="agile-2">
+<button class="item-head"><span class="idx">02</span><span class="item-title">What is a Sprint?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p><strong>What is it?</strong> A Sprint is a fixed time period during which a team completes planned work. Typically lasts 1–4 weeks.</p>
+<p><strong>Where used?</strong> Scrum projects.</p>
+<p><strong>Real Case:</strong> Our team worked in 2-week sprints where Power BI enhancements were delivered every sprint.</p>
+</div></div>
+</div>
+<div class="item topic-item" data-index="agile-3">
+<button class="item-head"><span class="idx">03</span><span class="item-title">What is Scrum?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p><strong>What is it?</strong> Scrum is the most commonly used Agile framework. Work is delivered through sprints with regular meetings and reviews.</p>
+<p><strong>Where used?</strong> Most IT and analytics projects.</p>
+<p><strong>Real Case:</strong> The Zara retail reporting project followed Scrum with sprint planning and daily standups.</p>
+</div></div>
+</div>
+<div class="item topic-item" data-index="agile-4">
+<button class="item-head"><span class="idx">04</span><span class="item-title">What is a Daily Standup?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p><strong>What is it?</strong> A short daily meeting (usually 15 minutes) where team members share progress and blockers.</p>
+<p><strong>Where used?</strong> Every Sprint.</p>
+<p><strong>Real Case:</strong> Each morning we discussed:</p>
+<ul>
+<li>What I completed yesterday</li>
+<li>What I'm working on today</li>
+<li>Any blockers</li>
+</ul>
+</div></div>
+</div>
+<div class="item topic-item" data-index="agile-5">
+<button class="item-head"><span class="idx">05</span><span class="item-title">What is a Product Backlog?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p><strong>What is it?</strong> A prioritized list of requirements, enhancements, and fixes.</p>
+<p><strong>Where used?</strong> Sprint planning.</p>
+<p><strong>Real Case:</strong> Dashboard enhancements like new KPIs and filters were maintained in the backlog.</p>
+</div></div>
+</div>
+<div class="item topic-item" data-index="agile-6">
+<button class="item-head"><span class="idx">06</span><span class="item-title">What is Sprint Planning?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p><strong>What is it?</strong> Meeting where the team decides what work will be completed in the upcoming sprint.</p>
+<p><strong>Where used?</strong> Beginning of every sprint.</p>
+<p><strong>Real Case:</strong> The team selected dashboard enhancements and defect fixes for the next two weeks.</p>
+</div></div>
+</div>
+<div class="item topic-item" data-index="agile-7">
+<button class="item-head"><span class="idx">07</span><span class="item-title">What is Sprint Review?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p><strong>What is it?</strong> A meeting where completed work is demonstrated to stakeholders.</p>
+<p><strong>Where used?</strong> End of Sprint.</p>
+<p><strong>Real Case:</strong> We demonstrated newly developed Power BI visuals to business users.</p>
+</div></div>
+</div>
+<div class="item topic-item" data-index="agile-8">
+<button class="item-head"><span class="idx">08</span><span class="item-title">What is Sprint Retrospective?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p><strong>What is it?</strong> A meeting to discuss what went well, what didn't, and improvements for future sprints.</p>
+<p><strong>Where used?</strong> After Sprint Review.</p>
+<p><strong>Real Case:</strong> We identified delays caused by unclear requirements and improved requirement-gathering practices.</p>
+</div></div>
+</div>
+<div class="item topic-item" data-index="agile-9">
+<button class="item-head"><span class="idx">09</span><span class="item-title">What is a User Story?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p><strong>What is it?</strong> A requirement written from the user's perspective.</p>
+<p><strong>Where used?</strong> Agile development.</p>
+<p><strong>Real Case — User Story:</strong></p>
+<pre><code>As a Regional Manager,
+I want to see sales by region,
+so that I can monitor performance.</code></pre>
+</div></div>
+</div>
+<div class="item topic-item" data-index="agile-10">
+<button class="item-head"><span class="idx">10</span><span class="item-title">What are Story Points?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p><strong>What is it?</strong> A relative measure of effort and complexity for a task.</p>
+<p><strong>Where used?</strong> Sprint Planning.</p>
+<p><strong>Real Case:</strong> Simple KPI = 2 Story Points · New Dashboard Page = 8 Story Points</p>
+</div></div>
+</div>
+<div class="item topic-item" data-index="agile-11">
+<button class="item-head"><span class="idx">11</span><span class="item-title">What is the Difference Between Agile and Waterfall?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<table>
+<thead><tr><th>Agile</th><th>Waterfall</th></tr></thead>
+<tbody>
+<tr><td>Iterative</td><td>Sequential</td></tr>
+<tr><td>Frequent feedback</td><td>Feedback at end</td></tr>
+<tr><td>Flexible</td><td>Difficult to change</td></tr>
+<tr><td>Sprint-based</td><td>Phase-based</td></tr>
+</tbody>
+</table>
+<p><strong>Real Case:</strong> Power BI reports often change based on user feedback, making Agile more suitable than Waterfall.</p>
+</div></div>
+</div>
+<div class="item topic-item" data-index="agile-12">
+<button class="item-head"><span class="idx">12</span><span class="item-title">What Was Your Role in Agile?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p><strong>What is it?</strong> Tests whether you actually participated in Agile ceremonies.</p>
+<p><strong>Sample Answer:</strong> I participated in sprint planning, daily standups, backlog refinement, sprint reviews, and UAT discussions. I worked on SQL queries, Power BI dashboards, bug fixes, and enhancements assigned during each sprint.</p>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div></div></div>
 </div></div></div>
 <div class="item" data-index="workdash">
 <button class="item-head"><span class="idx">02</span><span class="item-title">WORK EXPERIENCE &amp; DASHBOARDS CREATED BY ME</span><span class="tag">Projects</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
@@ -1877,6 +2384,333 @@ CALCULATE(
 </div>
 </div>
 </div>
+</div><div class="item" data-index="sar-part2">
+<button class="item-head">
+<span class="idx">02</span>
+<span class="item-title">Global Direct SAR Dashboard — Part 2</span>
+<span class="tag">Interview Deep-Dive</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<h3>Project Story</h3>
+<div class="flow">Project kickoff → Problem → What I did → Result</div>
+<p>One of the projects I'm most proud of was the <strong>Global Direct SAR (Spend Analysis Report) Dashboard</strong> for the Finance Leadership team. The goal was to provide a single dashboard to track company spending across regions, departments, and cost categories.</p>
+<p><strong>Problem:</strong> There were two main challenges — the company followed a fiscal year from <strong>August to July</strong>, so normal YTD calculations would not work, and data came from multiple countries and currencies, requiring consistent currency conversion.</p>
+<p><strong>What I did:</strong> I implemented currency conversion logic in SQL views using exchange rates provided by the finance team. In Power BI, I created a Fiscal Calendar and developed DAX measures for Fiscal YTD, Budget YTD, and Prior Year Comparison. I also implemented Dynamic RLS using <code>USERPRINCIPALNAME()</code> so users could only see data relevant to their role.</p>
+<p><strong>Result:</strong> The finance team moved away from manual Excel reconciliation and started using a trusted dashboard for financial reporting and decision-making.</p>
+<h3>Biggest Challenge — Revenue Dashboard Issue</h3>
+<p>One of the biggest challenges I faced was in an existing Revenue Dashboard. The summary revenue numbers were correct, but when users drilled down to Product Group level, the numbers did not match the source system. The finance team was using these numbers for margin analysis and business decisions, so accuracy was critical.</p>
+<p>I analyzed the data model, relationships, and DAX measures, and found that some relationships were incorrect and a few DAX measures were not handling filter context properly. I redesigned the model using Star Schema principles, fixed the relationships, and updated the DAX measures. I validated the results with finance users and compared the dashboard numbers against source data until everything matched.</p>
+<p>The business regained confidence in the dashboard and no longer needed manual Excel validation, improving reporting efficiency.</p>
+<div class="list">
+<div class="item topic-item" data-index="sar2-answers">
+<button class="item-head">
+<span class="idx">01</span>
+<span class="item-title">Global Direct SAR Dashboard – Interview Answers</span>
+<span class="tag">5 Questions</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<div class="item question-item" data-question="sar2-1">
+<button class="item-head"><span class="idx">01</span><span class="item-title">Explain your Power BI project end-to-end.</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p><strong>Answer:</strong> One of the major projects I worked on was the Global Direct SAR Dashboard, which was developed for the Finance Leadership team to monitor company-wide spending across multiple regions, departments, and expense categories.</p>
+<p>The project started with gathering business requirements from finance stakeholders. They wanted a centralized reporting solution to replace multiple Excel reports and provide visibility into Actual, Budget, and Prior Year spending.</p>
+<p>The data was sourced from multiple regional financial systems and loaded into SQL Server. Since the company operated globally, different currencies had to be standardized before reporting.</p>
+<p>I created SQL views to handle business logic such as currency conversion, data cleansing, and aggregations. After that, I connected Power BI to the SQL views and designed a Star Schema data model consisting of Fact Expense and supporting dimension tables such as Date, Region, Department, Expense Category, and Currency.</p>
+<p>The company followed an August-to-July fiscal year, so I created a Fiscal Calendar table and developed DAX measures for Fiscal YTD Actuals, Budget YTD, Prior Year Comparison, Variance %, and Expense as % of Sales.</p>
+<p>I then designed interactive dashboards with drill-down capabilities, filters, KPI cards, trend analysis, expense distribution charts, and headcount reporting. To secure the data, I implemented Dynamic Row-Level Security using <code>USERPRINCIPALNAME()</code> and a role mapping table.</p>
+<p>Finally, I conducted UAT sessions with finance users, validated all numbers against source reports, published the solution to Power BI Service, configured scheduled refresh, and provided user training.</p>
+<p><strong>Business Impact:</strong> The dashboard became the primary reporting tool for finance leadership, significantly reducing manual reconciliation efforts and improving decision-making speed.</p>
+</div></div>
+</div>
+<div class="item question-item" data-question="sar2-2">
+<button class="item-head"><span class="idx">02</span><span class="item-title">What was the business problem you were solving?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p><strong>Answer:</strong> The finance team was facing challenges because spending data was spread across multiple regional reports and Excel files. This created several problems: no single source of truth, manual reconciliation every month, inconsistent reporting across regions, difficulty comparing Actual vs Budget vs Prior Year, and delayed financial insights.</p>
+<p>Management needed a centralized dashboard that could provide real-time visibility into company-wide spending while maintaining consistent financial calculations and security controls. The objective was to create a reliable reporting platform where users could analyze spending by Region, Department, Functional Area, Expense Category, and Fiscal Period without depending on manual Excel processes.</p>
+<p><strong>Business Impact:</strong> The solution improved reporting accuracy, reduced manual effort, and increased confidence in financial reporting across the organization.</p>
+</div></div>
+</div>
+<div class="item question-item" data-question="sar2-3">
+<button class="item-head"><span class="idx">03</span><span class="item-title">What were the data sources?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p><strong>Answer:</strong> The primary data source was SQL Server, where finance transaction data from multiple regions was consolidated.</p>
+<div class="flow">Regional Financial Systems → SQL Server Tables → SQL Views (Business Logic &amp; Currency Conversion) → Power BI Dataset → Power BI Service</div>
+<p>The SQL layer contained Expense Transactions, Budget Data, Prior Year Historical Data, Currency Exchange Rates, Employee and Headcount Information, and Security Mapping Tables. The SQL views were used to standardize currencies, clean and transform data, apply business rules, and improve Power BI performance. Power BI then consumed these optimized views for reporting.</p>
+<p><strong>Business Impact:</strong> Using SQL as the transformation layer reduced Power BI refresh times and ensured all reports used the same business logic.</p>
+</div></div>
+</div>
+<div class="item question-item" data-question="sar2-4">
+<button class="item-head"><span class="idx">04</span><span class="item-title">Follow-Up: Why did you use SQL Views?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p><strong>Answer:</strong> I used SQL Views because heavy transformations perform better in SQL than Power BI, business logic can be reused across multiple reports, data refreshes are faster, it reduces DAX complexity, and it creates a centralized source of truth. This approach improved maintainability and performance of the reporting solution.</p>
+</div></div>
+</div>
+<div class="item question-item" data-question="sar2-5">
+<button class="item-head"><span class="idx">05</span><span class="item-title">Follow-Up: What was your contribution in the project?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p><strong>Answer:</strong> My responsibilities included requirement gathering with stakeholders, SQL data preparation and view creation, currency conversion implementation, data modeling using Star Schema, DAX measure development, dashboard design and visualization, Dynamic RLS implementation, UAT testing and validation, deployment to Power BI Service, scheduled refresh configuration, and end-user support. I was involved throughout the entire development lifecycle from requirements gathering to production deployment.</p>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+<div class="item topic-item" data-index="sar2-domain">
+<button class="item-head">
+<span class="idx">02</span>
+<span class="item-title">Domain of this Project</span>
+<span class="tag">FP&amp;A</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<p>The Global Direct SAR Dashboard was developed in the Corporate Finance and FP&amp;A (Financial Planning &amp; Analysis) domain. Its purpose was to help finance leadership monitor company-wide spending by comparing Actual, Budget, and Prior Year expenses across regions and departments. The dashboard supported key finance activities such as budget tracking, variance analysis, expense control, forecasting, and financial reporting, enabling stakeholders to make informed decisions and reduce manual reconciliation efforts.</p>
+</div>
+</div>
+</div>
+<div class="item topic-item" data-index="sar2-questions">
+<button class="item-head">
+<span class="idx">03</span>
+<span class="item-title">Questions on Project</span>
+<span class="tag">22 Questions</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<div class="item question-item" data-question="sar2q-1">
+<button class="item-head"><span class="idx">01</span><span class="item-title">What is the purpose of this dashboard?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p><strong>Answer:</strong> The purpose of this dashboard was to provide a single source of truth for global spending across all regions, departments, and expense categories. Before this dashboard, finance teams relied on multiple Excel reports from different regions, which required significant manual reconciliation. This dashboard enabled leadership to monitor spending, compare Actual vs Budget vs Prior Year performance, and make faster financial decisions.</p>
+</div></div>
+</div>
+<div class="item question-item" data-question="sar2q-2">
+<button class="item-head"><span class="idx">02</span><span class="item-title">What KPIs are shown here?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p><strong>Answer:</strong> The dashboard primarily tracks:</p>
+<ul>
+<li>YTD Actual Expense</li>
+<li>Budget/Plan Expense</li>
+<li>Prior Year Expense</li>
+<li>Variance to Budget</li>
+<li>Variance to Prior Year</li>
+<li>Expense as % of Net Sales</li>
+<li>Expense Distribution by Department</li>
+<li>Headcount by Region</li>
+<li>Fiscal Year Expense Trend</li>
+</ul>
+<p>These KPIs help finance leaders monitor spending efficiency and budget performance.</p>
+</div></div>
+</div>
+<div class="item question-item" data-question="sar2q-3">
+<button class="item-head"><span class="idx">03</span><span class="item-title">Why compare Actual, Plan, and Prior Year?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p><strong>Answer:</strong> Finance teams need to evaluate performance from multiple perspectives. Actual vs Plan shows whether spending is within budget. Actual vs Prior Year shows growth or reduction trends. Together, they help identify overspending, underspending, and unusual business patterns requiring attention.</p>
+</div></div>
+</div>
+<div class="item question-item" data-question="sar2q-4">
+<button class="item-head"><span class="idx">04</span><span class="item-title">Explain the Expense Compared to Plan &amp; Prior Year chart.</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p><strong>Answer:</strong> This visual compares Current Actual Expense, Budget/Plan Expense, and Prior Year Expense for each month. The line chart displays percentage variance against the prior year, allowing finance leaders to quickly identify months where expenses increased or decreased significantly.</p>
+</div></div>
+</div>
+<div class="item question-item" data-question="sar2q-5">
+<button class="item-head"><span class="idx">05</span><span class="item-title">How did you calculate Fiscal YTD?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p><strong>Answer:</strong> The company follows an August-to-July fiscal year instead of the standard January-to-December calendar year. To support this, I created a Fiscal Calendar table and developed Fiscal YTD measures using DAX. This ensured that all YTD calculations reset in August and aligned with the company's financial reporting structure.</p>
+</div></div>
+</div>
+<div class="item question-item" data-question="sar2q-6">
+<button class="item-head"><span class="idx">06</span><span class="item-title">Why did you create a Fiscal Calendar?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p><strong>Answer:</strong> A standard date table follows the calendar year, but the business reports using a fiscal year that starts in August. Using a Fiscal Calendar ensured:</p>
+<ul>
+<li>Correct YTD calculations</li>
+<li>Accurate Budget comparisons</li>
+<li>Proper Prior Year analysis</li>
+<li>Consistent reporting across all finance dashboards</li>
+</ul>
+</div></div>
+</div>
+<div class="item question-item" data-question="sar2q-7">
+<button class="item-head"><span class="idx">07</span><span class="item-title">What was the source of currency conversion?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p><strong>Answer:</strong> Exchange rate data was maintained in SQL tables and updated regularly by the finance team. These rates were integrated into SQL views before the data was loaded into Power BI.</p>
+</div></div>
+</div>
+<div class="item question-item" data-question="sar2q-8">
+<button class="item-head"><span class="idx">08</span><span class="item-title">Why implement currency conversion in SQL instead of Power BI?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p><strong>Answer:</strong> There were four reasons:</p>
+<ol>
+<li>Better performance</li>
+<li>Reusable business logic</li>
+<li>Reduced DAX complexity</li>
+<li>Consistent calculations across all reports</li>
+</ol>
+<p>By performing conversion in SQL, Power BI only consumed already standardized financial values.</p>
+</div></div>
+</div>
+<div class="item question-item" data-question="sar2q-9">
+<button class="item-head"><span class="idx">09</span><span class="item-title">Explain the currency conversion logic.</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p><strong>Answer:</strong> For completed months, I used the official month-end exchange rate. For the current month, I used the previous month's closing rate because the current month's final rate was not yet available. This approach ensured stable and consistent financial reporting while preventing fluctuations throughout the month.</p>
+</div></div>
+</div>
+<div class="item question-item" data-question="sar2q-10">
+<button class="item-head"><span class="idx">10</span><span class="item-title">Explain the Headcount visual.</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p><strong>Answer:</strong> The Headcount visual shows employee distribution across major regions such as AMER, EMEA, and APAC. Finance leaders use this information to:</p>
+<ul>
+<li>Analyze workforce-related costs</li>
+<li>Monitor hiring trends</li>
+<li>Evaluate operational efficiency</li>
+<li>Support budgeting decisions</li>
+</ul>
+</div></div>
+</div>
+<div class="item question-item" data-question="sar2q-11">
+<button class="item-head"><span class="idx">11</span><span class="item-title">Explain the Expense Distribution chart.</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p><strong>Answer:</strong> The Expense Distribution chart shows how total spending is allocated across departments such as Finance, IT, Engineering, HR, and Corporate Administration. This helps management understand which departments contribute most to company expenses.</p>
+</div></div>
+</div>
+<div class="item question-item" data-question="sar2q-12">
+<button class="item-head"><span class="idx">12</span><span class="item-title">Why use a Donut Chart?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p><strong>Answer:</strong> The dashboard was designed primarily for executives. A donut chart allows leaders to quickly understand spending distribution without reading detailed tables. It provides an immediate visual understanding of departmental contribution percentages.</p>
+</div></div>
+</div>
+<div class="item question-item" data-question="sar2q-13">
+<button class="item-head"><span class="idx">13</span><span class="item-title">How was drill-down implemented?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p><strong>Answer:</strong> I created hierarchies in Power BI that allowed users to drill from Region down to the transaction level, enabling users to investigate spending details without leaving the dashboard.</p>
+<div class="flow">Region → Functional Area → Department → Expense Category → Transaction Level</div>
+</div></div>
+</div>
+<div class="item question-item" data-question="sar2q-14">
+<button class="item-head"><span class="idx">14</span><span class="item-title">What happens when a Region is selected?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p><strong>Answer:</strong> Power BI's cross-filtering automatically filters all visuals based on the selected region. For example, selecting AMER updates:</p>
+<ul>
+<li>Expense Trends</li>
+<li>Expense Distribution</li>
+<li>Headcount</li>
+<li>KPI Cards</li>
+</ul>
+<p>to display only AMER data.</p>
+</div></div>
+</div>
+<div class="item question-item" data-question="sar2q-15">
+<button class="item-head"><span class="idx">15</span><span class="item-title">Explain Dynamic Row-Level Security.</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p><strong>Answer:</strong> I implemented Dynamic RLS using <code>USERPRINCIPALNAME()</code> and a security mapping table. When a user opens the report, Power BI identifies their email address and matches it against the security table to determine what data they can access. This approach eliminates the need to create separate roles for every user.</p>
+</div></div>
+</div>
+<div class="item question-item" data-question="sar2q-16">
+<button class="item-head"><span class="idx">16</span><span class="item-title">Difference between Executive and Department access?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p><strong>Answer:</strong> Executive users had unrestricted access to all company data. Department users were restricted to:</p>
+<ul>
+<li>Their department's spending</li>
+<li>Relevant report pages</li>
+<li>Associated business units</li>
+</ul>
+<p>This ensured data security while maintaining user flexibility.</p>
+</div></div>
+</div>
+<div class="item question-item" data-question="sar2q-17">
+<button class="item-head"><span class="idx">17</span><span class="item-title">What was the data volume?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p><strong>Answer:</strong> The model contained several million financial transaction records spanning multiple fiscal years and global regions. The design was optimized to ensure acceptable refresh and report performance despite the large dataset size.</p>
+</div></div>
+</div>
+<div class="item question-item" data-question="sar2q-18">
+<button class="item-head"><span class="idx">18</span><span class="item-title">What refresh strategy was used?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p><strong>Answer:</strong> The dashboard used:</p>
+<ul>
+<li>Import Mode</li>
+<li>Scheduled Refresh</li>
+<li>SQL Views</li>
+<li>Enterprise Data Gateway</li>
+</ul>
+<p>Data was refreshed automatically based on business requirements, ensuring finance teams always had up-to-date information.</p>
+</div></div>
+</div>
+<div class="item question-item" data-question="sar2q-19">
+<button class="item-head"><span class="idx">19</span><span class="item-title">How did you improve performance?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p><strong>Answer:</strong> I applied several optimization techniques:</p>
+<ul>
+<li>Implemented Star Schema</li>
+<li>Pushed transformations to SQL</li>
+<li>Reduced Power Query steps</li>
+<li>Removed unused columns</li>
+<li>Optimized DAX measures</li>
+<li>Reduced high-cardinality columns</li>
+<li>Minimized visual interactions</li>
+</ul>
+<p>These improvements significantly reduced refresh and report load times.</p>
+</div></div>
+</div>
+<div class="item question-item" data-question="sar2q-20">
+<button class="item-head"><span class="idx">20</span><span class="item-title">What would you check if the dashboard became slow?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p><strong>Answer:</strong> I would investigate:</p>
+<ol>
+<li>Data Model Design</li>
+<li>DAX Performance</li>
+<li>Query Folding</li>
+<li>Relationship Design</li>
+<li>Visual Complexity</li>
+<li>Cardinality Issues</li>
+<li>Refresh Duration</li>
+<li>SQL Query Performance</li>
+</ol>
+<p>I typically start with Performance Analyzer in Power BI to identify the root cause.</p>
+</div></div>
+</div>
+<div class="item question-item" data-question="sar2q-21">
+<button class="item-head"><span class="idx">21</span><span class="item-title">What was the business impact?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p><strong>Answer:</strong> The dashboard delivered significant business value by:</p>
+<ul>
+<li>Eliminating manual Excel reconciliation</li>
+<li>Reducing reporting effort</li>
+<li>Improving data accuracy</li>
+<li>Increasing stakeholder trust</li>
+<li>Enabling faster decision-making</li>
+<li>Providing secure role-based access</li>
+</ul>
+<p>Finance leadership adopted it as the primary reporting solution for global expense analysis.</p>
+</div></div>
+</div>
+<div class="item question-item" data-question="sar2q-22">
+<button class="item-head"><span class="idx">22</span><span class="item-title">Can you explain the data model?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p><strong>Answer:</strong> The dashboard followed a Star Schema architecture.</p>
+<p><strong>Dimension Tables:</strong></p>
+<ul>
+<li>Dim_Date</li>
+<li>Dim_Region</li>
+<li>Dim_Department</li>
+<li>Dim_Expense_Category</li>
+<li>Dim_Currency</li>
+<li>Dim_Employee</li>
+</ul>
+<p><strong>Fact Table:</strong> Fact_Expense</p>
+<p>The Fact_Expense table stored transactional spending data and connected to all dimensions through one-to-many relationships. This design improved performance, simplified DAX calculations, and supported efficient filtering across the report.</p>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
 </div><div class="item" data-index="1">
 <button class="item-head">
 <span class="idx">01</span>
@@ -1897,6 +2731,43 @@ CALCULATE(
 </div>
 </div></div></div>
 </div></div></div>
+<div class="item" data-index="interview-ending">
+<button class="item-head"><span class="idx">03</span><span class="item-title">Interview Ending Questions</span><span class="tag">Ask the Interviewer</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<div class="list">
+<div class="item question-item" data-question="ending-1">
+<button class="item-head"><span class="idx">01</span><span class="item-title">"Could you please share what kind of projects I would be working on if I were selected for this role?"</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p>Shows genuine interest in the day-to-day work and helps you understand what to expect if selected.</p>
+</div></div>
+</div>
+<div class="item question-item" data-question="ending-2">
+<button class="item-head"><span class="idx">02</span><span class="item-title">"Could you please tell me what the key responsibilities and expectations would be for this position?"</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p>Clarifies what success looks like in the role and confirms alignment with your own strengths.</p>
+</div></div>
+</div>
+<div class="item question-item" data-question="ending-3">
+<button class="item-head"><span class="idx">03</span><span class="item-title">"What technologies, tools, and platforms would I be working with most frequently in this role?"</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p>Helps you gauge the tech stack and how closely it matches your SQL, Power BI, and DAX skill set.</p>
+</div></div>
+</div>
+<div class="item question-item" data-question="ending-4">
+<button class="item-head"><span class="idx">04</span><span class="item-title">"What would you consider the most important skills or qualities for someone to succeed in this position?"</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p>Gives insight into what the team values most, so you can emphasize those strengths in follow-up conversation.</p>
+</div></div>
+</div>
+<div class="item question-item" data-question="ending-5">
+<button class="item-head"><span class="idx">05</span><span class="item-title">"Before we wrap up, is there any area from our discussion where you feel I could have explained my knowledge or experience in more depth?"</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p><strong>Best question to ask the interviewer.</strong> It gives you a chance to address any weakness immediately, right before the interview ends.</p>
+</div></div>
+</div>
+</div>
+</div></div>
+</div>
 </div>
 </div>
 </div>
