@@ -1885,6 +1885,161 @@
 </div>
 </div>
 </div>
+<div class="item" data-index="python">
+<button class="item-head">
+<span class="idx">20</span>
+<span class="item-title">Python</span>
+<span class="tag">Python &amp; Pandas</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<p>My primary hands-on experience is with SQL and Power BI, but I've also used Python and Pandas for data cleaning, transformation, and preprocessing where it made more sense than the source system or Power Query. Below are the Python/Pandas concepts and questions I keep ready for interviews.</p>
+<div class="list">
+<div class="item topic-item" data-index="python-questions">
+<button class="item-head">
+<span class="idx">01</span>
+<span class="item-title">Python &amp; Pandas — Data Cleaning &amp; Transformation</span>
+<span class="tag">15 Questions</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="python-1">
+<button class="item-head"><span class="idx">01</span><span class="item-title">How would you use Python/Pandas for data cleaning and transformation?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>What it is:</strong> Python with Pandas is used to clean, transform, and prepare raw data before analysis or loading it into a reporting system.</p>
+<p><strong>Where it's used:</strong> I would use it for handling missing values, removing duplicates, correcting data types, standardizing text, handling outliers, filtering records, and creating calculated columns.</p>
+<p><strong>Say:</strong> "In my projects, I would use Pandas to prepare raw data before reporting. For example, I can use <code>drop_duplicates()</code> to remove duplicate records, <code>fillna()</code> to handle missing values, <code>pd.to_datetime()</code> for date conversion, and filtering or calculated columns for business transformations. After cleaning, the processed data can be loaded into Power BI for reporting. This is useful when the transformation is easier or more flexible in Python than in the source system or Power Query."</p>
+</div></div>
+</div><div class="item question-item" data-question="python-2">
+<button class="item-head"><span class="idx">02</span><span class="item-title">How do you handle missing values in Pandas? Explain dropna(), fillna(), ffill() and bfill().</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>What it is:</strong> These Pandas functions help identify, remove, or replace missing/null values.</p>
+<p><strong>Where it's used:</strong> <code>dropna()</code> → remove rows/columns. <code>fillna()</code> → replace with a specific value. <code>ffill()</code> → use previous value. <code>bfill()</code> → use next value.</p>
+<p><strong>Say:</strong> "I first identify missing values using <code>isnull()</code> or <code>isna()</code>. If the missing records are not useful, I can use <code>dropna()</code>. If the missing value needs to be retained, I use <code>fillna()</code> with a business-appropriate value such as zero, mean, median, or mode. For time-series data, I can use <code>ffill()</code> or <code>bfill()</code> to carry values forward or backward. For example, in a sales dataset, I might fill missing discount values with zero if missing means no discount."</p>
+</div></div>
+</div><div class="item question-item" data-question="python-3">
+<button class="item-head"><span class="idx">03</span><span class="item-title">How can you merge two DataFrames in Pandas? Explain inner, left, right and outer joins.</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>What it is:</strong> <code>pd.merge()</code> combines two DataFrames using one or more common columns, similar to SQL JOINs.</p>
+<p><strong>Where it's used:</strong> It is used when data is distributed across multiple datasets — for example, sales and product master data.</p>
+<p><strong>Say:</strong> "I use <code>pd.merge()</code> to combine DataFrames based on common keys. An inner join returns only matching records, a left join keeps all records from the left DataFrame, a right join keeps all records from the right DataFrame, and an outer join keeps records from both sides. For example, if I have a sales DataFrame and a product master, I can perform a left join on Product_ID to bring product category and brand information into the sales data."</p>
+<pre><code class="language-python">df = pd.merge(sales, products, on="Product_ID", how="left")</code></pre>
+</div></div>
+</div><div class="item question-item" data-question="python-4">
+<button class="item-head"><span class="idx">04</span><span class="item-title">What is groupby() in Pandas? Explain groupby(), agg() and transform().</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>What it is:</strong> <code>groupby()</code> groups records based on one or more columns and allows calculations on each group.</p>
+<p><strong>Where it's used:</strong> It is commonly used for sales, revenue, inventory, employee, and customer analysis.</p>
+<p><strong>Say:</strong> "I use <code>groupby()</code> when I need business-level aggregations. For example, I can group sales by product category and calculate total revenue. <code>agg()</code> is used when I want a summarized result, such as sum, average, minimum or maximum. <code>transform()</code> is different because it returns a result with the same number of rows as the original data, which is useful for calculating things like each product's percentage of its category total."</p>
+<pre><code class="language-python">df.groupby("Category")["Sales"].agg(["sum", "mean"])</code></pre>
+</div></div>
+</div><div class="item question-item" data-question="python-5">
+<button class="item-head"><span class="idx">05</span><span class="item-title">What is the difference between apply(), map() and vectorization in Pandas?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>What it is:</strong> They are different ways of applying transformations to Pandas data.</p>
+<p><strong>Where it's used:</strong> Used for calculated columns, data transformations, classifications, and business rules.</p>
+<p><strong>Say:</strong> "<code>map()</code> is mainly used for element-wise transformation of a Series, <code>apply()</code> can apply a function to a Series or across DataFrame rows or columns, while vectorization performs operations directly on entire columns. I prefer vectorization whenever possible because it is generally faster. For example, instead of using <code>apply()</code> to calculate sales amount, I can simply multiply the columns directly."</p>
+<pre><code class="language-python">df["Revenue"] = df["Quantity"] * df["Price"]</code></pre>
+</div></div>
+</div><div class="item question-item" data-question="python-6">
+<button class="item-head"><span class="idx">06</span><span class="item-title">How do you read a CSV into Pandas and export a DataFrame to CSV?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>What it is:</strong> Pandas provides <code>read_csv()</code> to import CSV data and <code>to_csv()</code> to export processed data.</p>
+<p><strong>Where it's used:</strong> Useful when working with flat files received from business teams, vendors, applications, or legacy systems.</p>
+<p><strong>Say:</strong> "I use <code>pd.read_csv()</code> to load a CSV into a DataFrame. After performing cleaning and transformation, I can export the result using <code>to_csv()</code>. For example, if a business team provides daily sales in CSV format, I can read the file, clean duplicates and missing values, transform the data, and save the cleaned dataset for downstream reporting."</p>
+<pre><code class="language-python">df = pd.read_csv("sales.csv")
+df.to_csv("clean_sales.csv", index=False)</code></pre>
+</div></div>
+</div><div class="item question-item" data-question="python-7">
+<button class="item-head"><span class="idx">07</span><span class="item-title">What is a Pandas DataFrame? How is it different from a Series?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>What it is:</strong> A Series is a one-dimensional labeled structure, while a DataFrame is a two-dimensional table containing rows and columns.</p>
+<p><strong>Where it's used:</strong> DataFrames are the primary structure used for tabular data analysis in Pandas.</p>
+<p><strong>Say:</strong> "A Series is basically one column of data with an index, whereas a DataFrame represents a complete table containing multiple rows and columns. For example, <code>df["Sales"]</code> returns a Series, while <code>df</code> itself is a DataFrame. In a Power BI-related data-processing project, I would typically load the complete dataset into a DataFrame and perform transformations on its columns."</p>
+</div></div>
+</div><div class="item question-item" data-question="python-8">
+<button class="item-head"><span class="idx">08</span><span class="item-title">What is the difference between loc and iloc in Pandas?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>What it is:</strong> Both are used to select data, but <code>loc</code> uses labels, while <code>iloc</code> uses integer positions.</p>
+<p><strong>Where it's used:</strong> Used when filtering specific rows, columns, or subsets of data.</p>
+<p><strong>Say:</strong> "<code>loc</code> is label-based indexing, so I use column names or index labels. <code>iloc</code> is position-based indexing, so I use integer positions. For example, <code>df.loc[df["Sales"] > 1000, ["Product", "Sales"]]</code> selects records based on a business condition, while <code>df.iloc[0:10, 0:3]</code> selects the first ten rows and first three columns. In data analysis, I generally use <code>loc</code> more often because it is easier to read."</p>
+</div></div>
+</div><div class="item question-item" data-question="python-9">
+<button class="item-head"><span class="idx">09</span><span class="item-title">How do you remove duplicates and clean data in Pandas?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>What it is:</strong> Pandas provides functions such as <code>duplicated()</code> and <code>drop_duplicates()</code> to identify and remove duplicate records.</p>
+<p><strong>Where it's used:</strong> Used during ETL/data preparation when source systems contain repeated records.</p>
+<p><strong>Say:</strong> "I first identify duplicates using <code>duplicated()</code>, then remove them using <code>drop_duplicates()</code>. I would normally define which columns represent the business key before removing duplicates. For example, if a sales transaction should be unique by Order_ID and Product_ID, I can use those columns to identify duplicate transactions. I would also validate the data after removal so that legitimate repeated transactions aren't accidentally deleted."</p>
+<pre><code class="language-python">df = df.drop_duplicates(subset=["Order_ID", "Product_ID"])</code></pre>
+</div></div>
+</div><div class="item question-item" data-question="python-10">
+<button class="item-head"><span class="idx">10</span><span class="item-title">How do you work with dates/time-series data in Pandas?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>What it is:</strong> Pandas provides powerful date/time functionality through <code>pd.to_datetime()</code> and datetime properties.</p>
+<p><strong>Where it's used:</strong> Used for sales trends, monthly reporting, inventory analysis, forecasting, and time-based calculations.</p>
+<p><strong>Say:</strong> "I first convert date columns using <code>pd.to_datetime()</code>. Then I can extract year, month, quarter, weekday, or other components using the <code>.dt</code> accessor. I can also use <code>resample()</code> and <code>rolling()</code> for time-series analysis. For example, in a sales dataset, I can convert transaction dates and calculate monthly revenue, moving averages, or month-over-month growth before sending the data to Power BI."</p>
+<pre><code class="language-python">df["Date"] = pd.to_datetime(df["Date"])
+df["Month"] = df["Date"].dt.month
+df["Year"] = df["Date"].dt.year</code></pre>
+</div></div>
+</div><div class="item question-item" data-question="python-11">
+<button class="item-head"><span class="idx">11</span><span class="item-title">How would you calculate monthly average sales / MoM growth using Pandas?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>What it is:</strong> Pandas can aggregate daily transactions into monthly metrics and calculate period-over-period changes.</p>
+<p><strong>Where it's used:</strong> Used for sales dashboards, revenue analysis, trend analysis, and KPI reporting.</p>
+<p><strong>Say:</strong> "I would first convert the transaction date to datetime and group the sales by month. Then I can calculate monthly revenue or average sales. For month-over-month growth, I use <code>pct_change()</code> to compare the current month with the previous month. For example, in a dashboard, I could calculate monthly product sales and identify products whose sales increased by more than 10% compared with the previous month."</p>
+<pre><code class="language-python">df["Date"] = pd.to_datetime(df["Date"])
+
+monthly = df.groupby(
+    df["Date"].dt.to_period("M")
+)["Sales"].sum()
+
+mom = monthly.pct_change() * 100</code></pre>
+</div></div>
+</div><div class="item question-item" data-question="python-12">
+<button class="item-head"><span class="idx">12</span><span class="item-title">How do you detect outliers using the IQR method?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>What it is:</strong> IQR, or Interquartile Range, is a statistical method for identifying unusually high or low values.</p>
+<p><strong>Where it's used:</strong> Used during data-quality checks and analysis to identify abnormal sales, prices, quantities, transaction values, etc.</p>
+<p><strong>Say:</strong> "I calculate Q1 and Q3, then calculate IQR as Q3 minus Q1. The lower boundary is Q1 minus 1.5 times IQR and the upper boundary is Q3 plus 1.5 times IQR. Values outside these boundaries are considered potential outliers. For example, if most transactions fall in a normal range but some transactions are extremely high, I can identify them and investigate whether they are genuine or data-quality issues."</p>
+<pre><code class="language-python">Q1 = df["Sales"].quantile(0.25)
+Q3 = df["Sales"].quantile(0.75)
+
+IQR = Q3 - Q1
+
+outliers = df[
+    (df["Sales"] < Q1 - 1.5 * IQR) |
+    (df["Sales"] > Q3 + 1.5 * IQR)
+]</code></pre>
+</div></div>
+</div><div class="item question-item" data-question="python-13">
+<button class="item-head"><span class="idx">13</span><span class="item-title">How do you fetch data from SQL Server using Python/Pandas?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>What it is:</strong> Python can connect to SQL Server and retrieve query results into a Pandas DataFrame.</p>
+<p><strong>Where it's used:</strong> Used when Python is part of an ETL, data-quality, automation, or preprocessing workflow.</p>
+<p><strong>Say:</strong> "I can connect Python to SQL Server using libraries such as SQLAlchemy with an appropriate database driver, and then use <code>pd.read_sql()</code> to execute a SQL query and load the result into a DataFrame. For example, I could retrieve sales data from SQL Server, perform additional Python-based transformations or data-quality checks, and then save the processed data for reporting."</p>
+<pre><code class="language-python">from sqlalchemy import create_engine
+import pandas as pd
+
+engine = create_engine("your_connection_string")
+
+df = pd.read_sql(
+    "SELECT * FROM Sales",
+    engine
+)</code></pre>
+<p><strong>Interview tip:</strong> Don't say you always use Python instead of SQL. Say: "I prefer doing database-side filtering and aggregation in SQL where possible, and use Python for transformations or analysis that are better suited to Python." That's a stronger 2–3 year Data/BI Developer answer.</p>
+</div></div>
+</div><div class="item question-item" data-question="python-14">
+<button class="item-head"><span class="idx">14</span><span class="item-title">How would you process a large CSV that doesn't fit into memory?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>What it is:</strong> Instead of loading the complete file into memory, Pandas can process it in smaller chunks.</p>
+<p><strong>Where it's used:</strong> Useful when working with very large transaction, sales, log, or operational datasets.</p>
+<p><strong>Say:</strong> "If a CSV is too large to fit into memory, I wouldn't load the complete file at once. I can use the <code>chunksize</code> parameter in <code>read_csv()</code> to process the file in batches. I can also optimize memory by specifying appropriate data types and loading only required columns using <code>usecols</code>. For very large datasets, I would consider pushing the transformation to SQL, Spark, or a cloud data platform instead of relying entirely on Pandas."</p>
+<pre><code class="language-python">for chunk in pd.read_csv(
+    "large_sales.csv",
+    chunksize=100000,
+    usecols=["Date", "Product_ID", "Sales"]
+):
+    # process each chunk
+    pass</code></pre>
+</div></div>
+</div><div class="item question-item" data-question="python-15">
+<button class="item-head"><span class="idx">15</span><span class="item-title">How do you automate repetitive data-processing/reporting tasks using Python?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>What it is:</strong> Python can automate repetitive ETL, data-cleaning, validation, reporting, file-processing, and notification tasks.</p>
+<p><strong>Where it's used:</strong> Used for scheduled data pipelines, report preparation, data-quality checks, Excel/CSV processing, and automated notifications.</p>
+<p><strong>Say:</strong> "I would use Python to automate repetitive tasks such as extracting data from SQL, cleaning it with Pandas, generating business metrics, creating Excel or CSV outputs, and sending notifications. For example, a weekly sales reporting process could be automated so that Python retrieves the latest sales data, validates and transforms it, generates the required output, and sends it to stakeholders. Scheduling can then be handled through tools such as Windows Task Scheduler, Azure services, or an orchestration platform."</p>
+</div></div>
+</div></div></div>
+</div>
+</div>
+</div>
+</div></div>
 </div></div></div>
 </div></div></div>
 <div class="item" data-index="workdash">
@@ -5987,7 +6142,7 @@ this.</p>
 </div></div>
 </div></div></div>
 </div><div class="item topic-item" data-index="powerbi-34"><button class="item-head"><span class="idx">34</span><span class="item-title">Dynamic RLS Design for Multi-Region Access</span><span class="tag">1 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="powerbi-205"><button class="item-head"><span class="idx">205</span><span class="item-title">Multiple regions require different security access. Design RLS.</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><p>I’d build a mapping table — UserEmail to Region (one-to-many, since a manager might cover multiple regions) — and relate it to the Region dimension. The RLS role filter would be:</p><pre><code class="language-dax">[UserRegion] = USERPRINCIPALNAME()</code></pre><p>applied against the mapping table’s region column, which then filters the fact table through the existing star schema relationships. This is exactly the pattern I used for dynamic RLS on the allocation dashboard — one role, driven entirely by the mapping table, instead of hardcoding a separate static role per region.</p></div></div></div></div></div></div></div></div></div><div class="item topic-item" data-index="pbi-cat-5"><button class="item-head"><span class="idx">05</span><span class="item-title">Storage Modes & Connectivity</span><span class="tag">3 Topics</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><div class="item topic-item" data-index="powerbi-16">
-<button class="item-head"><span class="idx">16</span><span class="item-title">Import vs DirectQuery vs Live Connection &amp; Data Sources</span><span class="tag">21 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<button class="item-head"><span class="idx">16</span><span class="item-title">Import vs DirectQuery vs Live Connection &amp; Data Sources</span><span class="tag">22 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="powerbi-124">
 <button class="item-head"><span class="idx">124</span><span class="item-title">What is Import mode?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> Import mode loads data into Power BI's in-memory storage
@@ -6181,6 +6336,13 @@ until both refreshes align.</p>
 window, or at minimum add a "Last Refreshed" timestamp to both reports
 so anyone comparing numbers across them can see if they're looking at
 different points in time.</p>
+</div></div>
+</div><div class="item question-item" data-question="powerbi-16-1">
+<button class="item-head"><span class="idx">147</span><span class="item-title">How can REST APIs be used to retrieve data from external applications into Power BI?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> "REST APIs allow Power BI to retrieve data from external applications or services through HTTP requests. Typically, I would use Power Query's Web connector or <code>Web.Contents()</code> to call the API endpoint, pass required authentication such as an API key or OAuth token, and receive the response, usually in JSON format. Then I would transform and normalize the JSON data in Power Query and load it into the Power BI semantic model. For example, if I need real-time order data from an external e-commerce application, I can call its REST API, extract the order details, transform them, and build a Power BI dashboard. For scheduled reporting, I would configure the required refresh in Power BI Service."</p>
+<p><strong>Simple flow:</strong></p>
+<pre><code class="language-text">External Application → REST API → Power Query → Transform JSON → Power BI Semantic Model → Report/Dashboard</code></pre>
+<p><strong>Key terms to remember:</strong> API endpoint → HTTP request → Authentication → JSON response → Power Query → Transformation → Refresh</p>
 </div></div>
 </div></div></div>
 </div><div class="item topic-item" data-index="powerbi-19">
