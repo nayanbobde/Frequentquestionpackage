@@ -5731,7 +5731,7 @@ something that needs to change per user interaction.</p>
 </div></div>
 </div></div></div>
 </div><div class="item topic-item" data-index="powerbi-13">
-<button class="item-head"><span class="idx">13</span><span class="item-title">Cardinality, Bi-Directional Filtering &amp; High-Cardinality Columns</span><span class="tag">6 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<button class="item-head"><span class="idx">13</span><span class="item-title">Cardinality, Bi-Directional Filtering &amp; High-Cardinality Columns</span><span class="tag">8 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="powerbi-103">
 <button class="item-head"><span class="idx">103</span><span class="item-title">What are relationship cardinalities?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> The main cardinalities are one-to-one, one-to-many,
@@ -5789,6 +5789,14 @@ possible instead of connecting unrelated fact tables directly.</p>
 one-to-many relationships from the bridge to the participating tables.</p>
 <p><strong>Real-life case:</strong> A Customer can belong to multiple Segments, so a
 CustomerSegment bridge can model the relationship cleanly.</p>
+</div></div>
+</div><div class="item question-item" data-question="powerbi-13-7">
+<button class="item-head"><span class="idx">109</span><span class="item-title">Difference between Single Direction and Bi-Directional Filtering.</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> Single Direction: Filters flow in one direction (recommended, better performance). Bi-Directional: Filters flow both ways, useful in limited scenarios but may create ambiguity and slow performance.</p>
+</div></div>
+</div><div class="item question-item" data-question="powerbi-13-8">
+<button class="item-head"><span class="idx">110</span><span class="item-title">What is Bi-directional Filtering and when should it be avoided?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> Bi-Directional Filtering allows filters to flow in both directions between tables. Avoid it unless required because it may create ambiguity, circular filtering, incorrect results, and slower performance.</p>
 </div></div>
 </div></div></div>
 </div><div class="item topic-item" data-index="powerbi-14">
