@@ -5764,6 +5764,176 @@ historical partitions remain unchanged.</p>
 <p><strong>Real-life case:</strong> "For a retail organization, daily sales from multiple stores can be ingested into a lakehouse, transformed into curated fact and dimension tables and then consumed by Power BI."</p>
 </div></div>
 </div></div></div>
+</div><div class="item topic-item" data-index="mcode-questions">
+<button class="item-head"><span class="idx">12</span><span class="item-title">M Code Questions</span><span class="tag">15 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="mcode-1">
+<button class="item-head"><span class="idx">01</span><span class="item-title">Explain let and in with an M-code example</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>30-second explanation:</strong> In Power Query M, <code>let</code> is used to define a sequence of transformation steps, and <code>in</code> specifies which final step should be returned. Each step can use the output of the previous step. This makes M code easy to read and debug because every transformation has a name.</p>
+<p><strong>30-second real-case solution:</strong> For example, if I receive a sales table, I can first filter the rows, then remove unnecessary columns, and finally return the cleaned table. I would structure it using <code>let</code> and <code>in</code> so each transformation is clearly separated.</p>
+<pre><code class="language-m">let
+    Source = Excel.CurrentWorkbook(){[Name="Sales"]}[Content],
+    FilteredRows = Table.SelectRows(Source, each [Sales] > 10000),
+    RemovedColumns = Table.RemoveColumns(FilteredRows, {"Comments"})
+in
+    RemovedColumns</code></pre>
+<p><strong>Interview line:</strong> "let defines the transformation steps, and in returns the final output."</p>
+</div></div>
+</div><div class="item question-item" data-question="mcode-2">
+<button class="item-head"><span class="idx">02</span><span class="item-title">M vs DAX — where and why do you use each?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>30-second explanation:</strong> M and DAX serve different purposes. M is used in Power Query for data extraction, cleaning and transformation before the data enters the model. DAX is used after the data is loaded for calculations, measures and analytical logic. I prefer M for static transformations and DAX for calculations that need to respond dynamically to filter context. M performs transformations before loading, while DAX performs calculations on loaded data.</p>
+<p><strong>30-second real-case solution:</strong> For example, if I need to remove duplicates, clean customer names or create a fixed category based on sales, I would use Power Query/M. But if I need Total Sales, YTD Sales, YoY Growth or Sales % of Total, I would use DAX because these calculations need to respond to slicers and filters.</p>
+<p><strong>Interview line:</strong> "M prepares the data; DAX analyzes the data."</p>
+</div></div>
+</div><div class="item question-item" data-question="mcode-3">
+<button class="item-head"><span class="idx">03</span><span class="item-title">What is query folding and how do you preserve it?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>30-second explanation:</strong> Query folding occurs when Power Query translates transformations into queries that are executed by the source system instead of processing everything inside Power BI. For example, when connecting to SQL Server, a filter can be pushed back to SQL Server. This reduces data transfer and improves refresh performance.</p>
+<p><strong>30-second real-case solution:</strong> Suppose SQL Server has 100 million sales rows, but my report needs only the last two years. I would apply the date filter as early as possible and use transformations that support folding. I would check View Native Query where available and avoid unnecessary non-foldable transformations early in the query.</p>
+<p><strong>Interview line:</strong> "I preserve query folding by filtering early, minimizing non-foldable steps and pushing transformations to the source whenever possible."</p>
+</div></div>
+</div><div class="item question-item" data-question="mcode-4">
+<button class="item-head"><span class="idx">04</span><span class="item-title">Your Power Query refresh is very slow. How do you troubleshoot it?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>30-second explanation:</strong> I would troubleshoot systematically rather than immediately blaming Power BI. First, I would check the source query and data volume. Then I would check whether query folding is working, whether unnecessary columns and rows are being loaded, and whether there are expensive transformation steps. I would also review joins, data types and the number of applied steps. My approach: filter at source, remove unnecessary columns, minimize transformation steps and maintain query folding.</p>
+<p><strong>30-second real-case solution:</strong> For example, if a SQL table has 50 million rows, I would first filter it to the required date range, select only required columns, and ensure the filter folds back to SQL Server. Then I would review joins and transformations. If the source is still slow, I would ask the database team about indexes or pre-aggregated views.</p>
+<p><strong>Interview line:</strong> "My first focus is reducing the amount of data entering Power Query."</p>
+</div></div>
+</div><div class="item question-item" data-question="mcode-5">
+<button class="item-head"><span class="idx">05</span><span class="item-title">Duplicate vs Reference — when would you use each?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>30-second explanation:</strong> When I duplicate a query, Power Query creates an independent copy of the query and its transformation steps. Changes to the original query don't automatically affect the duplicate. With Reference, the new query uses the output of the original query, so changes to the base query flow into the referenced query.</p>
+<p><strong>30-second real-case solution:</strong> Suppose I have one Sales Staging query and need Sales, Returns and High-Value Sales tables. I would create one staging query and Reference it three times. This avoids repeating the source extraction and common cleaning steps. I would use Duplicate when I need a completely independent transformation path.</p>
+<p><strong>Interview line:</strong> "I prefer Reference for staging architecture and Duplicate when I need an independent copy."</p>
+</div></div>
+</div><div class="item question-item" data-question="mcode-6">
+<button class="item-head"><span class="idx">06</span><span class="item-title">Write M code using Table.SelectRows</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>30-second explanation:</strong> <code>Table.SelectRows</code> is used to filter rows from a table based on a condition. The <code>each</code> keyword defines the condition evaluated for each row. It is one of the most commonly used M functions for filtering data.</p>
+<p><strong>30-second real-case solution:</strong> Suppose my business requirement is to analyze only West-region sales above ₹50,000. I can write:</p>
+<pre><code class="language-m">FilteredRows =
+    Table.SelectRows(
+        Source,
+        each [Region] = "West" and [Sales] > 50000
+    )</code></pre>
+<p>For a single condition:</p>
+<pre><code class="language-m">Table.SelectRows(Source, each [Sales] > 10000)</code></pre>
+<p><strong>Interview line:</strong> "Table.SelectRows filters the input table based on a row-level condition."</p>
+</div></div>
+</div><div class="item question-item" data-question="mcode-7">
+<button class="item-head"><span class="idx">07</span><span class="item-title">Write M code using Table.AddColumn and multiple if conditions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>30-second explanation:</strong> <code>Table.AddColumn</code> creates a new column based on an expression evaluated for every row. For multiple business conditions, I can use <code>if...then...else</code> statements. This is useful when the transformation is a fixed business rule — conditional columns and nested if statements for multiple conditions.</p>
+<p><strong>30-second real-case solution:</strong> Suppose the business wants to classify products based on sales:</p>
+<pre><code class="language-m">Table.AddColumn(
+    Source,
+    "Sales Category",
+    each
+        if [Sales] >= 100000 then "High"
+        else if [Sales] >= 50000 then "Medium"
+        else "Low"
+)</code></pre>
+<p>So: ₹100K+ → High, ₹50K–₹99K → Medium, Below ₹50K → Low.</p>
+<p><strong>Interview line:</strong> "I use Table.AddColumn with conditional logic when I need a row-level derived field during data preparation."</p>
+</div></div>
+</div><div class="item question-item" data-question="mcode-8">
+<button class="item-head"><span class="idx">08</span><span class="item-title">How do you handle nulls and errors using try...otherwise?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>30-second explanation:</strong> In Power Query, null values and conversion errors can cause problems during transformations. I can use <code>try</code> to attempt an operation and <code>otherwise</code> to provide a fallback value if an error occurs. This is particularly useful when source data is inconsistent.</p>
+<p><strong>30-second real-case solution:</strong> Suppose an Amount column contains a mix of valid numbers and text like "N/A" or "Unknown". Instead of allowing the query to fail, I can use:</p>
+<pre><code class="language-m">Table.AddColumn(
+    Source,
+    "Amount_Clean",
+    each try Number.From([Amount]) otherwise 0,
+    type number
+)</code></pre>
+<p>For null replacement:</p>
+<pre><code class="language-m">Table.ReplaceValue(
+    Source,
+    null,
+    "Unknown",
+    Replacer.ReplaceValue,
+    {"ColumnName"}
+)</code></pre>
+<p><strong>Interview line:</strong> "try...otherwise allows me to handle bad input safely without failing the entire transformation."</p>
+</div></div>
+</div><div class="item question-item" data-question="mcode-9">
+<button class="item-head"><span class="idx">09</span><span class="item-title">How do you clean inconsistent text using Text.Trim, Text.Clean, Text.Upper, etc.?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>30-second explanation:</strong> I use Power Query's text functions to standardize inconsistent source data. <code>Text.Trim</code> removes leading and trailing spaces, <code>Text.Clean</code> removes non-printable characters, and <code>Text.Upper</code> standardizes capitalization. I usually perform these transformations before joins or creating dimensions because inconsistent text can cause matching problems.</p>
+<p><strong>30-second real-case solution:</strong> Suppose customer names arrive inconsistently formatted with extra spaces and mixed casing. I can standardize them:</p>
+<pre><code class="language-m">Table.TransformColumns(
+    Source,
+    {
+        {
+            "CustomerName",
+            each Text.Upper(Text.Trim(Text.Clean(_))),
+            type text
+        }
+    }
+)</code></pre>
+<p>All values become consistently formatted.</p>
+<p><strong>Interview line:</strong> "I clean and standardize text before joins because inconsistent text can create incorrect matches."</p>
+</div></div>
+</div><div class="item question-item" data-question="mcode-10">
+<button class="item-head"><span class="idx">10</span><span class="item-title">How do you handle inconsistent date formats?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>30-second explanation:</strong> First, I identify the different date formats in the source. If the format is consistent, I change the column type to Date. If formats differ based on locale, I use Change Type → Using Locale or functions such as <code>Date.FromText</code>. If the column contains multiple formats, I use conditional logic to parse them safely. I avoid relying on automatic date detection when source formats are inconsistent.</p>
+<p><strong>30-second real-case solution:</strong> Suppose a source provides dates in DD/MM/YYYY format. I would explicitly apply the correct locale rather than allowing Power Query to guess:</p>
+<pre><code class="language-m">Date.FromText([DateText], "en-GB")</code></pre>
+<p>Then I would validate the resulting Date column before loading it.</p>
+<p><strong>Interview line:</strong> "I avoid relying on automatic date detection when source formats are inconsistent; I explicitly control the locale."</p>
+</div></div>
+</div><div class="item question-item" data-question="mcode-11">
+<button class="item-head"><span class="idx">11</span><span class="item-title">How do you merge and append tables using M?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>30-second explanation:</strong> Merge combines tables horizontally using matching keys, similar to a SQL JOIN. Append combines tables vertically by stacking rows from one table below another. I use Merge when I need additional columns and Append when I have similar datasets from different sources or periods.</p>
+<p><strong>30-second real-case solution:</strong> Suppose I have a Customers table and an Orders table sharing a CustomerID key — I would Merge using CustomerID to bring customer information into Orders. If I have monthly sales files (Sales_Jan, Sales_Feb, Sales_Mar) with the same structure, I would Append them.</p>
+<p><strong>Interview line:</strong> "Merge is like a JOIN; Append is like UNION ALL."</p>
+</div></div>
+</div><div class="item question-item" data-question="mcode-12">
+<button class="item-head"><span class="idx">12</span><span class="item-title">How do you create a custom M function?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>30-second explanation:</strong> A custom function allows me to write transformation logic once and reuse it for multiple inputs. It is particularly useful when the same transformation needs to be applied to many files, tables or columns. This improves maintainability and avoids duplicating M code.</p>
+<p><strong>30-second real-case solution:</strong> Suppose I receive multiple files and need to clean a Customer Name column in every file. I can create:</p>
+<pre><code class="language-m">(CustomerName as text) as text =>
+    Text.Upper(Text.Trim(CustomerName))</code></pre>
+<p>Then call it: <code>CleanName([CustomerName])</code>. For a folder containing hundreds of files, I can create a function that accepts each file's binary/table and applies the same transformation.</p>
+<p><strong>Interview line:</strong> "I use custom functions when the same transformation logic needs to be reused across multiple inputs."</p>
+</div></div>
+</div><div class="item question-item" data-question="mcode-13">
+<button class="item-head"><span class="idx">13</span><span class="item-title">How do you dynamically combine files from a folder?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>30-second explanation:</strong> For recurring files such as monthly sales files, I use <code>Folder.Files()</code> to retrieve the files from a folder and then filter only the required files. I apply a common transformation function to each file and combine the resulting tables. This means new files can automatically be included during refresh.</p>
+<p><strong>30-second real-case solution:</strong> Instead of importing every monthly file individually, I would: Folder → Filter files → Transform each file → Combine → Load. Conceptually:</p>
+<pre><code class="language-m">Source = Folder.Files("C:\Sales"),
+FilteredFiles =
+    Table.SelectRows(
+        Source,
+        each Text.EndsWith([Extension], ".xlsx")
+    )</code></pre>
+<p>Then I would invoke a transformation function on each file and combine the resulting tables. Real-world benefit: when a new file is added to the folder, it can be picked up automatically on refresh.</p>
+<p><strong>Interview line:</strong> "I use Folder.Files with a transformation function so new files are picked up automatically on refresh."</p>
+</div></div>
+</div><div class="item question-item" data-question="mcode-14">
+<button class="item-head"><span class="idx">14</span><span class="item-title">How do you optimize M transformations for millions of rows?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>30-second explanation:</strong> For large datasets, my first priority is reducing the amount of data processed. I filter rows and remove unnecessary columns as early as possible, preserve query folding, avoid expensive transformations, and push processing to the source where possible. I also review joins and data types because inefficient transformations can significantly increase refresh time.</p>
+<p><strong>30-second real-case solution:</strong> Suppose SQL Server contains 100 million sales records, but the report needs only the last three years and 10 columns. I would filter the date at source, select only required columns, preserve query folding, perform joins efficiently, avoid unnecessary custom transformations, and consider incremental refresh for historical data.</p>
+<p><strong>Interview line:</strong> "I optimize Power Query by reducing data volume first, then optimizing transformations."</p>
+</div></div>
+</div><div class="item question-item" data-question="mcode-15">
+<button class="item-head"><span class="idx">15</span><span class="item-title">A transformation breaks query folding. What would you do?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>30-second explanation:</strong> First, I identify exactly which transformation broke folding. I would check the query steps and use View Native Query where available. Then I would see whether the transformation can be replaced with a foldable operation or moved later in the query. If possible, I would push the transformation into SQL Server or another source system — identify the step that breaks folding, push transformations to the source, filter early and avoid custom columns too early.</p>
+<p><strong>30-second real-case solution:</strong></p>
+<pre><code class="language-text">Source
+   ↓
+Filter Rows        ← Folding works
+   ↓
+Select Columns      ← Folding works
+   ↓
+Custom M Column      ← Folding breaks
+   ↓
+Merge</code></pre>
+<p>I would first check whether the custom M logic can be rewritten using a native/foldable transformation. If it cannot, I would move that custom transformation later, after filtering and reducing the dataset. If the transformation is computationally heavy, I might move the logic to SQL:</p>
+<pre><code class="language-sql">SELECT
+    *,
+    CASE
+        WHEN Sales >= 100000 THEN 'High'
+        ELSE 'Low'
+    END AS SalesCategory
+FROM Sales</code></pre>
+<p>Then Power Query receives the already-transformed result.</p>
+<p><strong>Interview line:</strong> "I don't blindly remove a non-foldable step; I first reduce the data, move the step later, or push the logic to the source."</p>
+</div></div>
+</div></div></div>
 </div></div></div></div><div class="item topic-item" data-index="pbi-cat-3"><button class="item-head"><span class="idx">03</span><span class="item-title">Data Modeling</span><span class="tag">4 Topics</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><div class="item topic-item" data-index="powerbi-12">
 <button class="item-head"><span class="idx">12</span><span class="item-title">Star vs Snowflake Schema: Facts, Dimensions &amp; Performance</span><span class="tag">17 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="powerbi-88">
