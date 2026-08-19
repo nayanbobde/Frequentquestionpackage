@@ -8076,7 +8076,47 @@ GROUP BY p.ProductName;</code></pre><p>the engine first joins Sales to Product r
 <div class="item-body-inner section-body-inner">
 <p class="sub">Interview-ready SQL topics with questions, “Say” answers, queries, and real-life cases.</p>
 <div class="list" id="senior-sql-topics">
-<div class="item topic-item" data-index="senior-1">
+<div class="item topic-item" data-index="senior-fundamentals">
+<button class="item-head"><span class="idx">00</span><span class="item-title">SQL Fundamentals</span><span class="tag">Fundamentals</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="senior-sql-fundamentals-1">
+<button class="item-head"><span class="idx">01</span><span class="item-title">What is the difference between DDL, DML, DCL, and DQL in SQL?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p>SQL commands are categorized based on their purpose.</p>
+<p><strong>DDL (Data Definition Language)</strong> is used to define and manage database objects such as tables and schemas (<code>CREATE</code>, <code>ALTER</code>, <code>DROP</code>, <code>TRUNCATE</code>).</p>
+<p><strong>DML (Data Manipulation Language)</strong> is used to insert, update, delete, or merge data within tables (<code>INSERT</code>, <code>UPDATE</code>, <code>DELETE</code>, <code>MERGE</code>).</p>
+<p><strong>DQL (Data Query Language)</strong> is used to retrieve data from the database using the <code>SELECT</code> statement.</p>
+<p><strong>DCL (Data Control Language)</strong> is used to manage user permissions and access control (<code>GRANT</code>, <code>REVOKE</code>).</p></div></div>
+</div><div class="item question-item" data-question="senior-sql-fundamentals-2">
+<button class="item-head"><span class="idx">02</span><span class="item-title">What is the difference between Structured and Unstructured Data?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Structured Data</strong> is organized in a predefined format, typically rows and columns, and is stored in relational databases such as SQL Server, MySQL, or Oracle.</p>
+<p><strong>Unstructured Data</strong> does not follow a fixed schema and includes files such as images, videos, PDFs, emails, audio files, and social media content. It is commonly stored in data lakes, cloud storage, or NoSQL databases.</p></div></div>
+</div><div class="item question-item" data-question="senior-sql-fundamentals-3">
+<button class="item-head"><span class="idx">03</span><span class="item-title">What are the different types of keys in SQL?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p>SQL uses several types of keys to uniquely identify records and establish relationships between tables.</p>
+<div class="table-wrap"><table><thead><tr><th>Key Type</th><th>Description</th></tr></thead><tbody>
+<tr><td>Primary Key</td><td>A column (or combination of columns) that uniquely identifies each record in a table. It cannot contain NULL values and must be unique. Example: <code>EmployeeID</code> in an Employees table.</td></tr>
+<tr><td>Foreign Key</td><td>A column that creates a relationship between two tables by referencing the Primary Key of another table. It maintains referential integrity. Example: <code>DepartmentID</code> in Employees referencing the Departments table.</td></tr>
+<tr><td>Candidate Key</td><td>Any column or set of columns that can uniquely identify a record. A table can have multiple candidate keys, but only one is chosen as the Primary Key. Example: <code>EmployeeID</code> and <code>EmailID</code> both uniquely identify employees.</td></tr>
+<tr><td>Super Key</td><td>Any combination of columns that uniquely identifies a record. It may contain extra unnecessary columns. Example: <code>(EmployeeID, Name)</code> is a super key if <code>EmployeeID</code> alone is unique.</td></tr>
+<tr><td>Alternate Key</td><td>Candidate keys that are not selected as the Primary Key. Example: if <code>EmployeeID</code> is the Primary Key, then <code>EmailID</code> becomes an Alternate Key.</td></tr>
+<tr><td>Composite Key</td><td>A key made up of two or more columns that together uniquely identify a record. Example: <code>(OrderID, ProductID)</code> in an OrderDetails table.</td></tr>
+<tr><td>Unique Key</td><td>Ensures all values in a column are unique. Unlike a Primary Key, it can allow one NULL value (SQL Server). A table can have multiple Unique Keys.</td></tr>
+<tr><td>Secondary Key</td><td>A non-unique column used mainly for searching and retrieving data efficiently. Example: <code>City</code> column in a Customer table — multiple customers can belong to the same city.</td></tr>
+<tr><td>Surrogate Key</td><td>A system-generated unique identifier with no business meaning. Commonly implemented using <code>IDENTITY</code> or auto-increment columns. Example: <code>CustomerID</code> = 1001, 1002, 1003.</td></tr>
+</tbody></table></div></div></div>
+</div><div class="item question-item" data-question="senior-sql-fundamentals-4">
+<button class="item-head"><span class="idx">04</span><span class="item-title">What is the difference between CHAR and VARCHAR?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><code>CHAR</code> is a fixed-length data type. It always reserves the specified amount of storage and pads unused space with blanks. It is suitable for storing fixed-length values such as country codes.</p>
+<p><code>VARCHAR</code> is a variable-length data type that stores only the actual data entered, making it more storage-efficient for values with varying lengths such as names and addresses.</p></div></div>
+</div><div class="item question-item" data-question="senior-sql-fundamentals-5">
+<button class="item-head"><span class="idx">05</span><span class="item-title">What is the difference between VARCHAR and NVARCHAR?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><code>VARCHAR</code> stores non-Unicode characters and typically uses 1 byte per character, making it suitable for English-only data.</p>
+<p><code>NVARCHAR</code> stores Unicode characters and uses 2 bytes per character, allowing it to support multiple languages and special characters.</p></div></div>
+</div><div class="item question-item" data-question="senior-sql-fundamentals-6">
+<button class="item-head"><span class="idx">06</span><span class="item-title">What is the difference between CHAR and NCHAR?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><code>CHAR</code> is a fixed-length, non-Unicode data type used for storing fixed-size character data.</p>
+<p><code>NCHAR</code> is also fixed-length but stores Unicode characters, making it suitable for multilingual applications where support for multiple languages is required.</p></div></div>
+</div></div></div>
+</div><div class="item topic-item" data-index="senior-1">
 <button class="item-head"><span class="idx">01</span><span class="item-title">ROW_NUMBER(), RANK(), DENSE_RANK(), OVER() &amp; PARTITION BY</span><span class="tag">22 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="senior-sql-1-1">
 <button class="item-head"><span class="idx">01</span><span class="item-title">What is <code>ROW_NUMBER()</code>?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
