@@ -9550,6 +9550,73 @@ LEAD()</code></pre>
     return 'subtopic';
   }
 
+  // ===== Double-click / double-tap empty-area collapse =====
+  // Bound once per expanded panel (topic/subtopic/question), independently.
+  //
+  // The panel's content isn't flat — it's made of nested wrappers (the
+  // cloned .item-body-inner, flex-wrapping .topic-nav-inner /
+  // .subtopic-nav-inner / .question-tile-nav-inner containers, paragraphs,
+  // etc.), so a click on visually empty space almost never lands on the
+  // panel element itself — it lands on whichever wrapper's box happens to
+  // cover that pixel. Requiring `e.target === panelEl` therefore only
+  // caught clicks in the panel's own outer padding, not the much larger
+  // gaps between/around tiles inside those wrappers.
+  //
+  // Fix: instead of checking identity against the panel, walk up from the
+  // click target and check whether it landed on (or inside) an interactive
+  // element — a tile, button, link, tag/badge, or form control. If not,
+  // treat it as empty space anywhere inside the panel and collapse.
+  // Reuses the same closeFn (removePanelFor) already used by "click title
+  // to close" and "click tile again to close" — no separate workflow.
+  const INTERACTIVE_SELECTOR = [
+    'button', 'a', 'input', 'textarea', 'select', 'label',
+    '[role="button"]', '[onclick]', 'code',
+    '.topic-tile', '.subtopic-tile', '.question-tile', '.tag'
+  ].join(', ');
+
+  function isEmptyAreaTarget(panelEl, target) {
+    const hit = target.closest(INTERACTIVE_SELECTOR);
+    // Only counts as "interactive" if that element is actually inside this
+    // panel (and isn't the panel itself matching by coincidence).
+    return !(hit && panelEl.contains(hit));
+  }
+
+  function bindEmptyAreaCollapse(panelEl, closeFn) {
+    // Desktop: native dblclick, delegated from the panel so it fires no
+    // matter which nested wrapper/grid the click actually lands on.
+    panelEl.addEventListener('dblclick', (e) => {
+      if (isEmptyAreaTarget(panelEl, e.target)) {
+        // A nested panel (e.g. a subtopic panel opened inside this topic
+        // panel) sits fully inside this panel's box, so without stopping
+        // propagation here, an empty-area double-click meant for the
+        // innermost open panel would also bubble up and collapse this
+        // outer one. Stopping here means only the nearest enclosing panel
+        // — the one the user is actually looking at — collapses.
+        e.stopPropagation();
+        closeFn();
+      }
+    });
+
+    // Mobile: dblclick often doesn't fire reliably on touch (or is eaten by
+    // the browser's own double-tap-to-zoom handling), so detect double-tap
+    // manually from touchend timing. Scoped to this panel's own closure, so
+    // each expanded section tracks its own last-tap time independently.
+    let lastTapTime = 0;
+    const DOUBLE_TAP_MS = 350;
+    panelEl.addEventListener('touchend', (e) => {
+      if (!isEmptyAreaTarget(panelEl, e.target)) { lastTapTime = 0; return; }
+      const now = Date.now();
+      if (now - lastTapTime < DOUBLE_TAP_MS) {
+        e.preventDefault();
+        e.stopPropagation();
+        lastTapTime = 0;
+        closeFn();
+      } else {
+        lastTapTime = now;
+      }
+    });
+  }
+
   function buildTileRun(container, items, tier, refBefore) {
     const isQuestion = tier === 'question';
     const navClass = tier === 'topic' ? 'topic-nav' : isQuestion ? 'question-tile-nav' : 'subtopic-nav';
@@ -9647,8 +9714,10 @@ LEAD()</code></pre>
         entry.tile.classList.add('is-active');
         const panel = document.createElement('div');
         panel.className = panelClass;
-        renderEntry(entry, panel, () => removePanelFor(entry));
+        const closeFn = () => removePanelFor(entry);
+        renderEntry(entry, panel, closeFn);
         entry.tile.insertAdjacentElement('afterend', panel);
+        bindEmptyAreaCollapse(panel, closeFn);
       });
     });
 
