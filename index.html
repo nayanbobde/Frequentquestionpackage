@@ -1885,6 +1885,217 @@
 </div>
 </div>
 </div>
+<div class="item" data-index="ssrs">
+<button class="item-head">
+<span class="idx">20</span>
+<span class="item-title">SSRS</span>
+<span class="tag">Paginated Reporting</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<p>"SSRS is Microsoft's paginated reporting tool used for pixel-perfect operational reports such as invoices, statements, and scheduled reports. It uses data sources, datasets, parameters, subscriptions, and tablix controls to build reports. Compared to Power BI, SSRS focuses on formatted reporting and printing, while Power BI focuses on interactive analytics and dashboards. I've worked primarily with Power BI but understand SSRS architecture, paginated reports, subscriptions, report deployment, and its integration with Power BI Service."</p>
+<div class="list">
+<div class="item topic-item" data-index="ssrs-1">
+<button class="item-head"><span class="idx">01</span><span class="item-title">What is SSRS?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p>SSRS (SQL Server Reporting Services) is Microsoft's reporting platform used to create, deploy, and manage <strong>paginated reports</strong>. It is mainly used for operational and pixel-perfect reports that can be exported to PDF, Excel, Word, or emailed automatically.</p>
+</div></div>
+</div>
+<div class="item topic-item" data-index="ssrs-2">
+<button class="item-head"><span class="idx">02</span><span class="item-title">Difference between SSRS and Power BI?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<div class="table-wrap"><table><thead><tr><th>SSRS</th><th>Power BI</th></tr></thead><tbody>
+<tr><td>Paginated reports</td><td>Interactive dashboards</td></tr>
+<tr><td>Pixel-perfect formatting</td><td>Self-service analytics</td></tr>
+<tr><td>Best for invoices, statements</td><td>Best for visual analysis</td></tr>
+<tr><td>Scheduled delivery via subscriptions</td><td>Sharing via Power BI Service</td></tr>
+<tr><td>SQL Server based</td><td>Cloud-first analytics platform</td></tr>
+</tbody></table></div>
+<p><strong>Interview line:</strong> "Power BI is used for analytics and visualization, whereas SSRS is preferred for highly formatted operational reports."</p>
+</div></div>
+</div>
+<div class="item topic-item" data-index="ssrs-3">
+<button class="item-head"><span class="idx">03</span><span class="item-title">What is a Paginated Report?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p>A paginated report is a report with fixed layouts where content fits exactly into pages when exported to PDF or printed.</p>
+<p><strong>Examples:</strong></p>
+<ul>
+<li>Invoice</li>
+<li>Payslip</li>
+<li>Bank Statement</li>
+<li>Customer Report</li>
+</ul>
+</div></div>
+</div>
+<div class="item topic-item" data-index="ssrs-4">
+<button class="item-head"><span class="idx">04</span><span class="item-title">What are the main components of SSRS?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<ol>
+<li>Report Designer</li>
+<li>Report Server</li>
+<li>Data Sources</li>
+<li>Datasets</li>
+<li>Report Builder</li>
+<li>Report Manager/Web Portal</li>
+</ol>
+</div></div>
+</div>
+<div class="item topic-item" data-index="ssrs-5">
+<button class="item-head"><span class="idx">05</span><span class="item-title">What is the difference between Dataset and Data Source?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p><strong>Data Source</strong> — Connection information. Example: SQL Server connection.</p>
+<p><strong>Dataset</strong> — The actual query that retrieves data from the source.</p>
+<pre><code class="language-sql">SELECT * FROM Sales</code></pre>
+</div></div>
+</div>
+<div class="item topic-item" data-index="ssrs-6">
+<button class="item-head"><span class="idx">06</span><span class="item-title">What are Shared Data Sources?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p>A shared data source is a centrally managed database connection that can be reused across multiple reports.</p>
+<p><strong>Benefit:</strong> Easier maintenance and security management.</p>
+</div></div>
+</div>
+<div class="item topic-item" data-index="ssrs-7">
+<button class="item-head"><span class="idx">07</span><span class="item-title">What are Parameters in SSRS?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p>Parameters allow users to filter report data dynamically.</p>
+<p><strong>Example:</strong></p>
+<ul>
+<li>Start Date</li>
+<li>End Date</li>
+<li>Region</li>
+<li>Product Category</li>
+</ul>
+</div></div>
+</div>
+<div class="item topic-item" data-index="ssrs-8">
+<button class="item-head"><span class="idx">08</span><span class="item-title">What is a Subscription in SSRS?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p>Subscriptions automatically deliver reports through email or file shares on a schedule.</p>
+<p><strong>Example:</strong></p>
+<ul>
+<li>Daily Sales Report at 8 AM</li>
+<li>Weekly Inventory Report every Monday</li>
+</ul>
+</div></div>
+</div>
+<div class="item topic-item" data-index="ssrs-9">
+<button class="item-head"><span class="idx">09</span><span class="item-title">What are the types of Subscriptions?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p><strong>Standard Subscription</strong> — Fixed recipients and parameters.</p>
+<p><strong>Data-Driven Subscription</strong> — Recipients and parameters come from a database table.</p>
+</div></div>
+</div>
+<div class="item topic-item" data-index="ssrs-10">
+<button class="item-head"><span class="idx">10</span><span class="item-title">What is Report Snapshot?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p>A report snapshot stores report data at a specific point in time to improve performance and provide historical reporting.</p>
+</div></div>
+</div>
+<div class="item topic-item" data-index="ssrs-11">
+<button class="item-head"><span class="idx">11</span><span class="item-title">What is Caching in SSRS?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p>Caching stores report data temporarily so repeated requests don't hit the database every time.</p>
+<p><strong>Benefit:</strong> Faster report performance.</p>
+</div></div>
+</div>
+<div class="item topic-item" data-index="ssrs-12">
+<button class="item-head"><span class="idx">12</span><span class="item-title">What export formats are supported in SSRS?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<ul>
+<li>PDF</li>
+<li>Excel</li>
+<li>Word</li>
+<li>CSV</li>
+<li>XML</li>
+<li>TIFF</li>
+</ul>
+</div></div>
+</div>
+<div class="item topic-item" data-index="ssrs-13">
+<button class="item-head"><span class="idx">13</span><span class="item-title">What is a Tablix?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p>Tablix is the main data region in SSRS that combines features of both tables and matrices.</p>
+<p>It supports:</p>
+<ul>
+<li>Row Groups</li>
+<li>Column Groups</li>
+<li>Aggregations</li>
+</ul>
+</div></div>
+</div>
+<div class="item topic-item" data-index="ssrs-14">
+<button class="item-head"><span class="idx">14</span><span class="item-title">Difference between Table and Matrix?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p><strong>Table</strong> — Fixed columns.</p>
+<p><strong>Matrix</strong> — Dynamic columns generated from data.</p>
+<p><strong>Example:</strong> Sales by Month → Matrix. Employee List → Table.</p>
+</div></div>
+</div>
+<div class="item topic-item" data-index="ssrs-15">
+<button class="item-head"><span class="idx">15</span><span class="item-title">What expressions are used in SSRS?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p>SSRS uses <strong>VB.NET expressions</strong>.</p>
+<p><strong>Example:</strong></p>
+<pre><code class="language-vb">=Sum(Fields!SalesAmount.Value)</code></pre>
+<pre><code class="language-vb">=Today()</code></pre>
+</div></div>
+</div>
+<div class="item topic-item" data-index="ssrs-16">
+<button class="item-head"><span class="idx">16</span><span class="item-title">How do you improve SSRS report performance?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<ul>
+<li>Optimize SQL queries</li>
+<li>Use stored procedures</li>
+<li>Filter data at source</li>
+<li>Use report caching</li>
+<li>Use snapshots</li>
+<li>Create indexes on database tables</li>
+</ul>
+</div></div>
+</div>
+<div class="item topic-item" data-index="ssrs-17">
+<button class="item-head"><span class="idx">17</span><span class="item-title">Can SSRS use Stored Procedures?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p>Yes. Most enterprise reports use stored procedures because they improve performance, security, and maintainability.</p>
+</div></div>
+</div>
+<div class="item topic-item" data-index="ssrs-18">
+<button class="item-head"><span class="idx">18</span><span class="item-title">What security options are available in SSRS?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<ul>
+<li>Role-based security</li>
+<li>Folder-level permissions</li>
+<li>Report-level permissions</li>
+<li>Active Directory authentication</li>
+</ul>
+</div></div>
+</div>
+<div class="item topic-item" data-index="ssrs-19">
+<button class="item-head"><span class="idx">19</span><span class="item-title">Can SSRS reports be integrated with Power BI?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p>Yes. Paginated Reports can be published into Power BI Service using Power BI Premium/Fabric capacities and consumed alongside Power BI dashboards.</p>
+</div></div>
+</div>
+<div class="item topic-item" data-index="ssrs-20">
+<button class="item-head"><span class="idx">20</span><span class="item-title">Why would a company still use SSRS when they have Power BI?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p>Because SSRS provides:</p>
+<ul>
+<li>Pixel-perfect formatting</li>
+<li>Printing support</li>
+<li>Automated email distribution</li>
+<li>Regulatory reports</li>
+<li>Invoices and statements</li>
+</ul>
+<p>Power BI is better for analysis, while SSRS is better for operational reporting.</p>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
 <div class="item" data-index="python">
 <button class="item-head">
 <span class="idx">20</span>
@@ -6924,7 +7135,7 @@ pre-built star schema and measure library to plug their own data
 source into, rather than rebuilding the model from scratch each time.</p>
 </div></div>
 </div></div></div>
-</div><div class="item topic-item" data-index="powerbi-35"><button class="item-head"><span class="idx">35</span><span class="item-title">Data Type Importance &amp; Diagnosing Slow Refreshes</span><span class="tag">2 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="powerbi-206"><button class="item-head"><span class="idx">206</span><span class="item-title">Why is Data Type important in Power Query?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><p>Correct data types aren’t just cosmetic — they affect query folding (a mistyped column can silently break folding and push transformation load onto the local engine), storage size (a date stored as text takes far more space than a proper Date type), and correctness of aggregations and sorting. I always explicitly set types right after import rather than trusting auto-detect, especially for date and numeric columns coming from CSV sources.</p></div></div></div><div class="item question-item" data-question="powerbi-207"><button class="item-head"><span class="idx">207</span><span class="item-title">Refresh takes 4 hours — what do you do?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><p>I’d start with Query Diagnostics to see which step is expensive, and check whether folding broke — usually caused by a custom column, merge, or Power Query-native transformation placed before a filter step that would otherwise push down to the source. My fix order: reorder steps so filters happen as early as possible and folding stays intact, move heavy logic (joins, aggregations) back into a SQL view instead of Power Query, and set up incremental refresh so I’m not reprocessing the full history every run. I hit a version of this on my project with a 2-hour refresh caused by a non-folding merge — moving that merge into the source SQL view got it back under folding and cut the runtime significantly.</p></div></div></div></div></div></div><div class="item topic-item" data-index="powerbi-36"><button class="item-head"><span class="idx">36</span><span class="item-title">Diagnosing Slow Report Loads &amp; Premium vs Pro Licensing</span><span class="tag">5 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="powerbi-208"><button class="item-head"><span class="idx">208</span><span class="item-title">Report takes 20 seconds to load. What will you check first?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><p>I open Performance Analyzer first — it breaks down time spent per visual into DAX query time vs. visual rendering time vs. other. If one or two visuals dominate, I look at their DAX (usually a non-optimized measure, unnecessary bidirectional filter, or too many nested CALCULATEs). If it’s spread evenly across many visuals, it’s more likely a model-level issue — too many visuals on one page, high-cardinality columns, or unnecessary calculated columns bloating the model. I always isolate the bottleneck with data before touching anything.</p></div></div></div><div class="item question-item" data-question="powerbi-209"><button class="item-head"><span class="idx">209</span><span class="item-title">Premium vs Pro licensing considerations.</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><p>Pro is a per-user license — good for smaller teams where everyone consuming reports also has a Pro license, but capped around a 1GB dataset size and limited large-model/dataflow features. Premium (or Premium-Per-User/Fabric capacity) is capacity-based rather than per-user, supports much larger datasets, XMLA endpoint access for external tools, dataflows, paginated reports, and — importantly — lets you share reports with users who don’t have Pro licenses. I’d recommend Premium once you’re distributing to a large read-only audience or your datasets are pushing past the Pro size limits, which is a real conversation on an enterprise retail deployment like mine.</p></div></div></div><div class="item question-item" data-question="powerbi-232"><button class="item-head"><span class="idx">232</span><span class="item-title">How do you optimize report visuals and pages, and what unnecessary visuals have you removed?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><p>I limit visuals per page, avoid unnecessary high-cardinality visuals like large tables with many columns, and remove redundant KPI cards that duplicate what a chart already shows. On one page of the SAR dashboard I replaced several overlapping small multiples with a single well-designed matrix, which cut both visual count and query load — Performance Analyzer showed the page's total render time drop noticeably once the redundant visuals were gone.</p></div></div></div><div class="item question-item" data-question="powerbi-272"><button class="item-head"><span class="idx">272</span><span class="item-title">If a visual is not loading, what could be the possible reasons?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><p>Common causes: a slow or broken DAX measure behind that visual, a filter/slicer creating an unusually large query, a broken or ambiguous relationship, DirectQuery source latency, or simply too much data/too many visuals on one page competing for rendering resources — I would check Performance Analyzer first to see exactly which query is slow or failing.</p></div></div></div><div class="item question-item" data-question="powerbi-312"><button class="item-head"><span class="idx">312</span><span class="item-title">Millions of Records Optimization</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><p><strong>30-second answer:</strong> "For millions of records, I first optimize the model rather than immediately changing the storage mode. I use a star schema, remove unnecessary columns, reduce cardinality, use appropriate data types and keep the model in Import mode when possible. I ensure Power Query transformations fold back to the source. For very large historical data, I use incremental refresh. Depending on the workload, I can also use aggregations, composite models or DirectQuery."</p><p><strong>Techniques:</strong> 1. Star schema &nbsp; 2. Remove unnecessary columns &nbsp; 3. Reduce cardinality &nbsp; 4. Query folding &nbsp; 5. Incremental refresh &nbsp; 6. Aggregations &nbsp; 7. Import mode &nbsp; 8. Composite model &nbsp; 9. DirectQuery when appropriate &nbsp; 10. Capacity optimization.</p><p><strong>Real-life case:</strong> "Suppose FactSales contains 100 million transaction records. Instead of loading everything repeatedly, I can partition the data by date using incremental refresh, keeping recent data refreshed frequently while historical data remains relatively static."</p></div></div></div></div></div></div></div></div></div><div class="item topic-item" data-index="pbi-cat-8"><button class="item-head"><span class="idx">08</span><span class="item-title">Power BI Service, Deployment & Administration</span><span class="tag">5 Topics</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><div class="item topic-item" data-index="powerbi-22">
+</div><div class="item topic-item" data-index="powerbi-35"><button class="item-head"><span class="idx">35</span><span class="item-title">Data Type Importance &amp; Diagnosing Slow Refreshes</span><span class="tag">2 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="powerbi-206"><button class="item-head"><span class="idx">206</span><span class="item-title">Why is Data Type important in Power Query?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><p>Correct data types aren’t just cosmetic — they affect query folding (a mistyped column can silently break folding and push transformation load onto the local engine), storage size (a date stored as text takes far more space than a proper Date type), and correctness of aggregations and sorting. I always explicitly set types right after import rather than trusting auto-detect, especially for date and numeric columns coming from CSV sources.</p></div></div></div><div class="item question-item" data-question="powerbi-207"><button class="item-head"><span class="idx">207</span><span class="item-title">Refresh takes 4 hours — what do you do?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><p>I’d start with Query Diagnostics to see which step is expensive, and check whether folding broke — usually caused by a custom column, merge, or Power Query-native transformation placed before a filter step that would otherwise push down to the source. My fix order: reorder steps so filters happen as early as possible and folding stays intact, move heavy logic (joins, aggregations) back into a SQL view instead of Power Query, and set up incremental refresh so I’m not reprocessing the full history every run. I hit a version of this on my project with a 2-hour refresh caused by a non-folding merge — moving that merge into the source SQL view got it back under folding and cut the runtime significantly.</p></div></div></div></div></div></div><div class="item topic-item" data-index="powerbi-36"><button class="item-head"><span class="idx">36</span><span class="item-title">Diagnosing Slow Report Loads &amp; Premium vs Pro Licensing</span><span class="tag">5 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="powerbi-208"><button class="item-head"><span class="idx">208</span><span class="item-title">Report takes 20 seconds to load. What will you check first?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><p>I open Performance Analyzer first — it breaks down time spent per visual into DAX query time vs. visual rendering time vs. other. If one or two visuals dominate, I look at their DAX (usually a non-optimized measure, unnecessary bidirectional filter, or too many nested CALCULATEs). If it’s spread evenly across many visuals, it’s more likely a model-level issue — too many visuals on one page, high-cardinality columns, or unnecessary calculated columns bloating the model. I always isolate the bottleneck with data before touching anything.</p></div></div></div><div class="item question-item" data-question="powerbi-209"><button class="item-head"><span class="idx">209</span><span class="item-title">Premium vs Pro licensing considerations.</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><p>Pro is a per-user license — good for smaller teams where everyone consuming reports also has a Pro license, but capped around a 1GB dataset size and limited large-model/dataflow features. Premium (or Premium-Per-User/Fabric capacity) is capacity-based rather than per-user, supports much larger datasets, XMLA endpoint access for external tools, dataflows, paginated reports, and — importantly — lets you share reports with users who don’t have Pro licenses. I’d recommend Premium once you’re distributing to a large read-only audience or your datasets are pushing past the Pro size limits, which is a real conversation on an enterprise retail deployment like mine.</p></div></div></div><div class="item question-item" data-question="powerbi-232"><button class="item-head"><span class="idx">232</span><span class="item-title">How do you optimize report visuals and pages, and what unnecessary visuals have you removed?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><p>I limit visuals per page, avoid unnecessary high-cardinality visuals like large tables with many columns, and remove redundant KPI cards that duplicate what a chart already shows. On one page of the SAR dashboard I replaced several overlapping small multiples with a single well-designed matrix, which cut both visual count and query load — Performance Analyzer showed the page's total render time drop noticeably once the redundant visuals were gone.</p></div></div></div><div class="item question-item" data-question="powerbi-272"><button class="item-head"><span class="idx">272</span><span class="item-title">If a visual is not loading, what could be the possible reasons?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><p>Common causes: a slow or broken DAX measure behind that visual, a filter/slicer creating an unusually large query, a broken or ambiguous relationship, DirectQuery source latency, or simply too much data/too many visuals on one page competing for rendering resources — I would check Performance Analyzer first to see exactly which query is slow or failing.</p></div></div></div><div class="item question-item" data-question="powerbi-312"><button class="item-head"><span class="idx">312</span><span class="item-title">Millions of Records Optimization</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><p><strong>30-second answer:</strong> "For millions of records, I first optimize the model rather than immediately changing the storage mode. I use a star schema, remove unnecessary columns, reduce cardinality, use appropriate data types and keep the model in Import mode when possible. I ensure Power Query transformations fold back to the source. For very large historical data, I use incremental refresh. Depending on the workload, I can also use aggregations, composite models or DirectQuery."</p><p><strong>Techniques:</strong> 1. Star schema &nbsp; 2. Remove unnecessary columns &nbsp; 3. Reduce cardinality &nbsp; 4. Query folding &nbsp; 5. Incremental refresh &nbsp; 6. Aggregations &nbsp; 7. Import mode &nbsp; 8. Composite model &nbsp; 9. DirectQuery when appropriate &nbsp; 10. Capacity optimization.</p><p><strong>Real-life case:</strong> "Suppose FactSales contains 100 million transaction records. Instead of loading everything repeatedly, I can partition the data by date using incremental refresh, keeping recent data refreshed frequently while historical data remains relatively static."</p></div></div></div></div></div></div></div></div></div><div class="item topic-item" data-index="pbi-cat-8"><button class="item-head"><span class="idx">08</span><span class="item-title">Power BI Service, Deployment &amp; Administration &amp; drill though and dashboard</span><span class="tag">5 Topics</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><div class="item topic-item" data-index="powerbi-22">
 <button class="item-head"><span class="idx">22</span><span class="item-title">Drill-Through, Reports vs Dashboards, Gateways &amp; Workspace Roles</span><span class="tag">11 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="powerbi-162">
 <button class="item-head"><span class="idx">162</span><span class="item-title">What is your experience with Power BI Service?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
@@ -7026,7 +7237,7 @@ responsibilities.</p>
 </div></div>
 </div></div></div>
 </div><div class="item topic-item" data-index="powerbi-23">
-<button class="item-head"><span class="idx">23</span><span class="item-title">Bookmarks &amp; Field Parameters for Interactive Navigation</span><span class="tag">7 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<button class="item-head"><span class="idx">23</span><span class="item-title">Bookmarks &amp; Field Parameters for Interactive Navigation &amp; page level filter</span><span class="tag">7 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="powerbi-169">
 <button class="item-head"><span class="idx">169</span><span class="item-title">What are bookmarks in Power BI?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> Bookmarks capture the current state of a report page — filters, slicer selections, and visual visibility — so a button can instantly switch the page into that saved state.</p>
@@ -9106,7 +9317,7 @@ WHERE name LIKE 'A_';   -- A + exactly one character</code></pre>
 </div></div></div>
 </div>
 <div class="item topic-item" data-index="senior-6">
-<button class="item-head"><span class="idx">06</span><span class="item-title">WHERE vs HAVING, Execution Order, TOP &amp; OFFSET-FETCH</span><span class="tag">5 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<button class="item-head"><span class="idx">06</span><span class="item-title">WHERE vs HAVING, Execution Order, TOP &amp; OFFSET-FETCH</span><span class="tag">6 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="senior-sql-6-44">
 <button class="item-head"><span class="idx">44</span><span class="item-title">Difference between <code>WHERE</code> and <code>HAVING</code>?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> <code>WHERE</code> filters individual rows before aggregation, while <code>HAVING</code> filters groups after aggregation.</p>
@@ -9142,6 +9353,22 @@ ORDER BY Salary DESC;</code></pre>
 <button class="item-head"><span class="idx">254</span><span class="item-title">In what situations would you use the GROUP BY clause?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> Whenever I need an aggregated result per category — total spend per region, count of orders per customer, average sales per product — <code>GROUP BY</code> collapses detail rows into one summary row per group so aggregate functions like <code>SUM</code>/<code>COUNT</code>/<code>AVG</code> can be applied.</p>
 <p><strong>Real-life case:</strong> Most of the summary views feeding the SAR dashboard use <code>GROUP BY</code> to roll transaction-level spend up to Region/Department/Month before Power BI ever sees the data.</p></div></div>
+</div><div class="item question-item" data-question="senior-sql-6-255">
+<button class="item-head"><span class="idx">255</span><span class="item-title">How would you find all employees whose annual salary is more than ₹1 crore in 2023?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> I would filter the salary records for 2023 using the WHERE clause, group the records by employee, and use SUM(salary) to calculate each employee's annual salary. Then I would use the HAVING clause to filter employees whose total salary is greater than ₹1 crore, which is ₹10,000,000.</p>
+<pre><code class="language-sql">SELECT
+    employee_id,
+    employee_name,
+    SUM(salary) AS annual_salary
+FROM employee_salary
+WHERE salary_date >= '2023-01-01'
+  AND salary_date &lt; '2024-01-01'
+GROUP BY
+    employee_id,
+    employee_name
+HAVING SUM(salary) > 10000000;</code></pre>
+<p><strong>Key point:</strong> WHERE filters rows before grouping, while HAVING filters groups after aggregation.</p>
+</div></div>
 </div></div></div>
 </div>
 <div class="item topic-item" data-index="senior-7">
