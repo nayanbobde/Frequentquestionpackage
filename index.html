@@ -6205,17 +6205,41 @@ AVERAGEX(
     OrderDate,
     Revenue,
     AVG(Revenue) OVER (ORDER BY OrderDate ROWS BETWEEN 6 PRECEDING AND CURRENT ROW) AS MovingAvg7Day
-FROM Sales;</code></pre><p>Same concept in both — a defined trailing window recalculated per row — DAX does it via a virtual date table filter, SQL does it via the <code>ROWS BETWEEN</code> frame clause.</p></div></div></div></div></div></div><div class="item topic-item" data-index="powerbi-25">
-<button class="item-head"><span class="idx">25</span><span class="item-title">Rating Your Own DAX Confidence &amp; Proficiency</span><span class="tag">1 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="powerbi-172">
-<button class="item-head"><span class="idx">172</span><span class="item-title">How confident are you in writing DAX? How would you rate yourself?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> "I would rate myself around 8/10 for practical DAX; I am
-confident with measures, context, <code>CALCULATE</code>, time intelligence,
-iterators, ranking, and business KPI logic, while continuing to deepen
-advanced optimization topics."</p>
-<p><strong>Real-life case:</strong> I can independently build and troubleshoot business
-measures and explain why the result changes under different filter
-contexts.</p>
+FROM Sales;</code></pre><p>Same concept in both — a defined trailing window recalculated per row — DAX does it via a virtual date table filter, SQL does it via the <code>ROWS BETWEEN</code> frame clause.</p></div></div></div></div></div></div><div class="item topic-item" data-index="powerbi-running-rolling"><button class="item-head"><span class="idx">33</span><span class="item-title">Running Sales &amp; Rolling Sales</span><span class="tag">2 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="running-sales-1">
+<button class="item-head"><span class="idx">01</span><span class="item-title">What is Running Sales, and how do you calculate it?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>30-second answer:</strong> Running sales means cumulative sales from the beginning of the selected period up to the current date. I typically calculate it using CALCULATE with ALLSELECTED or a suitable date filter.</p>
+<p><strong>Example:</strong></p>
+<pre><code class="language-dax">Running Sales =
+CALCULATE(
+    [Total Sales],
+    FILTER(
+        ALLSELECTED('Date'[Date]),
+        'Date'[Date] &lt;= MAX('Date'[Date])
+    )
+)</code></pre>
+<p><strong>Where used?</strong> Trend analysis.</p>
+<p><strong>Example:</strong></p>
+<ul>
+<li>January → ₹10L</li>
+<li>February → ₹18L cumulative</li>
+<li>March → ₹27L cumulative</li>
+</ul>
+</div></div>
+</div><div class="item question-item" data-question="rolling-sales-1">
+<button class="item-head"><span class="idx">02</span><span class="item-title">What is Rolling Sales, and how do you calculate it?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p>Rolling sales calculates sales over a moving window, such as the last 7, 30 or 90 days.</p>
+<p><strong>Example:</strong></p>
+<pre><code class="language-dax">Rolling 30 Days =
+CALCULATE(
+    [Total Sales],
+    DATESINPERIOD(
+        'Date'[Date],
+        MAX('Date'[Date]),
+        -30,
+        DAY
+    )
+)</code></pre>
+<p><strong>Real scenario:</strong> For retail, I might use rolling 30-day sales to identify whether demand for a product is consistently increasing or declining rather than relying only on one day's sales.</p>
 </div></div>
 </div></div></div>
 </div></div></div></div><div class="item topic-item" data-index="pbi-cat-calendar"><button class="item-head"><span class="idx">01C</span><span class="item-title">Power BI Calendar Table</span><span class="tag">3 Topics</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><div class="item topic-item" data-index="cal-core"><button class="item-head"><span class="idx">01</span><span class="item-title">Calendar Table Basics &amp; Time Intelligence</span><span class="tag">15 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="cal-1">
@@ -6944,6 +6968,16 @@ otherwise 0
 <div class="item-body"><div class="item-body-inner"><p><strong>30-second answer:</strong> "Power Query is mainly used for data extraction and transformation before the data enters the model. DAX is used for calculations and analytical logic after the data is loaded into the model. Tabular Editor is primarily a modeling and development tool used to manage semantic models, calculation groups, advanced measures and metadata more efficiently. So I generally use Power Query for ETL, DAX for analytics and Tabular Editor for advanced model management."</p>
 <p><strong>Simple memory trick:</strong> Power Query &rarr; Prepare data. DAX &rarr; Calculate data. Tabular Editor &rarr; Manage/model data.</p>
 <p><strong>Real-life case:</strong> Suppose source data has a date stored as <code>20260819</code>. I'd transform the date format in Power Query, then calculate <code>Total Sales = SUM(Sales[SalesAmount])</code> using DAX, then manage hundreds of measures or calculation groups using Tabular Editor.</p>
+</div></div>
+</div></div></div>
+</div><div class="item topic-item" data-index="powerbi-dataflow">
+<button class="item-head"><span class="idx">08B</span><span class="item-title">Power BI Dataflow</span><span class="tag">1 Question</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="dataflow-1">
+<button class="item-head"><span class="idx">01</span><span class="item-title">What is a Power BI Dataflow, and how is it different from a Semantic Model?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p>Power BI Dataflow is a cloud-based ETL tool used to extract, clean, transform, and prepare data using Power Query Online. It allows us to centralize data preparation logic instead of repeating the same transformations in every report.</p>
+<p>For example, if multiple reports need the same Customer, Product, or Sales data, we can create a dataflow once, apply all required transformations, and then allow multiple semantic models to consume that prepared data. This improves consistency, reusability, and maintenance.</p>
+<p><strong>Interview answer:</strong> "In my projects, I would use Power BI Dataflows as a centralized data preparation layer. I can connect to different sources, perform transformations using Power Query, schedule refreshes, and make the cleaned entities available to multiple semantic models and reports. This helps avoid duplicate ETL logic and provides a more governed and reusable architecture."</p>
+<p>Dataflow is the ETL layer, where we connect to sources and clean and transform data. Semantic model is the modeling and business-logic layer, where we create relationships, measures, and calculations. Multiple semantic models or reports can consume prepared data from a dataflow, while multiple reports can also connect to the same semantic model. So, simply, Dataflow prepares the data, Semantic Model organizes and calculates the data for reporting.</p>
 </div></div>
 </div></div></div>
 </div><div class="item topic-item" data-index="powerbi-9">
