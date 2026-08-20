@@ -1885,6 +1885,80 @@
 </div>
 </div>
 </div>
+<div class="item" data-index="training-uat">
+<button class="item-head">
+<span class="idx">21</span>
+<span class="item-title">Training &amp; UAT Support</span>
+<span class="tag">Delivery Lifecycle</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<p>"Across both my SAR (Finance) and Inventory (Retail) projects, I was involved in the complete report development lifecycle — requirement gathering, stakeholder discussions, data modeling, dashboard development, testing, UAT support, deployment, and production support — not just building the report and handing it off. My documented flow is Source validation → SQL data-quality checks → Duplicate/NULL checks → KPI validation → Power BI/DAX validation → Report testing → UAT → Stakeholder sign-off → Production deployment → Post-deployment refresh validation."</p>
+<h3>UAT — How I Describe My Actual Approach</h3>
+<p>After internal testing and DAX validation, I moved the report to the UAT environment and worked directly with business users to validate KPIs and report functionality. Stakeholders reviewed numbers against their business expectations, gave feedback, and I resolved issues before getting sign-off. My documented UAT process includes:</p>
+<ul>
+<li>Sample-data testing</li>
+<li>DAX unit testing</li>
+<li>Business-user KPI sign-off</li>
+<li>Validation before production deployment</li>
+</ul>
+<p>On the SAR project specifically, I partnered with Finance stakeholders during UAT to validate spend figures, budget calculations, security requirements (RLS), and dashboard usability.</p>
+<p>On the Inventory project (DC allocation), I validated the 60/30/10 allocation-split logic against manual allocation sheets for two weeks before cutting over — a concrete example of UAT going beyond "does the number look right" into "does it hold up against a manual process the business already trusts."</p>
+<h3>Training — How I Describe It</h3>
+<p>I combine a short live walkthrough of the dashboard with a one-page quick-reference guide (what each visual means, how to filter it), plus a recorded video for anyone who misses the session. I also hold informal office hours in the first couple of weeks after launch, since most real questions only surface once people start using it on live data — not during the training session itself.</p>
+<p>On the SAR project, this translated to assisting Finance and business users with dashboard navigation, security behavior, KPI interpretation, and self-service reporting capabilities.</p>
+<div class="list">
+<div class="item topic-item" data-index="uat-questions">
+<button class="item-head"><span class="idx">01</span><span class="item-title">Top Frequently Asked Interview Questions on This Topic</span><span class="tag">8 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<div class="item question-item" data-question="uat-1">
+<button class="item-head"><span class="idx">01</span><span class="item-title">Walk me through how you handled UAT on your project.</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p>After internal validation and DAX unit testing, I moved the report to the UAT environment and worked with business stakeholders to validate the numbers against their expectations. I resolved any data, calculation, or visualization issues raised, and confirmed final numbers matched agreed business definitions before getting sign-off for production deployment.</p></div></div>
+</div>
+<div class="item question-item" data-question="uat-2">
+<button class="item-head"><span class="idx">02</span><span class="item-title">How do you validate business calculations before UAT?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p>I validate in three layers: first, reconcile totals against the source system by comparing a raw SQL aggregate to the DAX measure for the same filter context; second, test edge cases — blank/null handling, filter context changes across visuals, totals vs. subtotals; third, a business-side pre-check — walking the SME through 2–3 known data points they can verify from memory before the dashboard formally goes live.</p></div></div>
+</div>
+<div class="item question-item" data-question="uat-3">
+<button class="item-head"><span class="idx">03</span><span class="item-title">How do you train non-technical end users on a new dashboard?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p>A short live walkthrough combined with a one-page quick-reference guide covering what each visual means and how to filter it, plus a recorded video for anyone who misses the session. I also hold informal office hours for the first couple of weeks post-launch, since real questions mostly come up once people are using it with live data.</p></div></div>
+</div>
+<div class="item question-item" data-question="uat-4">
+<button class="item-head"><span class="idx">04</span><span class="item-title">How do you explain technical findings to non-technical stakeholders during UAT?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p>I lead with business impact, not mechanism — for example "this DC is stocking out 30% more often than it should" before "because of an incorrect allocation weighting." I use visuals and concrete comparisons instead of jargon, and check understanding by asking them to restate the takeaway back to me.</p></div></div>
+</div>
+<div class="item question-item" data-question="uat-5">
+<button class="item-head"><span class="idx">05</span><span class="item-title">What happens if a stakeholder disputes a number during UAT?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p>I maintain a mapping document linking each report field/KPI back to its source table and the SQL logic/view that produces it — a single source of truth. So if a stakeholder questions a number, I trace it directly back to the source logic instead of re-deriving it from scratch, which is especially valuable during UAT.</p></div></div>
+</div>
+<div class="item question-item" data-question="uat-6">
+<button class="item-head"><span class="idx">06</span><span class="item-title">What's your Dev → UAT → Production process?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p>Develop → Test/UAT → Publish → Configure Gateway &amp; Refresh → Apply Security/RLS → Share with Users → Monitor Production. I've used Deployment Pipelines to promote a report from Dev, validate it in UAT, and only then push it to Production, rather than manually re-publishing files across workspaces.</p></div></div>
+</div>
+<div class="item question-item" data-question="uat-7">
+<button class="item-head"><span class="idx">07</span><span class="item-title">How do you handle a defect found after go-live (post-UAT)?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p>I triage by business impact first — is this a wrong number stakeholders are actively using, or something cosmetic? For anything affecting decisions, I communicate the issue and expected fix timeline immediately, do root cause analysis rather than a surface patch, and add a validation check afterward so the same class of bug doesn't recur.</p></div></div>
+</div>
+<div class="item question-item" data-question="uat-8">
+<button class="item-head"><span class="idx">08</span><span class="item-title">What documentation do you produce to support UAT and training?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p>A Test Cases/UAT Document for validating calculations and getting business sign-off, and a User Guide/Knowledge Transfer document explaining dashboard navigation, filters, KPIs, and usage for end users.</p></div></div>
+</div>
+</div></div>
+</div>
+<div class="item topic-item" data-index="uat-star-case">
+<button class="item-head"><span class="idx">02</span><span class="item-title">Real Case Scenario (STAR Answer)</span><span class="tag">Allocation UAT</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner">
+<p><strong>Situation:</strong> On the Inventory Optimization &amp; Allocation Analytics project, I proposed a revised allocation logic after identifying that DC1 was receiving more stock than its share of stores warranted (a 60/30/10 rebalancing recommendation).</p>
+<p><strong>Task:</strong> Before this change could go live, I needed the allocation team to trust the new logic wasn't going to make things worse.</p>
+<p><strong>Action:</strong> I validated the 60/30/10 split logic against the business's own manual allocation sheets for two weeks before cutting over — running it in parallel rather than asking for blind trust. During this UAT window, I walked stakeholders through the before/after numbers, led with the business impact ("stockouts drop, allocation matches actual store demand") rather than the SQL/DAX mechanics, and let them verify a few known data points themselves.</p>
+<p><strong>Result:</strong> The team signed off on the new allocation logic with confidence, it went to production, and it fed into a ~30% reduction in stockouts and ~10% improvement in allocation accuracy. After go-live, I also added a Last Refreshed indicator and a refresh-validation check, since a separate incident showed the report could silently keep serving stale allocation numbers if a Gateway refresh failed — a direct result of the "what if this breaks after UAT" thinking that UAT alone doesn't catch.</p>
+</div></div>
+</div>
+</div>
+</div>
+</div>
+</div>
 <div class="item" data-index="ssrs">
 <button class="item-head">
 <span class="idx">20</span>
@@ -2268,12 +2342,293 @@ df = pd.read_sql(
 </button>
 <div class="item-body">
 <div class="item-body-inner">
-<p>My latest project was a Power BI retail inventory and supply-chain analytics project for a global apparel retail client. The main business problem was to improve inventory visibility, identify allocation imbalances, and reduce stockouts and excess inventory across stores and distribution centers.</p>
-<p>End-to-end, the data came from operational systems such as JDA allocation data, purchase orders, store inventory, and sales/POS data. The Data Engineering team used ETL processes to load the data into SQL Server. I used SQL to clean, validate, join, and transform the data, and created reporting views. From SQL, the data was brought into Power BI through Power Query, where I performed final transformations and maintained query folding. I built a star-schema model with Sales and Inventory fact data connected to Product, Store, and Date dimensions, and then created DAX measures and KPI-driven reports. The reports were published to Power BI Service, where the business teams consumed them.</p>
+<h3>Project Story</h3>
+<p><strong>Project kickoff → Problem → What I did → Result</strong></p>
+<p>My latest project was a Power BI retail inventory and supply-chain analytics project for a <strong>global apparel retail client</strong>. The main business problem was to improve inventory visibility, identify allocation imbalances, and reduce stockouts and excess inventory across stores and distribution centers.</p>
+<p><strong>Problem:</strong> Inventory and allocation data was spread across operational systems — JDA allocation data, purchase orders, store inventory, and sales/POS data — with no single reliable view. This made it hard to see where stores were understocked, where distribution centers were over-allocated, and where allocation logic itself was skewed.</p>
+<p><strong>What I did:</strong> End-to-end, the Data Engineering team used ETL processes to load the data into SQL Server. I used SQL to clean, validate, join, and transform the data, and created reporting views. From SQL, the data was brought into Power BI through Power Query, where I performed final transformations and maintained query folding. I built a star-schema model with Sales and Inventory fact data connected to Product, Store, and Date dimensions, and then created DAX measures and KPI-driven reports. The reports were published to Power BI Service, where the business teams consumed them.</p>
+<p><strong>Result:</strong> Business teams got a single, reliable view of inventory, allocation, and stockout/overstock risk, replacing manual cross-checking across multiple operational systems and supporting faster, better-informed allocation decisions.</p>
+<h3>Biggest Challenge — DC1 Allocation Imbalance</h3>
 <p>One of the biggest challenges was an allocation imbalance where DC1 was receiving more stock than its share of stores. I analyzed the JDA allocation output using SQL, identified the issue with the allocation thresholds, and proposed a revised allocation logic. I then monitored the corrected allocation through Power BI.</p>
-<p>One of my challenging DAX issues was a regional sales-percentage measure that showed the correct overall total but incorrect values by region because ALL() was removing the region filter. I corrected the filter context by removing only the required product filter instead of all filters.</p>
+<h3>DAX Challenge — Regional Sales % Filter Context</h3>
+<p>One of my challenging DAX issues was a regional sales-percentage measure that showed the correct overall total but incorrect values by region because <code>ALL()</code> was removing the region filter. I corrected the filter context by removing only the required product filter instead of all filters.</p>
+<h3>Production Issue — Stale Allocation Numbers After Gateway Failure</h3>
 <p>For production, one important issue was a Power BI report continuing to show old allocation numbers after the JDA rule change. I traced it to a failed Gateway refresh. I added a Last Refreshed indicator and a validation check comparing current and previous allocation records so that a failed refresh could be detected immediately.</p>
-<p>Overall, my role was to take operational retail data, validate and transform it using SQL, model it in Power BI, develop DAX-based KPIs and dashboards, troubleshoot data and reporting issues, and provide reliable insights to the business teams for inventory, allocation, and supply-chain decisions.</p>
+<p><strong>Overall, my role</strong> was to take operational retail data, validate and transform it using SQL, model it in Power BI, develop DAX-based KPIs and dashboards, troubleshoot data and reporting issues, and provide reliable insights to the business teams for inventory, allocation, and supply-chain decisions.</p>
+<div class="list">
+<div class="item topic-item" data-index="inv-answers"><button class="item-head"><span class="idx">01</span><span class="item-title">Inventory Optimization &amp; Allocation Analytics – Interview Answers</span><span class="tag">5 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="inv-answers-1">
+<button class="item-head"><span class="idx">01</span><span class="item-title">Explain your Power BI project end-to-end.</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p>My latest project was a Power BI retail inventory and supply-chain analytics project for a global apparel retail client. The objective was to improve inventory visibility, identify allocation imbalances, and reduce stockouts and excess inventory across stores and distribution centers.</p>
+<p>The data came from operational systems such as JDA allocation data, purchase orders, store inventory, and sales/POS data. The Data Engineering team used ETL processes to load this into SQL Server. I used SQL to clean, validate, join, and transform the data, and created reporting views. From SQL, the data was brought into Power BI through Power Query, where I performed final transformations and maintained query folding.</p>
+<p>I built a star-schema model with Sales and Inventory fact data connected to Product, Store, and Date dimensions, then created DAX measures and KPI-driven reports — including WOC, In-Stock %, Stockout Rate, Sell-Through %, Allocation Accuracy, Forecast Accuracy, Inventory Value, Revenue, and Gross Margin %. The reports were published to Power BI Service, where Buying, Planning, Merchandising, Supply Chain, and Distribution teams consumed them.</p>
+<p><strong>Business Impact:</strong> Business teams moved from checking multiple systems manually to using a single, trusted dashboard for inventory, allocation, and stockout/overstock decisions.</p>
+</div></div>
+</div><div class="item question-item" data-question="inv-answers-2">
+<button class="item-head"><span class="idx">02</span><span class="item-title">What was the business problem you were solving?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p>The business problem was poor inventory visibility and allocation imbalance across stores and distribution centers for a global apparel retail client. Inventory and allocation data was scattered across JDA, purchase orders, store systems, and POS data, with no single reliable view. This led to stockouts in some locations while others carried excess inventory, and no easy way to see whether allocation from DCs to stores was aligned to actual demand.</p>
+<p>Management needed a centralized reporting solution that gave Buying, Planning, Merchandising, Supply Chain, and Distribution teams a shared, trusted view of inventory health and allocation effectiveness.</p>
+<p><strong>Business Impact:</strong> The dashboard improved inventory visibility, supported allocation correction (like the DC1 imbalance fix), and reduced reliance on manual cross-checking across systems.</p>
+</div></div>
+</div><div class="item question-item" data-question="inv-answers-3">
+<button class="item-head"><span class="idx">03</span><span class="item-title">What were the data sources?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p>Data came from operational systems: JDA allocation data, purchase orders, store inventory, and sales/POS data.</p>
+<p><strong>Operational Systems (JDA, POs, Store Inventory, POS) → ETL (Data Engineering Team) → SQL Server → SQL Views (Clean/Validate/Join/Transform) → Power Query (Final Transform, Query Folding) → Power BI Star-Schema Model → Power BI Service</strong></p>
+<p>The Data Engineering team handled the initial ETL load into SQL Server. I then used SQL to clean, validate, join, and transform the data and built reporting views, before bringing it into Power BI through Power Query for final transformations, keeping query folding intact for performance.</p>
+</div></div>
+</div><div class="item question-item" data-question="inv-answers-4">
+<button class="item-head"><span class="idx">04</span><span class="item-title">Follow-Up: Why did you keep transformations in SQL views instead of doing everything in Power Query/DAX?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p>Doing the heavy cleaning, validation, and joins in SQL views kept the logic centralized and reusable, kept Power Query focused on lighter final transformations (preserving query folding), and reduced the amount of complex DAX needed downstream. It also meant that if a business rule changed, I could update the SQL view once and every report relying on it stayed consistent.</p>
+</div></div>
+</div><div class="item question-item" data-question="inv-answers-5">
+<button class="item-head"><span class="idx">05</span><span class="item-title">Follow-Up: What was your contribution in the project?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p>My role was to take operational retail data, validate and transform it using SQL, model it in Power BI using a star schema, develop DAX-based KPIs and dashboards, troubleshoot data and reporting issues (like the DC1 allocation imbalance and the regional sales % filter-context bug), and provide reliable insights to business teams for inventory, allocation, and supply-chain decisions. I was involved from data validation through to production monitoring (e.g. the Last Refreshed indicator and refresh-validation check).</p>
+</div></div>
+</div></div></div></div><div class="item topic-item" data-index="inv-dax-filter-context">
+<button class="item-head">
+<span class="idx">DX</span>
+<span class="item-title">DAX Filter Context — Regional Sales % Issue (Short Interview Answer)</span>
+<span class="tag">DAX Debugging</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body"><div class="item-body-inner">
+<p><strong>Goal:</strong> A regional sales-percentage measure needed to show each region's share of total sales — but overall totals were correct while per-region values were wrong.</p>
+<h3>Short Flow (One-Liners)</h3>
+<p><strong>Symptom</strong> — The measure's grand total matched expectations, but broken down by region, every row showed the same (incorrect) percentage instead of that region's actual share.</p>
+<p><strong>Root cause</strong> — The measure used <code>ALL()</code> on the full table (or too broad a set of columns) to compute the denominator, which stripped out the Region filter along with the filter it was meant to remove — so every region was being divided by the same company-wide total instead of its own regional total.</p>
+<p><strong>Fix</strong> — I corrected the filter context by removing only the specific filter that needed to be ignored (e.g. a Product filter) instead of clearing all filters, so Region stayed intact while the intended filter was removed.</p>
+<p><strong>Why it matters</strong> — <code>ALL()</code> at the wrong grain is one of the most common sources of "total is right, breakdown is wrong" bugs in DAX — the fix is almost always about scoping exactly which filter to remove, not removing every filter and re-adding logic on top.</p>
+<h3>Full Build — Step by Step</h3>
+<p><strong>1. The buggy version (too broad)</strong></p>
+<pre><code class="language-dax">Regional Sales % (Buggy) =
+DIVIDE(
+    SUM(FactSales[SalesAmount]),
+    CALCULATE(
+        SUM(FactSales[SalesAmount]),
+        ALL(FactSales)          -- removes ALL filters, including Region
+    )
+)</code></pre>
+<p><code>ALL(FactSales)</code> clears every filter on the fact table, including the Region filter that the visual applies. Result: the denominator becomes the grand total for every row, so every region's "%" is really "region sales ÷ company-wide sales" instead of "region sales ÷ that region's total."</p>
+<p><strong>2. The corrected version (scoped filter removal)</strong></p>
+<pre><code class="language-dax">Regional Sales % (Fixed) =
+DIVIDE(
+    SUM(FactSales[SalesAmount]),
+    CALCULATE(
+        SUM(FactSales[SalesAmount]),
+        REMOVEFILTERS(Product)   -- removes only the Product filter, keeps Region
+    )
+)</code></pre>
+<p><code>REMOVEFILTERS(Product)</code> (or <code>ALL(Product)</code>) clears only the filter that needed to be ignored for this specific KPI definition. Region context stays intact, so each region's percentage is computed against its own regional total, not the whole company.</p>
+<p><strong>3. Validation</strong></p>
+<p>I validated the fix by comparing Power BI's regional totals against an independent SQL aggregate per region, confirming both the grand total and every regional breakdown matched before publishing the correction.</p>
+<p><strong>Key interview point:</strong> When a measure's grand total is right but a breakdown by some dimension is wrong, the first thing to check is whether an <code>ALL()</code>/<code>REMOVEFILTERS()</code> call is clearing more filters than it should — the fix is almost always to scope it to the exact table/column that needs to be ignored, not to strip every filter.</p>
+</div></div>
+</div><div class="item topic-item" data-index="inv-production-issue">
+<button class="item-head">
+<span class="idx">PR</span>
+<span class="item-title">Production Issue — Stale Allocation Numbers After Gateway Failure (Short Interview Answer)</span>
+<span class="tag">Production Support</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body"><div class="item-body-inner">
+<p><strong>Goal:</strong> Catch a failed data refresh before stale numbers reach business decisions, not after.</p>
+<h3>Short Flow (One-Liners)</h3>
+<p><strong>Symptom</strong> — After a JDA allocation rule change, the Power BI report kept showing the old allocation numbers instead of the updated ones.</p>
+<p><strong>Root cause</strong> — Traced to a failed Enterprise/On-premises Gateway refresh — the dataset simply hadn't picked up the new data, so the report was silently serving stale results with no visible error to the business users.</p>
+<p><strong>Fix — Last Refreshed indicator</strong> — Added a visible "Last Refreshed" timestamp on the report so users could immediately see if the data was current before acting on it.</p>
+<p><strong>Fix — Validation check</strong> — Added a validation check comparing current vs. previous allocation record counts/values, so a failed or partial refresh could be flagged and caught immediately instead of being discovered later by a confused business user.</p>
+<p><strong>Why it matters</strong> — A silent stale-data failure is worse than an outright error, because business teams keep making decisions on old numbers without knowing it — visible freshness indicators and automated validation checks turn a silent failure into an obvious one.</p>
+<h3>Full Build — Step by Step</h3>
+<p><strong>1. Last Refreshed indicator (DAX + Power Query)</strong></p>
+<pre><code class="language-dax">Last Refreshed =
+"Data last refreshed: " &amp;
+FORMAT(MAX(FactAllocation[LoadTimestamp]), "DD-MMM-YYYY HH:MM")</code></pre>
+<p>Pulled from a load-timestamp column populated during the SQL/ETL load, displayed as a card on the report so users see it before trusting the numbers.</p>
+<p><strong>2. Validation check — current vs. previous allocation records</strong></p>
+<pre><code class="language-sql">SELECT
+    CURR.DC_ID,
+    CURR.RecordCount AS CurrentRecordCount,
+    PREV.RecordCount AS PreviousRecordCount,
+    CASE
+        WHEN CURR.RecordCount = PREV.RecordCount
+             AND CURR.LoadDate = PREV.LoadDate
+        THEN 'Possible Stale Refresh'
+        ELSE 'OK'
+    END AS RefreshStatus
+FROM vw_allocation_daily_counts CURR
+JOIN vw_allocation_daily_counts_prev PREV
+    ON CURR.DC_ID = PREV.DC_ID</code></pre>
+<p>Compares today's allocation record counts/load date against the prior run; if they're identical when a change was expected (e.g. after a known JDA rule update), it flags a likely failed or stalled refresh.</p>
+<p><strong>3. Escalation</strong></p>
+<p>Combined with monitoring the Gateway's refresh history directly, this gave both a business-facing signal (the Last Refreshed card) and a technical-facing signal (the validation query) — so a failed refresh could be caught from either side before it affected an allocation decision.</p>
+<p><strong>Key interview point:</strong> The real lesson wasn't just "fix the gateway" — it was building in detection so the next failed refresh doesn't silently reach the business again.</p>
+</div></div>
+</div><div class="item topic-item" data-index="inv-domain">
+<button class="item-head">
+<span class="idx">02</span>
+<span class="item-title">Domain of this Project</span>
+<span class="tag">Retail Supply Chain</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body"><div class="item-body-inner">
+<p>The Inventory Optimization &amp; Allocation Analytics Dashboard was developed in the <strong>Retail Supply Chain and Inventory Management</strong> domain for a global apparel retail client. Its purpose was to improve inventory visibility, identify allocation imbalances, and reduce stockouts and excess inventory across stores and distribution centers. The dashboard supported key retail supply-chain activities such as inventory monitoring, allocation effectiveness tracking, stockout/overstock detection, replenishment planning, and forecast accuracy evaluation for Buying, Planning, Merchandising, Supply Chain, and Distribution teams.</p>
+</div></div>
+</div><div class="item topic-item" data-index="inv-questions"><button class="item-head"><span class="idx">03</span><span class="item-title">Questions on Project</span><span class="tag">21 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="inv-q1">
+<button class="item-head"><span class="idx">01</span><span class="item-title">What is the purpose of this dashboard?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p>The purpose was to give Buying, Planning, Merchandising, Supply Chain, and Distribution teams a single, trusted view of inventory health, allocation effectiveness, and stockout/overstock risk across stores and distribution centers, replacing manual cross-checking across JDA, POs, store systems, and POS data.</p>
+</div></div>
+</div><div class="item question-item" data-question="inv-q2">
+<button class="item-head"><span class="idx">02</span><span class="item-title">What KPIs are shown here?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p>The dashboard primarily tracks:</p>
+<ul><li>Weeks of Cover (WOC)</li><li>In-Stock %</li><li>Stockout Rate %</li><li>Sell-Through %</li><li>Allocation Accuracy %</li><li>Forecast Accuracy %</li><li>DC Utilization</li><li>Inventory Value</li><li>Revenue</li><li>Gross Margin %</li></ul><p>These KPIs help business teams monitor inventory health, allocation effectiveness, and profitability together rather than in isolation.</p></div></div>
+</div><div class="item question-item" data-question="inv-q3">
+<button class="item-head"><span class="idx">03</span><span class="item-title">What was the data volume and scale of this project?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p>I worked with over 500,000 records and more than 20,000 SKUs across multiple stores and 3+ distribution centers, performing data extraction, validation, and analysis using SQL before modeling it in Power BI.</p>
+</div></div>
+</div><div class="item question-item" data-question="inv-q4">
+<button class="item-head"><span class="idx">04</span><span class="item-title">How is Weeks of Cover (WOC) calculated?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p>WOC measures how many weeks the available inventory is expected to last. I calculated it as Stock on Hand (SOH) plus Stock on Order (SOO), divided by average weekly sales, based on the last eight weeks of sales:</p>
+<pre><code class="language-dax">WOC =
+DIVIDE(
+    SUM(Inventory[SOH]) + SUM(Inventory[SOO]),
+    [Avg Weekly Sales (Last 8 Weeks)]
+)</code></pre></div></div>
+</div><div class="item question-item" data-question="inv-q5">
+<button class="item-head"><span class="idx">05</span><span class="item-title">How is In-Stock % calculated?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p>In-Stock % is calculated as the percentage of SKUs where Stock on Hand (SOH) is greater than zero, i.e. the share of SKUs that are actually available versus completely out of stock.</p>
+</div></div>
+</div><div class="item question-item" data-question="inv-q6">
+<button class="item-head"><span class="idx">06</span><span class="item-title">How is Stockout Rate calculated?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p>Stockout Rate measures the percentage of SKUs with no available stock (SOH = 0):</p>
+<pre><code class="language-dax">Stockout % =
+VAR StockoutCount =
+    CALCULATE(COUNTROWS(Inventory), Inventory[Stock] = 0)
+VAR TotalCount = COUNTROWS(Inventory)
+RETURN
+    DIVIDE(StockoutCount, TotalCount)</code></pre></div></div>
+</div><div class="item question-item" data-question="inv-q7">
+<button class="item-head"><span class="idx">07</span><span class="item-title">What is Allocation Accuracy and why does it matter?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p>Allocation Accuracy measures how closely the actual allocation to a DC or store matches the optimal allocation based on demand. It matters because a DC or store can look "fully stocked" on paper while still being misallocated relative to where actual demand is — which is exactly the kind of imbalance that caused the DC1 issue on this project.</p>
+</div></div>
+</div><div class="item question-item" data-question="inv-q8">
+<button class="item-head"><span class="idx">08</span><span class="item-title">Walk me through the DC1 allocation imbalance issue.</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p>DC1 was receiving more stock than its share of stores warranted. I analyzed the JDA allocation output using SQL, identified that the issue was in the allocation thresholds being used, and proposed a revised allocation logic. After the change was implemented, I monitored the corrected allocation through Power BI to confirm it stayed balanced going forward.</p>
+</div></div>
+</div><div class="item question-item" data-question="inv-q9">
+<button class="item-head"><span class="idx">09</span><span class="item-title">Explain the regional sales % DAX bug and how you fixed it.</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p>A regional sales-percentage measure showed the correct overall total but incorrect values when broken down by region, because the measure used <code>ALL()</code> in a way that removed the Region filter along with the filter it was actually meant to remove. I corrected the filter context by removing only the specific filter that was needed (e.g. <code>REMOVEFILTERS(Product)</code>) instead of clearing all filters with <code>ALL()</code>, so the Region context stayed intact.</p>
+</div></div>
+</div><div class="item question-item" data-question="inv-q10">
+<button class="item-head"><span class="idx">10</span><span class="item-title">Explain the stale allocation numbers / Gateway refresh issue.</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p>After a JDA rule change, the report kept showing old allocation numbers. I traced the cause to a failed Gateway refresh — the dataset simply hadn't picked up the new data. I added a "Last Refreshed" indicator on the report so users could see data freshness at a glance, plus a validation check comparing current and previous allocation record counts so a failed or stalled refresh could be caught immediately instead of silently persisting.</p>
+</div></div>
+</div><div class="item question-item" data-question="inv-q11">
+<button class="item-head"><span class="idx">11</span><span class="item-title">What was the data model / star schema for this project?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p>I built a star-schema model with Sales and Inventory fact data connected to Product, Store, and Date dimensions. This kept relationships simple, made DAX measures easier to write and maintain, and supported efficient filtering as reports were sliced by product, store, region, and time.</p>
+</div></div>
+</div><div class="item question-item" data-question="inv-q12">
+<button class="item-head"><span class="idx">12</span><span class="item-title">Why did you use SQL views before bringing data into Power BI?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p>I used SQL to clean, validate, join, and transform the data and created reporting views (such as a KPI master view) because heavy transformations perform better in SQL, business logic becomes reusable across multiple reports, refreshes are faster, and it creates a single, centralized source of truth — Power Query then only needed to do lighter, final transformations while preserving query folding.</p>
+</div></div>
+</div><div class="item question-item" data-question="inv-q13">
+<button class="item-head"><span class="idx">13</span><span class="item-title">What refresh strategy did you use, and why?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p>I primarily used Import Mode for the core dashboards since they had nightly refresh requirements, with data flowing through SQL views and Power Query. For a specific real-time DC stock-monitoring requirement, I used DirectQuery instead, giving a performance-focused architecture that still met the business's real-time needs where it mattered most.</p>
+</div></div>
+</div><div class="item question-item" data-question="inv-q14">
+<button class="item-head"><span class="idx">14</span><span class="item-title">How did you ensure data quality before it reached the dashboard?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p>I validated source data in SQL by checking for NULL values, duplicate records, incorrect formats, unexpected values, and record-count inconsistencies — including specific duplicate-PO and JDA data-quality checks. For duplicates or missing records, I either removed duplicates or handled NULLs according to the agreed business rule before the data was used for reporting.</p>
+</div></div>
+</div><div class="item question-item" data-question="inv-q15">
+<button class="item-head"><span class="idx">15</span><span class="item-title">How did you validate that KPI numbers were correct?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p>For KPI validation, I independently calculated each KPI using SQL and then compared the result with the corresponding Power BI/DAX measure — for example, checking WOC and In-Stock % against the underlying SQL data and business definitions. If there was a mismatch, I traced it through the SQL logic, relationships, filter context, and DAX calculation until both sides agreed.</p>
+</div></div>
+</div><div class="item question-item" data-question="inv-q16">
+<button class="item-head"><span class="idx">16</span><span class="item-title">How was security/access controlled on this dashboard?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p>I implemented Dynamic Row-Level Security using a UserEmail-to-Region mapping table related to the Region dimension, with a role filter based on <code>USERPRINCIPALNAME()</code> resolved through that mapping table — so each regional manager only saw their own region/DC's numbers without needing a separate static role maintained per region.</p>
+</div></div>
+</div><div class="item question-item" data-question="inv-q17">
+<button class="item-head"><span class="idx">17</span><span class="item-title">What visuals did you use and why?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p>I selected visuals based on the business question: KPI cards for critical metrics like WOC and Stockout Rate, line charts for trends, bar/column charts for category and seasonal comparisons, matrix visuals for detailed product-store inventory analysis, and gauges for DC utilization. I also used conditional formatting for WOC status and bookmarks to let users toggle between stockout and excess-inventory views.</p>
+</div></div>
+</div><div class="item question-item" data-question="inv-q18">
+<button class="item-head"><span class="idx">18</span><span class="item-title">How did you handle drill-down vs. drill-through on this dashboard?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p>I used drill-down for time-based analysis (e.g. Year → Quarter → Month → Day) and drill-through for detailed DC or stockout investigation, taking the user from a summary KPI to a separate detail page while carrying the selected filter context — for example, drilling from a high Stockout Rate at the region level into the specific stores and SKUs driving it.</p>
+</div></div>
+</div><div class="item question-item" data-question="inv-q19">
+<button class="item-head"><span class="idx">19</span><span class="item-title">How did you identify potential inventory rebalancing opportunities between stores?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p>I used SQL to compare product-level inventory across stores and applied conditions such as SOH greater than 100 for stores with excess stock and below 20 for stores with shortages, while keeping a safety-stock buffer at the source store. This surfaced potential Inter-Store Transfer opportunities — for example, identifying Store A → Store B as a transfer candidate — as a structured approach to inventory rebalancing before recommending additional procurement.</p>
+</div></div>
+</div><div class="item question-item" data-question="inv-q20">
+<button class="item-head"><span class="idx">20</span><span class="item-title">What optimizations did you make for dashboard performance?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p>I optimized the SQL views, data model, and DAX calculations; reduced unnecessary data; and used Import Mode for the core dashboards given their nightly refresh cadence. I standardized reusable reporting logic in SQL views (rather than recalculating everything in Power BI) and reserved DirectQuery only for the specific real-time DC stock-monitoring requirement — creating a performance-focused architecture that still met business needs.</p>
+</div></div>
+</div><div class="item question-item" data-question="inv-q21">
+<button class="item-head"><span class="idx">21</span><span class="item-title">What was the business impact of this project?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p>The dashboards converted complex inventory and allocation data into actionable insight — business teams could quickly see where stock was too low, where inventory was excessive, and where allocation needed attention, instead of manually checking multiple sources. This supported faster replenishment, better allocation decisions, and improved inventory visibility, contributing to measurable improvements in stockout reduction, allocation accuracy, and revenue.</p>
+</div></div>
+</div></div></div></div><div class="item topic-item" data-index="inv-kpi-visuals">
+<button class="item-head">
+<span class="idx">04</span>
+<span class="item-title">KPI Visuals Used</span>
+<span class="tag">Dashboard Design</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body"><div class="item-body-inner">
+<p>Developed a Power BI retail inventory and supply-chain analytics solution to provide comprehensive visibility into inventory health, allocation effectiveness, stock availability, and revenue performance for a global apparel retail client, across stores and distribution centers.</p>
+<h3>Executive KPI Cards</h3>
+<p><strong>KPI cards for Inventory Value, Weeks of Cover (WOC), In-Stock %, Stockout Rate %, Sell Through %, Allocation Accuracy %, Forecast Accuracy %, Revenue, and Gross Margin %.</strong></p>
+<p>These cards provide an instant overview of supply chain performance, inventory health, product availability, allocation effectiveness, forecasting quality, and overall business profitability.</p>
+<h3>Trend Analysis</h3>
+<p><strong>Multi-Line Charts for Sales, Revenue, Inventory Value, WOC, and Forecast Accuracy Trends.</strong></p>
+<p>These visuals help monitor performance over time, identify seasonal demand patterns, track inventory movements, and evaluate forecast improvement across weeks and months.</p>
+<h3>Inventory Distribution Analysis</h3>
+<p><strong>Clustered Bar Charts for Inventory by Region, Distribution Center, Store, and Category.</strong></p>
+<p>Used to compare inventory levels across different business dimensions and identify overstocked or understocked locations.</p>
+<h3>Allocation Analysis</h3>
+<p><strong>Stacked Bar Charts for Allocated Quantity vs Requested Quantity and Allocation Accuracy by Region.</strong></p>
+<p>These visuals evaluate how effectively inventory is distributed from distribution centers to stores and highlight allocation gaps — the same view type used to surface and monitor the DC1 imbalance correction.</p>
+<h3>Stockout Analysis</h3>
+<p><strong>Heatmap / Matrix with Conditional Formatting for Store-wise, Product-wise, and Region-wise Stockout %.</strong></p>
+<p>Color-coded indicators quickly identify high-risk stockout areas, enabling proactive replenishment and inventory balancing.</p>
+<ul>
+<li>&#128308; Red = High Stockout Risk</li>
+<li>&#128994; Green = Healthy Inventory Position</li>
+</ul>
+<h3>Sell Through Analysis</h3>
+<p><strong>Column Charts for Sell Through % by Category, Region, and Store.</strong></p>
+<p>Used to measure how efficiently inventory is converted into sales and identify fast-moving versus slow-moving products.</p>
+<h3>SKU Performance Analysis</h3>
+<p><strong>Treemap for Revenue, Inventory, and Sales Contribution by Product Category.</strong></p>
+<p>Provides a visual breakdown of category performance and highlights the product groups contributing the most to revenue and inventory investment.</p>
+<h3>Pareto Analysis</h3>
+<p><strong>Combination Chart (Bar + Line) for Top SKU Contribution.</strong></p>
+<p>Identifies the critical 20% of SKUs that generate approximately 80% of revenue, supporting inventory prioritization and assortment planning.</p>
+<h3>Geographic Analysis</h3>
+<p><strong>Map Visual for Regional Sales and Inventory Performance.</strong></p>
+<p>Displays store and regional performance geographically, helping business users identify high-performing and underperforming markets.</p>
+<h3>Drill-Down Analysis</h3>
+<p><strong>Hierarchical Visual: Revenue &rarr; Region &rarr; Store &rarr; Product.</strong></p>
+<p>Allows users to navigate from high-level business performance down to individual product-level details for root-cause analysis.</p>
+<h3>Exception Reporting</h3>
+<p><strong>Matrix Table for Inventory Risk Monitoring.</strong></p>
+<p>Highlights critical SKUs requiring immediate action based on inventory health metrics.</p>
+<div class="table-wrap"><table><thead><tr><th>SKU</th><th>WOC</th><th>Stockout %</th><th>Inventory Status</th></tr></thead><tbody>
+<tr><td>SKU001</td><td>2</td><td>15%</td><td>Low Inventory &#128308;</td></tr>
+<tr><td>SKU002</td><td>12</td><td>1%</td><td>Healthy &#128994;</td></tr>
+<tr><td>SKU003</td><td>3</td><td>18%</td><td>Low Inventory &#128308;</td></tr>
+</tbody></table></div>
+<p>This section enables planners and allocation teams to quickly identify inventory shortages, excess stock, and replenishment priorities.</p>
+<h3>Dashboard Objective</h3>
+<p>The Inventory Optimization &amp; Allocation Analytics Dashboard provides a centralized control tower for monitoring inventory health, allocation efficiency, stock availability, and revenue performance. It enables supply chain planners, inventory managers, and business leaders to make data-driven decisions that improve product availability, reduce stockouts, optimize inventory investment, and maximize profitability.</p>
+<h3>Business Impact</h3>
+<ul>
+<li>Corrected a real allocation imbalance at DC1 through analysis-driven allocation logic changes.</li>
+<li>Caught and resolved a "total right, breakdown wrong" DAX filter-context bug on a regional sales % measure.</li>
+<li>Added stale-refresh detection (Last Refreshed indicator + validation check) after a real production incident.</li>
+<li>Converted 500,000+ records and 20,000+ SKUs across multiple stores and 3+ distribution centers into a single trusted reporting layer for Buying, Planning, Merchandising, Supply Chain, and Distribution teams.</li>
+</ul>
+</div></div>
+</div>
+</div>
 </div>
 </div>
 </div><div class="item topic-item" data-index="project-business-understanding"><button class="item-head"><span class="idx">PB</span><span class="item-title">Project &amp; Business Understanding</span><span class="tag">3 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="proj-biz-1"><button class="item-head"><span class="idx">01</span><span class="item-title">How many dashboards have you built?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><p>Across my ~2.4 years I’ve built and maintained 6–8 production Power BI dashboards, ranging from the DC Allocation Imbalance dashboard to the KPI reporting suite built on my <code>vw_kpi_master</code> view, plus several ad-hoc analytical reports for stockout and revenue tracking. I count a “dashboard” as a distinct multi-page report with its own dataset/semantic model, not individual visual pages — so I’d separate “reports” from “dashboard pages” if the interviewer wants a granular number.</p></div></div></div><div class="item question-item" data-question="proj-biz-2"><button class="item-head"><span class="idx">02</span><span class="item-title">How do you validate business calculations?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><p>I validate in three layers. First, I reconcile totals against the source system — pull a raw SQL aggregate and compare it to what the DAX measure returns for the same filter context. Second, I test edge cases: blank/null handling, filter context changes across visuals, and totals vs. subtotals. Third, I do a business-side sign-off — walk the SME through 2–3 known data points they can verify from memory (e.g., last month’s known stockout number) before the dashboard goes live. On the DC allocation project, I validated the 60/30/10 split logic against manual allocation sheets for two weeks before cutting over.</p></div></div></div><div class="item question-item" data-question="proj-biz-3"><button class="item-head"><span class="idx">03</span><span class="item-title">Describe a business decision influenced by your dashboard.</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><p>The clearest example is the DC allocation imbalance dashboard. It surfaced that inventory was being pushed to DCs using a flat historical split rather than actual regional demand, which was driving stockouts in high-velocity regions while excess sat in low-velocity ones. Based on what the dashboard showed, the allocation team moved to a 60/30/10 weighted split aligned to demand signals, which fed into a ~30% reduction in stockouts and roughly 15% revenue uplift in the affected category. That’s a direct case of the dashboard changing an operational decision, not just reporting on it.</p></div></div></div></div></div></div>
