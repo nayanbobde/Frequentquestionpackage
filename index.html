@@ -3355,12 +3355,230 @@ JOIN FactExchangeRate r
 </button>
 <div class="item-body">
 <div class="item-body-inner">
-<p>One of my personal projects is an <strong>E-Commerce Sales Insights Platform</strong>, a Power BI dashboard built for a US-based e-commerce business using around 113,000 order records. The main business objective was to give management a single interactive dashboard to monitor sales, profitability, customer and product performance, regional trends, and shipping performance, and quickly identify areas that required attention.</p>
-<p>The raw transaction data contained fields such as Order Date, Ship Date, Customer, Product, Category, Region, State, Sales, Profit, Quantity, and Discount. I first cleaned and structured the data and created a star-schema-oriented model, with the Orders table as the fact table and supporting dimensions such as Calendar, Product, Customer Segment, Region, and State Coordinates. One challenge was deciding which attributes should remain in the fact table versus being separated into dimensions; for a production model, I would normalize these into dedicated dimension tables.</p>
-<p>For analysis, I created KPIs such as YTD Sales, YTD Profit, YTD Quantity, Profit Margin %, Previous Year Sales, and YoY Growth %, using DAX functions such as <strong>TOTALYTD()</strong>, <strong>SAMEPERIODLASTYEAR()</strong>, and <strong>DIVIDE()</strong>. I also used ranking logic to identify Top 5 and Bottom 5 products. Customer performance was analyzed using sales and customer-segment trends; however, the project documentation does not specify a separate repeat-customer or high-value-customer segmentation methodology, so I would not claim a specific RFM model for this project.</p>
-<p>The dashboard then presented the insights through KPI cards, monthly trends, customer-segment comparisons, state-level maps, Top/Bottom product charts, regional analysis, and shipping-mode analysis, with slicers for interactive filtering. From a business perspective, these insights could help management identify high-performing products and regions, declining segments, and areas where marketing or operational attention was needed.</p>
-<p><strong>raw transaction data → data modeling → DAX / KPI analysis → interactive Power BI dashboard → business insights → marketing &amp; management decisions</strong></p>
-<p>The project helped me build practical experience in data modeling, DAX time intelligence, visualization, and translating transaction-level data into actionable business insights.</p>
+<h3>Project Story</h3>
+<p><strong>Project kickoff → Problem → What I did → Result</strong></p>
+<p>One of my personal projects is an <strong>E-Commerce Sales Insights Platform</strong>, a Power BI dashboard built for a US-based e-commerce business using around <strong>113,000 order records</strong>. The goal was to give management a single interactive dashboard to monitor sales, profitability, customer and product performance, regional trends, and shipping performance.</p>
+<p><strong>Problem:</strong> The raw transaction data was flat and transaction-level — fields like Order Date, Ship Date, Customer, Product, Category, Region, State, Sales, Profit, Quantity, and Discount all sat in one table with no structured model. There was no easy way for management to see YTD performance, year-over-year growth, top/bottom performing products, or regional and shipping trends without manually slicing raw data.</p>
+<p><strong>What I did:</strong> I cleaned and structured the data and built a star-schema-oriented model, with the Orders table as the fact table and supporting dimensions such as Calendar, Product, Customer Segment, Region, and State Coordinates. I then built KPIs — YTD Sales, YTD Profit, YTD Quantity, Profit Margin %, Previous Year Sales, and YoY Growth % — using DAX functions such as <code>TOTALYTD()</code>, <code>SAMEPERIODLASTYEAR()</code>, and <code>DIVIDE()</code>, along with ranking logic to surface Top 5 and Bottom 5 products.</p>
+<p><strong>Result:</strong> The dashboard gave management a single interactive view of sales, profitability, customer and product performance, regional trends, and shipping performance, presented through KPI cards, monthly trends, customer-segment comparisons, state-level maps, Top/Bottom product charts, regional analysis, and shipping-mode analysis with interactive slicers — helping identify high-performing products and regions, declining segments, and areas needing marketing or operational attention.</p>
+<h3>Biggest Challenge — Fact vs. Dimension Design</h3>
+<p>One challenge was deciding which attributes should remain in the fact table versus being separated into dimensions. Because this was a personal/portfolio project built from a single flat transaction file, some descriptive attributes (like Customer Segment and State) stayed closer to the fact table rather than being fully normalized. For a production-grade model, I would normalize these into dedicated dimension tables to reduce redundancy and improve model efficiency — an improvement I'd call out proactively in an interview as a "if I rebuilt this for production" refinement.</p>
+<p><strong>Flow:</strong> raw transaction data → data modeling → DAX / KPI analysis → interactive Power BI dashboard → business insights → marketing &amp; management decisions</p>
+<div class="list">
+<div class="item topic-item" data-index="ecom-answers"><button class="item-head"><span class="idx">01</span><span class="item-title">E-Commerce Sales Insights Platform – Interview Answers</span><span class="tag">5 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="ecom-answers-1">
+<button class="item-head"><span class="idx">01</span><span class="item-title">Explain your Power BI project end-to-end.</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p>One of my personal projects is the E-Commerce Sales Insights Platform, a Power BI dashboard built for a US-based e-commerce business using around 113,000 order records. The objective was to give management a single interactive dashboard to monitor sales, profitability, customer and product performance, regional trends, and shipping performance.</p>
+<p>The raw transaction data contained fields such as Order Date, Ship Date, Customer, Product, Category, Region, State, Sales, Profit, Quantity, and Discount. I cleaned and structured this data and built a star-schema-oriented model, with Orders as the fact table and supporting dimensions such as Calendar, Product, Customer Segment, Region, and State Coordinates.</p>
+<p>For analysis, I created KPIs such as YTD Sales, YTD Profit, YTD Quantity, Profit Margin %, Previous Year Sales, and YoY Growth %, using DAX functions such as <code>TOTALYTD()</code>, <code>SAMEPERIODLASTYEAR()</code>, and <code>DIVIDE()</code>. I also used ranking logic to identify Top 5 and Bottom 5 products.</p>
+<p>I then presented these insights through KPI cards, monthly trends, customer-segment comparisons, state-level maps, Top/Bottom product charts, regional analysis, and shipping-mode analysis, all with interactive slicers.</p>
+<p><strong>Business Impact:</strong> The dashboard helped management identify high-performing products and regions, declining segments, and areas requiring marketing or operational attention — turning raw transaction-level data into actionable business insight.</p>
+</div></div>
+</div><div class="item question-item" data-question="ecom-answers-2">
+<button class="item-head"><span class="idx">02</span><span class="item-title">What was the business problem you were solving?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p>The e-commerce business had 113,000+ raw order records with no structured way to analyze performance. Management couldn't easily see year-to-date sales and profit trends, compare performance against the prior year, identify which products or regions were driving or dragging results, or evaluate shipping performance — everything required manual slicing of a flat transaction file. The objective was to build a single interactive dashboard that gave management a fast, reliable view of sales, profitability, customer, product, regional, and shipping performance.</p>
+<p><strong>Business Impact:</strong> The dashboard converted transaction-level data into ready insights, letting management quickly spot high-performing products/regions, declining segments, and areas needing attention.</p>
+</div></div>
+</div><div class="item question-item" data-question="ecom-answers-3">
+<button class="item-head"><span class="idx">03</span><span class="item-title">What were the data sources?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p>The data source was a single raw transaction dataset (~113,000 order records) for a US-based e-commerce business, containing Order Date, Ship Date, Customer, Product, Category, Region, State, Sales, Profit, Quantity, and Discount.</p>
+<p><strong>Raw Transaction Data (Orders) → Data Cleaning &amp; Structuring → Star-Schema Model (Power BI) → DAX/KPI Layer → Interactive Dashboard</strong></p>
+<p>I structured this into a star-schema-oriented model with Orders as the fact table and Calendar, Product, Customer Segment, Region, and State Coordinates as supporting dimensions, which fed the DAX measures and visuals directly.</p>
+</div></div>
+</div><div class="item question-item" data-question="ecom-answers-4">
+<button class="item-head"><span class="idx">04</span><span class="item-title">Follow-Up: Why did you separate the data into a fact table and dimension tables (star schema)?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p>A star-schema-oriented design keeps the large, transaction-level Orders data in one fact table while descriptive attributes — like Calendar, Product, Customer Segment, Region, and State Coordinates — sit in supporting dimension tables. This simplifies relationships, makes DAX time-intelligence functions like <code>TOTALYTD()</code> and <code>SAMEPERIODLASTYEAR()</code> work correctly against a single, clean date table, improves filtering performance, and keeps the model easier to maintain and extend than a single flat table.</p>
+</div></div>
+</div><div class="item question-item" data-question="ecom-answers-5">
+<button class="item-head"><span class="idx">05</span><span class="item-title">Follow-Up: What would you do differently for a production version of this project?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p>This was built as a personal project from a single flat transaction file, so some attributes stayed closer to the fact table instead of being fully normalized. For a production model, I would separate those into dedicated dimension tables, add a formal customer segmentation methodology (e.g. RFM analysis) rather than relying on the existing Customer Segment field, validate data quality against a source system, and set up a proper scheduled refresh pipeline rather than a one-time import.</p>
+</div></div>
+</div></div></div></div><div class="item topic-item" data-index="ecom-ytd-yoy">
+<button class="item-head">
+<span class="idx">FY</span>
+<span class="item-title">YTD &amp; YoY Growth Measures — Short Interview Answer (E-Commerce Dashboard)</span>
+<span class="tag">DAX Flow</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body">
+<div class="item-body-inner">
+<p><strong>Goal:</strong> Give management a fast read on current performance (YTD Sales, Profit, Quantity) and momentum versus the prior year (YoY Growth %), without manually filtering the raw order table.</p>
+<h3>Short Flow (One-Liners)</h3>
+<p><strong>Calendar dimension table</strong> — Built a supporting Calendar table so all date-based measures reference a clean, single date dimension instead of scattered Order Date values in the fact table.</p>
+<p><strong>YTD Sales / YTD Profit / YTD Quantity (DAX TOTALYTD)</strong> — Used <code>TOTALYTD()</code> against the Calendar table to accumulate Sales, Profit, and Quantity from the start of the year to the selected date, so KPI cards always reflect current year-to-date performance.</p>
+<p><strong>Previous Year Sales (DAX SAMEPERIODLASTYEAR)</strong> — Shifted the current filter context back one year to pull the equivalent prior-year Sales figure for direct comparison.</p>
+<p><strong>YoY Growth % (DAX DIVIDE)</strong> — Compared current-period Sales against Previous Year Sales using <code>DIVIDE()</code> (instead of a raw <code>/</code>) so the measure safely returns blank instead of erroring when prior-year sales are zero.</p>
+<p><strong>Profit Margin % (DAX DIVIDE)</strong> — Divided Profit by Sales with <code>DIVIDE()</code> to get a safe, blank-tolerant profitability ratio for every KPI card, product, and region.</p>
+<p><strong>Top 5 / Bottom 5 product ranking</strong> — Used ranking logic (e.g. <code>RANKX()</code> over Product, ordered by Sales/Profit) to dynamically surface the highest and lowest performing products in a Top/Bottom chart that updates with slicer selections.</p>
+<p><strong>KPI Cards + Monthly Trend + Slicers</strong> — Surfaced these measures through KPI cards and a monthly trend chart, with slicers for interactive filtering by product, region, and segment.</p>
+<h3>Full Build — Step by Step</h3>
+<p><strong>1. Calendar Dimension Table</strong></p>
+<pre><code class="language-dax">Calendar = CALENDAR(MIN(Orders[Order Date]), MAX(Orders[Order Date]))</code></pre>
+<ul>
+<li>Provides a clean, contiguous date range for time-intelligence functions.</li>
+<li>Marked as the model's Date Table and related to Orders[Order Date] (1-to-many).</li>
+</ul>
+<p><strong>2. YTD Sales</strong></p>
+<pre><code class="language-dax">YTD Sales =
+TOTALYTD(
+    SUM(Orders[Sales]),
+    'Calendar'[Date]
+)</code></pre>
+<p><strong>3. YTD Profit</strong></p>
+<pre><code class="language-dax">YTD Profit =
+TOTALYTD(
+    SUM(Orders[Profit]),
+    'Calendar'[Date]
+)</code></pre>
+<p><strong>4. YTD Quantity</strong></p>
+<pre><code class="language-dax">YTD Quantity =
+TOTALYTD(
+    SUM(Orders[Quantity]),
+    'Calendar'[Date]
+)</code></pre>
+<p><strong>5. Previous Year Sales</strong></p>
+<pre><code class="language-dax">Previous Year Sales =
+CALCULATE(
+    SUM(Orders[Sales]),
+    SAMEPERIODLASTYEAR('Calendar'[Date])
+)</code></pre>
+<p><strong>6. YoY Growth %</strong></p>
+<pre><code class="language-dax">YoY Growth % =
+DIVIDE(
+    SUM(Orders[Sales]) - [Previous Year Sales],
+    [Previous Year Sales]
+)</code></pre>
+<p><strong>7. Profit Margin %</strong></p>
+<pre><code class="language-dax">Profit Margin % =
+DIVIDE(
+    SUM(Orders[Profit]),
+    SUM(Orders[Sales])
+)</code></pre>
+<p><strong>8. Top 5 / Bottom 5 Products (ranking logic)</strong></p>
+<pre><code class="language-dax">Product Sales Rank =
+RANKX(
+    ALL(Product[Product Name]),
+    [YTD Sales],
+    ,
+    DESC
+)</code></pre>
+<p>Used in a table/visual filter (<code>Product Sales Rank &lt;= 5</code> for Top 5, and a descending variant for Bottom 5) to dynamically surface best- and worst-performing products as slicers change.</p>
+<p><strong>9. Use in Dashboard</strong></p>
+<p>KPI Cards: YTD Sales, YTD Profit, YTD Quantity, Profit Margin %, YoY Growth %. Visuals: Monthly Trend line chart, Top 5/Bottom 5 Product bar charts, Customer-Segment comparison, State-level map, Regional and Shipping-mode analysis — all filterable via slicers.</p>
+</div>
+</div>
+</div><div class="item topic-item" data-index="ecom-domain">
+<button class="item-head">
+<span class="idx">02</span>
+<span class="item-title">Domain of this Project</span>
+<span class="tag">Retail / E-Commerce</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body"><div class="item-body-inner">
+<p>The E-Commerce Sales Insights Platform was built in the <strong>Retail / E-Commerce Sales &amp; Profitability Analytics</strong> domain for a US-based e-commerce business. Its purpose was to give management a single interactive dashboard to monitor sales, profitability, customer and product performance, regional trends, and shipping performance. The dashboard supported activities such as sales trend monitoring, YoY performance comparison, profitability analysis, product and regional benchmarking, and shipping-mode evaluation, enabling management to quickly identify areas that required attention.</p>
+</div></div>
+</div><div class="item topic-item" data-index="ecom-questions"><button class="item-head"><span class="idx">03</span><span class="item-title">Questions on Project</span><span class="tag">18 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="ecom-q1">
+<button class="item-head"><span class="idx">01</span><span class="item-title">What is the purpose of this dashboard?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p>The purpose was to give management a single interactive dashboard to monitor sales, profitability, customer and product performance, regional trends, and shipping performance for a US-based e-commerce business, and to quickly identify areas that required attention — replacing manual analysis of ~113,000 raw order records.</p>
+</div></div>
+</div><div class="item question-item" data-question="ecom-q2">
+<button class="item-head"><span class="idx">02</span><span class="item-title">What KPIs are shown here?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p>The dashboard primarily tracks:</p>
+<ul><li>YTD Sales</li><li>YTD Profit</li><li>YTD Quantity</li><li>Profit Margin %</li><li>Previous Year Sales</li><li>YoY Growth %</li><li>Top 5 / Bottom 5 Products</li></ul><p>These KPIs help management monitor sales momentum, profitability, and product performance at a glance.</p></div></div>
+</div><div class="item question-item" data-question="ecom-q3">
+<button class="item-head"><span class="idx">03</span><span class="item-title">What was the size and structure of the dataset?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p>The dataset contained around 113,000 order records for a US-based e-commerce business, with fields such as Order Date, Ship Date, Customer, Product, Category, Region, State, Sales, Profit, Quantity, and Discount.</p>
+</div></div>
+</div><div class="item question-item" data-question="ecom-q4">
+<button class="item-head"><span class="idx">04</span><span class="item-title">Why did you build a star-schema-oriented model instead of using the flat file directly?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p>Using the raw flat file directly in Power BI would have made DAX time-intelligence functions harder to write correctly and hurt performance as visuals grew. By separating the data into an Orders fact table and supporting dimensions — Calendar, Product, Customer Segment, Region, and State Coordinates — relationships stayed simple, filtering was faster, and time-intelligence measures like <code>TOTALYTD()</code> and <code>SAMEPERIODLASTYEAR()</code> worked correctly against a single date table.</p>
+</div></div>
+</div><div class="item question-item" data-question="ecom-q5">
+<button class="item-head"><span class="idx">05</span><span class="item-title">How did you calculate YTD Sales, Profit, and Quantity?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p>I used the DAX <code>TOTALYTD()</code> function against the Calendar dimension table to accumulate Sales, Profit, and Quantity from the start of the year up to the current filter context, so the KPI cards always reflect year-to-date performance as of the selected date.</p>
+</div></div>
+</div><div class="item question-item" data-question="ecom-q6">
+<button class="item-head"><span class="idx">06</span><span class="item-title">How did you calculate YoY Growth %?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p>I first calculated Previous Year Sales using <code>SAMEPERIODLASTYEAR()</code> to shift the filter context back one year, then compared current Sales to that figure using <code>DIVIDE()</code> — which safely handles cases where prior-year sales are zero by returning blank instead of an error.</p>
+</div></div>
+</div><div class="item question-item" data-question="ecom-q7">
+<button class="item-head"><span class="idx">07</span><span class="item-title">Why use DIVIDE() instead of the standard division operator?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><code>DIVIDE()</code> returns a blank (or a specified alternate result) instead of throwing a divide-by-zero error, which is important for measures like Profit Margin % and YoY Growth % where the denominator (Sales or Previous Year Sales) can legitimately be zero for certain filter contexts, such as a new product or region with no prior-year data.</p>
+</div></div>
+</div><div class="item question-item" data-question="ecom-q8">
+<button class="item-head"><span class="idx">08</span><span class="item-title">How did you identify Top 5 and Bottom 5 products?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p>I used ranking logic — a <code>RANKX()</code>-based measure over the Product dimension, ordered by a KPI such as YTD Sales — and then filtered the visual to the top ranks for the Top 5 view and the bottom ranks for the Bottom 5 view. Because it's measure-driven, the ranking updates dynamically as slicers for region, category, or time period change.</p>
+</div></div>
+</div><div class="item question-item" data-question="ecom-q9">
+<button class="item-head"><span class="idx">09</span><span class="item-title">How did you analyze customer performance?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p>Customer performance was analyzed using sales and customer-segment trends within the dashboard. The project's underlying data didn't include a documented repeat-customer or high-value-customer segmentation methodology, so rather than claiming a specific RFM (Recency, Frequency, Monetary) model, I'd say customer analysis here was segment-and-sales-trend based — and RFM segmentation is exactly the kind of enhancement I'd add in a production version.</p>
+</div></div>
+</div><div class="item question-item" data-question="ecom-q10">
+<button class="item-head"><span class="idx">10</span><span class="item-title">What does the state-level map visual show?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p>The state-level map visualizes sales (and related metrics) geographically across US states, using the State Coordinates dimension. It lets management quickly spot which states are driving the most sales/profit versus underperforming states, at a glance rather than through a table.</p>
+</div></div>
+</div><div class="item question-item" data-question="ecom-q11">
+<button class="item-head"><span class="idx">11</span><span class="item-title">What does the regional analysis show?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p>The regional analysis breaks down Sales, Profit, and related KPIs by Region, letting management compare performance across regions side-by-side and identify which regions are exceeding or falling short of expectations.</p>
+</div></div>
+</div><div class="item question-item" data-question="ecom-q12">
+<button class="item-head"><span class="idx">12</span><span class="item-title">What does the shipping-mode analysis show?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p>The shipping-mode analysis looks at order and profitability metrics broken down by shipping mode, helping identify whether certain shipping methods are associated with lower profitability or slower fulfillment, which could point to operational cost or service-level issues worth investigating.</p>
+</div></div>
+</div><div class="item question-item" data-question="ecom-q13">
+<button class="item-head"><span class="idx">13</span><span class="item-title">How does filtering/slicing work on this dashboard?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p>The dashboard includes interactive slicers (e.g. by product, category, region, customer segment, and time period). Selecting a slicer value cross-filters all visuals — KPI cards, monthly trend, Top/Bottom product charts, the state map, and regional/shipping visuals — so users can drill into a specific slice of the business without leaving the report.</p>
+</div></div>
+</div><div class="item question-item" data-question="ecom-q14">
+<button class="item-head"><span class="idx">14</span><span class="item-title">What was the biggest modeling challenge in this project?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p>Deciding which attributes should remain in the fact table versus being split into separate dimension tables. Since this was built from a single flat transaction file, some descriptive fields stayed closer to the fact table rather than being fully normalized. For a production model, I would normalize those into dedicated dimension tables for better structure and maintainability.</p>
+</div></div>
+</div><div class="item question-item" data-question="ecom-q15">
+<button class="item-head"><span class="idx">15</span><span class="item-title">What DAX functions did you rely on most in this project?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p>The core functions were <code>TOTALYTD()</code> for year-to-date KPIs, <code>SAMEPERIODLASTYEAR()</code> for prior-year comparison, <code>DIVIDE()</code> for safe ratio calculations like Profit Margin % and YoY Growth %, and <code>RANKX()</code>-based ranking logic for the Top 5/Bottom 5 product views.</p>
+</div></div>
+</div><div class="item question-item" data-question="ecom-q16">
+<button class="item-head"><span class="idx">16</span><span class="item-title">What was the business impact of this dashboard?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p>The dashboard turned 113,000+ raw transaction records into a single interactive view that let management identify high-performing products and regions, spot declining segments, and pinpoint areas needing marketing or operational attention — without manually working through raw data.</p>
+</div></div>
+</div><div class="item question-item" data-question="ecom-q17">
+<button class="item-head"><span class="idx">17</span><span class="item-title">What would you improve if you rebuilt this project today?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p>I would fully normalize the fact/dimension split, add a formal RFM-style customer segmentation, connect it to a live or scheduled-refresh data source instead of a static file, and add more robust data-quality validation before loading it into the model.</p>
+</div></div>
+</div><div class="item question-item" data-question="ecom-q18">
+<button class="item-head"><span class="idx">18</span><span class="item-title">Can you explain the data model?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p>The dashboard followed a star-schema-oriented architecture.</p>
+<p><strong>Fact Table:</strong> Orders (Order Date, Ship Date, Sales, Profit, Quantity, Discount, and keys to dimensions)</p>
+<p><strong>Dimension Tables:</strong></p>
+<ul><li>Calendar</li><li>Product</li><li>Customer Segment</li><li>Region</li><li>State Coordinates</li></ul><p>The Orders fact table connected to these supporting dimensions, enabling the YTD, YoY, and ranking measures to filter correctly across product, time, region, and customer-segment dimensions.</p></div></div>
+</div></div></div></div><div class="item topic-item" data-index="ecom-kpi-visuals">
+<button class="item-head">
+<span class="idx">04</span>
+<span class="item-title">KPI Visuals Used</span>
+<span class="tag">Dashboard Design</span>
+<svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg>
+</button>
+<div class="item-body"><div class="item-body-inner">
+<p>Built a personal-project e-commerce analytics dashboard in Power BI to give management comprehensive visibility into sales, profitability, customer, product, regional, and shipping performance for a US-based e-commerce business, using around 113,000 order records.</p>
+<h3>Key Features &amp; Visualizations</h3>
+<p><strong>KPI Cards</strong> displaying YTD Sales, YTD Profit, YTD Quantity, Profit Margin %, Previous Year Sales, and YoY Growth %, giving an instant read on current performance and momentum versus the prior year.</p>
+<p><strong>Monthly Sales &amp; Profit Trend</strong> using a line/trend chart to track Sales and Profit month over month, helping spot seasonality and momentum shifts.</p>
+<p><strong>Top 5 / Bottom 5 Product Analysis</strong> using ranking-based bar charts (built with <code>RANKX()</code>) to highlight the best- and worst-performing products by Sales or Profit.</p>
+<p><strong>Customer-Segment Comparison</strong> comparing sales performance across customer segments to identify which segments are driving the most (or least) revenue.</p>
+<p><strong>State-Level Map</strong> visualizing Sales/Profit geographically across US states using the State Coordinates dimension, making regional strength and weakness immediately visible.</p>
+<p><strong>Regional Analysis</strong> breaking down performance by Region to compare how each region is tracking against the others.</p>
+<p><strong>Shipping-Mode Analysis</strong> evaluating order and profitability metrics by shipping mode to flag potential cost or service-level issues.</p>
+<p><strong>Interactive Slicers</strong> for Product, Category, Region, Customer Segment, and time period, letting users dynamically filter the entire dashboard.</p>
+<h3>Business Impact</h3>
+<ul>
+<li>Converted ~113,000 raw transaction records into a single, decision-ready dashboard.</li>
+<li>Enabled fast identification of high-performing products and regions.</li>
+<li>Surfaced declining segments and underperforming products via Top/Bottom analysis.</li>
+<li>Supported marketing and management decisions with regional and shipping-mode insight.</li>
+<li>Built hands-on experience in data modeling, DAX time intelligence, visualization, and translating transaction-level data into actionable business insight.</li>
+</ul>
+</div></div>
+</div>
+</div>
 </div>
 </div>
 </div><div class="item" data-index="kpi-visuals-retail">
@@ -5715,85 +5933,83 @@ contexts.</p>
 <p><strong>Real Case:</strong> Compare monthly sales of Product A, B, and C.</p>
 <p><strong>Interview Answer:</strong> "Clustered Column Chart is used to compare values across categories. I use it to compare sales performance of multiple product categories across different months and quickly identify top-performing products."</p>
 </div></div>
+</div><div class="item question-item" data-question="viz-7">
+<button class="item-head"><span class="idx">02</span><span class="item-title">Line Chart</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>What:</strong> Shows trends over time.</p>
+<p><strong>Real Case:</strong> Daily sales trend.</p>
+<p><strong>Interview Answer:</strong> "Line Chart is best for trend analysis. In my dashboards, I use it to monitor daily sales and identify seasonality or sudden drops."</p>
+</div></div>
+</div><div class="item question-item" data-question="viz-12">
+<button class="item-head"><span class="idx">03</span><span class="item-title">Card</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>What:</strong> Displays one KPI.</p>
+<p><strong>Real Case:</strong> Total Revenue.</p>
+<p><strong>Interview Answer:</strong> "Card Visual displays a single KPI like total revenue, profit, or spend and is usually placed at the top of executive dashboards."</p>
+</div></div>
+</div><div class="item question-item" data-question="viz-24">
+<button class="item-head"><span class="idx">04</span><span class="item-title">Table</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>What:</strong> Detailed records.</p>
+<p><strong>Real Case:</strong> Transaction Data.</p>
+<p><strong>Interview Answer:</strong> "Tables provide detailed row-level information and are useful for operational reporting."</p>
+</div></div>
+</div><div class="item question-item" data-question="viz-25">
+<button class="item-head"><span class="idx">05</span><span class="item-title">Matrix</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>What:</strong> Pivot table.</p>
+<p><strong>Real Case:</strong> Region × Product Sales.</p>
+<p><strong>Interview Answer:</strong> "Matrix Visual allows hierarchical analysis with drill-down capabilities similar to Excel Pivot Tables."</p>
+</div></div>
+</div><div class="item question-item" data-question="viz-30">
+<button class="item-head"><span class="idx">06</span><span class="item-title">Slicer</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Real Case:</strong> Filter by Date, Region.</p>
+<p><strong>Interview Answer:</strong> "Slicers provide interactive filtering and improve user-driven analysis."</p>
+</div></div>
 </div><div class="item question-item" data-question="viz-2">
-<button class="item-head"><span class="idx">02</span><span class="item-title">Stacked Column Chart</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<button class="item-head"><span class="idx">07</span><span class="item-title">Stacked Column Chart</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>What:</strong> Shows total value and contribution of each segment.</p>
 <p><strong>When Used:</strong> Part-to-whole analysis.</p>
 <p><strong>Real Case:</strong> Total sales by region split by product category.</p>
 <p><strong>Interview Answer:</strong> "Stacked Column Chart helps visualize total sales and contribution from each category. For example, I used it to analyze regional sales where each stack represented product categories contributing to total revenue."</p>
 </div></div>
-</div><div class="item question-item" data-question="viz-3">
-<button class="item-head"><span class="idx">03</span><span class="item-title">100% Stacked Column Chart</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>What:</strong> Shows percentage contribution only.</p>
-<p><strong>When Used:</strong> Comparing proportions.</p>
-<p><strong>Real Case:</strong> Payment methods used in different countries.</p>
-<p><strong>Interview Answer:</strong> "This chart focuses on percentage distribution rather than actual values. It helps compare contribution patterns across categories, such as payment methods used by customers in different regions."</p>
-</div></div>
 </div><div class="item question-item" data-question="viz-4">
-<button class="item-head"><span class="idx">04</span><span class="item-title">Clustered Bar Chart</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<button class="item-head"><span class="idx">08</span><span class="item-title">Clustered Bar Chart</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>What:</strong> Horizontal version of clustered column.</p>
 <p><strong>When Used:</strong> Long category names.</p>
 <p><strong>Real Case:</strong> Compare sales by store locations.</p>
 <p><strong>Interview Answer:</strong> "Clustered Bar Chart is ideal when category labels are long. I used it to compare sales performance across multiple store locations."</p>
 </div></div>
-</div><div class="item question-item" data-question="viz-5">
-<button class="item-head"><span class="idx">05</span><span class="item-title">Stacked Bar Chart</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>What:</strong> Horizontal chart showing composition.</p>
-<p><strong>Real Case:</strong> Inventory by warehouse and product type.</p>
-<p><strong>Interview Answer:</strong> "It helps understand total inventory and category contribution within each warehouse."</p>
-</div></div>
-</div><div class="item question-item" data-question="viz-6">
-<button class="item-head"><span class="idx">06</span><span class="item-title">100% Stacked Bar Chart</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>What:</strong> Displays percentage contribution horizontally.</p>
-<p><strong>Real Case:</strong> Employee distribution by department and gender.</p>
-<p><strong>Interview Answer:</strong> "Used to compare proportional distribution across categories regardless of total counts."</p>
-</div></div>
-</div><div class="item question-item" data-question="viz-7">
-<button class="item-head"><span class="idx">07</span><span class="item-title">Line Chart</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>What:</strong> Shows trends over time.</p>
-<p><strong>Real Case:</strong> Daily sales trend.</p>
-<p><strong>Interview Answer:</strong> "Line Chart is best for trend analysis. In my dashboards, I use it to monitor daily sales and identify seasonality or sudden drops."</p>
-</div></div>
-</div><div class="item question-item" data-question="viz-8">
-<button class="item-head"><span class="idx">08</span><span class="item-title">Area Chart</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>What:</strong> Trend chart with filled area.</p>
-<p><strong>Real Case:</strong> Website traffic growth.</p>
-<p><strong>Interview Answer:</strong> "Area Charts emphasize volume while showing trends. I use them to visualize customer traffic growth over time."</p>
-</div></div>
-</div><div class="item question-item" data-question="viz-9">
-<button class="item-head"><span class="idx">09</span><span class="item-title">Stacked Area Chart</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>What:</strong> Trend + category contribution.</p>
-<p><strong>Real Case:</strong> Revenue by sales channel over time.</p>
-<p><strong>Interview Answer:</strong> "It shows overall growth and how each channel contributes to the total revenue."</p>
-</div></div>
-</div><div class="item question-item" data-question="viz-10">
-<button class="item-head"><span class="idx">10</span><span class="item-title">Line and Clustered Column Chart</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>What:</strong> Combines bars and line.</p>
-<p><strong>Real Case:</strong> Sales vs Profit Margin.</p>
-<p><strong>Interview Answer:</strong> "I use this chart when comparing two measures with different scales, such as monthly sales as columns and profit margin as a line."</p>
-</div></div>
-</div><div class="item question-item" data-question="viz-11">
-<button class="item-head"><span class="idx">11</span><span class="item-title">Line and Stacked Column Chart</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Real Case:</strong> Revenue by category with overall target.</p>
-<p><strong>Interview Answer:</strong> "Helps compare category-level revenue while tracking overall performance against target."</p>
-</div></div>
-</div><div class="item question-item" data-question="viz-12">
-<button class="item-head"><span class="idx">12</span><span class="item-title">Card</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>What:</strong> Displays one KPI.</p>
-<p><strong>Real Case:</strong> Total Revenue.</p>
-<p><strong>Interview Answer:</strong> "Card Visual displays a single KPI like total revenue, profit, or spend and is usually placed at the top of executive dashboards."</p>
-</div></div>
-</div><div class="item question-item" data-question="viz-13">
-<button class="item-head"><span class="idx">13</span><span class="item-title">Multi-row Card</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>What:</strong> Displays multiple KPIs.</p>
-<p><strong>Real Case:</strong> Revenue, Margin, Orders.</p>
-<p><strong>Interview Answer:</strong> "It displays multiple related KPIs together, providing a quick business summary."</p>
-</div></div>
 </div><div class="item question-item" data-question="viz-14">
-<button class="item-head"><span class="idx">14</span><span class="item-title">KPI Visual</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<button class="item-head"><span class="idx">09</span><span class="item-title">KPI Visual</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>What:</strong> Actual vs Target with trend.</p>
 <p><strong>Real Case:</strong> Sales achievement.</p>
 <p><strong>Interview Answer:</strong> "KPI Visual tracks actual performance against targets and highlights whether business goals are being met."</p>
+</div></div>
+</div><div class="item question-item" data-question="viz-18">
+<button class="item-head"><span class="idx">10</span><span class="item-title">Donut Chart</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>What:</strong> Pie chart with center KPI.</p>
+<p><strong>Real Case:</strong> Revenue Share.</p>
+<p><strong>Interview Answer:</strong> "Similar to Pie Chart but allows additional KPI display in the center."</p>
+</div></div>
+</div><div class="item question-item" data-question="viz-17">
+<button class="item-head"><span class="idx">11</span><span class="item-title">Pie Chart</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>What:</strong> Part-to-whole.</p>
+<p><strong>Real Case:</strong> Sales by Region.</p>
+<p><strong>Interview Answer:</strong> "Pie Charts show category contribution. Best used when there are fewer than six categories."</p>
+</div></div>
+</div><div class="item question-item" data-question="viz-21">
+<button class="item-head"><span class="idx">12</span><span class="item-title">Waterfall Chart</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>What:</strong> Positive and negative contributors.</p>
+<p><strong>Real Case:</strong> Profit Analysis.</p>
+<p><strong>Interview Answer:</strong> "Waterfall Charts explain how different factors contribute to changes in profit or revenue."</p>
+</div></div>
+</div><div class="item question-item" data-question="viz-23">
+<button class="item-head"><span class="idx">13</span><span class="item-title">Scatter Chart</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>What:</strong> Relationship between measures.</p>
+<p><strong>Real Case:</strong> Sales vs Profit.</p>
+<p><strong>Interview Answer:</strong> "Scatter Charts help identify correlations and outliers. For example, products with high sales but low profit."</p>
+</div></div>
+</div><div class="item question-item" data-question="viz-26">
+<button class="item-head"><span class="idx">14</span><span class="item-title">Map</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Real Case:</strong> Store Sales by Location.</p>
+<p><strong>Interview Answer:</strong> "Map Visuals help analyze geographical distribution of business metrics."</p>
 </div></div>
 </div><div class="item question-item" data-question="viz-15">
 <button class="item-head"><span class="idx">15</span><span class="item-title">Gauge</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
@@ -5801,23 +6017,24 @@ contexts.</p>
 <p><strong>Real Case:</strong> Revenue Target Achievement.</p>
 <p><strong>Interview Answer:</strong> "Gauge Visual is used to monitor progress against a target. For example, showing that sales have achieved 85% of the annual target."</p>
 </div></div>
-</div><div class="item question-item" data-question="viz-16">
-<button class="item-head"><span class="idx">16</span><span class="item-title">Scorecard</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>What:</strong> Multiple KPI tracking.</p>
-<p><strong>Real Case:</strong> Executive Dashboard.</p>
-<p><strong>Interview Answer:</strong> "Scorecards are used for strategic KPI tracking across departments and support performance management."</p>
+</div><div class="item question-item" data-question="viz-3">
+<button class="item-head"><span class="idx">16</span><span class="item-title">100% Stacked Column Chart</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>What:</strong> Shows percentage contribution only.</p>
+<p><strong>When Used:</strong> Comparing proportions.</p>
+<p><strong>Real Case:</strong> Payment methods used in different countries.</p>
+<p><strong>Interview Answer:</strong> "This chart focuses on percentage distribution rather than actual values. It helps compare contribution patterns across categories, such as payment methods used by customers in different regions."</p>
 </div></div>
-</div><div class="item question-item" data-question="viz-17">
-<button class="item-head"><span class="idx">17</span><span class="item-title">Pie Chart</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>What:</strong> Part-to-whole.</p>
-<p><strong>Real Case:</strong> Sales by Region.</p>
-<p><strong>Interview Answer:</strong> "Pie Charts show category contribution. Best used when there are fewer than six categories."</p>
+</div><div class="item question-item" data-question="viz-8">
+<button class="item-head"><span class="idx">17</span><span class="item-title">Area Chart</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>What:</strong> Trend chart with filled area.</p>
+<p><strong>Real Case:</strong> Website traffic growth.</p>
+<p><strong>Interview Answer:</strong> "Area Charts emphasize volume while showing trends. I use them to visualize customer traffic growth over time."</p>
 </div></div>
-</div><div class="item question-item" data-question="viz-18">
-<button class="item-head"><span class="idx">18</span><span class="item-title">Donut Chart</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>What:</strong> Pie chart with center KPI.</p>
-<p><strong>Real Case:</strong> Revenue Share.</p>
-<p><strong>Interview Answer:</strong> "Similar to Pie Chart but allows additional KPI display in the center."</p>
+</div><div class="item question-item" data-question="viz-10">
+<button class="item-head"><span class="idx">18</span><span class="item-title">Line and Clustered Column Chart</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>What:</strong> Combines bars and line.</p>
+<p><strong>Real Case:</strong> Sales vs Profit Margin.</p>
+<p><strong>Interview Answer:</strong> "I use this chart when comparing two measures with different scales, such as monthly sales as columns and profit margin as a line."</p>
 </div></div>
 </div><div class="item question-item" data-question="viz-19">
 <button class="item-head"><span class="idx">19</span><span class="item-title">Treemap</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
@@ -5831,160 +6048,161 @@ contexts.</p>
 <p><strong>Real Case:</strong> Sales Pipeline.</p>
 <p><strong>Interview Answer:</strong> "Funnel Charts help identify drop-offs in business processes such as lead-to-customer conversion."</p>
 </div></div>
-</div><div class="item question-item" data-question="viz-21">
-<button class="item-head"><span class="idx">21</span><span class="item-title">Waterfall Chart</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>What:</strong> Positive and negative contributors.</p>
-<p><strong>Real Case:</strong> Profit Analysis.</p>
-<p><strong>Interview Answer:</strong> "Waterfall Charts explain how different factors contribute to changes in profit or revenue."</p>
-</div></div>
 </div><div class="item question-item" data-question="viz-22">
-<button class="item-head"><span class="idx">22</span><span class="item-title">Ribbon Chart</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<button class="item-head"><span class="idx">21</span><span class="item-title">Ribbon Chart</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>What:</strong> Ranking changes over time.</p>
 <p><strong>Real Case:</strong> Top Brands by Month.</p>
 <p><strong>Interview Answer:</strong> "Ribbon Charts show how rankings change over time and help identify market leaders."</p>
 </div></div>
-</div><div class="item question-item" data-question="viz-23">
-<button class="item-head"><span class="idx">23</span><span class="item-title">Scatter Chart</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>What:</strong> Relationship between measures.</p>
-<p><strong>Real Case:</strong> Sales vs Profit.</p>
-<p><strong>Interview Answer:</strong> "Scatter Charts help identify correlations and outliers. For example, products with high sales but low profit."</p>
-</div></div>
-</div><div class="item question-item" data-question="viz-24">
-<button class="item-head"><span class="idx">24</span><span class="item-title">Table</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>What:</strong> Detailed records.</p>
-<p><strong>Real Case:</strong> Transaction Data.</p>
-<p><strong>Interview Answer:</strong> "Tables provide detailed row-level information and are useful for operational reporting."</p>
-</div></div>
-</div><div class="item question-item" data-question="viz-25">
-<button class="item-head"><span class="idx">25</span><span class="item-title">Matrix</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>What:</strong> Pivot table.</p>
-<p><strong>Real Case:</strong> Region × Product Sales.</p>
-<p><strong>Interview Answer:</strong> "Matrix Visual allows hierarchical analysis with drill-down capabilities similar to Excel Pivot Tables."</p>
-</div></div>
-</div><div class="item question-item" data-question="viz-26">
-<button class="item-head"><span class="idx">26</span><span class="item-title">Map</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Real Case:</strong> Store Sales by Location.</p>
-<p><strong>Interview Answer:</strong> "Map Visuals help analyze geographical distribution of business metrics."</p>
-</div></div>
-</div><div class="item question-item" data-question="viz-27">
-<button class="item-head"><span class="idx">27</span><span class="item-title">Filled Map</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Real Case:</strong> State-wise Revenue.</p>
-<p><strong>Interview Answer:</strong> "Filled Maps color regions based on performance and help identify high and low-performing areas."</p>
-</div></div>
-</div><div class="item question-item" data-question="viz-28">
-<button class="item-head"><span class="idx">28</span><span class="item-title">Azure Maps</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Real Case:</strong> Delivery Tracking.</p>
-<p><strong>Interview Answer:</strong> "Azure Maps offers advanced mapping features like heat maps, routing, clustering, and spatial analysis."</p>
-</div></div>
-</div><div class="item question-item" data-question="viz-29">
-<button class="item-head"><span class="idx">29</span><span class="item-title">Shape Map</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Real Case:</strong> Warehouse Zones.</p>
-<p><strong>Interview Answer:</strong> "Shape Maps allow visualization of custom boundaries that are not available in standard maps."</p>
-</div></div>
-</div><div class="item question-item" data-question="viz-30">
-<button class="item-head"><span class="idx">30</span><span class="item-title">Slicer</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Real Case:</strong> Filter by Date, Region.</p>
-<p><strong>Interview Answer:</strong> "Slicers provide interactive filtering and improve user-driven analysis."</p>
-</div></div>
-</div><div class="item question-item" data-question="viz-31">
-<button class="item-head"><span class="idx">31</span><span class="item-title">Button</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Real Case:</strong> Reset Filters.</p>
-<p><strong>Interview Answer:</strong> "Buttons enhance navigation and trigger actions like bookmarks or page navigation."</p>
-</div></div>
-</div><div class="item question-item" data-question="viz-32">
-<button class="item-head"><span class="idx">32</span><span class="item-title">Bookmark</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Real Case:</strong> Toggle Views.</p>
-<p><strong>Interview Answer:</strong> "Bookmarks save report states and are used to create interactive report experiences."</p>
-</div></div>
-</div><div class="item question-item" data-question="viz-33">
-<button class="item-head"><span class="idx">33</span><span class="item-title">Page Navigator</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Real Case:</strong> Dashboard Navigation.</p>
-<p><strong>Interview Answer:</strong> "Allows users to switch between report pages easily."</p>
-</div></div>
-</div><div class="item question-item" data-question="viz-34">
-<button class="item-head"><span class="idx">34</span><span class="item-title">Bookmark Navigator</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Real Case:</strong> Show Different Views.</p>
-<p><strong>Interview Answer:</strong> "Provides dynamic navigation between bookmarked report states."</p>
-</div></div>
 </div><div class="item question-item" data-question="viz-35">
-<button class="item-head"><span class="idx">35</span><span class="item-title">Decomposition Tree</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<button class="item-head"><span class="idx">22</span><span class="item-title">Decomposition Tree</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Real Case:</strong> Root Cause Analysis.</p>
 <p><strong>Interview Answer:</strong> "Decomposition Tree allows users to drill into KPIs and identify root causes behind performance changes."</p>
 </div></div>
 </div><div class="item question-item" data-question="viz-36">
-<button class="item-head"><span class="idx">36</span><span class="item-title">Key Influencers</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<button class="item-head"><span class="idx">23</span><span class="item-title">Key Influencers</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Real Case:</strong> Customer Churn Analysis.</p>
 <p><strong>Interview Answer:</strong> "Key Influencers uses AI to identify factors driving a business outcome such as customer churn."</p>
 </div></div>
-</div><div class="item question-item" data-question="viz-37">
-<button class="item-head"><span class="idx">37</span><span class="item-title">Q&A</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Real Case:</strong> Self-Service Reporting.</p>
-<p><strong>Interview Answer:</strong> "Q&A lets users ask questions in natural language and automatically generates visualizations."</p>
+</div><div class="item question-item" data-question="viz-13">
+<button class="item-head"><span class="idx">24</span><span class="item-title">Multi-row Card</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>What:</strong> Displays multiple KPIs.</p>
+<p><strong>Real Case:</strong> Revenue, Margin, Orders.</p>
+<p><strong>Interview Answer:</strong> "It displays multiple related KPIs together, providing a quick business summary."</p>
+</div></div>
+</div><div class="item question-item" data-question="viz-27">
+<button class="item-head"><span class="idx">25</span><span class="item-title">Filled Map</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Real Case:</strong> State-wise Revenue.</p>
+<p><strong>Interview Answer:</strong> "Filled Maps color regions based on performance and help identify high and low-performing areas."</p>
+</div></div>
+</div><div class="item question-item" data-question="viz-28">
+<button class="item-head"><span class="idx">26</span><span class="item-title">Azure Maps</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Real Case:</strong> Delivery Tracking.</p>
+<p><strong>Interview Answer:</strong> "Azure Maps offers advanced mapping features like heat maps, routing, clustering, and spatial analysis."</p>
+</div></div>
+</div><div class="item question-item" data-question="viz-31">
+<button class="item-head"><span class="idx">27</span><span class="item-title">Button</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Real Case:</strong> Reset Filters.</p>
+<p><strong>Interview Answer:</strong> "Buttons enhance navigation and trigger actions like bookmarks or page navigation."</p>
+</div></div>
+</div><div class="item question-item" data-question="viz-32">
+<button class="item-head"><span class="idx">28</span><span class="item-title">Bookmark</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Real Case:</strong> Toggle Views.</p>
+<p><strong>Interview Answer:</strong> "Bookmarks save report states and are used to create interactive report experiences."</p>
+</div></div>
+</div><div class="item question-item" data-question="viz-33">
+<button class="item-head"><span class="idx">29</span><span class="item-title">Page Navigator</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Real Case:</strong> Dashboard Navigation.</p>
+<p><strong>Interview Answer:</strong> "Allows users to switch between report pages easily."</p>
+</div></div>
+</div><div class="item question-item" data-question="viz-34">
+<button class="item-head"><span class="idx">30</span><span class="item-title">Bookmark Navigator</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Real Case:</strong> Show Different Views.</p>
+<p><strong>Interview Answer:</strong> "Provides dynamic navigation between bookmarked report states."</p>
 </div></div>
 </div><div class="item question-item" data-question="viz-38">
-<button class="item-head"><span class="idx">38</span><span class="item-title">Smart Narrative</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<button class="item-head"><span class="idx">31</span><span class="item-title">Smart Narrative</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Real Case:</strong> Executive Summary.</p>
 <p><strong>Interview Answer:</strong> "Smart Narrative automatically generates text insights from report data."</p>
 </div></div>
-</div><div class="item question-item" data-question="viz-39">
-<button class="item-head"><span class="idx">39</span><span class="item-title">Python Visual</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Real Case:</strong> Statistical Analysis.</p>
-<p><strong>Interview Answer:</strong> "Python Visuals enable advanced analytics and machine learning within Power BI."</p>
+</div><div class="item question-item" data-question="viz-6">
+<button class="item-head"><span class="idx">32</span><span class="item-title">100% Stacked Bar Chart</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>What:</strong> Displays percentage contribution horizontally.</p>
+<p><strong>Real Case:</strong> Employee distribution by department and gender.</p>
+<p><strong>Interview Answer:</strong> "Used to compare proportional distribution across categories regardless of total counts."</p>
 </div></div>
-</div><div class="item question-item" data-question="viz-40">
-<button class="item-head"><span class="idx">40</span><span class="item-title">R Visual</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Real Case:</strong> Predictive Modeling.</p>
-<p><strong>Interview Answer:</strong> "R Visuals support advanced statistical analysis and custom visualizations."</p>
+</div><div class="item question-item" data-question="viz-5">
+<button class="item-head"><span class="idx">33</span><span class="item-title">Stacked Bar Chart</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>What:</strong> Horizontal chart showing composition.</p>
+<p><strong>Real Case:</strong> Inventory by warehouse and product type.</p>
+<p><strong>Interview Answer:</strong> "It helps understand total inventory and category contribution within each warehouse."</p>
+</div></div>
+</div><div class="item question-item" data-question="viz-11">
+<button class="item-head"><span class="idx">34</span><span class="item-title">Line and Stacked Column Chart</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Real Case:</strong> Revenue by category with overall target.</p>
+<p><strong>Interview Answer:</strong> "Helps compare category-level revenue while tracking overall performance against target."</p>
+</div></div>
+</div><div class="item question-item" data-question="viz-9">
+<button class="item-head"><span class="idx">35</span><span class="item-title">Stacked Area Chart</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>What:</strong> Trend + category contribution.</p>
+<p><strong>Real Case:</strong> Revenue by sales channel over time.</p>
+<p><strong>Interview Answer:</strong> "It shows overall growth and how each channel contributes to the total revenue."</p>
+</div></div>
+</div><div class="item question-item" data-question="viz-16">
+<button class="item-head"><span class="idx">36</span><span class="item-title">Scorecard</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>What:</strong> Multiple KPI tracking.</p>
+<p><strong>Real Case:</strong> Executive Dashboard.</p>
+<p><strong>Interview Answer:</strong> "Scorecards are used for strategic KPI tracking across departments and support performance management."</p>
+</div></div>
+</div><div class="item question-item" data-question="viz-29">
+<button class="item-head"><span class="idx">37</span><span class="item-title">Shape Map</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Real Case:</strong> Warehouse Zones.</p>
+<p><strong>Interview Answer:</strong> "Shape Maps allow visualization of custom boundaries that are not available in standard maps."</p>
 </div></div>
 </div><div class="item question-item" data-question="viz-41">
-<button class="item-head"><span class="idx">41</span><span class="item-title">Histogram</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<button class="item-head"><span class="idx">38</span><span class="item-title">Histogram</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Real Case:</strong> Order Value Distribution.</p>
 <p><strong>Interview Answer:</strong> "Histogram shows frequency distribution and helps understand data spread."</p>
 </div></div>
 </div><div class="item question-item" data-question="viz-42">
-<button class="item-head"><span class="idx">42</span><span class="item-title">Box & Whisker</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<button class="item-head"><span class="idx">39</span><span class="item-title">Box & Whisker</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Real Case:</strong> Delivery Time Analysis.</p>
 <p><strong>Interview Answer:</strong> "Used to identify median, quartiles, and outliers in data."</p>
 </div></div>
-</div><div class="item question-item" data-question="viz-43">
-<button class="item-head"><span class="idx">43</span><span class="item-title">Bullet Chart</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Real Case:</strong> Sales vs Target.</p>
-<p><strong>Interview Answer:</strong> "Bullet Charts efficiently compare actual performance against targets and benchmarks."</p>
-</div></div>
-</div><div class="item question-item" data-question="viz-44">
-<button class="item-head"><span class="idx">44</span><span class="item-title">Gantt Chart</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Real Case:</strong> Project Tracking.</p>
-<p><strong>Interview Answer:</strong> "Gantt Charts visualize project timelines, dependencies, and progress."</p>
-</div></div>
 </div><div class="item question-item" data-question="viz-45">
-<button class="item-head"><span class="idx">45</span><span class="item-title">Heatmap</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<button class="item-head"><span class="idx">40</span><span class="item-title">Heatmap</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Real Case:</strong> Store Performance.</p>
 <p><strong>Interview Answer:</strong> "Heatmaps highlight patterns and concentration using color intensity."</p>
 </div></div>
 </div><div class="item question-item" data-question="viz-46">
-<button class="item-head"><span class="idx">46</span><span class="item-title">Calendar Visual</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<button class="item-head"><span class="idx">41</span><span class="item-title">Calendar Visual</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Real Case:</strong> Daily Sales Trend.</p>
 <p><strong>Interview Answer:</strong> "Calendar Visuals help identify seasonality and date-based patterns."</p>
 </div></div>
+</div><div class="item question-item" data-question="viz-43">
+<button class="item-head"><span class="idx">42</span><span class="item-title">Bullet Chart</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Real Case:</strong> Sales vs Target.</p>
+<p><strong>Interview Answer:</strong> "Bullet Charts efficiently compare actual performance against targets and benchmarks."</p>
+</div></div>
+</div><div class="item question-item" data-question="viz-44">
+<button class="item-head"><span class="idx">43</span><span class="item-title">Gantt Chart</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Real Case:</strong> Project Tracking.</p>
+<p><strong>Interview Answer:</strong> "Gantt Charts visualize project timelines, dependencies, and progress."</p>
+</div></div>
 </div><div class="item question-item" data-question="viz-47">
-<button class="item-head"><span class="idx">47</span><span class="item-title">Sankey Diagram</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<button class="item-head"><span class="idx">44</span><span class="item-title">Sankey Diagram</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Real Case:</strong> Spend Flow Analysis.</p>
 <p><strong>Interview Answer:</strong> "Sankey Diagrams visualize flow movement — for example Region → Department → Cost Center → Vendor — and help analyze how spend flows through an organization or how a customer journey progresses."</p>
 </div></div>
 </div><div class="item question-item" data-question="viz-48">
-<button class="item-head"><span class="idx">48</span><span class="item-title">Choropleth Map</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<button class="item-head"><span class="idx">45</span><span class="item-title">Choropleth Map</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Real Case:</strong> State-wise Revenue.</p>
 <p><strong>Interview Answer:</strong> "Choropleth Maps use color shading to compare metrics across geographic regions."</p>
 </div></div>
 </div><div class="item question-item" data-question="viz-49">
-<button class="item-head"><span class="idx">49</span><span class="item-title">Word Cloud</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<button class="item-head"><span class="idx">46</span><span class="item-title">Word Cloud</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Real Case:</strong> Customer Feedback Analysis.</p>
 <p><strong>Interview Answer:</strong> "Word Clouds highlight frequently occurring terms from customer reviews or survey responses."</p>
 </div></div>
 </div><div class="item question-item" data-question="viz-50">
-<button class="item-head"><span class="idx">50</span><span class="item-title">Heatmap Matrix (Finance Control Tower Example)</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<button class="item-head"><span class="idx">47</span><span class="item-title">Heatmap Matrix (Finance Control Tower Example)</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Real Case:</strong> Region vs Department Budget Variance Risk.</p>
 <p><strong>Interview Answer:</strong> "I used a heatmap matrix to identify high-risk budget variance areas by highlighting over-budget and under-budget patterns across regions and departments on the SAR dashboard."</p>
+</div></div>
+</div><div class="item question-item" data-question="viz-37">
+<button class="item-head"><span class="idx">48</span><span class="item-title">Q&A</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Real Case:</strong> Self-Service Reporting.</p>
+<p><strong>Interview Answer:</strong> "Q&A lets users ask questions in natural language and automatically generates visualizations."</p>
+</div></div>
+</div><div class="item question-item" data-question="viz-39">
+<button class="item-head"><span class="idx">49</span><span class="item-title">Python Visual</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Real Case:</strong> Statistical Analysis.</p>
+<p><strong>Interview Answer:</strong> "Python Visuals enable advanced analytics and machine learning within Power BI."</p>
+</div></div>
+</div><div class="item question-item" data-question="viz-40">
+<button class="item-head"><span class="idx">50</span><span class="item-title">R Visual</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Real Case:</strong> Predictive Modeling.</p>
+<p><strong>Interview Answer:</strong> "R Visuals support advanced statistical analysis and custom visualizations."</p>
 </div></div>
 </div><div class="item question-item" data-question="viz-tip"><button class="item-head"><span class="idx">51</span><span class="item-title">Interview Tip: "Which visuals did you use most in your project?"</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><p><strong>Answer:</strong> "The visuals I used most were Cards, KPI, Gauge, Line Chart, Clustered Column Chart, Matrix, Slicer, Waterfall, Treemap, Decomposition Tree, and Sankey Diagram. These helped monitor spend, budget variance, YoY trends, and regional performance on the SAR dashboard."</p></div></div></div></div></div></div><div class="item topic-item" data-index="viz-questions"><button class="item-head"><span class="idx">02</span><span class="item-title">Questions on Visualization</span><span class="tag">16 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="viz-qna-1">
 <button class="item-head"><span class="idx">01</span><span class="item-title">What are the best practices for creating Power BI reports/dashboards in terms of UI and data modeling?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
