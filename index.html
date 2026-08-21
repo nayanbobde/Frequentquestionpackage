@@ -537,6 +537,16 @@
 <p>In this project, I was responsible for SQL-based data preparation, Power BI dashboard development, fiscal year calculations, budget versus actual analysis, multi-currency reporting, Dynamic Row-Level Security (RLS), and creating DAX measures for Actuals, Budget YTD, Prior Year, and Variance Analysis.</p>
 <p>Throughout my experience, I have been involved in the complete report development lifecycle, including requirement gathering, stakeholder discussions, data analysis, data modeling, dashboard development, testing, UAT support, deployment, and production support.</p>
 <p>Overall, my role has been to transform raw business data into meaningful insights and interactive dashboards that enable stakeholders to make data-driven business decisions.</p>
+<h3>Project Story</h3>
+<p><strong>Project kickoff → Problem → What I did → Result</strong></p>
+<p>One of the projects I'm most proud of was the Global Direct SAR (Spend Analysis Report) Dashboard for the Finance Leadership team. The goal was to provide a single dashboard to track company spending across regions, departments, and cost categories.</p>
+<p><strong>Problem:</strong> There were two main challenges — the company followed a fiscal year from August to July, so normal YTD calculations would not work, and data came from multiple countries and currencies, requiring consistent currency conversion.</p>
+<p><strong>What I did:</strong> I implemented currency conversion logic in SQL views using exchange rates provided by the finance team. In Power BI, I created a Fiscal Calendar and developed DAX measures for Fiscal YTD, Budget YTD, and Prior Year Comparison. I also implemented Dynamic RLS using <code>USERPRINCIPALNAME()</code> so users could only see data relevant to their role.</p>
+<p><strong>Result:</strong> The finance team moved away from manual Excel reconciliation and started using a trusted dashboard for financial reporting and decision-making.</p>
+<h3>Biggest Challenge — Revenue Dashboard Issue</h3>
+<p>One of the biggest challenges I faced was in an existing Revenue Dashboard. The summary revenue numbers were correct, but when users drilled down to Product Group level, the numbers did not match the source system. The finance team was using these numbers for margin analysis and business decisions, so accuracy was critical.</p>
+<p>I analyzed the data model, relationships, and DAX measures, and found that some relationships were incorrect and a few DAX measures were not handling filter context properly. I redesigned the model using Star Schema principles, fixed the relationships, and updated the DAX measures. I validated the results with finance users and compared the dashboard numbers against source data until everything matched.</p>
+<p>The business regained confidence in the dashboard and no longer needed manual Excel validation, improving reporting efficiency.</p>
 </div>
 </div>
 </div>
