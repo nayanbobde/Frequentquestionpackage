@@ -11346,159 +11346,7 @@ FROM CTE</code></pre>
 <p><strong>Real-life case:</strong> I use <code>COUNT(*)</code> when I need a raw row count for validation, and <code>COUNT(column)</code> specifically when I need to know how many rows actually have a value in that field.</p>
 </div></div>
 </div></div></div>
-</div>
-<div class="item topic-item" data-index="senior-2">
-<button class="item-head"><span class="idx">02</span><span class="item-title">FIRST_VALUE() &amp; LAST_VALUE() Window Functions</span><span class="tag">2 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="senior-sql-2-19">
-<button class="item-head"><span class="idx">19</span><span class="item-title">What does <code>FIRST_VALUE()</code> return?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> <code>FIRST_VALUE()</code> returns the first value in a window per the <code>PARTITION BY</code> and <code>ORDER BY</code> clauses, which is useful for finding an initial event per group.</p>
-<p><strong>Query:</strong></p>
-<pre><code class="language-sql">SELECT
-    CustomerID,
-    OrderDate,
-    FIRST_VALUE(OrderDate) OVER (
-        PARTITION BY CustomerID
-        ORDER BY OrderDate
-    ) AS FirstPurchase
-FROM Orders;</code></pre>
-<p><strong>Real-life case:</strong> I'd use this to find each customer's very first purchase date for a customer-journey or cohort analysis.</p>
-<h4>Related Questions</h4>
-<div class="item question-item" data-question="rel-senior-sql-2-19-1">
-<button class="item-head"><span class="idx">✓</span><span class="item-title">Find the first and last purchase date for each customer.</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><em>Because this solves the same problem with an alternate technique — MIN()/MAX() with GROUP BY instead of FIRST_VALUE()/LAST_VALUE() window functions.</em></p>
-<p><strong>Say:</strong></p>
-<p>"I'll use MIN() for the first purchase and MAX() for the last purchase."</p>
-<pre><code class="language-sql">SELECT CustomerID,
-       MIN(PurchaseDate) AS FirstPurchase,
-       MAX(PurchaseDate) AS LastPurchase
-FROM Orders
-GROUP BY CustomerID;</code></pre>
-</div></div>
-</div>
-</div></div>
-</div><div class="item question-item" data-question="senior-sql-2-20">
-<button class="item-head"><span class="idx">20</span><span class="item-title">What does <code>LAST_VALUE()</code> return, and why does it need a frame clause?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> <code>LAST_VALUE()</code> returns the last value in the window, but without an explicit <code>ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING</code> frame it only looks at rows up to the current row, which usually gives the wrong answer.</p>
-<p><strong>Query:</strong></p>
-<pre><code class="language-sql">SELECT
-    CustomerID,
-    OrderDate,
-    LAST_VALUE(OrderDate) OVER (
-        PARTITION BY CustomerID
-        ORDER BY OrderDate
-        ROWS BETWEEN UNBOUNDED PRECEDING
-        AND UNBOUNDED FOLLOWING
-    ) AS LastPurchase
-FROM Orders;</code></pre>
-<p><strong>Real-life case:</strong> I always add the explicit frame when using <code>LAST_VALUE()</code> to find each customer's most recent purchase — leaving it out is one of the most common SQL interview traps.</p>
-<h4>Related Questions</h4>
-<div class="item question-item" data-question="rel-senior-sql-2-20-1">
-<button class="item-head"><span class="idx">✓</span><span class="item-title">Find first and last transaction within a date range.</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><em>Because this solves the same last-value problem with the simpler MIN()/MAX() technique — no frame-clause pitfall to worry about.</em></p>
-<p><strong>Say:</strong></p>
-<p>"I'll filter the required date range and then use MIN() and MAX()."</p>
-<pre><code class="language-sql">SELECT CustomerID,
-       MIN(TransactionDate) AS FirstTransaction,
-       MAX(TransactionDate) AS LastTransaction
-FROM Transactions
-WHERE TransactionDate BETWEEN '2026-01-01' AND '2026-06-30'
-GROUP BY CustomerID;</code></pre>
-</div></div>
-</div>
-</div></div>
-</div></div></div></div><div class="item topic-item" data-index="senior-3">
-<button class="item-head"><span class="idx">03</span><span class="item-title">CTE vs Subquery vs Temp Table &amp; Recursive CTEs</span><span class="tag">8 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="senior-sql-3-21">
-<button class="item-head"><span class="idx">21</span><span class="item-title">What is a CTE?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> A CTE is a temporary named result set that exists for the duration of one SQL statement and makes complex logic easier to organize.</p>
-<p><strong>Query:</strong></p>
-<pre><code class="language-sql">WITH SalesSummary AS (
-    SELECT CustomerID, SUM(OrderValue) AS TotalSales
-    FROM Orders
-    GROUP BY CustomerID
-)
-SELECT *
-FROM SalesSummary;</code></pre>
-<p><strong>Real-life case:</strong> Build customer sales first, rank them in the next step, and filter the final result.</p></div></div>
-</div><div class="item question-item" data-question="senior-sql-3-22">
-<button class="item-head"><span class="idx">22</span><span class="item-title">What are the advantages of a CTE?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> A CTE improves readability, breaks complex logic into steps, supports window functions and recursive queries, and is easier to maintain.</p>
-<p><strong>Real-life case:</strong> Separate aggregation, ranking and filtering instead of writing one large nested query.</p>
-<h4>Related Questions</h4>
-<div class="item question-item" data-question="rel-senior-sql-3-22-1">
-<button class="item-head"><span class="idx">✓</span><span class="item-title">Write a CTE-based query for a multi-step business problem.</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><em>Because this shows the readability advantage in action — breaking complex logic into a clean, named step.</em></p>
-<p><strong>Say:</strong></p>
-<p>"I'll use a CTE to break the complex logic into readable steps."</p>
-<pre><code class="language-sql">WITH SalesSummary AS (
-    SELECT CustomerID,
-           SUM(Amount) AS TotalSales
-    FROM Sales
-    GROUP BY CustomerID
-)
-SELECT CustomerID, TotalSales
-FROM SalesSummary
-WHERE TotalSales &gt; 10000;</code></pre>
-</div></div>
-</div>
-</div></div>
-</div><div class="item question-item" data-question="senior-sql-3-23">
-<button class="item-head"><span class="idx">23</span><span class="item-title">What is a recursive CTE?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> A recursive CTE references itself and is used for hierarchical data such as employee-manager relationships.</p>
-<p><strong>Query:</strong></p>
-<pre><code class="language-sql">WITH EmployeeHierarchy AS (
-    SELECT EmployeeID, EmployeeName, ManagerID
-    FROM Employees
-    WHERE ManagerID IS NULL
-
-    UNION ALL
-
-    SELECT e.EmployeeID, e.EmployeeName, e.ManagerID
-    FROM Employees e
-    INNER JOIN EmployeeHierarchy h
-        ON e.ManagerID = h.EmployeeID
-)
-SELECT *
-FROM EmployeeHierarchy;</code></pre>
-<p><strong>Real-life case:</strong> Build an organizational hierarchy from manager to employee.</p></div></div>
-</div><div class="item question-item" data-question="senior-sql-3-24">
-<button class="item-head"><span class="idx">24</span><span class="item-title">What is a subquery?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> A subquery is a query inside another query that provides an intermediate result to the outer query.</p>
-<p><strong>Query:</strong></p>
-<pre><code class="language-sql">SELECT *
-FROM Employees
-WHERE Salary &gt; (
-    SELECT AVG(Salary)
-    FROM Employees
-);</code></pre>
-<p><strong>Real-life case:</strong> Find employees whose salary is above the company average.</p></div></div>
-</div><div class="item question-item" data-question="senior-sql-3-25">
-<button class="item-head"><span class="idx">25</span><span class="item-title">Difference between CTE and subquery?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> I use a subquery for simple nested logic and a CTE when the query has multiple logical steps and needs better readability; neither is inherently faster.</p>
-<p><strong>Real-life case:</strong> Use a CTE for multi-step sales ranking and a subquery for a simple average comparison.</p></div></div>
-</div><div class="item question-item" data-question="senior-sql-3-26">
-<button class="item-head"><span class="idx">26</span><span class="item-title">Difference between CTE and temporary table?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> A CTE is query-scoped, while a temporary table can store intermediate data, be indexed and reused across multiple statements.</p>
-<p><strong>Real-life case:</strong> Use a CTE for one reporting query; use a temp table when a large intermediate result is reused several times.</p></div></div>
-</div><div class="item question-item" data-question="senior-sql-3-27">
-<button class="item-head"><span class="idx">27</span><span class="item-title">Which is faster, CTE or subquery?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> Neither is universally faster; I would compare the execution plans and optimize based on the query, data volume and indexes.</p>
-<p><strong>Real-life case:</strong> If two equivalent queries perform differently, I would inspect the execution plan rather than assume the CTE is faster.</p></div></div>
-</div><div class="item question-item" data-question="senior-sql-3-28">
-<button class="item-head"><span class="idx">28</span><span class="item-title">What is a correlated subquery?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> A correlated subquery references a column from the outer query, so its result depends on the current outer row.</p>
-<p><strong>Query:</strong></p>
-<pre><code class="language-sql">SELECT e.EmployeeName, e.Salary, e.DepartmentID
-FROM Employees e
-WHERE e.Salary &gt; (
-    SELECT AVG(e2.Salary)
-    FROM Employees e2
-    WHERE e2.DepartmentID = e.DepartmentID
-);</code></pre>
-<p><strong>Real-life case:</strong> Find employees earning above the average salary of their own department.</p></div></div>
-</div></div></div>
-</div>
-<div class="item topic-item" data-index="senior-4">
+</div><div class="item topic-item" data-index="senior-4">
 <button class="item-head"><span class="idx">04</span><span class="item-title">INNER, LEFT, RIGHT, FULL OUTER, CROSS &amp; SELF JOIN Explained</span><span class="tag">14 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="senior-sql-4-29">
 <button class="item-head"><span class="idx">29</span><span class="item-title">What is an <code>INNER JOIN</code>?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
@@ -11670,56 +11518,80 @@ WHERE b.ID IS NULL;</code></pre>
 </div>
 </div></div>
 </div></div></div>
-</div><div class="item topic-item" data-index="senior-5">
-<button class="item-head"><span class="idx">05</span><span class="item-title">UNION vs UNION ALL &amp; LIKE Wildcard Patterns</span><span class="tag">4 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="senior-sql-5-40">
-<button class="item-head"><span class="idx">40</span><span class="item-title">Difference between <code>UNION</code> and <code>UNION ALL</code>?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> <code>UNION</code> combines result sets and removes duplicate rows, while <code>UNION ALL</code> combines them without removing duplicates and generally has less overhead.</p>
+</div><div class="item topic-item" data-index="senior-3">
+<button class="item-head"><span class="idx">03</span><span class="item-title">CTE vs Subquery vs Temp Table</span><span class="tag">7 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="senior-sql-3-21">
+<button class="item-head"><span class="idx">21</span><span class="item-title">What is a CTE?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> A CTE is a temporary named result set that exists for the duration of one SQL statement and makes complex logic easier to organize.</p>
 <p><strong>Query:</strong></p>
-<pre><code class="language-sql">SELECT customer_id FROM Customers_2025
-UNION
-SELECT customer_id FROM Customers_2026;
-
-SELECT customer_id FROM Customers_2025
-UNION ALL
-SELECT customer_id FROM Customers_2026;</code></pre>
-<p><strong>Real-life case:</strong> Use <code>UNION</code> for a distinct customer list and <code>UNION ALL</code> when every transaction row must be preserved.</p></div></div>
-</div><div class="item question-item" data-question="senior-sql-5-41">
-<button class="item-head"><span class="idx">41</span><span class="item-title">Which is generally faster, <code>UNION</code> or <code>UNION ALL</code>?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> <code>UNION ALL</code> generally performs better because it does not need duplicate elimination.</p>
-<p><strong>Real-life case:</strong> Combine monthly transaction tables with <code>UNION ALL</code> when duplicate removal is not required.</p></div></div>
-</div><div class="item question-item" data-question="senior-sql-5-42">
-<button class="item-head"><span class="idx">42</span><span class="item-title">What is <code>LIKE</code>?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> <code>LIKE</code> performs pattern matching on string values.</p>
-<p><strong>Query:</strong></p>
-<pre><code class="language-sql">SELECT *
-FROM Customers
-WHERE customer_name LIKE 'A%';</code></pre>
-<p><strong>Real-life case:</strong> Find customers whose names begin with a specific character.</p></div></div>
-</div><div class="item question-item" data-question="senior-sql-5-43">
-<button class="item-head"><span class="idx">43</span><span class="item-title">What do <code>%</code> and <code>_</code> mean in <code>LIKE</code>?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> <code>%</code> matches zero or more characters, while <code>_</code> matches exactly one character.</p>
-<p><strong>Query:</strong></p>
-<pre><code class="language-sql">SELECT *
-FROM Customers
-WHERE name LIKE 'A%';   -- starts with A
-
+<pre><code class="language-sql">WITH SalesSummary AS (
+    SELECT CustomerID, SUM(OrderValue) AS TotalSales
+    FROM Orders
+    GROUP BY CustomerID
+)
 SELECT *
-FROM Customers
-WHERE name LIKE '%A';   -- ends with A
-
-SELECT *
-FROM Customers
-WHERE name LIKE '%an%'; -- contains an
-
-SELECT *
-FROM Customers
-WHERE name LIKE 'A_';   -- A + exactly one character</code></pre>
-<p><strong>Real-life case:</strong> Search customer/product names using flexible text patterns.</p></div></div>
-</div></div></div>
+FROM SalesSummary;</code></pre>
+<p><strong>Real-life case:</strong> Build customer sales first, rank them in the next step, and filter the final result.</p></div></div>
+</div><div class="item question-item" data-question="senior-sql-3-22">
+<button class="item-head"><span class="idx">22</span><span class="item-title">What are the advantages of a CTE?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> A CTE improves readability, breaks complex logic into steps, supports window functions and recursive queries, and is easier to maintain.</p>
+<p><strong>Real-life case:</strong> Separate aggregation, ranking and filtering instead of writing one large nested query.</p>
+<h4>Related Questions</h4>
+<div class="item question-item" data-question="rel-senior-sql-3-22-1">
+<button class="item-head"><span class="idx">✓</span><span class="item-title">Write a CTE-based query for a multi-step business problem.</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><em>Because this shows the readability advantage in action — breaking complex logic into a clean, named step.</em></p>
+<p><strong>Say:</strong></p>
+<p>"I'll use a CTE to break the complex logic into readable steps."</p>
+<pre><code class="language-sql">WITH SalesSummary AS (
+    SELECT CustomerID,
+           SUM(Amount) AS TotalSales
+    FROM Sales
+    GROUP BY CustomerID
+)
+SELECT CustomerID, TotalSales
+FROM SalesSummary
+WHERE TotalSales &gt; 10000;</code></pre>
+</div></div>
 </div>
-<div class="item topic-item" data-index="senior-6">
-<button class="item-head"><span class="idx">06</span><span class="item-title">WHERE vs HAVING, Execution Order, TOP &amp; OFFSET-FETCH</span><span class="tag">6 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+</div></div>
+</div><div class="item question-item" data-question="senior-sql-3-24">
+<button class="item-head"><span class="idx">24</span><span class="item-title">What is a subquery?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> A subquery is a query inside another query that provides an intermediate result to the outer query.</p>
+<p><strong>Query:</strong></p>
+<pre><code class="language-sql">SELECT *
+FROM Employees
+WHERE Salary &gt; (
+    SELECT AVG(Salary)
+    FROM Employees
+);</code></pre>
+<p><strong>Real-life case:</strong> Find employees whose salary is above the company average.</p></div></div>
+</div><div class="item question-item" data-question="senior-sql-3-25">
+<button class="item-head"><span class="idx">25</span><span class="item-title">Difference between CTE and subquery?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> I use a subquery for simple nested logic and a CTE when the query has multiple logical steps and needs better readability; neither is inherently faster.</p>
+<p><strong>Real-life case:</strong> Use a CTE for multi-step sales ranking and a subquery for a simple average comparison.</p></div></div>
+</div><div class="item question-item" data-question="senior-sql-3-26">
+<button class="item-head"><span class="idx">26</span><span class="item-title">Difference between CTE and temporary table?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> A CTE is query-scoped, while a temporary table can store intermediate data, be indexed and reused across multiple statements.</p>
+<p><strong>Real-life case:</strong> Use a CTE for one reporting query; use a temp table when a large intermediate result is reused several times.</p></div></div>
+</div><div class="item question-item" data-question="senior-sql-3-27">
+<button class="item-head"><span class="idx">27</span><span class="item-title">Which is faster, CTE or subquery?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> Neither is universally faster; I would compare the execution plans and optimize based on the query, data volume and indexes.</p>
+<p><strong>Real-life case:</strong> If two equivalent queries perform differently, I would inspect the execution plan rather than assume the CTE is faster.</p></div></div>
+</div><div class="item question-item" data-question="senior-sql-3-28">
+<button class="item-head"><span class="idx">28</span><span class="item-title">What is a correlated subquery?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> A correlated subquery references a column from the outer query, so its result depends on the current outer row.</p>
+<p><strong>Query:</strong></p>
+<pre><code class="language-sql">SELECT e.EmployeeName, e.Salary, e.DepartmentID
+FROM Employees e
+WHERE e.Salary &gt; (
+    SELECT AVG(e2.Salary)
+    FROM Employees e2
+    WHERE e2.DepartmentID = e.DepartmentID
+);</code></pre>
+<p><strong>Real-life case:</strong> Find employees earning above the average salary of their own department.</p></div></div>
+</div></div></div>
+</div><div class="item topic-item" data-index="senior-6">
+<button class="item-head"><span class="idx">06</span><span class="item-title">WHERE vs HAVING, Execution Order</span><span class="tag">5 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="senior-sql-6-44">
 <button class="item-head"><span class="idx">44</span><span class="item-title">Difference between <code>WHERE</code> and <code>HAVING</code>?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> <code>WHERE</code> filters individual rows before aggregation, while <code>HAVING</code> filters groups after aggregation.</p>
@@ -11757,14 +11629,6 @@ HAVING SUM(Salary) &gt; 100000;</code></pre>
 <button class="item-head"><span class="idx">46</span><span class="item-title">What is the logical order of SQL execution?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> The logical order is <code>FROM/JOIN → WHERE → GROUP BY → HAVING → SELECT → DISTINCT → ORDER BY → OFFSET-FETCH</code>; <code>TOP</code> is part of the SELECT operation in SQL Server.</p>
 <p><strong>Real-life case:</strong> Understanding the order explains why a <code>WHERE</code> filter happens before a grouped sales calculation.</p></div></div>
-</div><div class="item question-item" data-question="senior-sql-6-47">
-<button class="item-head"><span class="idx">47</span><span class="item-title">What are <code>TOP</code> and <code>OFFSET-FETCH</code> used for?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> <code>TOP</code> returns a specified number of rows in SQL Server, while <code>OFFSET-FETCH</code> skips rows and returns the next requested rows.</p>
-<p><strong>Query:</strong></p>
-<pre><code class="language-sql">SELECT TOP 3 *
-FROM Employees
-ORDER BY Salary DESC;</code></pre>
-<p><strong>Real-life case:</strong> Return the top three products by sales or paginate a result set.</p></div></div>
 </div><div class="item question-item" data-question="senior-sql-6-254">
 <button class="item-head"><span class="idx">254</span><span class="item-title">In what situations would you use the GROUP BY clause?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> Whenever I need an aggregated result per category — total spend per region, count of orders per customer, average sales per product — <code>GROUP BY</code> collapses detail rows into one summary row per group so aggregate functions like <code>SUM</code>/<code>COUNT</code>/<code>AVG</code> can be applied.</p>
@@ -11786,431 +11650,7 @@ HAVING SUM(salary) > 10000000;</code></pre>
 <p><strong>Key point:</strong> WHERE filters rows before grouping, while HAVING filters groups after aggregation.</p>
 </div></div>
 </div></div></div>
-</div>
-<div class="item topic-item" data-index="senior-7">
-<button class="item-head"><span class="idx">07</span><span class="item-title">Primary, Foreign, Candidate, Composite &amp; Surrogate Keys</span><span class="tag">9 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="senior-sql-7-48">
-<button class="item-head"><span class="idx">48</span><span class="item-title">What is a Primary Key?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> A Primary Key uniquely identifies each row in a table and cannot contain duplicate or <code>NULL</code> values.</p>
-<p><strong>Query:</strong></p>
-<pre><code class="language-sql">CREATE TABLE Customers (
-    customer_id INT PRIMARY KEY,
-    customer_name VARCHAR(100)
-);</code></pre>
-<p><strong>Real-life case:</strong> <code>CustomerID</code> uniquely identifies each customer.</p></div></div>
-</div><div class="item question-item" data-question="senior-sql-7-49">
-<button class="item-head"><span class="idx">49</span><span class="item-title">What is a Foreign Key?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> A Foreign Key creates a relationship by referencing a Primary Key or unique key in another table.</p>
-<p><strong>Query:</strong></p>
-<pre><code class="language-sql">CREATE TABLE Orders (
-    order_id INT PRIMARY KEY,
-    customer_id INT,
-    FOREIGN KEY (customer_id)
-        REFERENCES Customers(customer_id)
-);</code></pre>
-<p><strong>Real-life case:</strong> <code>Orders.CustomerID</code> connects each order to the customer table.</p></div></div>
-</div><div class="item question-item" data-question="senior-sql-7-50">
-<button class="item-head"><span class="idx">50</span><span class="item-title">Difference between Primary Key and Foreign Key?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> The Primary Key identifies a row in its own table, while the Foreign Key connects a row to another table.</p>
-<p><strong>Real-life case:</strong> <code>CustomerID</code> is the PK in Customers and the FK in Orders.</p></div></div>
-</div><div class="item question-item" data-question="senior-sql-7-51">
-<button class="item-head"><span class="idx">51</span><span class="item-title">What is a Candidate Key?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> A Candidate Key is a column or combination of columns that can uniquely identify a row and is eligible to become the Primary Key.</p>
-<p><strong>Real-life case:</strong> If both EmployeeID and Email are unique, both can be candidate keys.</p></div></div>
-</div><div class="item question-item" data-question="senior-sql-7-52">
-<button class="item-head"><span class="idx">52</span><span class="item-title">What is an Alternate Key?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> An Alternate Key is a candidate key that was not selected as the Primary Key.</p>
-<p><strong>Real-life case:</strong> EmployeeID is the PK while a unique email can be an alternate key.</p></div></div>
-</div><div class="item question-item" data-question="senior-sql-7-53">
-<button class="item-head"><span class="idx">53</span><span class="item-title">What is a Composite Key?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> A Composite Key uses two or more columns together to uniquely identify a row.</p>
-<p><strong>Query:</strong></p>
-<pre><code class="language-sql">CREATE TABLE OrderDetails (
-    order_id INT,
-    product_id INT,
-    quantity INT,
-    PRIMARY KEY (order_id, product_id)
-);</code></pre>
-<p><strong>Real-life case:</strong> In an order-detail table, <code>OrderID + ProductID</code> can uniquely identify a product line.</p></div></div>
-</div><div class="item question-item" data-question="senior-sql-7-54">
-<button class="item-head"><span class="idx">54</span><span class="item-title">What is a Surrogate Key?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> A Surrogate Key is a system-generated, meaningless unique identifier commonly used in data warehouses and dimension tables.</p>
-<p><strong>Real-life case:</strong> Use <code>product_sk</code> as the primary key of a Product dimension while retaining the business <code>product_id</code>.</p></div></div>
-</div><div class="item question-item" data-question="senior-sql-7-55">
-<button class="item-head"><span class="idx">55</span><span class="item-title">How do you decide between Primary, Foreign and Unique Key?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> If it uniquely identifies its own row use PK; if it references another table use FK; if it only needs uniqueness use a Unique Key.</p>
-<p><strong>Real-life case:</strong> CustomerID = PK in Customers, CustomerID = FK in Orders, Email = UNIQUE.</p></div></div>
-</div><div class="item question-item" data-question="senior-sql-7-263">
-<button class="item-head"><span class="idx">263</span><span class="item-title">Primary Key vs Unique Key vs Foreign Key — differences in NULLs, duplicates, and indexing?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> Primary Key: no NULLs, no duplicates, one per table, creates a clustered index by default. Unique Key: no duplicates but allows one NULL, non-clustered index by default. Foreign Key: enforces referential integrity to a parent table's key, and itself allows duplicates and NULLs.</p>
-<p><strong>Real-life case:</strong> On the SAR model I used a surrogate key as the PK on each dimension table (clustered), a Unique Key on the natural business code where one existed (to catch accidental duplicates without blocking a legitimate blank), and FKs on the fact table linking back to each dimension.</p>
-</div></div>
-</div></div></div>
-</div>
-<div class="item topic-item" data-index="senior-8">
-<button class="item-head"><span class="idx">08</span><span class="item-title">Views, SQL/DAX Variables, Stored Procedures &amp; Triggers</span><span class="tag">15 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="senior-sql-8-56">
-<button class="item-head"><span class="idx">56</span><span class="item-title">What is a View?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> A View is a stored SQL query that presents its result as a virtual table; a normal View does not physically store the result set.</p>
-<p><strong>Query:</strong></p>
-<pre><code class="language-sql">CREATE VIEW vw_customer_sales AS
-SELECT CustomerID,
-       SUM(OrderValue) AS TotalSales
-FROM Orders
-GROUP BY CustomerID;</code></pre>
-<p><strong>Real-life case:</strong> The source specifically describes SQL Views such as <code>vw_kpi_master</code> being used to standardize KPI logic for Power BI dashboards.</p></div></div>
-</div><div class="item question-item" data-question="senior-sql-8-57">
-<button class="item-head"><span class="idx">57</span><span class="item-title">What are limitations of a View?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> A normal View does not accept parameters, complex views can become difficult to maintain, and complex underlying queries can affect performance.</p>
-<p><strong>Real-life case:</strong> If a Power BI report needs parameterized database logic, consider a stored procedure, parameterized query or table-valued function rather than a normal View.</p></div></div>
-</div><div class="item question-item" data-question="senior-sql-8-58">
-<button class="item-head"><span class="idx">58</span><span class="item-title">Can you use variables inside a normal SQL Server View?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> No; a standard SQL Server View cannot declare local variables.</p>
-<p>*<em><strong>Example of invalid View logic:</strong></em>*</p>
-<pre><code class="language-sql">DECLARE @StartDate DATE;</code></pre>
-<p><strong>Real-life case:</strong> Use another database object or parameterized approach when the reporting logic needs runtime parameters.</p></div></div>
-</div><div class="item question-item" data-question="senior-sql-8-59">
-<button class="item-head"><span class="idx">59</span><span class="item-title">What is a SQL variable?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> A SQL variable is temporary named storage used during execution of a batch, procedure or script.</p>
-<p><strong>Query:</strong></p>
-<pre><code class="language-sql">DECLARE @TotalSales DECIMAL(18,2);
-SET @TotalSales = 100000;
-SELECT @TotalSales;</code></pre>
-<p><strong>Real-life case:</strong> Store an intermediate threshold or calculation while running a SQL script.</p></div></div>
-</div><div class="item question-item" data-question="senior-sql-8-60">
-<button class="item-head"><span class="idx">60</span><span class="item-title">What is a DAX variable?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> In DAX, <code>VAR</code> stores an expression result so it can be reused and makes a measure easier to read.</p>
-<p><strong>Query:</strong></p>
-<pre><code class="language-dax">Sales Growth % =
-VAR CurrentSales = [Total Sales]
-VAR PreviousSales = [Previous Year Sales]
-RETURN
-    DIVIDE(CurrentSales - PreviousSales, PreviousSales)</code></pre>
-<p><strong>Real-life case:</strong> Reuse current and previous sales values inside a Power BI measure.</p></div></div>
-</div><div class="item question-item" data-question="senior-sql-8-61">
-<button class="item-head"><span class="idx">61</span><span class="item-title">Difference between Stored Procedure and Function?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> A Stored Procedure performs database operations, while a Function returns a reusable value or table.</p>
-<p><strong>Real-life case:</strong> A procedure can handle a multi-step database operation; a function is suited to reusable calculation logic.</p></div></div>
-</div><div class="item question-item" data-question="senior-sql-8-62">
-<button class="item-head"><span class="idx">62</span><span class="item-title">Have you worked with Stored Procedures?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> "My primary SQL work was queries, analysis and SQL Views for Power BI reporting; Stored Procedures were not my primary development responsibility."</p>
-<p><strong>Real-life case:</strong> The source specifically positions the project work around SQL Views such as <code>vw_kpi_master</code>, so avoid claiming stored-procedure development as a primary responsibility.</p></div></div>
-</div><div class="item question-item" data-question="senior-sql-8-63">
-<button class="item-head"><span class="idx">63</span><span class="item-title">Have you worked with user-defined Functions?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> "I have used aggregate and window functions extensively, but creating user-defined SQL Functions was not a primary responsibility; my focus was SQL queries, Views and Power BI reporting."</p>
-<p><strong>Real-life case:</strong> Mention <code>SUM</code>, <code>AVG</code>, <code>COUNT</code>, <code>ROW_NUMBER</code>, <code>RANK</code>, <code>DENSE_RANK</code>, <code>LAG</code> and <code>LEAD</code> as functions used in analysis.</p></div></div>
-</div><div class="item question-item" data-question="senior-sql-8-64">
-<button class="item-head"><span class="idx">64</span><span class="item-title">What is a Trigger?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> A Trigger is database logic that automatically fires when an event such as <code>INSERT</code>, <code>UPDATE</code> or <code>DELETE</code> occurs.</p>
-<p><strong>Query:</strong></p>
-<pre><code class="language-sql">CREATE TRIGGER trg_Employee_Update
-ON Employees
-AFTER UPDATE
-AS
-BEGIN
-    INSERT INTO Employee_Audit
-    (
-        EmployeeID,
-        EmployeeName,
-        UpdatedDate
-    )
-    SELECT
-        EmployeeID,
-        EmployeeName,
-        GETDATE()
-    FROM inserted;
-END;</code></pre>
-<p><strong>Real-life case:</strong> Automatically create an audit record whenever an employee record is updated.</p></div></div>
-</div><div class="item question-item" data-question="senior-sql-8-65">
-<button class="item-head"><span class="idx">65</span><span class="item-title">What's the difference between a Stored Procedure and a View?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> A View is a saved <code>SELECT</code> query that behaves like a virtual table with no parameters, while a Stored Procedure is a precompiled program that can take parameters and contain logic, loops, and conditions.</p>
-<p><strong>Query:</strong></p>
-<pre><code class="language-sql">CREATE VIEW vwSales AS
-SELECT * FROM Sales;
-
-CREATE PROCEDURE GetSales
-AS
-BEGIN
-    SELECT * FROM Sales;
-END</code></pre>
-<p><strong>Real-life case:</strong> Power BI reads from a View for reporting, while nightly ETL jobs run through Stored Procedures for the actual data processing logic.</p></div></div>
-</div><div class="item question-item" data-question="senior-sql-8-66">
-<button class="item-head"><span class="idx">66</span><span class="item-title">What are user-defined functions in SQL?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> A User-Defined Function is a reusable piece of SQL logic that returns either a scalar value or a table, which you can call inside other queries the same way you'd call a built-in function like <code>SUM()</code> or <code>GETDATE()</code>.</p>
-<p><strong>Query:</strong></p>
-<pre><code class="language-sql">CREATE FUNCTION dbo.fn_GetFiscalYear (@OrderDate DATE)
-RETURNS INT
-AS
-BEGIN
-    RETURN YEAR(DATEADD(MONTH, 3, @OrderDate))
-END</code></pre>
-<p><strong>Real-life case:</strong> A scalar function like this could standardize fiscal-year logic across multiple queries instead of repeating the same CASE/DATEADD expression everywhere.</p></div></div>
-</div><div class="item question-item" data-question="senior-sql-8-67">
-<button class="item-head"><span class="idx">67</span><span class="item-title">What are Materialized Views, and what's the trigger point for using one versus a regular View or Stored Procedure?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> SQL Server doesn't have a Materialized View in the Oracle/PostgreSQL sense — the closest equivalent is an Indexed View, which physically stores the result set and updates it as underlying data changes.</p>
-<p><strong>Real-life case:</strong> You'd reach for an Indexed View when a query is run very frequently and the underlying joins/aggregations are expensive, and a regular View's on-the-fly execution is too slow — I haven't used Indexed Views directly in my project, since my views like <code>vw_kpi_master</code> were kept as standard views.</p></div></div>
-</div><div class="item question-item" data-question="senior-sql-8-68">
-<button class="item-head"><span class="idx">68</span><span class="item-title">Do you have experience improving SQL query performance, like taking a query from 10 minutes to 1 minute?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> My optimization work has mainly been at the query and view level — adding appropriate <code>WHERE</code> filters earlier, avoiding unnecessary <code>SELECT *</code>, and restructuring joins so indexed columns are used for the join key, rather than a single dramatic before/after story on a specific query.</p>
-<p><strong>Real-life case:</strong> General approach: check the execution plan, look for table scans that could become index seeks, and reduce the data volume before joining rather than after.</p></div></div>
-</div><div class="item question-item" data-question="senior-sql-8-255">
-<button class="item-head"><span class="idx">255</span><span class="item-title">Have you handled exceptions in stored procedures — can you give an example?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> My hands-on SQL work centered on queries and views rather than procedural error-handling logic in Stored Procedures. Conceptually, that's done with <code>TRY...CATCH</code> blocks, where the <code>CATCH</code> block can log the error details (using <code>ERROR_MESSAGE()</code>, <code>ERROR_NUMBER()</code>) or roll back a transaction cleanly.</p>
-<p><strong>Query:</strong></p>
-<pre><code class="language-sql">BEGIN TRY
-    UPDATE Accounts SET Balance = Balance - 100 WHERE AccountID = 1;
-    UPDATE Accounts SET Balance = Balance + 100 WHERE AccountID = 2;
-END TRY
-BEGIN CATCH
-    ROLLBACK TRANSACTION;
-    INSERT INTO ErrorLog (Message, ErrorNumber, LoggedAt)
-    VALUES (ERROR_MESSAGE(), ERROR_NUMBER(), GETDATE());
-END CATCH</code></pre>
-<p><strong>Real-life case:</strong> I'd present this concept accurately in an interview without claiming hands-on ownership I don't have.</p></div></div>
-</div><div class="item question-item" data-question="senior-sql-8-256">
-<button class="item-head"><span class="idx">256</span><span class="item-title">If a Stored Procedure with thousands of lines takes 10 minutes to run, what factors would you look at to improve it?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> I'd check the execution plan for expensive operations like table scans, look for missing indexes on join/filter columns, check for excessive use of cursors or row-by-row logic that could be set-based instead, and see if the procedure can be broken into smaller, testable steps to isolate the slow part.</p>
-<p><strong>Real-life case:</strong> With a procedure that large, I'd rather isolate and time each major section first than guess at an optimization — the slowest 10% of the logic is usually responsible for most of the runtime.</p></div></div>
-</div></div></div>
-</div>
-<div class="item topic-item" data-index="senior-9">
-<button class="item-head"><span class="idx">09</span><span class="item-title">Local vs Global Temporary Tables</span><span class="tag">3 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="senior-sql-9-66">
-<button class="item-head"><span class="idx">66</span><span class="item-title">What is a temporary table?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> A temporary table stores intermediate data temporarily and is useful when results must be reused or indexed across multiple steps.</p>
-<p><strong>Query:</strong></p>
-<pre><code class="language-sql">CREATE TABLE #TempSales (
-    CustomerID INT,
-    TotalSales DECIMAL(18,2)
-);</code></pre>
-<p><strong>Real-life case:</strong> Store a large intermediate customer-sales result before joining it to another dataset.</p></div></div>
-</div><div class="item question-item" data-question="senior-sql-9-67">
-<button class="item-head"><span class="idx">67</span><span class="item-title">Difference between local and global temporary tables?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> <code>#Temp</code> is local to the current session/scope, while <code>##Temp</code> can be accessed by multiple sessions.</p>
-<p><strong>Query:</strong></p>
-<pre><code class="language-sql">CREATE TABLE #Sales (...);
-CREATE TABLE ##Sales (...);</code></pre>
-<p><strong>Real-life case:</strong> Use a local temp table for your session-specific analysis; use a global one only when cross-session sharing is required.</p></div></div>
-</div><div class="item question-item" data-question="senior-sql-9-257">
-<button class="item-head"><span class="idx">257</span><span class="item-title">What is the difference between a Table Variable and a Temporary Table?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> A Table Variable is scoped to the current batch, has limited statistics for the query optimizer, and generally suits small datasets; a Temp Table behaves more like a regular table, supports indexes, and the optimizer has better statistics for it, making it a better fit for larger intermediate datasets.</p>
-<p><strong>Real-life case:</strong> I'd reach for a table variable for a small lookup set inside a single batch, but switch to a temp table the moment the intermediate result gets large enough that indexing and accurate row-count estimates start to matter.</p></div></div>
-</div></div></div>
-</div>
-<div class="item topic-item" data-index="senior-10">
-<button class="item-head"><span class="idx">10</span><span class="item-title">Normalization &amp; Denormalization Basics: 1NF, 2NF, 3NF</span><span class="tag">4 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="senior-sql-10-68">
-<button class="item-head"><span class="idx">68</span><span class="item-title">What is Normalization?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> Normalization organizes data into related tables to reduce redundancy and improve data integrity.</p>
-<p><strong>Real-life case:</strong> Instead of repeating customer information on every order row, store customer details once and reference them through CustomerID.</p></div></div>
-</div><div class="item question-item" data-question="senior-sql-10-69">
-<button class="item-head"><span class="idx">69</span><span class="item-title">Why is Normalization important?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> It reduces redundancy, improves consistency and prevents insert, update and delete anomalies.</p>
-<p><strong>Real-life case:</strong> Updating a customer's city in one Customers table is safer than updating the same city repeatedly across thousands of order rows.</p></div></div>
-</div><div class="item question-item" data-question="senior-sql-10-70">
-<button class="item-head"><span class="idx">70</span><span class="item-title">What are 1NF, 2NF and 3NF?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> <code>1NF</code> removes repeating groups and requires atomic values; <code>2NF</code> removes partial dependency on part of a composite key; <code>3NF</code> removes transitive dependency between non-key attributes.</p>
-<p><strong>Real-life case:</strong> Split customer, order and product information into appropriate related tables instead of storing repeated attributes in one large table.</p></div></div>
-</div><div class="item question-item" data-question="senior-sql-10-71">
-<button class="item-head"><span class="idx">71</span><span class="item-title">What is denormalization?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> Denormalization intentionally combines tables to reduce joins and speed up reads, trading some storage and redundancy for faster reporting.</p>
-<p><strong>Real-life case:</strong> Instead of joining Product and Category every time, I'd store CategoryName directly on the Product table for a reporting layer — faster queries, at the cost of extra storage and the risk of redundant data going out of sync.</p></div></div>
-</div></div></div>
-</div>
-<div class="item topic-item" data-index="senior-11">
-<button class="item-head"><span class="idx">11</span><span class="item-title">Clustered vs Non-Clustered Indexes</span><span class="tag">2 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="senior-sql-11-72">
-<button class="item-head"><span class="idx">72</span><span class="item-title">Clustered vs Non-Clustered Index?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> A clustered index organizes table data around the index key and a table can have one, while a non-clustered index is a separate structure and multiple can exist.</p>
-<p><strong>Real-life case:</strong> Use an appropriate clustered index for common range/sequential access and non-clustered indexes for frequently searched columns.</p></div></div>
-</div><div class="item question-item" data-question="senior-sql-11-305">
-<button class="item-head"><span class="idx">305</span><span class="item-title">What is Indexing?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> Indexing means storing table data in a sorted/organized way so that data retrieval (read operations) becomes faster. An index is a database object that speeds up data retrieval by creating a lookup structure on one or more columns. Indexing is the process of creating and using these indexes to improve query performance and reduce full table scans.</p>
-<p><strong>Real-life case:</strong> Think of it like the index section of a book that helps you find a topic quickly — instead of reading every page (a full table scan), you jump straight to the right one.</p></div></div>
-</div></div></div>
-</div>
-<div class="item topic-item" data-index="senior-12">
-<button class="item-head"><span class="idx">12</span><span class="item-title">Execution Plans &amp; Query Performance Tuning</span><span class="tag">1 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="senior-sql-12-73">
-<button class="item-head"><span class="idx">73</span><span class="item-title">What is an execution plan, and what should you look for in it?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> An execution plan shows how SQL Server will actually run a query — the scans, seeks, joins, sorting, and estimated costs — and it's the main tool for diagnosing why a query is slow.</p>
-<p><strong>Real-life case:</strong> I've taken a 30-second query down to about 2 seconds by reading the plan and fixing what it flagged — table scans on large tables, missing indexes, expensive sort operators, and large hash matches were the usual culprits.</p></div></div>
-</div></div></div>
-</div>
-<div class="item topic-item" data-index="senior-13">
-<button class="item-head"><span class="idx">13</span><span class="item-title">ISNULL(), COALESCE(), NULLIF() &amp; CASE Statement</span><span class="tag">5 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="senior-sql-13-74">
-<button class="item-head"><span class="idx">74</span><span class="item-title">Difference between <code>ISNULL()</code>, <code>COALESCE()</code> and <code>NULLIF()</code>?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> <code>ISNULL</code> replaces a NULL, <code>COALESCE</code> returns the first non-NULL expression, and <code>NULLIF</code> returns NULL when two expressions are equal.</p>
-<p><strong>Query:</strong></p>
-<pre><code class="language-sql">SELECT ISNULL(SalesAmount, 0)
-FROM Sales;
-
-SELECT COALESCE(HomePhone, WorkPhone, 'No Phone')
-FROM Customers;
-
-SELECT Sales / NULLIF(Quantity, 0)
-FROM Sales;</code></pre>
-<p><strong>Real-life case:</strong> Replace missing sales with zero, select a fallback phone number, or prevent divide-by-zero in KPI calculations.</p></div></div>
-</div><div class="item question-item" data-question="senior-sql-13-75">
-<button class="item-head"><span class="idx">75</span><span class="item-title">What is <code>CASE</code> in SQL?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> <code>CASE</code> implements conditional business logic similar to an <code>IF-ELSE</code>.</p>
-<p><strong>Query:</strong></p>
-<pre><code class="language-sql">SELECT ProductName,
-       Sales,
-       CASE
-           WHEN Sales &gt;= 100000 THEN 'High'
-           WHEN Sales &gt;= 50000 THEN 'Medium'
-           ELSE 'Low'
-       END AS SalesCategory
-FROM Products;</code></pre>
-<p><strong>Real-life case:</strong> Classify inventory risk or sales performance into business-friendly categories; the source gives WOC examples of <code>&lt;5</code>, <code>5–12</code>, and <code>&gt;12</code>.</p>
-<h4>Related Questions</h4>
-<div class="item question-item" data-question="rel-senior-sql-13-75-1">
-<button class="item-head"><span class="idx">✓</span><span class="item-title">Categorize employees/customers into Low/Medium/High.</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><em>Because this is the direct hands-on version of using CASE to build conditional categories.</em></p>
-<p><strong>Say:</strong></p>
-<p>"I'll use CASE WHEN to create conditional categories."</p>
-<pre><code class="language-sql">SELECT EmployeeID,
-       Salary,
-       CASE
-           WHEN Salary &lt; 50000 THEN 'Low'
-           WHEN Salary &lt; 100000 THEN 'Medium'
-           ELSE 'High'
-       END AS SalaryCategory
-FROM Employees;</code></pre>
-</div></div>
-</div>
-<div class="item question-item" data-question="rel-senior-sql-13-75-2">
-<button class="item-head"><span class="idx">✓</span><span class="item-title">Pivot rows into columns using CASE WHEN.</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><em>Because this shows a second, more advanced CASE pattern — conditional aggregation for pivoting rows into columns.</em></p>
-<p><strong>Say:</strong></p>
-<p>"I'll use conditional aggregation with CASE WHEN."</p>
-<pre><code class="language-sql">SELECT CustomerID,
-       SUM(CASE WHEN Month = 'Jan' THEN Sales ELSE 0 END) AS JanSales,
-       SUM(CASE WHEN Month = 'Feb' THEN Sales ELSE 0 END) AS FebSales,
-       SUM(CASE WHEN Month = 'Mar' THEN Sales ELSE 0 END) AS MarSales
-FROM Sales
-GROUP BY CustomerID;</code></pre>
-</div></div>
-</div>
-</div></div>
-</div><div class="item question-item" data-question="senior-sql-13-258">
-<button class="item-head"><span class="idx">258</span><span class="item-title">What is the output of: SELECT * FROM A WHERE NULL = NULL?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> It returns zero rows — in SQL, <code>NULL</code> represents an unknown value, so <code>NULL = NULL</code> evaluates to unknown (not true), and the <code>WHERE</code> clause only keeps rows where the condition evaluates to true.</p>
-<p><strong>Real-life case:</strong> This is exactly why you use <code>IS NULL</code> instead of <code>= NULL</code> to actually find NULL rows — a classic gotcha that trips people up in interviews and in real queries alike.</p></div></div>
-</div><div class="item question-item" data-question="senior-sql-13-259">
-<button class="item-head"><span class="idx">259</span><span class="item-title">Have you used the BLOB data type?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> I haven't used BLOB-style storage in my project work. In SQL Server, the equivalent for storing binary/large object data is <code>VARBINARY(MAX)</code>; my project data was structured relational data, not binary files.</p>
-<p><strong>Real-life case:</strong> If a future project needed to store scanned documents or images alongside transactional data, <code>VARBINARY(MAX)</code> would be the SQL Server type to reach for.</p></div></div>
-</div><div class="item question-item" data-question="senior-sql-13-260">
-<button class="item-head"><span class="idx">260</span><span class="item-title">Which data type would you use for multilingual characters, and what's the max length of NVARCHAR?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> <code>NVARCHAR</code>, since it stores Unicode data and supports multilingual characters, unlike <code>VARCHAR</code> which is limited to a single character set. <code>NVARCHAR(MAX)</code> can store up to roughly 2GB of character data; a fixed-length <code>NVARCHAR(n)</code> supports up to 4,000 characters.</p>
-<p><strong>Real-life case:</strong> Any customer- or vendor-name field that might contain non-English characters should be <code>NVARCHAR</code> from the start — retrofitting it after data has already been mangled by <code>VARCHAR</code> is much harder.</p></div></div>
-</div></div></div>
-</div>
-<div class="item topic-item" data-index="senior-14">
-<button class="item-head"><span class="idx">14</span><span class="item-title">DELETE vs TRUNCATE vs DROP: Differences &amp; Speed</span><span class="tag">2 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="senior-sql-14-76">
-<button class="item-head"><span class="idx">76</span><span class="item-title">Difference between <code>DELETE</code>, <code>TRUNCATE</code> and <code>DROP</code>?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> <code>DELETE</code> removes selected rows and supports <code>WHERE</code>; <code>TRUNCATE</code> removes all rows while keeping the table; <code>DROP</code> removes the table object.</p>
-<p><strong>Query:</strong></p>
-<pre><code class="language-sql">DELETE FROM Employees
-WHERE Department = 'HR';
-
-TRUNCATE TABLE Employees;
-
-DROP TABLE Employees;</code></pre>
-<p><strong>Real-life case:</strong> Delete selected bad records with <code>DELETE</code>; clear a staging table with <code>TRUNCATE</code>; remove an obsolete table with <code>DROP</code>.</p></div></div>
-</div><div class="item question-item" data-question="senior-sql-14-77">
-<button class="item-head"><span class="idx">77</span><span class="item-title">Which is generally faster: <code>DELETE</code>, <code>TRUNCATE</code> or <code>DROP</code>?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> For removing all rows, <code>TRUNCATE</code> is generally more efficient than row-by-row <code>DELETE</code>; <code>DROP</code> removes the table object entirely, and actual performance depends on the operation and execution plan.</p>
-<p><strong>Real-life case:</strong> For clearing a staging table completely, <code>TRUNCATE</code> is generally preferable to row-by-row <code>DELETE</code>.</p></div></div>
-</div></div></div>
-</div>
-<div class="item topic-item" data-index="senior-15">
-<button class="item-head"><span class="idx">15</span><span class="item-title">EXISTS vs IN &amp; Finding Inactive Customers</span><span class="tag">2 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="senior-sql-15-78">
-<button class="item-head"><span class="idx">78</span><span class="item-title">Difference between <code>EXISTS</code> and <code>IN</code>?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> <code>IN</code> compares a value with a list/result set, while <code>EXISTS</code> checks whether at least one related row exists; <code>NOT IN</code> needs special care with NULLs.</p>
-<p><strong>Query:</strong></p>
-<pre><code class="language-sql">\-- IN
-SELECT *
-FROM Customers
-WHERE CustomerID IN (
-    SELECT CustomerID
-    FROM Orders
-);
-
-\-- EXISTS
-SELECT *
-FROM Customers c
-WHERE EXISTS (
-    SELECT 1
-    FROM Orders o
-    WHERE o.CustomerID = c.CustomerID
-);</code></pre>
-<p><strong>Real-life case:</strong> Use <code>EXISTS</code> when checking whether a customer has any order.</p></div></div>
-</div><div class="item question-item" data-question="senior-sql-15-79">
-<button class="item-head"><span class="idx">79</span><span class="item-title">How do you find customers with no purchase in the last 6 months?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> I start with all customers and use <code>NOT EXISTS</code> to return customers with no order in the last six months.</p>
-<p><strong>Query:</strong></p>
-<pre><code class="language-sql">SELECT c.CustomerID, c.CustomerName
-FROM Customer c
-WHERE NOT EXISTS (
-    SELECT 1
-    FROM Orders o
-    WHERE o.CustomerID = c.CustomerID
-      AND o.OrderDate &gt;= DATEADD(MONTH, -6, GETDATE())
-);</code></pre>
-<p><strong>Real-life case:</strong> Identify inactive customers for a retention or re-engagement campaign.</p>
-<h4>Related Questions</h4>
-<div class="item question-item" data-question="rel-senior-sql-15-79-1">
-<button class="item-head"><span class="idx">✓</span><span class="item-title">Find customers with no purchases in the last 6 months.</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><em>Because this is the exact same problem solved with an alternate technique — GROUP BY + HAVING MAX() instead of NOT EXISTS.</em></p>
-<p><strong>Say:</strong></p>
-<p>"I'll find customers whose latest purchase is older than six months or who have never purchased."</p>
-<pre><code class="language-sql">SELECT CustomerID
-FROM Orders
-GROUP BY CustomerID
-HAVING MAX(OrderDate) &lt; DATEADD(MONTH, -6, GETDATE());</code></pre>
-</div></div>
-</div>
-</div></div>
-</div></div></div>
-</div><div class="item topic-item" data-index="senior-16">
-<button class="item-head"><span class="idx">16</span><span class="item-title">SQL Transactions &amp; ACID Properties Explained</span><span class="tag">2 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="senior-sql-16-80">
-<button class="item-head"><span class="idx">80</span><span class="item-title">What is a transaction?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> A transaction groups one or more database operations into one logical unit that can be committed or rolled back.</p>
-<p><strong>Query:</strong></p>
-<pre><code class="language-sql">BEGIN TRY
-    BEGIN TRANSACTION;
-
-    UPDATE Accounts
-    SET Balance = Balance - 500
-    WHERE AccountID = 1;
-
-    UPDATE Accounts
-    SET Balance = Balance + 500
-    WHERE AccountID = 2;
-
-    COMMIT TRANSACTION;
-END TRY
-BEGIN CATCH
-    IF @@TRANCOUNT &gt; 0
-        ROLLBACK TRANSACTION;
-
-    THROW;
-END CATCH;</code></pre>
-<p><strong>Real-life case:</strong> A transfer should debit one account and credit another as one logical unit; if either operation fails, the transaction is rolled back.</p></div></div>
-</div><div class="item question-item" data-question="senior-sql-16-81">
-<button class="item-head"><span class="idx">81</span><span class="item-title">What are ACID properties?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> ACID means Atomicity, Consistency, Isolation and Durability: all-or-nothing, valid state, controlled concurrency, and persistence after commit.</p>
-<p><strong>Real-life case:</strong> A financial transaction must either complete fully or roll back without leaving inconsistent balances.</p></div></div>
-</div></div></div>
-</div>
-<div class="item topic-item" data-index="senior-17">
+</div><div class="item topic-item" data-index="senior-17">
 <button class="item-head"><span class="idx">17</span><span class="item-title">Latest Record, Top Sellers &amp; Threshold-Based Queries</span><span class="tag">5 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="senior-sql-17-82">
 <button class="item-head"><span class="idx">82</span><span class="item-title">Find the latest record for each customer.</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
@@ -12371,15 +11811,220 @@ WHERE Salary &gt; 10000000
 <p><strong>Real-life case:</strong> I'd confirm with the interviewer which date column represents "in 2023" — salary effective date, joining date, or review date — since that changes the actual filter column even though the query shape stays the same.</p>
 </div></div>
 </div></div></div>
+</div><div class="item topic-item" data-index="senior-19"><button class="item-head"><span class="idx">19</span><span class="item-title">LEFT JOIN Pitfalls &amp; Join Performance Troubleshooting</span><span class="tag">2 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="senior-sql-19-86"><button class="item-head"><span class="idx">86</span><span class="item-title">LEFT JOIN is returning fewer rows than expected. Why?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><p>The usual culprit is a filter condition on the right-table column sitting in the WHERE clause instead of the ON clause — that silently converts the LEFT JOIN into an INNER JOIN because rows where the right side is NULL get filtered out. Other causes: a case-sensitivity or trailing-space mismatch on the join key, or the right table actually being aggregated/deduplicated earlier in the query in a way that drops rows. First thing I check is always where the filter on the right table sits.</p></div></div></div><div class="item question-item" data-question="senior-sql-19-87"><button class="item-head"><span class="idx">87</span><span class="item-title">Query performance degraded after adding joins.</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><p>I’d pull the execution plan first to see if the new join introduced a table scan instead of an index seek — usually means there’s no index on the join key. Other checks: whether I’m pulling more columns than needed (SELECT *), whether filtering happens early enough to reduce rows before the join, join order, and whether an EXISTS would be cheaper than the join if I only need to check for a match rather than pull columns from the second table.</p></div></div></div></div></div></div><div class="item topic-item" data-index="senior-5">
+<button class="item-head"><span class="idx">05</span><span class="item-title">UNION vs UNION ALL &amp; LIKE Wildcard Patterns</span><span class="tag">4 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="senior-sql-5-40">
+<button class="item-head"><span class="idx">40</span><span class="item-title">Difference between <code>UNION</code> and <code>UNION ALL</code>?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> <code>UNION</code> combines result sets and removes duplicate rows, while <code>UNION ALL</code> combines them without removing duplicates and generally has less overhead.</p>
+<p><strong>Query:</strong></p>
+<pre><code class="language-sql">SELECT customer_id FROM Customers_2025
+UNION
+SELECT customer_id FROM Customers_2026;
+
+SELECT customer_id FROM Customers_2025
+UNION ALL
+SELECT customer_id FROM Customers_2026;</code></pre>
+<p><strong>Real-life case:</strong> Use <code>UNION</code> for a distinct customer list and <code>UNION ALL</code> when every transaction row must be preserved.</p></div></div>
+</div><div class="item question-item" data-question="senior-sql-5-41">
+<button class="item-head"><span class="idx">41</span><span class="item-title">Which is generally faster, <code>UNION</code> or <code>UNION ALL</code>?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> <code>UNION ALL</code> generally performs better because it does not need duplicate elimination.</p>
+<p><strong>Real-life case:</strong> Combine monthly transaction tables with <code>UNION ALL</code> when duplicate removal is not required.</p></div></div>
+</div><div class="item question-item" data-question="senior-sql-5-42">
+<button class="item-head"><span class="idx">42</span><span class="item-title">What is <code>LIKE</code>?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> <code>LIKE</code> performs pattern matching on string values.</p>
+<p><strong>Query:</strong></p>
+<pre><code class="language-sql">SELECT *
+FROM Customers
+WHERE customer_name LIKE 'A%';</code></pre>
+<p><strong>Real-life case:</strong> Find customers whose names begin with a specific character.</p></div></div>
+</div><div class="item question-item" data-question="senior-sql-5-43">
+<button class="item-head"><span class="idx">43</span><span class="item-title">What do <code>%</code> and <code>_</code> mean in <code>LIKE</code>?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> <code>%</code> matches zero or more characters, while <code>_</code> matches exactly one character.</p>
+<p><strong>Query:</strong></p>
+<pre><code class="language-sql">SELECT *
+FROM Customers
+WHERE name LIKE 'A%';   -- starts with A
+
+SELECT *
+FROM Customers
+WHERE name LIKE '%A';   -- ends with A
+
+SELECT *
+FROM Customers
+WHERE name LIKE '%an%'; -- contains an
+
+SELECT *
+FROM Customers
+WHERE name LIKE 'A_';   -- A + exactly one character</code></pre>
+<p><strong>Real-life case:</strong> Search customer/product names using flexible text patterns.</p></div></div>
+</div></div></div>
+</div><div class="item topic-item" data-index="senior-13">
+<button class="item-head"><span class="idx">13</span><span class="item-title">ISNULL(), COALESCE(), NULLIF() &amp; CASE Statement</span><span class="tag">5 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="senior-sql-13-74">
+<button class="item-head"><span class="idx">74</span><span class="item-title">Difference between <code>ISNULL()</code>, <code>COALESCE()</code> and <code>NULLIF()</code>?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> <code>ISNULL</code> replaces a NULL, <code>COALESCE</code> returns the first non-NULL expression, and <code>NULLIF</code> returns NULL when two expressions are equal.</p>
+<p><strong>Query:</strong></p>
+<pre><code class="language-sql">SELECT ISNULL(SalesAmount, 0)
+FROM Sales;
+
+SELECT COALESCE(HomePhone, WorkPhone, 'No Phone')
+FROM Customers;
+
+SELECT Sales / NULLIF(Quantity, 0)
+FROM Sales;</code></pre>
+<p><strong>Real-life case:</strong> Replace missing sales with zero, select a fallback phone number, or prevent divide-by-zero in KPI calculations.</p></div></div>
+</div><div class="item question-item" data-question="senior-sql-13-75">
+<button class="item-head"><span class="idx">75</span><span class="item-title">What is <code>CASE</code> in SQL?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> <code>CASE</code> implements conditional business logic similar to an <code>IF-ELSE</code>.</p>
+<p><strong>Query:</strong></p>
+<pre><code class="language-sql">SELECT ProductName,
+       Sales,
+       CASE
+           WHEN Sales &gt;= 100000 THEN 'High'
+           WHEN Sales &gt;= 50000 THEN 'Medium'
+           ELSE 'Low'
+       END AS SalesCategory
+FROM Products;</code></pre>
+<p><strong>Real-life case:</strong> Classify inventory risk or sales performance into business-friendly categories; the source gives WOC examples of <code>&lt;5</code>, <code>5–12</code>, and <code>&gt;12</code>.</p>
+<h4>Related Questions</h4>
+<div class="item question-item" data-question="rel-senior-sql-13-75-1">
+<button class="item-head"><span class="idx">✓</span><span class="item-title">Categorize employees/customers into Low/Medium/High.</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><em>Because this is the direct hands-on version of using CASE to build conditional categories.</em></p>
+<p><strong>Say:</strong></p>
+<p>"I'll use CASE WHEN to create conditional categories."</p>
+<pre><code class="language-sql">SELECT EmployeeID,
+       Salary,
+       CASE
+           WHEN Salary &lt; 50000 THEN 'Low'
+           WHEN Salary &lt; 100000 THEN 'Medium'
+           ELSE 'High'
+       END AS SalaryCategory
+FROM Employees;</code></pre>
+</div></div>
 </div>
-<div class="item topic-item" data-index="senior-18">
-<button class="item-head"><span class="idx">18</span><span class="item-title">Final SQL Quick Revision Reference Sheet</span><span class="tag">Interview Guide</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><div class="table-wrap"><table><thead><tr><th>Concept</th><th>One-line memory</th></tr></thead><tbody><tr><td><code>ROW_NUMBER()</code></td><td>Unique numbering</td></tr><tr><td><code>RANK()</code></td><td>Ties + gaps</td></tr><tr><td><code>DENSE_RANK()</code></td><td>Ties + no gaps</td></tr><tr><td>Window Function</td><td>Calculate across rows without collapsing</td></tr><tr><td><code>PARTITION BY</code></td><td>Groups for a window calculation</td></tr><tr><td><code>OVER()</code></td><td>Defines the window</td></tr><tr><td><code>LAG()</code></td><td>Previous row</td></tr><tr><td><code>LEAD()</code></td><td>Next row</td></tr><tr><td><code>GROUP BY</code></td><td>Groups + collapses</td></tr><tr><td>CTE</td><td>Named temporary result for one statement</td></tr><tr><td>Subquery</td><td>Query inside another query</td></tr><tr><td>Correlated Subquery</td><td>Inner query depends on outer row</td></tr><tr><td><code>INNER JOIN</code></td><td>Matching rows</td></tr><tr><td><code>LEFT JOIN</code></td><td>All left + matching right</td></tr><tr><td><code>RIGHT JOIN</code></td><td>All right + matching left</td></tr><tr><td><code>FULL JOIN</code></td><td>Everything from both</td></tr><tr><td><code>CROSS JOIN</code></td><td>Every combination</td></tr><tr><td><code>SELF JOIN</code></td><td>Table joined to itself</td></tr><tr><td><code>UNION</code></td><td>Combines + removes duplicates</td></tr><tr><td><code>UNION ALL</code></td><td>Combines + keeps duplicates</td></tr><tr><td><code>LIKE</code></td><td>Pattern matching</td></tr><tr><td><code>WHERE</code></td><td>Filters rows before aggregation</td></tr><tr><td><code>HAVING</code></td><td>Filters groups after aggregation</td></tr><tr><td>Primary Key</td><td>Uniquely identifies row</td></tr><tr><td>Foreign Key</td><td>Connects tables</td></tr><tr><td>Candidate Key</td><td>Can become PK</td></tr><tr><td>Alternate Key</td><td>Candidate key not selected as PK</td></tr><tr><td>Composite Key</td><td>Multiple columns form key</td></tr><tr><td>Surrogate Key</td><td>System-generated identifier</td></tr><tr><td>View</td><td>Reusable virtual table</td></tr><tr><td>Temp Table</td><td>Reusable intermediate stored result</td></tr><tr><td>Stored Procedure</td><td>Performs operations/business process</td></tr><tr><td>Function</td><td>Returns reusable value/table</td></tr><tr><td>Trigger</td><td>Automatically fires on database event</td></tr><tr><td>Normalization</td><td>Reduces redundancy and anomalies</td></tr><tr><td>Clustered Index</td><td>Organizes table data around key</td></tr><tr><td>Non-Clustered Index</td><td>Separate lookup structure</td></tr><tr><td><code>ISNULL()</code></td><td>Replace NULL</td></tr><tr><td><code>COALESCE()</code></td><td>First non-NULL</td></tr><tr><td><code>NULLIF()</code></td><td>Return NULL when equal</td></tr><tr><td><code>CASE</code></td><td>Conditional business logic</td></tr><tr><td><code>DELETE</code></td><td>Remove selected/all rows</td></tr><tr><td><code>TRUNCATE</code></td><td>Remove all rows, keep table</td></tr><tr><td><code>DROP</code></td><td>Remove table object</td></tr><tr><td><code>EXISTS</code></td><td>Check whether related row exists</td></tr><tr><td>Transaction</td><td>Unit of work</td></tr><tr><td>ACID</td><td>Reliable transaction properties</td></tr></tbody></table></div><div class="item question-item" data-question="senior-sql-16-guide">
-<button class="item-head"><span class="idx">01</span><span class="item-title">Best interview pattern</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
-<div class="item-body"><div class="item-body-inner"><p>*<em><strong>For theory:</strong></em>*\\ \\&gt; "One-line definition + when I use it."</p>
-<p>*<em><strong>For SQL coding:</strong></em>*\\ \\&gt; "First I identify the required grain, then filter/aggregate, apply the appropriate join or window function, and finally filter/order the result."</p>
-<p>*<em><strong>For real-life scenarios:</strong></em>*\\ \\&gt; "I would first clarify the business requirement, identify the correct tables and keys, validate duplicates/nulls, write the query, and verify the result before using it in reporting."</p></div></div></div></div></div>
-</div><div class="item topic-item" data-index="senior-19"><button class="item-head"><span class="idx">19</span><span class="item-title">LEFT JOIN Pitfalls &amp; Join Performance Troubleshooting</span><span class="tag">2 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="senior-sql-19-86"><button class="item-head"><span class="idx">86</span><span class="item-title">LEFT JOIN is returning fewer rows than expected. Why?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><p>The usual culprit is a filter condition on the right-table column sitting in the WHERE clause instead of the ON clause — that silently converts the LEFT JOIN into an INNER JOIN because rows where the right side is NULL get filtered out. Other causes: a case-sensitivity or trailing-space mismatch on the join key, or the right table actually being aggregated/deduplicated earlier in the query in a way that drops rows. First thing I check is always where the filter on the right table sits.</p></div></div></div><div class="item question-item" data-question="senior-sql-19-87"><button class="item-head"><span class="idx">87</span><span class="item-title">Query performance degraded after adding joins.</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><p>I’d pull the execution plan first to see if the new join introduced a table scan instead of an index seek — usually means there’s no index on the join key. Other checks: whether I’m pulling more columns than needed (SELECT *), whether filtering happens early enough to reduce rows before the join, join order, and whether an EXISTS would be cheaper than the join if I only need to check for a match rather than pull columns from the second table.</p></div></div></div></div></div></div><div class="item topic-item" data-index="senior-20"><button class="item-head"><span class="idx">20</span><span class="item-title">Data Conversion, PIVOT/UNPIVOT &amp; Business Analytical Queries</span><span class="tag">5 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="senior-sql-20-265">
+<div class="item question-item" data-question="rel-senior-sql-13-75-2">
+<button class="item-head"><span class="idx">✓</span><span class="item-title">Pivot rows into columns using CASE WHEN.</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><em>Because this shows a second, more advanced CASE pattern — conditional aggregation for pivoting rows into columns.</em></p>
+<p><strong>Say:</strong></p>
+<p>"I'll use conditional aggregation with CASE WHEN."</p>
+<pre><code class="language-sql">SELECT CustomerID,
+       SUM(CASE WHEN Month = 'Jan' THEN Sales ELSE 0 END) AS JanSales,
+       SUM(CASE WHEN Month = 'Feb' THEN Sales ELSE 0 END) AS FebSales,
+       SUM(CASE WHEN Month = 'Mar' THEN Sales ELSE 0 END) AS MarSales
+FROM Sales
+GROUP BY CustomerID;</code></pre>
+</div></div>
+</div>
+</div></div>
+</div><div class="item question-item" data-question="senior-sql-13-258">
+<button class="item-head"><span class="idx">258</span><span class="item-title">What is the output of: SELECT * FROM A WHERE NULL = NULL?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> It returns zero rows — in SQL, <code>NULL</code> represents an unknown value, so <code>NULL = NULL</code> evaluates to unknown (not true), and the <code>WHERE</code> clause only keeps rows where the condition evaluates to true.</p>
+<p><strong>Real-life case:</strong> This is exactly why you use <code>IS NULL</code> instead of <code>= NULL</code> to actually find NULL rows — a classic gotcha that trips people up in interviews and in real queries alike.</p></div></div>
+</div><div class="item question-item" data-question="senior-sql-13-259">
+<button class="item-head"><span class="idx">259</span><span class="item-title">Have you used the BLOB data type?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> I haven't used BLOB-style storage in my project work. In SQL Server, the equivalent for storing binary/large object data is <code>VARBINARY(MAX)</code>; my project data was structured relational data, not binary files.</p>
+<p><strong>Real-life case:</strong> If a future project needed to store scanned documents or images alongside transactional data, <code>VARBINARY(MAX)</code> would be the SQL Server type to reach for.</p></div></div>
+</div><div class="item question-item" data-question="senior-sql-13-260">
+<button class="item-head"><span class="idx">260</span><span class="item-title">Which data type would you use for multilingual characters, and what's the max length of NVARCHAR?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> <code>NVARCHAR</code>, since it stores Unicode data and supports multilingual characters, unlike <code>VARCHAR</code> which is limited to a single character set. <code>NVARCHAR(MAX)</code> can store up to roughly 2GB of character data; a fixed-length <code>NVARCHAR(n)</code> supports up to 4,000 characters.</p>
+<p><strong>Real-life case:</strong> Any customer- or vendor-name field that might contain non-English characters should be <code>NVARCHAR</code> from the start — retrofitting it after data has already been mangled by <code>VARCHAR</code> is much harder.</p></div></div>
+</div></div></div>
+</div><div class="item topic-item" data-index="senior-7">
+<button class="item-head"><span class="idx">07</span><span class="item-title">Primary, Foreign, Candidate, Composite &amp; Surrogate Keys</span><span class="tag">9 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="senior-sql-7-48">
+<button class="item-head"><span class="idx">48</span><span class="item-title">What is a Primary Key?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> A Primary Key uniquely identifies each row in a table and cannot contain duplicate or <code>NULL</code> values.</p>
+<p><strong>Query:</strong></p>
+<pre><code class="language-sql">CREATE TABLE Customers (
+    customer_id INT PRIMARY KEY,
+    customer_name VARCHAR(100)
+);</code></pre>
+<p><strong>Real-life case:</strong> <code>CustomerID</code> uniquely identifies each customer.</p></div></div>
+</div><div class="item question-item" data-question="senior-sql-7-49">
+<button class="item-head"><span class="idx">49</span><span class="item-title">What is a Foreign Key?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> A Foreign Key creates a relationship by referencing a Primary Key or unique key in another table.</p>
+<p><strong>Query:</strong></p>
+<pre><code class="language-sql">CREATE TABLE Orders (
+    order_id INT PRIMARY KEY,
+    customer_id INT,
+    FOREIGN KEY (customer_id)
+        REFERENCES Customers(customer_id)
+);</code></pre>
+<p><strong>Real-life case:</strong> <code>Orders.CustomerID</code> connects each order to the customer table.</p></div></div>
+</div><div class="item question-item" data-question="senior-sql-7-50">
+<button class="item-head"><span class="idx">50</span><span class="item-title">Difference between Primary Key and Foreign Key?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> The Primary Key identifies a row in its own table, while the Foreign Key connects a row to another table.</p>
+<p><strong>Real-life case:</strong> <code>CustomerID</code> is the PK in Customers and the FK in Orders.</p></div></div>
+</div><div class="item question-item" data-question="senior-sql-7-51">
+<button class="item-head"><span class="idx">51</span><span class="item-title">What is a Candidate Key?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> A Candidate Key is a column or combination of columns that can uniquely identify a row and is eligible to become the Primary Key.</p>
+<p><strong>Real-life case:</strong> If both EmployeeID and Email are unique, both can be candidate keys.</p></div></div>
+</div><div class="item question-item" data-question="senior-sql-7-52">
+<button class="item-head"><span class="idx">52</span><span class="item-title">What is an Alternate Key?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> An Alternate Key is a candidate key that was not selected as the Primary Key.</p>
+<p><strong>Real-life case:</strong> EmployeeID is the PK while a unique email can be an alternate key.</p></div></div>
+</div><div class="item question-item" data-question="senior-sql-7-53">
+<button class="item-head"><span class="idx">53</span><span class="item-title">What is a Composite Key?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> A Composite Key uses two or more columns together to uniquely identify a row.</p>
+<p><strong>Query:</strong></p>
+<pre><code class="language-sql">CREATE TABLE OrderDetails (
+    order_id INT,
+    product_id INT,
+    quantity INT,
+    PRIMARY KEY (order_id, product_id)
+);</code></pre>
+<p><strong>Real-life case:</strong> In an order-detail table, <code>OrderID + ProductID</code> can uniquely identify a product line.</p></div></div>
+</div><div class="item question-item" data-question="senior-sql-7-54">
+<button class="item-head"><span class="idx">54</span><span class="item-title">What is a Surrogate Key?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> A Surrogate Key is a system-generated, meaningless unique identifier commonly used in data warehouses and dimension tables.</p>
+<p><strong>Real-life case:</strong> Use <code>product_sk</code> as the primary key of a Product dimension while retaining the business <code>product_id</code>.</p></div></div>
+</div><div class="item question-item" data-question="senior-sql-7-55">
+<button class="item-head"><span class="idx">55</span><span class="item-title">How do you decide between Primary, Foreign and Unique Key?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> If it uniquely identifies its own row use PK; if it references another table use FK; if it only needs uniqueness use a Unique Key.</p>
+<p><strong>Real-life case:</strong> CustomerID = PK in Customers, CustomerID = FK in Orders, Email = UNIQUE.</p></div></div>
+</div><div class="item question-item" data-question="senior-sql-7-263">
+<button class="item-head"><span class="idx">263</span><span class="item-title">Primary Key vs Unique Key vs Foreign Key — differences in NULLs, duplicates, and indexing?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> Primary Key: no NULLs, no duplicates, one per table, creates a clustered index by default. Unique Key: no duplicates but allows one NULL, non-clustered index by default. Foreign Key: enforces referential integrity to a parent table's key, and itself allows duplicates and NULLs.</p>
+<p><strong>Real-life case:</strong> On the SAR model I used a surrogate key as the PK on each dimension table (clustered), a Unique Key on the natural business code where one existed (to catch accidental duplicates without blocking a legitimate blank), and FKs on the fact table linking back to each dimension.</p>
+</div></div>
+</div></div></div>
+</div><div class="item topic-item" data-index="senior-11">
+<button class="item-head"><span class="idx">11</span><span class="item-title">Clustered vs Non-Clustered Indexes</span><span class="tag">2 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="senior-sql-11-72">
+<button class="item-head"><span class="idx">72</span><span class="item-title">Clustered vs Non-Clustered Index?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> A clustered index organizes table data around the index key and a table can have one, while a non-clustered index is a separate structure and multiple can exist.</p>
+<p><strong>Real-life case:</strong> Use an appropriate clustered index for common range/sequential access and non-clustered indexes for frequently searched columns.</p></div></div>
+</div><div class="item question-item" data-question="senior-sql-11-305">
+<button class="item-head"><span class="idx">305</span><span class="item-title">What is Indexing?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> Indexing means storing table data in a sorted/organized way so that data retrieval (read operations) becomes faster. An index is a database object that speeds up data retrieval by creating a lookup structure on one or more columns. Indexing is the process of creating and using these indexes to improve query performance and reduce full table scans.</p>
+<p><strong>Real-life case:</strong> Think of it like the index section of a book that helps you find a topic quickly — instead of reading every page (a full table scan), you jump straight to the right one.</p></div></div>
+</div></div></div>
+</div><div class="item topic-item" data-index="senior-12">
+<button class="item-head"><span class="idx">12</span><span class="item-title">Execution Plans &amp; Query Performance Tuning</span><span class="tag">1 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="senior-sql-12-73">
+<button class="item-head"><span class="idx">73</span><span class="item-title">What is an execution plan, and what should you look for in it?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> An execution plan shows how SQL Server will actually run a query — the scans, seeks, joins, sorting, and estimated costs — and it's the main tool for diagnosing why a query is slow.</p>
+<p><strong>Real-life case:</strong> I've taken a 30-second query down to about 2 seconds by reading the plan and fixing what it flagged — table scans on large tables, missing indexes, expensive sort operators, and large hash matches were the usual culprits.</p></div></div>
+</div></div></div>
+</div><div class="item topic-item" data-index="senior-14">
+<button class="item-head"><span class="idx">14</span><span class="item-title">DELETE vs TRUNCATE vs DROP: Differences &amp; Speed</span><span class="tag">2 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="senior-sql-14-76">
+<button class="item-head"><span class="idx">76</span><span class="item-title">Difference between <code>DELETE</code>, <code>TRUNCATE</code> and <code>DROP</code>?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> <code>DELETE</code> removes selected rows and supports <code>WHERE</code>; <code>TRUNCATE</code> removes all rows while keeping the table; <code>DROP</code> removes the table object.</p>
+<p><strong>Query:</strong></p>
+<pre><code class="language-sql">DELETE FROM Employees
+WHERE Department = 'HR';
+
+TRUNCATE TABLE Employees;
+
+DROP TABLE Employees;</code></pre>
+<p><strong>Real-life case:</strong> Delete selected bad records with <code>DELETE</code>; clear a staging table with <code>TRUNCATE</code>; remove an obsolete table with <code>DROP</code>.</p></div></div>
+</div><div class="item question-item" data-question="senior-sql-14-77">
+<button class="item-head"><span class="idx">77</span><span class="item-title">Which is generally faster: <code>DELETE</code>, <code>TRUNCATE</code> or <code>DROP</code>?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> For removing all rows, <code>TRUNCATE</code> is generally more efficient than row-by-row <code>DELETE</code>; <code>DROP</code> removes the table object entirely, and actual performance depends on the operation and execution plan.</p>
+<p><strong>Real-life case:</strong> For clearing a staging table completely, <code>TRUNCATE</code> is generally preferable to row-by-row <code>DELETE</code>.</p></div></div>
+</div></div></div>
+</div><div class="item topic-item" data-index="senior-20"><button class="item-head"><span class="idx">20</span><span class="item-title">Data Conversion, PIVOT/UNPIVOT &amp; Business Analytical Queries</span><span class="tag">5 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="senior-sql-20-265">
 <button class="item-head"><span class="idx">265</span><span class="item-title">How would you convert Text to Date in SQL?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> I'd use <code>CONVERT()</code> or <code>TRY_CONVERT()</code> with the right style code, e.g. <code>CONVERT(date, '2026-08-19', 23)</code>, or <code>TRY_CAST()</code> if the format is safe to assume — the <code>TRY_</code> variants avoid errors on bad data by returning <code>NULL</code> instead of failing the whole query.</p>
 <p><strong>Real-life case:</strong> Raw source extracts often store dates as strings — I use <code>TRY_CONVERT(date, col, 23)</code> in the staging query so bad rows become <code>NULL</code> instead of failing the entire load.</p>
@@ -12439,6 +12084,165 @@ JOIN MonthlyActive prev
 </div>
 </div></div>
 </div></div></div>
+</div><div class="item topic-item" data-index="senior-15">
+<button class="item-head"><span class="idx">15</span><span class="item-title">EXISTS vs IN &amp; Finding Inactive Customers</span><span class="tag">2 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="senior-sql-15-78">
+<button class="item-head"><span class="idx">78</span><span class="item-title">Difference between <code>EXISTS</code> and <code>IN</code>?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> <code>IN</code> compares a value with a list/result set, while <code>EXISTS</code> checks whether at least one related row exists; <code>NOT IN</code> needs special care with NULLs.</p>
+<p><strong>Query:</strong></p>
+<pre><code class="language-sql">\-- IN
+SELECT *
+FROM Customers
+WHERE CustomerID IN (
+    SELECT CustomerID
+    FROM Orders
+);
+
+\-- EXISTS
+SELECT *
+FROM Customers c
+WHERE EXISTS (
+    SELECT 1
+    FROM Orders o
+    WHERE o.CustomerID = c.CustomerID
+);</code></pre>
+<p><strong>Real-life case:</strong> Use <code>EXISTS</code> when checking whether a customer has any order.</p></div></div>
+</div><div class="item question-item" data-question="senior-sql-15-79">
+<button class="item-head"><span class="idx">79</span><span class="item-title">How do you find customers with no purchase in the last 6 months?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> I start with all customers and use <code>NOT EXISTS</code> to return customers with no order in the last six months.</p>
+<p><strong>Query:</strong></p>
+<pre><code class="language-sql">SELECT c.CustomerID, c.CustomerName
+FROM Customer c
+WHERE NOT EXISTS (
+    SELECT 1
+    FROM Orders o
+    WHERE o.CustomerID = c.CustomerID
+      AND o.OrderDate &gt;= DATEADD(MONTH, -6, GETDATE())
+);</code></pre>
+<p><strong>Real-life case:</strong> Identify inactive customers for a retention or re-engagement campaign.</p>
+<h4>Related Questions</h4>
+<div class="item question-item" data-question="rel-senior-sql-15-79-1">
+<button class="item-head"><span class="idx">✓</span><span class="item-title">Find customers with no purchases in the last 6 months.</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><em>Because this is the exact same problem solved with an alternate technique — GROUP BY + HAVING MAX() instead of NOT EXISTS.</em></p>
+<p><strong>Say:</strong></p>
+<p>"I'll find customers whose latest purchase is older than six months or who have never purchased."</p>
+<pre><code class="language-sql">SELECT CustomerID
+FROM Orders
+GROUP BY CustomerID
+HAVING MAX(OrderDate) &lt; DATEADD(MONTH, -6, GETDATE());</code></pre>
+</div></div>
+</div>
+</div></div>
+</div></div></div>
+</div><div class="item topic-item" data-index="senior-2">
+<button class="item-head"><span class="idx">02</span><span class="item-title">FIRST_VALUE() &amp; LAST_VALUE() Window Functions</span><span class="tag">2 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="senior-sql-2-19">
+<button class="item-head"><span class="idx">19</span><span class="item-title">What does <code>FIRST_VALUE()</code> return?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> <code>FIRST_VALUE()</code> returns the first value in a window per the <code>PARTITION BY</code> and <code>ORDER BY</code> clauses, which is useful for finding an initial event per group.</p>
+<p><strong>Query:</strong></p>
+<pre><code class="language-sql">SELECT
+    CustomerID,
+    OrderDate,
+    FIRST_VALUE(OrderDate) OVER (
+        PARTITION BY CustomerID
+        ORDER BY OrderDate
+    ) AS FirstPurchase
+FROM Orders;</code></pre>
+<p><strong>Real-life case:</strong> I'd use this to find each customer's very first purchase date for a customer-journey or cohort analysis.</p>
+<h4>Related Questions</h4>
+<div class="item question-item" data-question="rel-senior-sql-2-19-1">
+<button class="item-head"><span class="idx">✓</span><span class="item-title">Find the first and last purchase date for each customer.</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><em>Because this solves the same problem with an alternate technique — MIN()/MAX() with GROUP BY instead of FIRST_VALUE()/LAST_VALUE() window functions.</em></p>
+<p><strong>Say:</strong></p>
+<p>"I'll use MIN() for the first purchase and MAX() for the last purchase."</p>
+<pre><code class="language-sql">SELECT CustomerID,
+       MIN(PurchaseDate) AS FirstPurchase,
+       MAX(PurchaseDate) AS LastPurchase
+FROM Orders
+GROUP BY CustomerID;</code></pre>
+</div></div>
+</div>
+</div></div>
+</div><div class="item question-item" data-question="senior-sql-2-20">
+<button class="item-head"><span class="idx">20</span><span class="item-title">What does <code>LAST_VALUE()</code> return, and why does it need a frame clause?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> <code>LAST_VALUE()</code> returns the last value in the window, but without an explicit <code>ROWS BETWEEN UNBOUNDED PRECEDING AND UNBOUNDED FOLLOWING</code> frame it only looks at rows up to the current row, which usually gives the wrong answer.</p>
+<p><strong>Query:</strong></p>
+<pre><code class="language-sql">SELECT
+    CustomerID,
+    OrderDate,
+    LAST_VALUE(OrderDate) OVER (
+        PARTITION BY CustomerID
+        ORDER BY OrderDate
+        ROWS BETWEEN UNBOUNDED PRECEDING
+        AND UNBOUNDED FOLLOWING
+    ) AS LastPurchase
+FROM Orders;</code></pre>
+<p><strong>Real-life case:</strong> I always add the explicit frame when using <code>LAST_VALUE()</code> to find each customer's most recent purchase — leaving it out is one of the most common SQL interview traps.</p>
+<h4>Related Questions</h4>
+<div class="item question-item" data-question="rel-senior-sql-2-20-1">
+<button class="item-head"><span class="idx">✓</span><span class="item-title">Find first and last transaction within a date range.</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><em>Because this solves the same last-value problem with the simpler MIN()/MAX() technique — no frame-clause pitfall to worry about.</em></p>
+<p><strong>Say:</strong></p>
+<p>"I'll filter the required date range and then use MIN() and MAX()."</p>
+<pre><code class="language-sql">SELECT CustomerID,
+       MIN(TransactionDate) AS FirstTransaction,
+       MAX(TransactionDate) AS LastTransaction
+FROM Transactions
+WHERE TransactionDate BETWEEN '2026-01-01' AND '2026-06-30'
+GROUP BY CustomerID;</code></pre>
+</div></div>
+</div>
+</div></div>
+</div></div></div></div><div class="item topic-item" data-index="senior-16">
+<button class="item-head"><span class="idx">16</span><span class="item-title">SQL Transactions &amp; ACID Properties Explained</span><span class="tag">2 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="senior-sql-16-80">
+<button class="item-head"><span class="idx">80</span><span class="item-title">What is a transaction?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> A transaction groups one or more database operations into one logical unit that can be committed or rolled back.</p>
+<p><strong>Query:</strong></p>
+<pre><code class="language-sql">BEGIN TRY
+    BEGIN TRANSACTION;
+
+    UPDATE Accounts
+    SET Balance = Balance - 500
+    WHERE AccountID = 1;
+
+    UPDATE Accounts
+    SET Balance = Balance + 500
+    WHERE AccountID = 2;
+
+    COMMIT TRANSACTION;
+END TRY
+BEGIN CATCH
+    IF @@TRANCOUNT &gt; 0
+        ROLLBACK TRANSACTION;
+
+    THROW;
+END CATCH;</code></pre>
+<p><strong>Real-life case:</strong> A transfer should debit one account and credit another as one logical unit; if either operation fails, the transaction is rolled back.</p></div></div>
+</div><div class="item question-item" data-question="senior-sql-16-81">
+<button class="item-head"><span class="idx">81</span><span class="item-title">What are ACID properties?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> ACID means Atomicity, Consistency, Isolation and Durability: all-or-nothing, valid state, controlled concurrency, and persistence after commit.</p>
+<p><strong>Real-life case:</strong> A financial transaction must either complete fully or roll back without leaving inconsistent balances.</p></div></div>
+</div></div></div>
+</div><div class="item topic-item" data-index="senior-10">
+<button class="item-head"><span class="idx">10</span><span class="item-title">Normalization &amp; Denormalization Basics: 1NF, 2NF, 3NF</span><span class="tag">4 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="senior-sql-10-68">
+<button class="item-head"><span class="idx">68</span><span class="item-title">What is Normalization?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> Normalization organizes data into related tables to reduce redundancy and improve data integrity.</p>
+<p><strong>Real-life case:</strong> Instead of repeating customer information on every order row, store customer details once and reference them through CustomerID.</p></div></div>
+</div><div class="item question-item" data-question="senior-sql-10-69">
+<button class="item-head"><span class="idx">69</span><span class="item-title">Why is Normalization important?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> It reduces redundancy, improves consistency and prevents insert, update and delete anomalies.</p>
+<p><strong>Real-life case:</strong> Updating a customer's city in one Customers table is safer than updating the same city repeatedly across thousands of order rows.</p></div></div>
+</div><div class="item question-item" data-question="senior-sql-10-70">
+<button class="item-head"><span class="idx">70</span><span class="item-title">What are 1NF, 2NF and 3NF?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> <code>1NF</code> removes repeating groups and requires atomic values; <code>2NF</code> removes partial dependency on part of a composite key; <code>3NF</code> removes transitive dependency between non-key attributes.</p>
+<p><strong>Real-life case:</strong> Split customer, order and product information into appropriate related tables instead of storing repeated attributes in one large table.</p></div></div>
+</div><div class="item question-item" data-question="senior-sql-10-71">
+<button class="item-head"><span class="idx">71</span><span class="item-title">What is denormalization?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> Denormalization intentionally combines tables to reduce joins and speed up reads, trading some storage and redundancy for faster reporting.</p>
+<p><strong>Real-life case:</strong> Instead of joining Product and Category every time, I'd store CategoryName directly on the Product table for a reporting layer — faster queries, at the cost of extra storage and the risk of redundant data going out of sync.</p></div></div>
+</div></div></div>
 </div><div class="item topic-item" data-index="senior-21"><button class="item-head"><span class="idx">21</span><span class="item-title">SQL Performance</span><span class="tag">2 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="senior-sql-21-306">
 <button class="item-head"><span class="idx">306</span><span class="item-title">SQL Optimization Techniques</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
 <div class="item-body"><div class="item-body-inner"><p><strong>30-second answer:</strong> "My main SQL optimization techniques are selecting only required columns, filtering early, using appropriate indexes, avoiding unnecessary joins and subqueries, checking execution plans, optimizing joins and aggregations, avoiding functions on indexed columns where possible, and ensuring statistics are updated. I also look for unnecessary scans and high-cost operators."</p>
@@ -12474,6 +12278,188 @@ Compare Performance</code></pre>
 <p><strong>Real-life case:</strong> "A sales query joining a 100-million-row transaction table with several dimensions takes 40 seconds. The execution plan shows a large table scan. I would check filtering, indexes and join conditions, then test the revised query against the original execution plan."</p>
 </div></div>
 </div></div></div>
+</div><div class="item topic-item" data-index="senior-8">
+<button class="item-head"><span class="idx">08</span><span class="item-title">Views, SQL/DAX Variables, Stored Procedures &amp; Triggers</span><span class="tag">15 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="senior-sql-8-56">
+<button class="item-head"><span class="idx">56</span><span class="item-title">What is a View?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> A View is a stored SQL query that presents its result as a virtual table; a normal View does not physically store the result set.</p>
+<p><strong>Query:</strong></p>
+<pre><code class="language-sql">CREATE VIEW vw_customer_sales AS
+SELECT CustomerID,
+       SUM(OrderValue) AS TotalSales
+FROM Orders
+GROUP BY CustomerID;</code></pre>
+<p><strong>Real-life case:</strong> The source specifically describes SQL Views such as <code>vw_kpi_master</code> being used to standardize KPI logic for Power BI dashboards.</p></div></div>
+</div><div class="item question-item" data-question="senior-sql-8-57">
+<button class="item-head"><span class="idx">57</span><span class="item-title">What are limitations of a View?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> A normal View does not accept parameters, complex views can become difficult to maintain, and complex underlying queries can affect performance.</p>
+<p><strong>Real-life case:</strong> If a Power BI report needs parameterized database logic, consider a stored procedure, parameterized query or table-valued function rather than a normal View.</p></div></div>
+</div><div class="item question-item" data-question="senior-sql-8-58">
+<button class="item-head"><span class="idx">58</span><span class="item-title">Can you use variables inside a normal SQL Server View?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> No; a standard SQL Server View cannot declare local variables.</p>
+<p>*<em><strong>Example of invalid View logic:</strong></em>*</p>
+<pre><code class="language-sql">DECLARE @StartDate DATE;</code></pre>
+<p><strong>Real-life case:</strong> Use another database object or parameterized approach when the reporting logic needs runtime parameters.</p></div></div>
+</div><div class="item question-item" data-question="senior-sql-8-59">
+<button class="item-head"><span class="idx">59</span><span class="item-title">What is a SQL variable?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> A SQL variable is temporary named storage used during execution of a batch, procedure or script.</p>
+<p><strong>Query:</strong></p>
+<pre><code class="language-sql">DECLARE @TotalSales DECIMAL(18,2);
+SET @TotalSales = 100000;
+SELECT @TotalSales;</code></pre>
+<p><strong>Real-life case:</strong> Store an intermediate threshold or calculation while running a SQL script.</p></div></div>
+</div><div class="item question-item" data-question="senior-sql-8-60">
+<button class="item-head"><span class="idx">60</span><span class="item-title">What is a DAX variable?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> In DAX, <code>VAR</code> stores an expression result so it can be reused and makes a measure easier to read.</p>
+<p><strong>Query:</strong></p>
+<pre><code class="language-dax">Sales Growth % =
+VAR CurrentSales = [Total Sales]
+VAR PreviousSales = [Previous Year Sales]
+RETURN
+    DIVIDE(CurrentSales - PreviousSales, PreviousSales)</code></pre>
+<p><strong>Real-life case:</strong> Reuse current and previous sales values inside a Power BI measure.</p></div></div>
+</div><div class="item question-item" data-question="senior-sql-8-61">
+<button class="item-head"><span class="idx">61</span><span class="item-title">Difference between Stored Procedure and Function?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> A Stored Procedure performs database operations, while a Function returns a reusable value or table.</p>
+<p><strong>Real-life case:</strong> A procedure can handle a multi-step database operation; a function is suited to reusable calculation logic.</p></div></div>
+</div><div class="item question-item" data-question="senior-sql-8-62">
+<button class="item-head"><span class="idx">62</span><span class="item-title">Have you worked with Stored Procedures?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> "My primary SQL work was queries, analysis and SQL Views for Power BI reporting; Stored Procedures were not my primary development responsibility."</p>
+<p><strong>Real-life case:</strong> The source specifically positions the project work around SQL Views such as <code>vw_kpi_master</code>, so avoid claiming stored-procedure development as a primary responsibility.</p></div></div>
+</div><div class="item question-item" data-question="senior-sql-8-63">
+<button class="item-head"><span class="idx">63</span><span class="item-title">Have you worked with user-defined Functions?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> "I have used aggregate and window functions extensively, but creating user-defined SQL Functions was not a primary responsibility; my focus was SQL queries, Views and Power BI reporting."</p>
+<p><strong>Real-life case:</strong> Mention <code>SUM</code>, <code>AVG</code>, <code>COUNT</code>, <code>ROW_NUMBER</code>, <code>RANK</code>, <code>DENSE_RANK</code>, <code>LAG</code> and <code>LEAD</code> as functions used in analysis.</p></div></div>
+</div><div class="item question-item" data-question="senior-sql-8-64">
+<button class="item-head"><span class="idx">64</span><span class="item-title">What is a Trigger?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> A Trigger is database logic that automatically fires when an event such as <code>INSERT</code>, <code>UPDATE</code> or <code>DELETE</code> occurs.</p>
+<p><strong>Query:</strong></p>
+<pre><code class="language-sql">CREATE TRIGGER trg_Employee_Update
+ON Employees
+AFTER UPDATE
+AS
+BEGIN
+    INSERT INTO Employee_Audit
+    (
+        EmployeeID,
+        EmployeeName,
+        UpdatedDate
+    )
+    SELECT
+        EmployeeID,
+        EmployeeName,
+        GETDATE()
+    FROM inserted;
+END;</code></pre>
+<p><strong>Real-life case:</strong> Automatically create an audit record whenever an employee record is updated.</p></div></div>
+</div><div class="item question-item" data-question="senior-sql-8-65">
+<button class="item-head"><span class="idx">65</span><span class="item-title">What's the difference between a Stored Procedure and a View?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> A View is a saved <code>SELECT</code> query that behaves like a virtual table with no parameters, while a Stored Procedure is a precompiled program that can take parameters and contain logic, loops, and conditions.</p>
+<p><strong>Query:</strong></p>
+<pre><code class="language-sql">CREATE VIEW vwSales AS
+SELECT * FROM Sales;
+
+CREATE PROCEDURE GetSales
+AS
+BEGIN
+    SELECT * FROM Sales;
+END</code></pre>
+<p><strong>Real-life case:</strong> Power BI reads from a View for reporting, while nightly ETL jobs run through Stored Procedures for the actual data processing logic.</p></div></div>
+</div><div class="item question-item" data-question="senior-sql-8-66">
+<button class="item-head"><span class="idx">66</span><span class="item-title">What are user-defined functions in SQL?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> A User-Defined Function is a reusable piece of SQL logic that returns either a scalar value or a table, which you can call inside other queries the same way you'd call a built-in function like <code>SUM()</code> or <code>GETDATE()</code>.</p>
+<p><strong>Query:</strong></p>
+<pre><code class="language-sql">CREATE FUNCTION dbo.fn_GetFiscalYear (@OrderDate DATE)
+RETURNS INT
+AS
+BEGIN
+    RETURN YEAR(DATEADD(MONTH, 3, @OrderDate))
+END</code></pre>
+<p><strong>Real-life case:</strong> A scalar function like this could standardize fiscal-year logic across multiple queries instead of repeating the same CASE/DATEADD expression everywhere.</p></div></div>
+</div><div class="item question-item" data-question="senior-sql-8-67">
+<button class="item-head"><span class="idx">67</span><span class="item-title">What are Materialized Views, and what's the trigger point for using one versus a regular View or Stored Procedure?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> SQL Server doesn't have a Materialized View in the Oracle/PostgreSQL sense — the closest equivalent is an Indexed View, which physically stores the result set and updates it as underlying data changes.</p>
+<p><strong>Real-life case:</strong> You'd reach for an Indexed View when a query is run very frequently and the underlying joins/aggregations are expensive, and a regular View's on-the-fly execution is too slow — I haven't used Indexed Views directly in my project, since my views like <code>vw_kpi_master</code> were kept as standard views.</p></div></div>
+</div><div class="item question-item" data-question="senior-sql-8-68">
+<button class="item-head"><span class="idx">68</span><span class="item-title">Do you have experience improving SQL query performance, like taking a query from 10 minutes to 1 minute?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> My optimization work has mainly been at the query and view level — adding appropriate <code>WHERE</code> filters earlier, avoiding unnecessary <code>SELECT *</code>, and restructuring joins so indexed columns are used for the join key, rather than a single dramatic before/after story on a specific query.</p>
+<p><strong>Real-life case:</strong> General approach: check the execution plan, look for table scans that could become index seeks, and reduce the data volume before joining rather than after.</p></div></div>
+</div><div class="item question-item" data-question="senior-sql-8-255">
+<button class="item-head"><span class="idx">255</span><span class="item-title">Have you handled exceptions in stored procedures — can you give an example?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> My hands-on SQL work centered on queries and views rather than procedural error-handling logic in Stored Procedures. Conceptually, that's done with <code>TRY...CATCH</code> blocks, where the <code>CATCH</code> block can log the error details (using <code>ERROR_MESSAGE()</code>, <code>ERROR_NUMBER()</code>) or roll back a transaction cleanly.</p>
+<p><strong>Query:</strong></p>
+<pre><code class="language-sql">BEGIN TRY
+    UPDATE Accounts SET Balance = Balance - 100 WHERE AccountID = 1;
+    UPDATE Accounts SET Balance = Balance + 100 WHERE AccountID = 2;
+END TRY
+BEGIN CATCH
+    ROLLBACK TRANSACTION;
+    INSERT INTO ErrorLog (Message, ErrorNumber, LoggedAt)
+    VALUES (ERROR_MESSAGE(), ERROR_NUMBER(), GETDATE());
+END CATCH</code></pre>
+<p><strong>Real-life case:</strong> I'd present this concept accurately in an interview without claiming hands-on ownership I don't have.</p></div></div>
+</div><div class="item question-item" data-question="senior-sql-8-256">
+<button class="item-head"><span class="idx">256</span><span class="item-title">If a Stored Procedure with thousands of lines takes 10 minutes to run, what factors would you look at to improve it?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> I'd check the execution plan for expensive operations like table scans, look for missing indexes on join/filter columns, check for excessive use of cursors or row-by-row logic that could be set-based instead, and see if the procedure can be broken into smaller, testable steps to isolate the slow part.</p>
+<p><strong>Real-life case:</strong> With a procedure that large, I'd rather isolate and time each major section first than guess at an optimization — the slowest 10% of the logic is usually responsible for most of the runtime.</p></div></div>
+</div></div></div>
+</div><div class="item topic-item" data-index="senior-9">
+<button class="item-head"><span class="idx">09</span><span class="item-title">Local vs Global Temporary Tables</span><span class="tag">3 Questions</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="senior-sql-9-66">
+<button class="item-head"><span class="idx">66</span><span class="item-title">What is a temporary table?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> A temporary table stores intermediate data temporarily and is useful when results must be reused or indexed across multiple steps.</p>
+<p><strong>Query:</strong></p>
+<pre><code class="language-sql">CREATE TABLE #TempSales (
+    CustomerID INT,
+    TotalSales DECIMAL(18,2)
+);</code></pre>
+<p><strong>Real-life case:</strong> Store a large intermediate customer-sales result before joining it to another dataset.</p></div></div>
+</div><div class="item question-item" data-question="senior-sql-9-67">
+<button class="item-head"><span class="idx">67</span><span class="item-title">Difference between local and global temporary tables?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> <code>#Temp</code> is local to the current session/scope, while <code>##Temp</code> can be accessed by multiple sessions.</p>
+<p><strong>Query:</strong></p>
+<pre><code class="language-sql">CREATE TABLE #Sales (...);
+CREATE TABLE ##Sales (...);</code></pre>
+<p><strong>Real-life case:</strong> Use a local temp table for your session-specific analysis; use a global one only when cross-session sharing is required.</p></div></div>
+</div><div class="item question-item" data-question="senior-sql-9-257">
+<button class="item-head"><span class="idx">257</span><span class="item-title">What is the difference between a Table Variable and a Temporary Table?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> A Table Variable is scoped to the current batch, has limited statistics for the query optimizer, and generally suits small datasets; a Temp Table behaves more like a regular table, supports indexes, and the optimizer has better statistics for it, making it a better fit for larger intermediate datasets.</p>
+<p><strong>Real-life case:</strong> I'd reach for a table variable for a small lookup set inside a single batch, but switch to a temp table the moment the intermediate result gets large enough that indexing and accurate row-count estimates start to matter.</p></div></div>
+</div></div></div>
+</div><div class="item topic-item" data-index="senior-recursive-cte"><button class="item-head"><span class="idx">21</span><span class="item-title">Recursive CTEs</span><span class="tag">1 Question</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="senior-sql-3-23">
+<button class="item-head"><span class="idx">23</span><span class="item-title">What is a recursive CTE?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> A recursive CTE references itself and is used for hierarchical data such as employee-manager relationships.</p>
+<p><strong>Query:</strong></p>
+<pre><code class="language-sql">WITH EmployeeHierarchy AS (
+    SELECT EmployeeID, EmployeeName, ManagerID
+    FROM Employees
+    WHERE ManagerID IS NULL
+
+    UNION ALL
+
+    SELECT e.EmployeeID, e.EmployeeName, e.ManagerID
+    FROM Employees e
+    INNER JOIN EmployeeHierarchy h
+        ON e.ManagerID = h.EmployeeID
+)
+SELECT *
+FROM EmployeeHierarchy;</code></pre>
+<p><strong>Real-life case:</strong> Build an organizational hierarchy from manager to employee.</p></div></div>
+</div></div></div></div><div class="item topic-item" data-index="senior-top-offsetfetch"><button class="item-head"><span class="idx">22</span><span class="item-title">TOP &amp; OFFSET-FETCH</span><span class="tag">1 Question</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button><div class="item-body"><div class="item-body-inner"><div class="item question-item" data-question="senior-sql-6-47">
+<button class="item-head"><span class="idx">47</span><span class="item-title">What are <code>TOP</code> and <code>OFFSET-FETCH</code> used for?</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p><strong>Say:</strong> <code>TOP</code> returns a specified number of rows in SQL Server, while <code>OFFSET-FETCH</code> skips rows and returns the next requested rows.</p>
+<p><strong>Query:</strong></p>
+<pre><code class="language-sql">SELECT TOP 3 *
+FROM Employees
+ORDER BY Salary DESC;</code></pre>
+<p><strong>Real-life case:</strong> Return the top three products by sales or paginate a result set.</p></div></div>
+</div></div></div></div><div class="item topic-item" data-index="senior-18">
+<button class="item-head"><span class="idx">18</span><span class="item-title">Final SQL Quick Revision Reference Sheet</span><span class="tag">Interview Guide</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><div class="table-wrap"><table><thead><tr><th>Concept</th><th>One-line memory</th></tr></thead><tbody><tr><td><code>ROW_NUMBER()</code></td><td>Unique numbering</td></tr><tr><td><code>RANK()</code></td><td>Ties + gaps</td></tr><tr><td><code>DENSE_RANK()</code></td><td>Ties + no gaps</td></tr><tr><td>Window Function</td><td>Calculate across rows without collapsing</td></tr><tr><td><code>PARTITION BY</code></td><td>Groups for a window calculation</td></tr><tr><td><code>OVER()</code></td><td>Defines the window</td></tr><tr><td><code>LAG()</code></td><td>Previous row</td></tr><tr><td><code>LEAD()</code></td><td>Next row</td></tr><tr><td><code>GROUP BY</code></td><td>Groups + collapses</td></tr><tr><td>CTE</td><td>Named temporary result for one statement</td></tr><tr><td>Subquery</td><td>Query inside another query</td></tr><tr><td>Correlated Subquery</td><td>Inner query depends on outer row</td></tr><tr><td><code>INNER JOIN</code></td><td>Matching rows</td></tr><tr><td><code>LEFT JOIN</code></td><td>All left + matching right</td></tr><tr><td><code>RIGHT JOIN</code></td><td>All right + matching left</td></tr><tr><td><code>FULL JOIN</code></td><td>Everything from both</td></tr><tr><td><code>CROSS JOIN</code></td><td>Every combination</td></tr><tr><td><code>SELF JOIN</code></td><td>Table joined to itself</td></tr><tr><td><code>UNION</code></td><td>Combines + removes duplicates</td></tr><tr><td><code>UNION ALL</code></td><td>Combines + keeps duplicates</td></tr><tr><td><code>LIKE</code></td><td>Pattern matching</td></tr><tr><td><code>WHERE</code></td><td>Filters rows before aggregation</td></tr><tr><td><code>HAVING</code></td><td>Filters groups after aggregation</td></tr><tr><td>Primary Key</td><td>Uniquely identifies row</td></tr><tr><td>Foreign Key</td><td>Connects tables</td></tr><tr><td>Candidate Key</td><td>Can become PK</td></tr><tr><td>Alternate Key</td><td>Candidate key not selected as PK</td></tr><tr><td>Composite Key</td><td>Multiple columns form key</td></tr><tr><td>Surrogate Key</td><td>System-generated identifier</td></tr><tr><td>View</td><td>Reusable virtual table</td></tr><tr><td>Temp Table</td><td>Reusable intermediate stored result</td></tr><tr><td>Stored Procedure</td><td>Performs operations/business process</td></tr><tr><td>Function</td><td>Returns reusable value/table</td></tr><tr><td>Trigger</td><td>Automatically fires on database event</td></tr><tr><td>Normalization</td><td>Reduces redundancy and anomalies</td></tr><tr><td>Clustered Index</td><td>Organizes table data around key</td></tr><tr><td>Non-Clustered Index</td><td>Separate lookup structure</td></tr><tr><td><code>ISNULL()</code></td><td>Replace NULL</td></tr><tr><td><code>COALESCE()</code></td><td>First non-NULL</td></tr><tr><td><code>NULLIF()</code></td><td>Return NULL when equal</td></tr><tr><td><code>CASE</code></td><td>Conditional business logic</td></tr><tr><td><code>DELETE</code></td><td>Remove selected/all rows</td></tr><tr><td><code>TRUNCATE</code></td><td>Remove all rows, keep table</td></tr><tr><td><code>DROP</code></td><td>Remove table object</td></tr><tr><td><code>EXISTS</code></td><td>Check whether related row exists</td></tr><tr><td>Transaction</td><td>Unit of work</td></tr><tr><td>ACID</td><td>Reliable transaction properties</td></tr></tbody></table></div><div class="item question-item" data-question="senior-sql-16-guide">
+<button class="item-head"><span class="idx">01</span><span class="item-title">Best interview pattern</span><svg class="chev" fill="none" viewbox="0 0 24 24"><path d="M12 5v14M5 12h14" stroke-linecap="round" stroke-width="2"></path></svg></button>
+<div class="item-body"><div class="item-body-inner"><p>*<em><strong>For theory:</strong></em>*\\ \\&gt; "One-line definition + when I use it."</p>
+<p>*<em><strong>For SQL coding:</strong></em>*\\ \\&gt; "First I identify the required grain, then filter/aggregate, apply the appropriate join or window function, and finally filter/order the result."</p>
+<p>*<em><strong>For real-life scenarios:</strong></em>*\\ \\&gt; "I would first clarify the business requirement, identify the correct tables and keys, validate duplicates/nulls, write the query, and verify the result before using it in reporting."</p></div></div></div></div></div>
 </div>
 </div>
 </div>
